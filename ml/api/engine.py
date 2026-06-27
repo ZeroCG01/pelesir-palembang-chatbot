@@ -1,0 +1,90 @@
+import os
+import json
+import torch
+from transformers import BertTokenizerFast, BertForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForTokenClassification
+
+class ChatbotEngine:
+    def __init__(self):
+        print("Memuat model Intent & NER...")
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        # Load Intent Model dari Hugging Face Hub
+        intent_path = "ZeroCG/pelesir-intent"
+        self.intent_tokenizer = BertTokenizerFast.from_pretrained(intent_path)
+        self.intent_model = BertForSequenceClassification.from_pretrained(intent_path).to(self.device)
+        self.intent_model.eval()
+        # Ambil label dari config bawaan model
+        self.intent_id2label = {int(k): v for k, v in self.intent_model.config.id2label.items()}
+
+        # Load NER Model dari Hugging Face Hub
+        ner_path = "ZeroCG/pelesir-ner"
+        self.ner_tokenizer = AutoTokenizer.from_pretrained(ner_path)
+        self.ner_model = AutoModelForTokenClassification.from_pretrained(ner_path).to(self.device)
+        self.ner_model.eval()
+        # Ambil tag dari config bawaan model
+        self.ner_id2tag = {int(k): v for k, v in self.ner_model.config.id2label.items()}
+
+    def get_intent(self, text):
+        inputs = self.intent_tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(self.device)
+        with torch.no_grad():
+            outputs = self.intent_model(**inputs)
+            pred_idx = torch.argmax(outputs.logits, dim=1).item()
+        return self.intent_id2label[pred_idx]
+
+    def get_entities(self, text):
+        # Tokenisasi khusus NER
+        inputs = self.ner_tokenizer(text, return_tensors="pt", truncation=True).to(self.device)
+        with torch.no_grad():
+            outputs = self.ner_model(**inputs)
+            predictions = torch.argmax(outputs.logits, dim=2).squeeze().tolist()
+
+        tokens = self.ner_tokenizer.convert_ids_to_tokens(inputs["input_ids"].squeeze().tolist())
+        word_ids = inputs.word_ids()
+
+        entities = {}
+        current_entity = ""
+        current_label = None
+
+        for idx, word_idx in enumerate(word_ids):
+            if word_idx is None:
+                continue
+            
+            label = self.ner_id2tag[predictions[idx]]
+            token = tokens[idx].replace(" ", "") # Bersihkan karakter spesial IndoBERT/RoBERTa
+            
+            if label == "O":
+                if current_entity:
+                    entities[current_label] = current_entity.strip()
+                    current_entity = ""
+                    current_label = None
+            elif label.startswith("B-"):
+                if current_entity:
+                    entities[current_label] = current_entity.strip()
+                current_label = label[2:]
+                current_entity = token
+            elif label.startswith("I-") and current_label == label[2:]:
+                current_entity += " " + token
+        
+        # Simpan entitas terakhir di ujung kalimat
+        if current_entity:
+            entities[current_label] = current_entity.strip()
+        # Membersihkan artefak Tokenizer (SentencePiece) dan menggabungkan subwords
+        for k, v in entities.items():
+            # 1. Hapus spasi biasa buatan perulangan sebelumnya
+            # 2. Ubah unicode \u2581 (karakter spasi bawaan RoBERTa) menjadi spasi asli
+            # 3. Ubah underscore biasa (jaga-jaga) menjadi spasi asli
+            clean_text = v.replace(" ", "").replace("\u2581", " ").replace("_", " ").strip()
+            entities[k] = clean_text
+        return entities
+
+    def process_message(self, text):
+        # Eksekusi Intent dan NER secara paralel
+        intent = self.get_intent(text)
+        entities = self.get_entities(text)
+        
+        return {
+            "query": text,
+            "intent": intent,
+            "entities": entities
+        }

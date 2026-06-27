@@ -1,0 +1,336 @@
+text,label
+Tell me the best tourist attractions,ask_recommendation
+Museum Dewa dong,ask_location_access
+How much money to buy a ticket?,ask_ticket_price
+Kasih ringkasan soal Perjuangan Monumen Rakyat.,ask_destination_info
+Jelaskan latar belakang Al-Qur'an raksasa Al-Akbar,ask_destination_info
+Bukit tutupnya Siguntang berapa jam?,ask_operating_hours
+What time does it close tonight?,ask_operating_hours
+Ada gazebo buat istirahat?,ask_facilities
+Daftar wisata harga tiket Palembang,ask_ticket_price
+Is there a?,ask_facilities
+Ampera is Bridge free paid? or,ask_ticket_price
+Taman cari hiburan Palembang di,ask_category
+Sampai,goodbye
+Tempat ada saran liburan?,ask_recommendation
+Stasiun LRT dekat yang wisata tempat,ask_lrt_destinations
+Bioskop Palembang PIM ada XXI di sebelah? mana,ask_category
+Ide kasih dong liburan,ask_recommendation
+Tempat hidden cari gem,ask_hidden_gems
+Fasilitas ketersediaan umum,ask_facilities
+To how much enter Kemaro? Island,ask_ticket_price
+Ada hidden nggak?,ask_hidden_gems
+Is there an information center? there,ask_facilities
+Hours opening of tourism historical,ask_operating_hours
+Restoran padang daftar yang legendaris,ask_category
+Monpera sejarah.,ask_destination_info
+Pariwisata bot,greet
+Cari tempat wisata yang sejuk,ask_recommendation
+Biaya retribusi,ask_ticket_price
+Saya liburan,provide_feedback
+Where is the best place for a vacation in Palembang?,ask_recommendation
+Facilities tourism at Hill Siguntang,ask_facilities
+Facilities for people with disabilities,ask_facilities
+tempat wisata HTM alam,ask_ticket_price
+Suggestions ' s destination,ask_recommendation
+It still night?,ask_operating_hours
+Bye bye,goodbye
+Good photo spots near the LRT route,ask_lrt_destinations
+Apakah ada tempat ganti baju?,ask_facilities
+Kambang Iwak have an?,ask_ticket_price
+Entrance price ticket for tourism religious,ask_ticket_price
+Only nature show tourism,ask_category
+Rekomendasi tempat kulineran malam,ask_category
+Apakah Museum SMB II buka besok?,ask_operating_hours
+Latar jelaskan Al belakang - Qur ' raksasa an Al Akbar -,ask_destination_info
+Tepatnya lokasi mana di?,ask_location_access
+Daftar tempat wisata sejarah,ask_category
+Cari wisata yang tempat sejuk,ask_recommendation
+Way get there,ask_location_access
+Fasilitas wisata di Bukit Siguntang,ask_facilities
+Test,greet
+Tentang Museum SMB II.,ask_destination_info
+Daftar tempat wisata olahraga dan atletik,ask_category
+Saran tempat wisata ngebosenin,ask_recommendation
+Is the SMB II Museum open tomorrow?,ask_operating_hours
+Masuk ke sana bayar tiket berapa?,ask_ticket_price
+Oke deh,goodbye
+Info operasional destinasi waktu,ask_operating_hours
+Wisata budaya di Palembang apa aja?,ask_category
+List Palembang ticket prices,ask_ticket_price
+Museum Sriwijaya buka hari apa aja?,ask_operating_hours
+Religious near the route,ask_lrt_destinations
+Daftar wisata kuliner Palembang,ask_category
+Where is it located near to?,ask_location_access
+What are the must-visit places?,ask_recommendation
+Thank much,goodbye
+The app is neat exactly my Figma,provide_feedback
+Museum SMB mushola nggak?,ask_facilities
+Hello Palembang city,greet
+Ada ngedate rekomendasi tempat?,ask_recommendation
+What activities can be done in Jakabaring?,ask_destination_info
+Halooo,greet
+Yang destinasi wisata jarang dikunjungi turis,ask_hidden_gems
+Can you explain uniqueness the Al of Munawar - Arab? Village,ask_destination_info
+Hidden gems close city to the,ask_hidden_gems
+Selamat datang,greet
+What the is hour earliest operating?,ask_operating_hours
+Me tell best the tourist attractions,ask_recommendation
+Tempat wajib apa yang dikunjungi saja?,ask_recommendation
+Wisata tempat yang kategori masuk alam,ask_category
+Bukit Siguntang tutupnya jam berapa?,ask_operating_hours
+Recommend places to visit with kids,ask_recommendation
+Fastest route to Kambang Iwak,ask_location_access
+Where to go riding the LRT in Palembang,ask_lrt_destinations
+Alternative route to the location,ask_location_access
+Tempat jalan-jalan yang belum populer,ask_hidden_gems
+Akses jalan menuju tempat wisata,ask_location_access
+How to go to holiday the location,ask_location_access
+Punti is Kayu like a pine forest?,ask_destination_info
+Opening hours of Monpera Palembang,ask_operating_hours
+Benteng Besak bisa ngapain aja?,ask_destination_info
+Tourism bot,greet
+LRT dekat tempat wisata,ask_lrt_destinations
+You thank answering for,goodbye
+Destination the card design attractive is,provide_feedback
+Tourist facilities,ask_facilities
+Bisa dilewatin mobil nggak jalannya?,ask_location_access
+Destinasi tersembunyi nggak?,ask_hidden_gems
+Destinasi wisata budaya lokal,ask_category
+Give me a of summary the People s ' Struggle Monument.,ask_destination_info
+Kasih terima admin,goodbye
+Cukup informatif aplikasinya,provide_feedback
+Hidden recommendations spot,ask_hidden_gems
+Fasilitas kesehatan atau P3K ada?,ask_facilities
+Membantu lokal turis asing maupun,provide_feedback
+Me the tell origin of Island Kemaro.,ask_destination_info
+Tourism facilities at Siguntang Hill,ask_facilities
+Day,greet
+A highly recommended application,provide_feedback
+Masuk Jakabaring Sport,ask_ticket_price
+Tampilkan wisata alam destinasi,ask_category
+Are secret places?,ask_hidden_gems
+The destination card design is attractive,provide_feedback
+Cool app the UI UX is smooth,provide_feedback
+Dutch colonial,ask_category
+Family near LRT tourism stations,ask_lrt_destinations
+For looking place a that sells green chili chicken fried,ask_category
+Wisata belanja yang deket stasiun LRT,ask_lrt_destinations
+Banyak makasih yaa,goodbye
+Which station to get off at if I want to go to Ampera?,ask_lrt_destinations
+Sangat membantu keliling Palembang,provide_feedback
+Road route to the tourist spot,ask_location_access
+Hidden gem with access,ask_hidden_gems
+Membantu sangat kasih terima,goodbye
+Terima kasih panduannya,goodbye
+Fasilitas pendukung rekreasi,ask_facilities
+Opening schedule Eid holidays during,ask_operating_hours
+Places suitable for healing,ask_recommendation
+The feature helps in,provide_feedback
+Can you help me?,greet
+Pengalaman pakai aplikasinya menyenangkan,provide_feedback
+Tempat makan nasi goreng enak,ask_category
+Mana lokasi di cabang Pagi RM Sore di Palembang?,ask_category
+Ada apa saja di sekitar Monpera?,ask_destination_info
+Palembang holiday recommendations,ask_recommendation
+Makasih infonya berguna banget,goodbye
+Explain the of Benteng Kuto,ask_destination_info
+Experience of using the app,provide_feedback
+Card destinasinya menarik,provide_feedback
+Jam operasional Pulau Kemaro,ask_operating_hours
+Ada penitipan?,ask_facilities
+Akses Palembang mudah wisata dengan LRT,ask_lrt_destinations
+Cari tempat jalan-jalan di kota Palembang,ask_recommendation
+Panduan wisata Palembang naik LRT,ask_lrt_destinations
+Entrance fee for family tourist spots,ask_ticket_price
+Entrance ticket price for religious tourism,ask_ticket_price
+Recommend secret spots in Palembang,ask_hidden_gems
+Cukup informatif,provide_feedback
+Di Museum SMB II ada mushola nggak?,ask_facilities
+Can you tell me about the Palembang Grand Mosque?,ask_destination_info
+Ada destinasi tersembunyi nggak?,ask_hidden_gems
+List of LRT stops and nearby tourist attractions,ask_lrt_destinations
+Hidden near tourism stations LRT,ask_lrt_destinations
+Is II open tomorrow?,ask_operating_hours
+Is there bicycle rental?,ask_facilities
+Can tell you spots me tourist by passed the LRT?,ask_lrt_destinations
+Which station to if I want to to?,ask_lrt_destinations
+Tempat wisata yang unik viral belum,ask_hidden_gems
+Info alamat rute dan,ask_location_access
+Recommendations for chicken noodle places,ask_category
+Cari tempat sepi buat healing di Palembang,ask_hidden_gems
+How to get to Ampera Bridge?,ask_location_access
+How much is the entrance ticket?,ask_ticket_price
+Interesting any places to? visit,ask_recommendation
+Ada informasi?,ask_facilities
+Kambang Iwak buka dari jam berapa sampai jam berapa?,ask_operating_hours
+Tourist spots historical of Sriwijaya the Kingdom,ask_category
+Much the admission?,ask_ticket_price
+Sangat terkesan dengan chatbot AI ini,provide_feedback
+Wisata tersembunyi dekat stasiun LRT,ask_lrt_destinations
+Of list Palembang tourist LRT destinations,ask_lrt_destinations
+Hidden spot recommendations,ask_hidden_gems
+Operating hours of Balaputra Dewa Museum,ask_operating_hours
+Waktu buka Jakabaring Sport City,ask_operating_hours
+About the Giant Quran.,ask_destination_info
+Jam sejarah buka wisata,ask_operating_hours
+Thanks for your time,goodbye
+nya UI simpel dan dipake gampang,provide_feedback
+Berapa rupiah tiket masuknya?,ask_ticket_price
+Sriwijaya itu museum gimana tempatnya?,ask_destination_info
+Thank you good afternoon,goodbye
+Suggest a spot,ask_recommendation
+Tentang Al-Qur'an Raksasa.,ask_destination_info
+Time of Cheng Mosque,ask_operating_hours
+Hello bot tourism,greet
+Hidden for gems out hanging,ask_hidden_gems
+Tempat yang cocok buat healing,ask_recommendation
+Bisa kasih tau tempat wisata yang dilewatin LRT?,ask_lrt_destinations
+You the app useful,provide_feedback
+Destination bot,ask_recommendation
+Aplikasinya ngebantu banget buat jalan-jalan,provide_feedback
+Hangout places near LRT stations,ask_lrt_destinations
+Rekomendasi bareng wisata anak anak -,ask_recommendation
+Explanation Palembang Grand of Mosque.,ask_destination_info
+Lengkap kawasan dong,ask_destination_info
+Show me the list of religious tourism,ask_category
+Kenapa sering ke orang Ampera Jembatan?,ask_destination_info
+Aplikasinya dan ringan lemot ngga,provide_feedback
+Jalannya apa?,ask_location_access
+What ' inside s the Dewa Museum Balaputra?,ask_destination_info
+Wisata gem untuk hidden keluarga,ask_hidden_gems
+Recommend culinary,ask_hidden_gems
+Rute perjalanan ke destinasi,ask_location_access
+Penjaga ada pantainya? nggak,ask_facilities
+Ada info soal Taman Kambang Iwak?,ask_destination_info
+Route to the location,ask_location_access
+Detailnya alamat tolong,ask_location_access
+Retribution fee to enter the tourism spot,ask_ticket_price
+Places to stroll that are not popular yet,ask_hidden_gems
+Info on closing Kemaro,ask_operating_hours
+Keliling kota naik LRT?,ask_lrt_destinations
+Bot tourism,greet
+Entrance for places,ask_ticket_price
+Chatbot hey,greet
+Should where I weekend go this?,ask_recommendation
+Operasional Palembang,ask_operating_hours
+Info biaya tiket dan fasilitas,ask_ticket_price
+Pakai petunjuk jalan Google Maps,ask_location_access
+Recreation place recommendations,ask_recommendation
+Jalannya apa patokan?,ask_location_access
+Are there hidden gems in Palembang?,ask_hidden_gems
+Ceritain dikit soal Ho Masjid Palembang Cheng,ask_destination_info
+Hidden gems in middle the of Palembang city,ask_hidden_gems
+How the entrance?,ask_ticket_price
+Thank night,goodbye
+Waktu tutup lokasi wisata,ask_operating_hours
+Terima infonya kasih,goodbye
+Thanks a lot for the help,goodbye
+Yaudah,goodbye
+Kelengkapan fasilitas wisata,ask_facilities
+Wisata air di Palembang,ask_category
+Religious tourism near the LRT route,ask_lrt_destinations
+Tourism best app far so,provide_feedback
+Hanya tampilkan wisata alam,ask_category
+What special is the about Al Akbar - Quran?,ask_destination_info
+Wisata sejarah tempat Kerajaan Sriwijaya,ask_category
+Info soal Ampera dong,ask_destination_info
+Akses LRT ke Punti Kayu,ask_lrt_destinations
+Lokasi gem,ask_hidden_gems
+Sangat terbantu dengan info dari chatbot,provide_feedback
+Bumi Sriwijaya near station is tourism what?,ask_lrt_destinations
+Aplikasi pariwisata ini,provide_feedback
+List of Palembang LRT,ask_lrt_destinations
+A very innovative application,provide_feedback
+Toko ada di souvenir dalam?,ask_facilities
+Entrance for Jakabaring Sport,ask_ticket_price
+HTM Museum SMB II berapa ya?,ask_ticket_price
+Fee entrance Siguntang for Hill,ask_ticket_price
+Bagaimana cara ke Jembatan Ampera?,ask_location_access
+Sangat dengan AI ini,provide_feedback
+Okay thank,goodbye
+Closing time of the tourist location,ask_operating_hours
+Bisa jam saja?,ask_operating_hours
+Give me some tourist spot suggestions,ask_recommendation
+Places hidden beautiful with scenery,ask_hidden_gems
+What tourism is good here?,ask_recommendation
+Benteng di Kuto bisa ngapain Besak aja?,ask_destination_info
+Naik LRT ke wisata,ask_lrt_destinations
+Rute dari stasiun kereta,ask_location_access
+Jalan akses menuju wisata tempat,ask_location_access
+Hi bot,greet
+The chatbot is very smart at giving recommendations,provide_feedback
+Fasilitas kebersihan,ask_facilities
+Jam buka Jembatan kaki,ask_operating_hours
+Ke sana tiket berapa?,ask_ticket_price
+Tersembunyi yang pemandangannya,ask_hidden_gems
+Jelajahi this app awesome is,provide_feedback
+", sip ya makasih",goodbye
+Rekomendasi liburan di Palembang singkat,ask_recommendation
+Stasiun LRT Jakabaring,ask_lrt_destinations
+Palembang hidden that gems visited must be,ask_hidden_gems
+For amusement parks in,ask_category
+AI hello,greet
+Matur nuwun,goodbye
+Are there relaxing seating areas there?,ask_facilities
+Address of Balaputra Museum please Dewa,ask_location_access
+Jam berapa hari ini?,ask_operating_hours
+The background the Al - Akbar Giant,ask_destination_info
+Kasih menjawab,goodbye
+Palembang hello city,greet
+Recommend places to visit in Palembang,ask_recommendation
+To to Ampera Bridge?,ask_location_access
+Tempat hits Palembang deket LRT,ask_lrt_destinations
+Address the recreation of place,ask_location_access
+Is the prayer room facility clean?,ask_facilities
+Wisata yang alam bisa piknik buat,ask_category
+Road access to the tourist attraction,ask_location_access
+Berapa buka?,ask_operating_hours
+Check,greet
+Show historical all places tourism,ask_category
+Rekomendasi tempat dong,ask_hidden_gems
+Hello tourism app,greet
+What collections in the SMB II?,ask_destination_info
+Price for - Akbar Quran,ask_ticket_price
+Gems close to the,ask_hidden_gems
+Address of Balaputra Dewa Museum please,ask_location_access
+What there on Island?,ask_facilities
+Facilities in the nature tourism area,ask_facilities
+Are there sports tourism places besides Jakabaring?,ask_category
+LRT untuk transportasi wisatawan,ask_lrt_destinations
+Paling tempat ikonik di Palembang selain Ampera,ask_recommendation
+Admin hi,greet
+You very,goodbye
+Thanks a lot bot,goodbye
+Suitable for healing,ask_recommendation
+Kasih panduannya,goodbye
+Toko di dalam?,ask_facilities
+Hola,greet
+Tempat wisata sejarah Kerajaan Sriwijaya,ask_category
+Penjelasan Masjid Agung Palembang.,ask_destination_info
+Is car facility?,ask_facilities
+Of the destination,ask_location_access
+Berapa tempat htm ke ini?,ask_ticket_price
+Fasilitas untuk difabel,ask_facilities
+Help can you me?,greet
+Are there hidden?,ask_hidden_gems
+Hidden gem,ask_hidden_gems
+Me give review a of Kapitan Kampung,ask_destination_info
+Bot thanks you see,goodbye
+"Makasih, sampai",goodbye
+Rekomendasi tempat wisata lokal yang autentik,ask_hidden_gems
+Very helpful for getting around Palembang,provide_feedback
+Just a make more HD,provide_feedback
+Mushola bersih fasilitas?,ask_facilities
+How to arrive at the destination,ask_location_access
+Wisata daftar destinasi LRT Palembang,ask_lrt_destinations
+List of historical tourist attractions,ask_category
+Want to around Palembang LRT what the?,ask_lrt_destinations
+Cara gimana Monpera ke?,ask_location_access
+Check entrance the ticket please price,ask_ticket_price
+Where can I find pempek?,ask_category
+Is Punti Kayu open on Sundays?,ask_operating_hours
+Rekomendasi tempat liburan yang bisa diakses LRT,ask_lrt_destinations
+Parking and fee ticket entrance,ask_ticket_price
+The ticket price information,provide_feedback
+Akses kendaraan ke tempat wisata,ask_location_access

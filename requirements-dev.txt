@@ -1,0 +1,16 @@
+# --- Framework & Server API ---
+fastapi
+uvicorn
+pydantic
+
+# --- Machine Learning & NLP ---
+torch
+transformers
+sentencepiece
+accelerate
+seqeval
+
+# --- Data Processing ---
+pandas
+scikit-learn
+matplotlib
