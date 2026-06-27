@@ -71,6 +71,11 @@ def build_response(intent: str, entities: dict) -> str:
     """
     dest_name = entities.get("DESTINATION", "").strip()
 
+    # Heuristik: Jika model mendeteksi nama destinasi, tetapi intent-nya meleset menjadi "greet" / "goodbye" (misal kalimat terlalu pendek seperti "apa itu bkb")
+    # Paksa intent menjadi ask_destination_info
+    if dest_name and intent in ["greet", "goodbye"]:
+        intent = "ask_destination_info"
+
     if intent == "greet":
         greetings = [
             "Halo! Saya Palbot 🤖. Selamat datang di Pelesir Palembang! Ada yang bisa saya bantu untuk rencana perjalanan Anda?",
