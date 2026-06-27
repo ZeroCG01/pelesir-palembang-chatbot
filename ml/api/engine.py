@@ -3,6 +3,7 @@ import json
 import torch
 from transformers import BertTokenizerFast, BertForSequenceClassification
 from transformers import AutoTokenizer, AutoModelForTokenClassification
+from huggingface_hub import hf_hub_download
 
 class ChatbotEngine:
     def __init__(self):
@@ -14,16 +15,20 @@ class ChatbotEngine:
         self.intent_tokenizer = BertTokenizerFast.from_pretrained(intent_path)
         self.intent_model = BertForSequenceClassification.from_pretrained(intent_path).to(self.device)
         self.intent_model.eval()
-        # Ambil label dari config bawaan model
-        self.intent_id2label = {int(k): v for k, v in self.intent_model.config.id2label.items()}
+        # Ambil custom id2label.json menggunakan HF Hub downloader
+        intent_label_file = hf_hub_download(repo_id=intent_path, filename="id2label.json")
+        with open(intent_label_file, 'r') as f:
+            self.intent_id2label = {int(k): v for k, v in json.load(f).items()}
 
         # Load NER Model dari Hugging Face Hub
         ner_path = "ZeroCG/pelesir-ner"
         self.ner_tokenizer = AutoTokenizer.from_pretrained(ner_path)
         self.ner_model = AutoModelForTokenClassification.from_pretrained(ner_path).to(self.device)
         self.ner_model.eval()
-        # Ambil tag dari config bawaan model
-        self.ner_id2tag = {int(k): v for k, v in self.ner_model.config.id2label.items()}
+        # Ambil custom id2tag.json menggunakan HF Hub downloader
+        ner_tag_file = hf_hub_download(repo_id=ner_path, filename="id2tag.json")
+        with open(ner_tag_file, 'r') as f:
+            self.ner_id2tag = {int(k): v for k, v in json.load(f).items()}
 
     def get_intent(self, text):
         inputs = self.intent_tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(self.device)
