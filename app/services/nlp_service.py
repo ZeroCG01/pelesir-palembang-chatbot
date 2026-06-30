@@ -16,6 +16,7 @@ ATURAN PENTING:
 3. Singkatan "SMB" dalam konteks wisata Palembang merujuk pada "Museum Sultan Mahmud Badaruddin II", BUKAN bandara.
 4. Jawablah seringkas dan sesantai mungkin. Gunakan bahasa Indonesia.
 5. Jika pengguna meminta dibuatkan itinerary (jadwal perjalanan), susunlah jadwal yang masuk akal (Pagi, Siang, Sore) sesuai jumlah hari dan KATEGORI yang mereka minta (misal: wisata alam saja, kuliner saja, atau campuran). Pilihlah dari DATABASE di bawah ini.
+6. Jika pengguna meminta rekomendasi wisata (baik menyebutkan kategori seperti 'alam' maupun tidak), berikan rekomendasi dalam bentuk DAFTAR (list). Pilihlah dari DATABASE di bawah ini.
 
 Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Harga Tiket):
 """
@@ -137,18 +138,11 @@ class ChatbotModel:
         if "Maaf," in reply_text:
             fallback_reasons.append("Pesan error default lokal")
         
-        if intent == "ask_unrelated" or intent == "ask_category":
-            fallback_reasons.append("Intent out-of-domain atau minta kategori spesifik")
-            
-        # Cek jika nanya kategori yang tidak ada di Palembang (seperti pantai, gunung)
-        if intent == "ask_recommendation":
-            cat = entities.get("CATEGORY", "").lower()
-            valid_cats = ["sejarah", "alam", "kuliner", "religi", "rekreasi", "belanja", "akomodasi", "taman", "budaya"]
-            if cat and cat not in valid_cats:
-                fallback_reasons.append(f"Kategori tidak valid: {cat}")
+        if intent in ["ask_unrelated", "ask_category", "ask_recommendation", "ask_hidden_gems"]:
+            fallback_reasons.append("Pertanyaan rekomendasi, hidden gems, kategori, atau out-of-domain diserahkan ke Gemini")
                 
         # Cek pertanyaan lanjutan (follow-up) berdasarkan kata kunci awalan
-        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "lalu ", "terus ", "trus ", "alam", "sejarah", "kuliner", "religi"]
+        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "lalu ", "terus ", "trus ", "alam", "sejarah", "kuliner", "religi", "budaya", "taman"]
         if any(msg_clean.startswith(w) for w in follow_up_words):
             fallback_reasons.append("Pertanyaan lanjutan (membutuhkan history)")
             
