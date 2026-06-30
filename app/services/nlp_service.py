@@ -18,11 +18,11 @@ ATURAN PENTING:
 5. Jika pengguna meminta dibuatkan itinerary (jadwal perjalanan), susunlah jadwal yang masuk akal (Pagi, Siang, Sore) sesuai jumlah hari dan KATEGORI yang mereka minta (misal: wisata alam saja, kuliner saja, atau campuran). Pilihlah dari DATABASE di bawah ini.
 6. Jika pengguna meminta rekomendasi wisata (baik menyebutkan kategori seperti 'alam' maupun tidak), berikan rekomendasi dalam bentuk DAFTAR (list). Pilihlah dari DATABASE di bawah ini.
 
-Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Harga Tiket):
+Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Harga Tiket, Jam Buka):
 """
     try:
         if supabase:
-            res = supabase.table("destinations").select("name, price_min, price_max, category").execute()
+            res = supabase.table("destinations").select("name, price_min, price_max, category, operating_hours").execute()
             lines = []
             for d in res.data:
                 name = d.get('name', '')
@@ -35,7 +35,8 @@ Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Har
                 else:
                     price = f"Rp {pmin:,} - Rp {pmax:,}".replace(",", ".")
                 cat = d.get('category', '')
-                lines.append(f"- {name} (Kategori: {cat}, Harga Tiket: {price})")
+                hours = d.get('operating_hours') or "Jam operasional tidak tersedia"
+                lines.append(f"- {name} (Kategori: {cat}, Harga Tiket: {price}, Jam Buka: {hours})")
             
             base_prompt += "\n".join(lines)
     except Exception as e:
