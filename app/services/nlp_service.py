@@ -1,16 +1,45 @@
 import os
 import google.generativeai as genai
 from ml.api.engine import ChatbotEngine
-from ml.api.response_builder import build_response, ABBREVIATIONS
+from ml.api.response_builder import build_response, ABBREVIATIONS, supabase
 
 # Konfigurasi Gemini API
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY", ""))
 
-SYSTEM_PROMPT = """Anda adalah TanyaKito, asisten virtual ramah untuk aplikasi Pelesir Palembang.
+def build_system_prompt():
+    base_prompt = """Anda adalah TanyaKito, asisten virtual ramah untuk aplikasi Pelesir Palembang.
 Tugas Anda adalah menjawab pertanyaan pengguna seputar wisata Palembang berdasarkan riwayat percakapan.
-Fakta Penting: Palembang adalah kota berbasis sungai (Sungai Musi), BUKAN kota pesisir/pantai. Jika pengguna bertanya tentang "pantai" di Palembang, beritahu dengan sopan bahwa Palembang tidak memiliki pantai laut, dan sarankan alternatif wisata air seperti menyusuri Sungai Musi, mengunjungi Pulau Kemaro, atau wisata alam lainnya.
-Gunakan bahasa Indonesia yang ramah, sopan, sedikit santai, dan informatif. Anda boleh menyisipkan sedikit bahasa daerah Palembang jika relevan, tapi utamakan bahasa Indonesia yang mudah dipahami.
+
+ATURAN PENTING:
+1. Palembang adalah kota berbasis sungai (Sungai Musi), BUKAN kota pesisir/pantai. Jika pengguna bertanya tentang "pantai" di Palembang, beritahu bahwa Palembang tidak memiliki pantai laut, dan sarankan alternatif seperti Sungai Musi atau Pulau Kemaro.
+2. JANGAN mengulangi salam pembuka (seperti "Halo! Selamat datang!") jika pengguna sedang melakukan percakapan lanjutan. Langsung jawab intinya.
+3. Singkatan "SMB" dalam konteks wisata Palembang merujuk pada "Museum Sultan Mahmud Badaruddin II", BUKAN bandara.
+4. Jawablah seringkas dan sesantai mungkin. Gunakan bahasa Indonesia.
+
+Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Harga Tiket):
 """
+    try:
+        if supabase:
+            res = supabase.table("destinations").select("name, price_min, price_max, category").execute()
+            lines = []
+            for d in res.data:
+                name = d.get('name', '')
+                pmin = d.get('price_min') or 0
+                pmax = d.get('price_max') or 0
+                if pmin == 0 and pmax == 0:
+                    price = "Gratis"
+                elif pmin == pmax:
+                    price = f"Rp {pmin:,}".replace(",", ".")
+                else:
+                    price = f"Rp {pmin:,} - Rp {pmax:,}".replace(",", ".")
+                cat = d.get('category', '')
+                lines.append(f"- {name} (Kategori: {cat}, Harga Tiket: {price})")
+            
+            base_prompt += "\n".join(lines)
+    except Exception as e:
+        print(f"Failed to load DB context: {e}")
+        
+    return base_prompt
 
 class ChatbotModel:
     def __init__(self):
@@ -18,7 +47,7 @@ class ChatbotModel:
         self.engine = ChatbotEngine()
         self.gemini_model = genai.GenerativeModel(
             model_name="gemini-2.5-flash",
-            system_instruction=SYSTEM_PROMPT
+            system_instruction=build_system_prompt()
         )
 
     def generate_gemini_reply(self, message: str, history: list) -> str:
