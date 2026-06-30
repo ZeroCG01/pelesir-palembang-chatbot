@@ -11,7 +11,7 @@ async def chat_endpoint(request: ChatRequest):
             raise HTTPException(status_code=400, detail="Pesan tidak boleh kosong")
             
         # Panggil NLP service untuk mendapatkan balasan
-        reply_text = nlp_model.generate_reply(request.message)
+        reply_text = nlp_model.generate_reply(request.message, request.history)
         
         return ChatResponse(reply=reply_text)
     except HTTPException:
