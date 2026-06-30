@@ -85,10 +85,19 @@ class ChatbotModel:
         
         # --- RULE-BASED INTERCEPTOR ---
         # 1. Intercept Itinerary (SERAHKAN KE GEMINI AGAR DINAMIS)
-        if "hari" in msg_lower and ("rekomendasi" in msg_lower or "itinerary" in msg_lower or "wisata" in msg_lower or "jadwal" in msg_lower):
+        if "itinerary" in msg_lower or "jadwal" in msg_lower or ("hari" in msg_lower and "wisata" in msg_lower):
             print("Intercept Itinerary: Mengalihkan ke Gemini agar lebih dinamis")
             return self.generate_gemini_reply(message, history)
             
+        # 1.5 Intercept Multi-Intent (Pertanyaan Ganda)
+        has_price = "harga" in msg_lower or "tiket" in msg_lower or "biaya" in msg_lower
+        has_time = "jam" in msg_lower or "buka" in msg_lower or "tutup" in msg_lower
+        has_location = "dimana" in msg_lower or "lokasi" in msg_lower or "alamat" in msg_lower
+        
+        if (has_price and has_time) or (has_price and has_location) or (has_time and has_location):
+            print("Intercept Multi-Intent: Mengalihkan ke Gemini karena ada 2+ pertanyaan sekaligus")
+            return self.generate_gemini_reply(message, history)
+
         # 2. Intercept Hotel/Akomodasi
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
             daerah = ""
@@ -128,8 +137,8 @@ class ChatbotModel:
         if "Maaf," in reply_text:
             fallback_reasons.append("Pesan error default lokal")
         
-        if intent == "ask_unrelated":
-            fallback_reasons.append("Intent out-of-domain")
+        if intent == "ask_unrelated" or intent == "ask_category":
+            fallback_reasons.append("Intent out-of-domain atau minta kategori spesifik")
             
         # Cek jika nanya kategori yang tidak ada di Palembang (seperti pantai, gunung)
         if intent == "ask_recommendation":
@@ -139,7 +148,7 @@ class ChatbotModel:
                 fallback_reasons.append(f"Kategori tidak valid: {cat}")
                 
         # Cek pertanyaan lanjutan (follow-up) berdasarkan kata kunci awalan
-        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "lalu ", "terus ", "trus "]
+        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "lalu ", "terus ", "trus ", "alam", "sejarah", "kuliner", "religi"]
         if any(msg_clean.startswith(w) for w in follow_up_words):
             fallback_reasons.append("Pertanyaan lanjutan (membutuhkan history)")
             
