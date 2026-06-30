@@ -68,7 +68,11 @@ class ChatbotModel:
             
             chat = self.gemini_model.start_chat(history=gemini_history)
             response = chat.send_message(message)
-            return response.text
+            
+            # Hapus karakter markdown ** agar tidak muncul mentah-mentah di aplikasi mobile
+            clean_text = response.text.replace("**", "")
+            
+            return clean_text
         except Exception as e:
             print(f"Gemini Fallback Error: {e}")
             return "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang."
