@@ -18,11 +18,11 @@ ATURAN PENTING:
 5. Jika pengguna meminta dibuatkan itinerary (jadwal perjalanan), susunlah jadwal yang masuk akal (Pagi, Siang, Sore) sesuai jumlah hari dan KATEGORI yang mereka minta (misal: wisata alam saja, kuliner saja, atau campuran). Pilihlah dari DATABASE di bawah ini.
 6. Jika pengguna meminta rekomendasi wisata (baik menyebutkan kategori seperti 'alam' maupun tidak), berikan rekomendasi dalam bentuk DAFTAR (list). Pilihlah dari DATABASE di bawah ini.
 
-Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Harga Tiket, Jam Buka):
+Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG:
 """
     try:
         if supabase:
-            res = supabase.table("destinations").select("name, price_min, price_max, category, operating_hours").execute()
+            res = supabase.table("destinations").select("*").execute()
             lines = []
             for d in res.data:
                 name = d.get('name', '')
@@ -34,9 +34,21 @@ Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Har
                     price = f"Rp {pmin:,}".replace(",", ".")
                 else:
                     price = f"Rp {pmin:,} - Rp {pmax:,}".replace(",", ".")
+                
                 cat = d.get('category', '')
-                hours = d.get('operating_hours') or "Jam operasional tidak tersedia"
-                lines.append(f"- {name} (Kategori: {cat}, Harga Tiket: {price}, Jam Buka: {hours})")
+                hours = d.get('operating_hours') or "-"
+                addr = d.get('address') or "-"
+                desc = d.get('description_id') or ""
+                # hilangkan enter dari deskripsi agar rapi
+                desc = desc.replace("\n", " ").strip()
+                
+                facs = d.get('facilities') or []
+                facs_str = ", ".join(facs) if isinstance(facs, list) else str(facs)
+                
+                lrt = "Ya" if d.get('lrt_accessible') else "Tidak"
+                
+                info = f"- {name} | Kategori: {cat} | Tiket: {price} | Buka: {hours} | LRT: {lrt} | Fasilitas: {facs_str} | Alamat: {addr} | Deskripsi: {desc}"
+                lines.append(info)
             
             base_prompt += "\n".join(lines)
     except Exception as e:
