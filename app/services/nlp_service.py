@@ -91,6 +91,7 @@ class ChatbotModel:
         
         # 3. TRIGGER GEMINI FALLBACK (Smarter Heuristics)
         fallback_reasons = []
+        msg_clean = message.lower().strip()
         
         if "Maaf," in reply_text:
             fallback_reasons.append("Pesan error default lokal")
@@ -106,8 +107,17 @@ class ChatbotModel:
                 fallback_reasons.append(f"Kategori tidak valid: {cat}")
                 
         # Cek pertanyaan lanjutan (follow-up) berdasarkan kata kunci awalan
-        if msg_lower.startswith("kalau ") or msg_lower.startswith("bagaimana dengan ") or msg_lower.startswith("lalu "):
+        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "lalu ", "terus ", "trus "]
+        if any(msg_clean.startswith(w) for w in follow_up_words):
             fallback_reasons.append("Pertanyaan lanjutan (membutuhkan history)")
+            
+        # Cek pertanyaan pendek yang hanya menyebut entitas tanpa kata tanya spesifik
+        # Contoh: "museum smb", "bkb"
+        words = msg_clean.split()
+        if len(words) <= 5 and "DESTINATION" in entities:
+            question_words = ["apa", "info", "deskripsi", "dimana", "di mana", "lokasi", "berapa", "harga", "tiket", "jam", "buka", "tutup"]
+            if not any(q in msg_clean for q in question_words):
+                fallback_reasons.append("Kalimat pendek tanpa kata tanya (indikasi follow-up)")
 
         if len(fallback_reasons) > 0:
             print(f"Trigger Gemini Fallback karena: {fallback_reasons}")
