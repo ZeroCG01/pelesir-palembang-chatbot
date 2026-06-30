@@ -15,6 +15,7 @@ ATURAN PENTING:
 2. JANGAN mengulangi salam pembuka (seperti "Halo! Selamat datang!") jika pengguna sedang melakukan percakapan lanjutan. Langsung jawab intinya.
 3. Singkatan "SMB" dalam konteks wisata Palembang merujuk pada "Museum Sultan Mahmud Badaruddin II", BUKAN bandara.
 4. Jawablah seringkas dan sesantai mungkin. Gunakan bahasa Indonesia.
+5. Jika pengguna meminta dibuatkan itinerary (jadwal perjalanan), susunlah jadwal yang masuk akal (Pagi, Siang, Sore) sesuai jumlah hari dan KATEGORI yang mereka minta (misal: wisata alam saja, kuliner saja, atau campuran). Pilihlah dari DATABASE di bawah ini.
 
 Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG (Nama Tempat, Kategori, Harga Tiket):
 """
@@ -79,12 +80,10 @@ class ChatbotModel:
         msg_lower = message.lower()
         
         # --- RULE-BASED INTERCEPTOR ---
-        # 1. Intercept Itinerary
+        # 1. Intercept Itinerary (SERAHKAN KE GEMINI AGAR DINAMIS)
         if "hari" in msg_lower and ("rekomendasi" in msg_lower or "itinerary" in msg_lower or "wisata" in msg_lower or "jadwal" in msg_lower):
-            days = 1
-            if "2 hari" in msg_lower or "dua hari" in msg_lower: days = 2
-            elif "3 hari" in msg_lower or "tiga hari" in msg_lower: days = 3
-            return build_response("rule_itinerary", {"DAYS": days})
+            print("Intercept Itinerary: Mengalihkan ke Gemini agar lebih dinamis")
+            return self.generate_gemini_reply(message, history)
             
         # 2. Intercept Hotel/Akomodasi
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
