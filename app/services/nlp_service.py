@@ -89,12 +89,31 @@ class ChatbotModel:
         # 2. Hasilkan balasan natural (melibatkan database Supabase di dalam builder)
         reply_text = build_response(intent, entities)
         
-        # 3. TRIGGER GEMINI FALLBACK
-        # Jika model lokal gagal memberikan informasi spesifik atau menghasilkan pesan error default
-        if "Maaf, saya tidak mengerti" in reply_text or "Maaf, saya tidak menemukan tempat wisata" in reply_text or intent == "ask_unrelated":
+        # 3. TRIGGER GEMINI FALLBACK (Smarter Heuristics)
+        fallback_reasons = []
+        
+        if "Maaf," in reply_text:
+            fallback_reasons.append("Pesan error default lokal")
+        
+        if intent == "ask_unrelated":
+            fallback_reasons.append("Intent out-of-domain")
+            
+        # Cek jika nanya kategori yang tidak ada di Palembang (seperti pantai, gunung)
+        if intent == "ask_recommendation":
+            cat = entities.get("CATEGORY", "").lower()
+            valid_cats = ["sejarah", "alam", "kuliner", "religi", "rekreasi", "belanja", "akomodasi", "taman", "budaya"]
+            if cat and cat not in valid_cats:
+                fallback_reasons.append(f"Kategori tidak valid: {cat}")
+                
+        # Cek pertanyaan lanjutan (follow-up) berdasarkan kata kunci awalan
+        if msg_lower.startswith("kalau ") or msg_lower.startswith("bagaimana dengan ") or msg_lower.startswith("lalu "):
+            fallback_reasons.append("Pertanyaan lanjutan (membutuhkan history)")
+
+        if len(fallback_reasons) > 0:
+            print(f"Trigger Gemini Fallback karena: {fallback_reasons}")
             return self.generate_gemini_reply(message, history)
         
-        # Jika bukan error, kembalikan jawaban dari ML Lokal
+        # Jika bukan error dan bukan follow-up, kembalikan jawaban dari ML Lokal
         return reply_text
 
 # Instansiasi global agar model hanya di-load sekali ke memory
