@@ -159,13 +159,16 @@ class ChatbotModel:
         # --- FALLBACK HEURISTIC LOKAL ---
         # Coba cocokkan nama destinasi jika ML NER tidak mendeteksi
         if "DESTINATION" not in entities:
-            msg_lower_padded = f" {message.lower()} "
+            # Hapus tanda baca umum agar "bkb?" menjadi "bkb"
+            msg_clean_punct = message.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "")
+            msg_lower_padded = f" {msg_clean_punct} "
+            
             # Sort by longest key first agar multi-word match duluan (misal "kampung kapitan" sebelum "ki")
             sorted_abbrs = sorted(ABBREVIATIONS.keys(), key=len, reverse=True)
             for short_name in sorted_abbrs:
                 if f" {short_name} " in msg_lower_padded:
                     entities["DESTINATION"] = short_name
-                    print(f"Fallback NER: Found '{short_name}' manually.")
+                    print(f"Fallback NER: Found '{short_name}' manually (after removing punctuation).")
                     break
         
         # 2. Hasilkan balasan natural (melibatkan database Supabase di dalam builder)
