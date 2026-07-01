@@ -231,7 +231,7 @@ def build_response(intent: str, entities: dict) -> str:
                 # Potong deskripsi agar tidak terlalu panjang
                 if len(desc) > 200:
                     desc = desc[:200] + "..."
-                return f"Berikut info singkat tentang {dest_data.get('name')}: {desc} Anda bisa melihat detail lengkapnya di halaman beranda!"
+                return f"Berikut info singkat tentang {dest_data.get('name')}: {desc} Jika butuh info lebih detail, silakan tanyakan lagi!"
             return f"Maaf, saya tidak menemukan tempat wisata '{dest_name}' di Palembang. Coba tuliskan nama yang lebih lengkap."
         return "Bisa sebutkan nama tempat wisata yang ingin kamu ketahui informasinya?"
 
