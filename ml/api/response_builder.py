@@ -137,10 +137,13 @@ def build_response(intent: str, entities: dict) -> str:
                 
                 hotels_list = []
                 for h in results:
-                    if h.get("price_min") and h.get("price_max") and h["price_min"] != h["price_max"]:
-                        harga_teks = f"Rp {h['price_min']:,} - Rp {h['price_max']:,}".replace(",", ".")
-                    elif h.get("price_min"):
-                        harga_teks = f"Rp {h['price_min']:,}".replace(",", ".")
+                    pmin = h.get("price_min") or 0
+                    pmax = h.get("price_max") or 0
+                    
+                    if pmin != 0 and pmax != 0 and pmin != pmax:
+                        harga_teks = f"Rp {pmin:,} - Rp {pmax:,}".replace(",", ".")
+                    elif pmin != 0:
+                        harga_teks = f"Rp {pmin:,}".replace(",", ".")
                     else:
                         harga_teks = "Harga tidak tersedia"
                     hotels_list.append(f"- {h['name']} ({harga_teks})")
@@ -208,13 +211,11 @@ def build_response(intent: str, entities: dict) -> str:
         if dest_name:
             dest_data = get_destination_from_supabase(dest_name)
             if dest_data:
-                price_min = dest_data.get("price_min")
-                price_max = dest_data.get("price_max")
+                price_min = dest_data.get("price_min") or 0
+                price_max = dest_data.get("price_max") or 0
                 
-                if price_min is None and price_max is None:
-                    return f"Maaf, saya tidak menemukan informasi harga tiket untuk '{dest_data.get('name')}'."
-                elif price_min == 0 and price_max == 0:
-                    price_text = "Gratis"
+                if price_min == 0 and price_max == 0:
+                    price_text = "Gratis atau harga tidak tersedia"
                 elif price_min == price_max:
                     price_text = f"Rp {price_min:,}".replace(",", ".")
                 else:
