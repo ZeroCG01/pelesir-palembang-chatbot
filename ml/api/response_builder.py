@@ -26,7 +26,17 @@ ABBREVIATIONS = {
     "ki": "Kambang Iwak",
     "ampera": "Jembatan Ampera",
     "al munawar": "Kampung Arab Al-Munawar",
-    "al-munawar": "Kampung Arab Al-Munawar"
+    "al-munawar": "Kampung Arab Al-Munawar",
+    "monpera": "Monpera",
+    "kemaro": "Pulau Kemaro",
+    "kampung kapitan": "Kampung Kapitan",
+    "punti kayu": "Hutan Wisata Punti Kayu",
+    "kambang iwak": "Kambang Iwak",
+    "benteng kuto besak": "Benteng Kuto Besak",
+    "masjid agung": "Masjid Agung",
+    "museum smb": "Sultan Mahmud Badaruddin",
+    "jembatan ampera": "Jembatan Ampera",
+    "pulau kemaro": "Pulau Kemaro",
 }
 
 def normalize_destination_name(name: str) -> str:

@@ -23,8 +23,8 @@ from datetime import datetime
 # ========== KONFIGURASI ==========
 DEFAULT_API_URL = "https://zerocg-pelesir-palembang-chatbot.hf.space"
 TEST_SUITE_PATH = Path(__file__).parent / "test_suite.json"
-DELAY_BETWEEN_TURNS = 2.0  # detik antar turn (agar tidak rate-limited)
-DELAY_BETWEEN_TESTS = 3.0   # detik antar test case
+DELAY_BETWEEN_TURNS = 3.0  # detik antar turn (agar tidak rate-limited)
+DELAY_BETWEEN_TESTS = 5.0   # detik antar test case
 
 
 # ========== WARNA TERMINAL ==========
@@ -39,22 +39,35 @@ class Color:
 
 
 def send_chat(api_url: str, message: str, history: list) -> str:
-    """Kirim pesan ke API chatbot dan kembalikan balasannya."""
-    try:
-        response = requests.post(
-            f"{api_url}/api/chat",
-            json={"message": message, "history": history},
-            headers={"Content-Type": "application/json"},
-            timeout=60
-        )
-        response.raise_for_status()
-        return response.json().get("reply", "")
-    except requests.exceptions.Timeout:
-        return "[ERROR: TIMEOUT - Server tidak merespons dalam 60 detik]"
-    except requests.exceptions.ConnectionError:
-        return "[ERROR: CONNECTION - Tidak bisa terhubung ke server]"
-    except Exception as e:
-        return f"[ERROR: {str(e)}]"
+    """Kirim pesan ke API chatbot dan kembalikan balasannya. Retry jika 500/429."""
+    MAX_RETRIES = 2
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            response = requests.post(
+                f"{api_url}/api/chat",
+                json={"message": message, "history": history},
+                headers={"Content-Type": "application/json"},
+                timeout=120  # Timeout lebih lama karena server retry Gemini internal
+            )
+            # Retry jika 500 atau 429 (rate limit di server)
+            if response.status_code in [429, 500] and attempt < MAX_RETRIES:
+                wait = 20 * (attempt + 1)
+                print(f"  {Color.YELLOW}⏳ Server error {response.status_code}, retry {attempt+1}/{MAX_RETRIES} setelah {wait}s...{Color.END}")
+                time.sleep(wait)
+                continue
+            response.raise_for_status()
+            return response.json().get("reply", "")
+        except requests.exceptions.Timeout:
+            return "[ERROR: TIMEOUT - Server tidak merespons dalam 120 detik]"
+        except requests.exceptions.ConnectionError:
+            return "[ERROR: CONNECTION - Tidak bisa terhubung ke server]"
+        except Exception as e:
+            if attempt < MAX_RETRIES and ("500" in str(e) or "429" in str(e)):
+                wait = 20 * (attempt + 1)
+                print(f"  {Color.YELLOW}⏳ Error: {str(e)[:60]}, retry {attempt+1}/{MAX_RETRIES} setelah {wait}s...{Color.END}")
+                time.sleep(wait)
+                continue
+            return f"[ERROR: {str(e)}]"
 
 
 def check_response(reply: str, must_contain: list, must_not: list) -> tuple:

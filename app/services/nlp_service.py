@@ -1,4 +1,5 @@
 import os
+import time
 import google.generativeai as genai
 from ml.api.engine import ChatbotEngine
 from ml.api.response_builder import build_response, ABBREVIATIONS, supabase
@@ -69,30 +70,43 @@ class ChatbotModel:
         )
 
     def generate_gemini_reply(self, message: str, history: list) -> str:
-        try:
-            print("Fallback to Gemini LLM with context...")
-            # Konversi format history ke format yang diterima SDK Gemini
-            gemini_history = []
-            for h in history:
-                role = h.get("role", "user")
-                # Pastikan role sesuai standar Gemini ('user' atau 'model')
-                if role not in ["user", "model"]:
-                    role = "user"
-                gemini_history.append({
-                    "role": role,
-                    "parts": [h.get("content", "")]
-                })
-            
-            chat = self.gemini_model.start_chat(history=gemini_history)
-            response = chat.send_message(message)
-            
-            # Hapus karakter markdown ** agar tidak muncul mentah-mentah di aplikasi mobile
-            clean_text = response.text.replace("**", "")
-            
-            return clean_text
-        except Exception as e:
-            print(f"Gemini Fallback Error: {e}")
-            return f"Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang. (Log System: {str(e)[:50]})"
+        MAX_RETRIES = 3
+        BASE_WAIT = 15  # detik — Free tier Gemini reset per menit
+        
+        for attempt in range(MAX_RETRIES + 1):
+            try:
+                print(f"Fallback to Gemini LLM with context... (attempt {attempt + 1})")
+                # Konversi format history ke format yang diterima SDK Gemini
+                gemini_history = []
+                for h in history:
+                    role = h.get("role", "user")
+                    # Pastikan role sesuai standar Gemini ('user' atau 'model')
+                    if role not in ["user", "model"]:
+                        role = "user"
+                    gemini_history.append({
+                        "role": role,
+                        "parts": [h.get("content", "")]
+                    })
+                
+                chat = self.gemini_model.start_chat(history=gemini_history)
+                response = chat.send_message(message)
+                
+                # Hapus karakter markdown ** agar tidak muncul mentah-mentah di aplikasi mobile
+                clean_text = response.text.replace("**", "")
+                
+                return clean_text
+            except Exception as e:
+                error_str = str(e).lower()
+                is_rate_limit = "429" in str(e) or "resource" in error_str or "quota" in error_str or "rate" in error_str
+                
+                if is_rate_limit and attempt < MAX_RETRIES:
+                    wait_time = BASE_WAIT * (2 ** attempt)  # 15s, 30s, 60s
+                    print(f"Gemini Rate Limited (429). Retry {attempt + 1}/{MAX_RETRIES} setelah {wait_time}s...")
+                    time.sleep(wait_time)
+                    continue
+                
+                print(f"Gemini Fallback Error (final): {e}")
+                return "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang."
 
     def generate_reply(self, message: str, history: list = None) -> str:
         if history is None:
@@ -117,6 +131,11 @@ class ChatbotModel:
         if "detail" in msg_lower or "lengkap" in msg_lower:
             return self.generate_gemini_reply(message, history)
 
+        # 1.7 Intercept Rekomendasi / Hidden Gems / Kategori (SERAHKAN KE GEMINI)
+        recommendation_words = ["rekomendasi", "rekomendasikan", "recommend", "hidden gems", "hidden gem", "saran", "sarankan"]
+        if any(rw in msg_lower for rw in recommendation_words):
+            return self.generate_gemini_reply(message, history)
+
         # 2. Intercept Hotel/Akomodasi
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
             daerah = ""
@@ -138,9 +157,12 @@ class ChatbotModel:
         intent = result["intent"]
         
         # --- FALLBACK HEURISTIC LOKAL ---
+        # Coba cocokkan nama destinasi jika ML NER tidak mendeteksi
         if "DESTINATION" not in entities:
             msg_lower_padded = f" {message.lower()} "
-            for short_name in ABBREVIATIONS.keys():
+            # Sort by longest key first agar multi-word match duluan (misal "kampung kapitan" sebelum "ki")
+            sorted_abbrs = sorted(ABBREVIATIONS.keys(), key=len, reverse=True)
+            for short_name in sorted_abbrs:
                 if f" {short_name} " in msg_lower_padded:
                     entities["DESTINATION"] = short_name
                     print(f"Fallback NER: Found '{short_name}' manually.")
