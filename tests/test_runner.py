@@ -23,8 +23,8 @@ from datetime import datetime
 # ========== KONFIGURASI ==========
 DEFAULT_API_URL = "https://zerocg-pelesir-palembang-chatbot.hf.space"
 TEST_SUITE_PATH = Path(__file__).parent / "test_suite.json"
-DELAY_BETWEEN_TURNS = 1.0  # detik antar turn (agar tidak rate-limited)
-DELAY_BETWEEN_TESTS = 0.5   # detik antar test case
+DELAY_BETWEEN_TURNS = 2.0  # detik antar turn (agar tidak rate-limited)
+DELAY_BETWEEN_TESTS = 3.0   # detik antar test case
 
 
 # ========== WARNA TERMINAL ==========

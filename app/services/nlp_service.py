@@ -92,7 +92,7 @@ class ChatbotModel:
             return clean_text
         except Exception as e:
             print(f"Gemini Fallback Error: {e}")
-            return "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang."
+            return f"Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang. (Log System: {str(e)[:50]})"
 
     def generate_reply(self, message: str, history: list = None) -> str:
         if history is None:
