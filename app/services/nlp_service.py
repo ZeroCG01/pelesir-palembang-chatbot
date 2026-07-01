@@ -153,24 +153,42 @@ class ChatbotModel:
         fallback_reasons = []
         msg_clean = message.lower().strip()
         
+        # 3a. Jika ML lokal menjawab dengan error/template gagal
         if "Maaf," in reply_text:
             fallback_reasons.append("Pesan error default lokal")
         
+        # 3b. Intent yang sebaiknya selalu ditangani Gemini
         if intent in ["ask_unrelated", "ask_category", "ask_recommendation", "ask_hidden_gems"]:
             fallback_reasons.append("Pertanyaan rekomendasi, hidden gems, kategori, atau out-of-domain diserahkan ke Gemini")
                 
-        # Cek pertanyaan lanjutan (follow-up) berdasarkan kata kunci awalan
-        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "lalu ", "terus ", "trus ", "alam", "sejarah", "kuliner", "religi", "budaya", "taman"]
+        # 3c. Pertanyaan lanjutan (follow-up) berdasarkan kata kunci awalan
+        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "gimana ", "gmana ", "lalu ", "terus ", "trus ", "alam", "sejarah", "kuliner", "religi", "budaya", "taman"]
         if any(msg_clean.startswith(w) for w in follow_up_words):
             fallback_reasons.append("Pertanyaan lanjutan (membutuhkan history)")
             
-        # Cek pertanyaan pendek yang hanya menyebut entitas tanpa kata tanya spesifik
-        # Contoh: "museum smb", "bkb"
+        # 3d. Pertanyaan pendek tanpa kata tanya (indikasi follow-up)
         words = msg_clean.split()
         if len(words) <= 5 and "DESTINATION" in entities:
             question_words = ["apa", "info", "deskripsi", "dimana", "di mana", "lokasi", "berapa", "harga", "tiket", "jam", "buka", "tutup"]
             if not any(q in msg_clean for q in question_words):
                 fallback_reasons.append("Kalimat pendek tanpa kata tanya (indikasi follow-up)")
+
+        # 3e. Pertanyaan tanpa entity TAPI ada history (kemungkinan follow-up kontekstual)
+        if "DESTINATION" not in entities and len(history) > 0:
+            # Jika intent butuh entity tapi tidak ada, kemungkinan besar user lanjut dari percakapan sebelumnya
+            entity_dependent_intents = ["ask_ticket_price", "ask_operating_hours", "ask_destination_info", "ask_lrt_destinations", "ask_location_access", "ask_facilities"]
+            if intent in entity_dependent_intents:
+                fallback_reasons.append("Intent butuh entity tapi tidak ada — kemungkinan follow-up kontekstual")
+
+        # 3f. Pertanyaan perbandingan atau opini (selalu serahkan ke Gemini)
+        comparison_words = ["lebih bagus", "lebih baik", "dibanding", "banding", "versus", "vs ", "atau ", "pilih mana", "mending"]
+        if any(cw in msg_clean for cw in comparison_words):
+            fallback_reasons.append("Pertanyaan perbandingan/opini (serahkan ke Gemini)")
+        
+        # 3g. Pertanyaan dengan kata tanya umum tanpa kata kunci spesifik intent
+        generic_question_words = ["kenapa", "mengapa", "bagaimana", "gimana", "gmana", "apakah", "bisakah", "bolehkah"]
+        if any(msg_clean.startswith(gq) for gq in generic_question_words) and "DESTINATION" not in entities:
+            fallback_reasons.append("Pertanyaan generik tanpa entity (serahkan ke Gemini)")
 
         if len(fallback_reasons) > 0:
             print(f"Trigger Gemini Fallback karena: {fallback_reasons}")
