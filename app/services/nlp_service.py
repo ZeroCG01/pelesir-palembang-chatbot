@@ -17,7 +17,8 @@ ATURAN PENTING:
 4. Jawablah seringkas dan sesantai mungkin. Gunakan bahasa Indonesia.
 5. Jika pengguna meminta dibuatkan itinerary (jadwal perjalanan), susunlah jadwal yang masuk akal (Pagi, Siang, Sore) sesuai jumlah hari dan KATEGORI yang mereka minta (misal: wisata alam saja, kuliner saja, atau campuran). Pilihlah dari DATABASE di bawah ini.
 6. Jika pengguna meminta rekomendasi wisata (baik menyebutkan kategori seperti 'alam' maupun tidak), berikan rekomendasi dalam bentuk DAFTAR (list). Pilihlah dari DATABASE di bawah ini.
-7. Jika pengguna memberikan pertanyaan lanjutan yang singkat (misal: "kalau tempat X?", "bagaimana dengan Y?"), pastikan kamu memahami KONTEKS dari pertanyaan sebelumnya. Jika konteks sebelumnya membicarakan akses LRT, maka jawablah KHUSUS tentang akses LRT untuk tempat tersebut. Jangan berikan seluruh detail jika tidak diminta.
+7. Jika pengguna memberikan pertanyaan lanjutan yang singkat (misal: "kalau tempat X?", "bagaimana dengan Y?", "jam bukanya?"), perhatikan KONTEKS dari percakapan sebelumnya. Jawablah HANYA informasi yang menjadi topik (misal: jika sebelumnya membahas tiket/LRT, sebutkan tiket/LRT-nya saja). JANGAN membeberkan seluruh detail tempat jika tidak diminta.
+8. Jika pengguna bertanya tanpa menyebutkan nama tempat (misal: "jam bukanya?"), SELALU asumsikan mereka menanyakan tempat wisata terakhir yang sedang dibahas di riwayat percakapan.
 
 Berikut adalah DATABASE PENGETAHUAN WISATA PALEMBANG:
 """
@@ -101,7 +102,6 @@ class ChatbotModel:
         # --- RULE-BASED INTERCEPTOR ---
         # 1. Intercept Itinerary (SERAHKAN KE GEMINI AGAR DINAMIS)
         if "itinerary" in msg_lower or "jadwal" in msg_lower or ("hari" in msg_lower and "wisata" in msg_lower):
-            print("Intercept Itinerary: Mengalihkan ke Gemini agar lebih dinamis")
             return self.generate_gemini_reply(message, history)
             
         # 1.5 Intercept Multi-Intent (Pertanyaan Ganda)
@@ -110,7 +110,10 @@ class ChatbotModel:
         has_location = "dimana" in msg_lower or "lokasi" in msg_lower or "alamat" in msg_lower
         
         if (has_price and has_time) or (has_price and has_location) or (has_time and has_location):
-            print("Intercept Multi-Intent: Mengalihkan ke Gemini karena ada 2+ pertanyaan sekaligus")
+            return self.generate_gemini_reply(message, history)
+
+        # 1.6 Intercept Permintaan Detail
+        if "detail" in msg_lower or "lengkap" in msg_lower:
             return self.generate_gemini_reply(message, history)
 
         # 2. Intercept Hotel/Akomodasi
