@@ -4,8 +4,17 @@ import google.generativeai as genai
 from ml.api.engine import ChatbotEngine
 from ml.api.response_builder import build_response, ABBREVIATIONS, supabase
 
-# Konfigurasi Gemini API
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY", ""))
+# Konfigurasi Gemini API (Rotasi Multi-Key & Fallback Paid Key)
+raw_keys = os.environ.get("GEMINI_API_KEY", "")
+free_keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
+paid_key = os.environ.get("GEMINI_API_KEY_PAID", "").strip()
+
+all_api_keys = free_keys + ([paid_key] if paid_key and paid_key not in free_keys else [])
+if not all_api_keys:
+    all_api_keys = [""]  # Fallback agar tidak crash
+
+current_key_idx = 0
+genai.configure(api_key=all_api_keys[current_key_idx])
 
 def build_system_prompt():
     base_prompt = """Anda adalah TanyaKito, asisten virtual ramah untuk aplikasi Pelesir Palembang.
@@ -71,12 +80,13 @@ class ChatbotModel:
         )
 
     def generate_gemini_reply(self, message: str, history: list) -> str:
+        global current_key_idx
         MAX_RETRIES = 3
-        BASE_WAIT = 15  # detik — Free tier Gemini reset per menit
+        BASE_WAIT = 5  # Dipercepat karena kita punya kunci cadangan
         
         for attempt in range(MAX_RETRIES + 1):
             try:
-                print(f"Fallback to Gemini LLM with context... (attempt {attempt + 1})")
+                print(f"Fallback to Gemini LLM with context... (attempt {attempt + 1}, using API Key ke-{current_key_idx + 1})")
                 # Konversi format history ke format yang diterima SDK Gemini
                 gemini_history = []
                 for h in history:
@@ -100,11 +110,25 @@ class ChatbotModel:
                 error_str = str(e).lower()
                 is_rate_limit = "429" in str(e) or "resource" in error_str or "quota" in error_str or "rate" in error_str
                 
-                if is_rate_limit and attempt < MAX_RETRIES:
-                    wait_time = BASE_WAIT * (2 ** attempt)  # 15s, 30s, 60s
-                    print(f"Gemini Rate Limited (429). Retry {attempt + 1}/{MAX_RETRIES} setelah {wait_time}s...")
-                    time.sleep(wait_time)
-                    continue
+                if is_rate_limit:
+                    if current_key_idx < len(all_api_keys) - 1:
+                        # Swap API Key
+                        current_key_idx += 1
+                        print(f"API Key ke-{current_key_idx} limit (429). Otomatis swap ke API Key ke-{current_key_idx + 1}...")
+                        genai.configure(api_key=all_api_keys[current_key_idx])
+                        # Re-instantiate model to ensure it picks up the new config
+                        self.gemini_model = genai.GenerativeModel(
+                            model_name="gemini-2.5-flash",
+                            system_instruction=build_system_prompt()
+                        )
+                        continue  # Coba lagi tanpa delay karena pakai key baru
+                        
+                    elif attempt < MAX_RETRIES:
+                        # Semua key habis, terpaksa backoff delay
+                        wait_time = BASE_WAIT * (2 ** attempt)
+                        print(f"Semua API Key limit (429). Retry {attempt + 1}/{MAX_RETRIES} setelah {wait_time}s...")
+                        time.sleep(wait_time)
+                        continue
                 
                 print(f"Gemini Fallback Error (final): {e}")
                 return "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang."
