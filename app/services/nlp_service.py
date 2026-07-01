@@ -216,6 +216,11 @@ class ChatbotModel:
         if any(msg_clean.startswith(gq) for gq in generic_question_words) and "DESTINATION" not in entities:
             fallback_reasons.append("Pertanyaan generik tanpa entity (serahkan ke Gemini)")
 
+        # 3h. Confidence Score Rendah (Model ML Ragu-ragu)
+        confidence = result.get("confidence", 1.0)
+        if confidence < 0.80:
+            fallback_reasons.append(f"Confidence ML lokal rendah ({confidence:.2f} < 0.80)")
+
         if len(fallback_reasons) > 0:
             print(f"Trigger Gemini Fallback karena: {fallback_reasons}")
             return self.generate_gemini_reply(message, history)

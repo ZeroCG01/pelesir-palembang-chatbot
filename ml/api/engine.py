@@ -34,8 +34,14 @@ class ChatbotEngine:
         inputs = self.intent_tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(self.device)
         with torch.no_grad():
             outputs = self.intent_model(**inputs)
-            pred_idx = torch.argmax(outputs.logits, dim=1).item()
-        return self.intent_id2label[pred_idx]
+            # Hitung probabilitas dengan softmax
+            probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
+            confidence, pred_idx = torch.max(probs, dim=-1)
+            
+            pred_idx = pred_idx.item()
+            confidence = confidence.item()
+            
+        return self.intent_id2label[pred_idx], confidence
 
     def get_entities(self, text):
         # Tokenisasi khusus NER
@@ -85,11 +91,12 @@ class ChatbotEngine:
 
     def process_message(self, text):
         # Eksekusi Intent dan NER secara paralel
-        intent = self.get_intent(text)
+        intent, confidence = self.get_intent(text)
         entities = self.get_entities(text)
         
         return {
             "query": text,
             "intent": intent,
+            "confidence": confidence,
             "entities": entities
         }
