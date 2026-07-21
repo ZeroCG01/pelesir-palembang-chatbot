@@ -822,5 +822,156 @@
         "response_must_not": ["tidak mengerti"]
       }
     ]
+  },
+
+  {
+    "id": "TC-1000",
+    "category": "routing",
+    "description": "[ROUTING] Rute eksplisit 'rute dari A ke B'",
+    "turns": [
+      {
+        "input": "rute dari SMB ke BKB",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["Maaf", "tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1001",
+    "category": "routing",
+    "description": "[ROUTING] Rute dengan kata sisipan 'kasih rute dong dari A ke B'",
+    "turns": [
+      {
+        "input": "kasih aku rute dong dari smb ke kampung kapitan",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["alamat", "tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1002",
+    "category": "routing",
+    "description": "[ROUTING] Rute implisit 'dari A ke B gimana?'",
+    "turns": [
+      {
+        "input": "dari kampung kapitan ke jembatan ampera gimana?",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["alamat", "tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1003",
+    "category": "routing",
+    "description": "[ROUTING] Follow-up 'kalau A ke B'",
+    "turns": [
+      {
+        "input": "rute dari SMB ke BKB",
+        "response_must_contain": ["rute"],
+        "response_must_not": []
+      },
+      {
+        "input": "kalau jembatan ampera ke kampung kapitan",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["alamat"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1004",
+    "category": "routing",
+    "description": "[ROUTING] Rute dengan nama lengkap",
+    "turns": [
+      {
+        "input": "rute dari Benteng Kuto Besak ke Pulau Kemaro",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["Maaf", "tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1005",
+    "category": "routing",
+    "description": "[ROUTING] Rute 'cara ke A dari B'",
+    "turns": [
+      {
+        "input": "cara ke BKB dari museum SMB",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1006",
+    "category": "routing",
+    "description": "[ROUTING] Rute dengan 'bagaimana' di akhir",
+    "turns": [
+      {
+        "input": "dari monpera ke kambang iwak bagaimana?",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["alamat", "tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1007",
+    "category": "routing",
+    "description": "[ROUTING] Rute 'arah dari A ke B'",
+    "turns": [
+      {
+        "input": "arah dari kampung kapitan ke monpera",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["alamat", "tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1008",
+    "category": "routing",
+    "description": "[ROUTING] Rute 'panduan dari A ke B'",
+    "turns": [
+      {
+        "input": "panduan jalan dari BKB ke Jembatan Ampera",
+        "response_must_contain": ["rute", "Lihat Rute"],
+        "response_must_not": ["Maaf", "tidak mengerti"]
+      }
+    ]
+  },
+
+  {
+    "id": "TC-1100",
+    "category": "english",
+    "description": "[ENGLISH] Ticket price in English",
+    "turns": [
+      {
+        "input": "how much is the ticket for Benteng Kuto Besak?",
+        "response_must_contain": [],
+        "response_must_not": ["tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1101",
+    "category": "english",
+    "description": "[ENGLISH] Opening hours in English",
+    "turns": [
+      {
+        "input": "what time does Museum SMB open?",
+        "response_must_contain": [],
+        "response_must_not": ["tidak mengerti"]
+      }
+    ]
+  },
+  {
+    "id": "TC-1102",
+    "category": "english",
+    "description": "[ENGLISH] Greeting in English",
+    "turns": [
+      {
+        "input": "hello, I want to explore Palembang",
+        "response_must_contain": [],
+        "response_must_not": ["Maaf", "tidak mengerti"]
+      }
+    ]
   }
 ]

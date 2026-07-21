@@ -161,22 +161,32 @@ class ChatbotModel:
         
         origin_str, dest_str = None, None
         
-        route_match = re.search(r'(?:rute|jalan|arah|panduan|cara).*?dari\s+(.+?)\s+ke\s+(.+)', msg_lower)
+        # 1. rute dari A ke B / dari A ke B gimana
+        route_match = re.search(r'(?:rute|jalan|arah|panduan|cara).*?(?:dari|dri|dr)\s+(.+?)\s+(?:ke|k)\s+(.+)', msg_lower)
         if not route_match:
-            route_match = re.search(r'dari\s+(.+?)\s+ke\s+(.+?)(?:\s+gimana|\s+bagaimana|\s+rutenya|\s+caranya|\?)', msg_lower)
+            route_match = re.search(r'(?:dari|dri|dr)\s+(.+?)\s+(?:ke|k)\s+(.+?)(?:\s+gimana|\s+gmna|\s+bagaimana|\s+rutenya|\s+caranya|\?|$)', msg_lower)
         if not route_match:
-            # Catcher for 'kalau A ke B' or 'kalau dari A ke B' follow-ups
-            route_match = re.search(r'^(?:kalau|kalo)\s+(?:dari\s+)?(?!pergi|mau|ingin|jalan|liburan)(.+?)\s+ke\s+(.+?)(?:\s+gimana|\s+bagaimana|\s+rutenya|\s+caranya|\?|$)', msg_lower)
+            # 2. kalau A ke B / kalau dari A ke B
+            route_match = re.search(r'^(?:kalau|kalo|klo)\s+(?:(?:dari|dri|dr)\s+)?(?!pergi|mau|ingin|jalan|liburan)(.+?)\s+(?:ke|k)\s+(.+?)(?:\s+gimana|\s+bagaimana|\s+rutenya|\s+caranya|\?|$)', msg_lower)
             
         if route_match:
             origin_str, dest_str = route_match.group(1), route_match.group(2)
         else:
-            route_match_2 = re.search(r'cara\s+ke\s+(.+?)\s+dari\s+(.+)', msg_lower)
+            # 3. cara ke B dari A / ke B naik apa dari A
+            route_match_2 = re.search(r'(?:cara|naik|rute).*?(?:ke|k)\s+(.+?)\s+.*?(?:dari|dri|dr)\s+(.+)', msg_lower)
+            if not route_match_2:
+                # 4. ke B dari A (simple)
+                route_match_2 = re.search(r'(?:ke|k)\s+(.+?)\s+(?:bsa|bisa|naik|lwat|lewat|dari|dri|dr).*?(?:dari|dri|dr)\s+(.+)', msg_lower)
             if route_match_2:
                 dest_str, origin_str = route_match_2.group(1), route_match_2.group(2)
                 
         if origin_str and dest_str:
-            # Bersihkan tanda baca di akhir
+            # Bersihkan tanda baca di akhir dan kata-kata noise
+            noise_words = ['gmna', 'gimana', 'y', 'ya', 'sih', 'dong', 'bang']
+            for noise in noise_words:
+                origin_str = re.sub(rf'\b{noise}\b', '', origin_str).strip()
+                dest_str = re.sub(rf'\b{noise}\b', '', dest_str).strip()
+            
             origin_str = origin_str.replace('?','').replace('.','').strip()
             dest_str = dest_str.replace('?','').replace('.','').strip()
             intent = "ask_route"
