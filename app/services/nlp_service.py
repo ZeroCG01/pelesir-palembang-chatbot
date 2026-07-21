@@ -161,7 +161,7 @@ class ChatbotModel:
         
         origin_str, dest_str = None, None
         
-        route_match = re.search(r'(?:rute|jalan|arah|panduan)\s+dari\s+(.+?)\s+ke\s+(.+)', msg_lower)
+        route_match = re.search(r'(?:rute|jalan|arah|panduan|cara).*?dari\s+(.+?)\s+ke\s+(.+)', msg_lower)
         if not route_match:
             route_match = re.search(r'dari\s+(.+?)\s+ke\s+(.+?)(?:\s+gimana|\s+bagaimana|\s+rutenya|\s+caranya|\?)', msg_lower)
             
