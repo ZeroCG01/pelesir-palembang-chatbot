@@ -9,4 +9,4 @@ seqeval
 supabase
 python-dotenv
 matplotlib
-google-generativeai
+groq

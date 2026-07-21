@@ -1,20 +1,17 @@
 import os
 import time
-import google.generativeai as genai
+import groq
 from ml.api.engine import ChatbotEngine
 from ml.api.response_builder import build_response, ABBREVIATIONS, supabase
 
-# Konfigurasi Gemini API (Rotasi Multi-Key & Fallback Paid Key)
-raw_keys = os.environ.get("GEMINI_API_KEY", "")
+# Konfigurasi Groq API (Bisa rotasi multi-key)
+raw_keys = os.environ.get("GROQ_API_KEY", "")
 free_keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
-paid_key = os.environ.get("GEMINI_API_KEY_PAID", "").strip()
-
-all_api_keys = free_keys + ([paid_key] if paid_key and paid_key not in free_keys else [])
-if not all_api_keys:
-    all_api_keys = [""]  # Fallback agar tidak crash
+if not free_keys:
+    free_keys = [""]  # Fallback agar tidak crash
 
 current_key_idx = 0
-genai.configure(api_key=all_api_keys[current_key_idx])
+groq_client = groq.Groq(api_key=free_keys[current_key_idx])
 
 def build_system_prompt():
     base_prompt = """Anda adalah TanyaKito, asisten virtual ramah untuk aplikasi Pelesir Palembang.
@@ -75,57 +72,53 @@ class ChatbotModel:
     def __init__(self):
         print("Mempersiapkan model PyTorch/Transformers dari folder ml/saved_models...")
         self.engine = ChatbotEngine()
-        self.gemini_model = genai.GenerativeModel(
-            model_name="gemini-2.5-flash",
-            system_instruction=build_system_prompt()
-        )
+        self.groq_model = "llama-3.3-70b-versatile"
 
-    def generate_gemini_reply(self, message: str, history: list) -> str:
-        global current_key_idx
+    def generate_groq_reply(self, message: str, history: list) -> str:
+        global current_key_idx, groq_client, free_keys
         MAX_RETRIES = 3
-        BASE_WAIT = 5  # Dipercepat karena kita punya kunci cadangan
+        BASE_WAIT = 5  # Groq lebih cepat, jadi wait tidak perlu lama
         
         for attempt in range(MAX_RETRIES + 1):
             try:
-                print(f"Fallback to Gemini LLM with context... (attempt {attempt + 1}, using API Key ke-{current_key_idx + 1})")
-                # Konversi format history ke format yang diterima SDK Gemini
-                gemini_history = []
+                print(f"Fallback to Groq LLM with context... (attempt {attempt + 1}, using API Key ke-{current_key_idx + 1})")
+                
+                # Format history untuk Groq (OpenAI style)
+                messages = [{"role": "system", "content": build_system_prompt()}]
                 for h in history:
                     role = h.get("role", "user")
-                    # Pastikan role sesuai standar Gemini ('user' atau 'model')
-                    if role not in ["user", "model"]:
-                        role = "user"
-                    gemini_history.append({
-                        "role": role,
-                        "parts": [h.get("content", "")]
-                    })
+                    if role not in ["user", "assistant", "system"]:
+                        role = "user" if role == "user" else "assistant"
+                    messages.append({"role": role, "content": h.get("content", "")})
                 
-                chat = self.gemini_model.start_chat(history=gemini_history)
-                response = chat.send_message(message)
+                messages.append({"role": "user", "content": message})
+                
+                chat_completion = groq_client.chat.completions.create(
+                    messages=messages,
+                    model=self.groq_model,
+                    temperature=0.6,
+                )
                 
                 # Hapus karakter markdown ** agar tidak muncul mentah-mentah di aplikasi mobile
-                clean_text = response.text.replace("**", "")
+                response_text = chat_completion.choices[0].message.content.strip()
+                clean_text = response_text.replace("**", "")
                 
-                # Enrichment: Scan teks Gemini untuk menemukan nama destinasi → Cards & Actions
+                # Enrichment: Scan teks Groq untuk menemukan nama destinasi → Cards & Actions
                 from ml.api.response_builder import enrich_gemini_response
                 rich_result = enrich_gemini_response(clean_text)
-                rich_result["source"] = "gemini"
+                rich_result["source"] = "groq"
                 return rich_result
+                
             except Exception as e:
                 error_str = str(e).lower()
-                is_rate_limit = "429" in str(e) or "resource" in error_str or "quota" in error_str or "rate" in error_str
+                is_rate_limit = "429" in str(e) or "rate" in error_str or "limit" in error_str
                 
                 if is_rate_limit:
-                    if current_key_idx < len(all_api_keys) - 1:
+                    if current_key_idx < len(free_keys) - 1:
                         # Swap API Key
                         current_key_idx += 1
                         print(f"API Key ke-{current_key_idx} limit (429). Otomatis swap ke API Key ke-{current_key_idx + 1}...")
-                        genai.configure(api_key=all_api_keys[current_key_idx])
-                        # Re-instantiate model to ensure it picks up the new config
-                        self.gemini_model = genai.GenerativeModel(
-                            model_name="gemini-2.5-flash",
-                            system_instruction=build_system_prompt()
-                        )
+                        groq_client = groq.Groq(api_key=free_keys[current_key_idx])
                         continue  # Coba lagi tanpa delay karena pakai key baru
                         
                     elif attempt < MAX_RETRIES:
@@ -135,8 +128,9 @@ class ChatbotModel:
                         time.sleep(wait_time)
                         continue
                 
-                print(f"Gemini Fallback Error (final): {e}")
+                print(f"Groq Fallback Error (final): {e}")
                 return {"reply": "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang.", "source": "lokal_error"}
+
 
     def generate_reply(self, message: str, history: list = None) -> str:
         if history is None:
@@ -269,8 +263,8 @@ class ChatbotModel:
 
         # LANGKAH 3 - GERBANG UTAMA (confidence threshold)
         if confidence < CONFIDENCE_THRESHOLD:
-            print(f"Gerbang confidence: {confidence:.2f} < {CONFIDENCE_THRESHOLD:.2f} → Gemini")
-            return self.generate_gemini_reply(message, history)
+            print(f"Gerbang confidence: {confidence:.2f} < {CONFIDENCE_THRESHOLD:.2f} → Groq")
+            return self.generate_groq_reply(message, history)
 
         # Penanganan khusus Hotel (Setelah model yakin, sebelum Langkah 4)
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
@@ -288,14 +282,14 @@ class ChatbotModel:
 
         # LANGKAH 4 - Intent generatif (perlu kemampuan LLM meski model yakin)
         if intent in GENERATIVE_INTENTS:
-            print(f"Gerbang intent generatif: '{intent}' membutuhkan kreativitas → Gemini")
-            return self.generate_gemini_reply(message, history)
+            print(f"Gerbang intent generatif: '{intent}' membutuhkan kreativitas → Groq")
+            return self.generate_groq_reply(message, history)
 
         # LANGKAH 5 - Intent terstruktur → jalur LOKAL
         reply_text = build_response(intent, entities, message)
         if "Maaf," in reply_text:
-            print("Jalur lokal gagal/Data tidak ditemukan → Gemini")
-            return self.generate_gemini_reply(message, history)
+            print("Jalur lokal gagal/Data tidak ditemukan → Groq")
+            return self.generate_groq_reply(message, history)
             
         print("Jalur lokal berhasil menjawab.")
         # Bungkus dengan data terstruktur (cards, actions, dll)
