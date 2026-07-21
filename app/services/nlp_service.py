@@ -205,7 +205,7 @@ class ChatbotModel:
             elif "di " in msg_lower:
                 daerah = msg_lower.split("di ")[1].strip()
             print("Gerbang hotel: Handler rule_hotel dijalankan.")
-            return build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal})
+            return build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal}, message)
 
         # LANGKAH 4 - Intent generatif (perlu kemampuan LLM meski model yakin)
         if intent in GENERATIVE_INTENTS:
@@ -213,7 +213,7 @@ class ChatbotModel:
             return self.generate_gemini_reply(message, history)
 
         # LANGKAH 5 - Intent terstruktur → jalur LOKAL
-        reply_text = build_response(intent, entities)
+        reply_text = build_response(intent, entities, message)
         if "Maaf," in reply_text:
             print("Jalur lokal gagal/Data tidak ditemukan → Gemini")
             return self.generate_gemini_reply(message, history)

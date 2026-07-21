@@ -1,85 +1,18 @@
-import os
-import random
-from supabase import create_client, Client
-from dotenv import load_dotenv
+import sys
 
-# Load environment variables
-load_dotenv()
-
-url: str = os.environ.get("SUPABASE_URL", "")
-key: str = os.environ.get("SUPABASE_ANON_KEY", "")
-
-# Inisialisasi Supabase client jika url dan key tersedia
-supabase: Client = None
-if url and key:
-    supabase = create_client(url, key)
-
-# Kamus singkatan umum wisata Palembang
-ABBREVIATIONS = {
-    "bkb": "Benteng Kuto Besak",
-    "smb": "Sultan Mahmud Badaruddin",
-    "smb ii": "Sultan Mahmud Badaruddin II",
-    "smb 2": "Sultan Mahmud Badaruddin II",
-    "ptc": "Palembang Trade Center",
-    "pim": "Palembang Icon",
-    "ps": "Palembang Square",
-    "ki": "Kambang Iwak",
-    "ampera": "Jembatan Ampera",
-    "al munawar": "Kampung Arab Al-Munawar",
-    "al-munawar": "Kampung Arab Al-Munawar",
-    "monpera": "Monpera",
-    "kemaro": "Pulau Kemaro",
-    "kampung kapitan": "Kampung Kapitan",
-    "punti kayu": "Hutan Wisata Punti Kayu",
-    "kambang iwak": "Kambang Iwak",
-    "benteng kuto besak": "Benteng Kuto Besak",
-    "masjid agung": "Masjid Agung",
-    "museum smb": "Sultan Mahmud Badaruddin",
-    "jembatan ampera": "Jembatan Ampera",
-    "pulau kemaro": "Pulau Kemaro",
-}
-
-def normalize_destination_name(name: str) -> str:
-    """Mengubah singkatan menjadi nama lengkap berdasarkan kamus"""
-    if not name:
-        return name
+def patch():
+    file_path = "ml/api/response_builder.py"
+    with open(file_path, "r", encoding="utf-8") as f:
+        content = f.read()
     
-    name_lower = name.lower().strip()
+    # Update function signature
+    content = content.replace(
+        "def build_response(intent: str, entities: dict) -> str:",
+        "def build_response(intent: str, entities: dict, query: str = \"\") -> str:"
+    )
     
-    # Cek kecocokan eksak
-    if name_lower in ABBREVIATIONS:
-        return ABBREVIATIONS[name_lower]
-        
-    # Cek parsial (replace)
-    for short, full in ABBREVIATIONS.items():
-        # Regex boundary manual dengan spasi (untuk menghindari salah replace)
-        if f" {short} " in f" {name_lower} ":
-            name_lower = f" {name_lower} ".replace(f" {short} ", f" {full.lower()} ").strip()
-            
-    return name_lower
-
-def get_destination_from_supabase(destination_name: str):
-    """Fungsi helper untuk mencari destinasi di Supabase berdasarkan nama"""
-    if not supabase:
-        return None
-    
-    normalized_name = normalize_destination_name(destination_name)
-    
-    try:
-        # Mencari destinasi dengan case-insensitive atau ilike
-        response = supabase.table("destinations").select("*").ilike("name", f"%{normalized_name}%").limit(1).execute()
-        if response.data and len(response.data) > 0:
-            return response.data[0]
-        return None
-    except Exception as e:
-        print(f"Error querying supabase: {e}")
-        return None
-
-def build_response(intent: str, entities: dict, query: str = "") -> str:
-    """
-    Memetakan intent dan entities menjadi jawaban teks natural (bahasa Indonesia).
-    """
-
+    # The actual implementation of build_response
+    new_impl = """
     dest_name = entities.get("DESTINATION", "").strip()
 
     # Deteksi bahasa Inggris
@@ -165,19 +98,19 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
                         harga_teks = "Price unavailable" if en else "Harga tidak tersedia"
                     hotels_list.append(f"- {h['name']} ({harga_teks})")
                 
-                hotels_text = "\n".join(hotels_list)
+                hotels_text = "\\n".join(hotels_list)
                 
                 if murah and daerah:
-                    return f"Sure, here are the cheapest accommodations around {daerah}:\n{hotels_text}" if en else f"Tentu, ini rekomendasi penginapan termurah di sekitar {daerah}:\n{hotels_text}"
+                    return f"Sure, here are the cheapest accommodations around {daerah}:\\n{hotels_text}" if en else f"Tentu, ini rekomendasi penginapan termurah di sekitar {daerah}:\\n{hotels_text}"
                 elif mahal and daerah:
-                    return f"Sure, here are the most luxurious accommodations around {daerah}:\n{hotels_text}" if en else f"Tentu, ini rekomendasi penginapan termewah di sekitar {daerah}:\n{hotels_text}"
+                    return f"Sure, here are the most luxurious accommodations around {daerah}:\\n{hotels_text}" if en else f"Tentu, ini rekomendasi penginapan termewah di sekitar {daerah}:\\n{hotels_text}"
                 elif murah:
-                    return f"Sure, here are the cheapest accommodations:\n{hotels_text}" if en else f"Tentu, ini rekomendasi penginapan dengan harga termurah:\n{hotels_text}"
+                    return f"Sure, here are the cheapest accommodations:\\n{hotels_text}" if en else f"Tentu, ini rekomendasi penginapan dengan harga termurah:\\n{hotels_text}"
                 elif mahal:
-                    return f"Sure, here are exclusive hotels in Palembang:\n{hotels_text}" if en else f"Tentu, ini pilihan hotel eksklusif di Palembang:\n{hotels_text}"
+                    return f"Sure, here are exclusive hotels in Palembang:\\n{hotels_text}" if en else f"Tentu, ini pilihan hotel eksklusif di Palembang:\\n{hotels_text}"
                 elif daerah:
-                    return f"Here are accommodations around {daerah}:\n{hotels_text}" if en else f"Berikut rekomendasi penginapan di sekitar {daerah}:\n{hotels_text}"
-                return f"Here are some accommodation recommendations in Palembang:\n{hotels_text}" if en else f"Berikut beberapa rekomendasi penginapan di Palembang:\n{hotels_text}"
+                    return f"Here are accommodations around {daerah}:\\n{hotels_text}" if en else f"Berikut rekomendasi penginapan di sekitar {daerah}:\\n{hotels_text}"
+                return f"Here are some accommodation recommendations in Palembang:\\n{hotels_text}" if en else f"Berikut beberapa rekomendasi penginapan di Palembang:\\n{hotels_text}"
             else:
                 return f"Sorry, I couldn't find any accommodations around '{daerah}' in my database." if en else f"Maaf, saya tidak menemukan penginapan di daerah '{daerah}' dalam database saya."
         except Exception as e:
@@ -207,9 +140,9 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
                     siang = kuliner[i % len(kuliner)]
                     sore = alam[i % len(alam)]
                     if en:
-                        itinerary.append(f"Day {i+1}:\n- Morning: Visit and enjoy {pagi}\n- Afternoon: Rest and taste culinary at {siang}\n- Evening: Relax at {sore}")
+                        itinerary.append(f"Day {i+1}:\\n- Morning: Visit and enjoy {pagi}\\n- Afternoon: Rest and taste culinary at {siang}\\n- Evening: Relax at {sore}")
                     else:
-                        itinerary.append(f"Hari {i+1}:\n- Pagi: Mengunjungi dan menikmati {pagi}\n- Siang: Istirahat dan mencicipi kuliner di {siang}\n- Sore: Bersantai di {sore}")
+                        itinerary.append(f"Hari {i+1}:\\n- Pagi: Mengunjungi dan menikmati {pagi}\\n- Siang: Istirahat dan mencicipi kuliner di {siang}\\n- Sore: Bersantai di {sore}")
             except Exception as e:
                 print("Error db itinerary:", e)
                 for i in range(days):
@@ -219,8 +152,8 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
                 itinerary.append(f"Day {i+1}: Explore Palembang from morning to evening!" if en else f"Hari {i+1}: Eksplorasi kota Palembang dari pagi hingga sore!")
                 
         if en:
-            return f"Sure! Here is a {days}-day itinerary in Palembang crafted for you:\n\n" + "\n\n".join(itinerary)
-        return f"Tentu! Ini usulan rencana perjalanan {days} hari di Palembang yang disusun khusus untuk Anda:\n\n" + "\n\n".join(itinerary)
+            return f"Sure! Here is a {days}-day itinerary in Palembang crafted for you:\\n\\n" + "\\n\\n".join(itinerary)
+        return f"Tentu! Ini usulan rencana perjalanan {days} hari di Palembang yang disusun khusus untuk Anda:\\n\\n" + "\\n\\n".join(itinerary)
 
     elif intent == "ask_recommendation":
         category = entities.get("CATEGORY", "")
@@ -368,3 +301,20 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
     if en:
         return "Sorry, I don't quite understand what you mean. I am a Palembang tourism assistant, you can ask about recommendations, ticket prices, or accommodations!"
     return "Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!"
+"""
+    
+    # We will replace everything after `dest_name = entities.get("DESTINATION", "").strip()`
+    # Find the split point
+    split_point = '    dest_name = entities.get("DESTINATION", "").strip()'
+    idx = content.find(split_point)
+    
+    if idx != -1:
+        new_content = content[:idx] + new_impl
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        print("Patched response_builder.py successfully.")
+    else:
+        print("Failed to patch response_builder.py")
+
+if __name__ == "__main__":
+    patch()
