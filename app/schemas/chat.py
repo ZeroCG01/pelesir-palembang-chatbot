@@ -11,6 +11,8 @@ class ActionButton(BaseModel):
     destination_id: Optional[str] = None
     lat: Optional[float] = None
     lng: Optional[float] = None
+    origin: Optional[str] = None
+    destination: Optional[str] = None
 
 class DestinationCard(BaseModel):
     id: str

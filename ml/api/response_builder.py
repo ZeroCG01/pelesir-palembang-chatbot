@@ -147,6 +147,18 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
             ]
         return random.choice(goodbyes)
 
+    elif intent == "ask_route":
+        origin = entities.get("ORIGIN", "")
+        destination = entities.get("DESTINATION", "")
+        
+        origin_resolved = resolve_destination_name(origin)
+        dest_resolved = resolve_destination_name(destination)
+        
+        origin_name = origin_resolved["name"] if origin_resolved else origin
+        dest_name = dest_resolved["name"] if dest_resolved else destination
+        
+        return f"Berikut adalah panduan rute dari {origin_name} menuju ke {dest_name}. Silakan tekan tombol 'Lihat Rute' di bawah ini untuk melihat rute lengkapnya di peta."
+    
     elif intent == "rule_hotel":
         daerah = entities.get("DAERAH", "").strip()
         murah = entities.get("MURAH", False)
@@ -405,7 +417,24 @@ def build_rich_response(intent: str, entities: dict, text_reply: str) -> dict:
     
     dest_name = entities.get("DESTINATION", "").strip()
     
-    # 1. Intent seputar Destinasi Spesifik
+    # 1. Intent Route
+    if intent == "ask_route":
+        origin = entities.get("ORIGIN", "")
+        destination = entities.get("DESTINATION", "")
+        origin_resolved = resolve_destination_name(origin)
+        dest_resolved = resolve_destination_name(destination)
+        origin_name = origin_resolved["name"] if origin_resolved else origin
+        dest_name_resolved = dest_resolved["name"] if dest_resolved else destination
+        
+        result["actions"] = [{
+            "type": "navigate_route",
+            "label": "🗺️ Lihat Rute",
+            "origin": origin_name,
+            "destination": dest_name_resolved
+        }]
+        return result
+
+    # 2. Intent seputar Destinasi Spesifik
     if intent in ["ask_destination_info", "ask_ticket_price", "ask_operating_hours", "ask_facilities", "ask_lrt_destinations", "ask_location_access"]:
         if dest_name:
             # Karena get_destination_from_supabase menggunakan @lru_cache, 

@@ -156,6 +156,27 @@ class ChatbotModel:
         entities = result["entities"]
         confidence = result.get("confidence", 1.0)
 
+        # INTERCEPT ROUTING EKSPLISIT (Origin -> Destination)
+        import re
+        route_match = re.search(r'rute\s+dari\s+(.+?)\s+ke\s+(.+)', msg_lower)
+        origin_str, dest_str = None, None
+        
+        if route_match:
+            origin_str, dest_str = route_match.group(1), route_match.group(2)
+        else:
+            route_match_2 = re.search(r'cara\s+ke\s+(.+?)\s+dari\s+(.+)', msg_lower)
+            if route_match_2:
+                dest_str, origin_str = route_match_2.group(1), route_match_2.group(2)
+                
+        if origin_str and dest_str:
+            # Bersihkan tanda baca di akhir
+            origin_str = origin_str.replace('?','').replace('.','').strip()
+            dest_str = dest_str.replace('?','').replace('.','').strip()
+            intent = "ask_route"
+            entities = {"ORIGIN": origin_str, "DESTINATION": dest_str}
+            confidence = 1.0
+            print(f"Memori lokal: Intercepted route query! Origin: {origin_str}, Dest: {dest_str}")
+
         # Helper function untuk pencarian singkatan manual (Fallback NER)
         def find_destination_by_abbr(text: str):
             text_clean = text.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "")
