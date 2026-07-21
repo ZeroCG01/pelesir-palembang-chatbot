@@ -23,8 +23,8 @@ from datetime import datetime
 # ========== KONFIGURASI ==========
 DEFAULT_API_URL = "https://zerocg-pelesir-palembang-chatbot.hf.space"
 TEST_SUITE_PATH = Path(__file__).parent / "test_suite.json"
-DELAY_BETWEEN_TURNS = 6.0   # detik antar turn (Dinaikkan agar Gemini Free tidak limit)
-DELAY_BETWEEN_TESTS = 10.0  # detik antar test case (Dinaikkan untuk amannya)
+DELAY_BETWEEN_TURNS = 15.0   # detik antar turn (Maksimal 4 request/menit, sangat aman dari limit 15/menit Gemini Free)
+DELAY_BETWEEN_TESTS = 20.0   # detik antar test case (Memberi napas panjang pada server Gemini)
 
 
 # ========== WARNA TERMINAL ==========
