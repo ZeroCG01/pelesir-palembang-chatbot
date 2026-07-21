@@ -151,11 +151,8 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
         origin = entities.get("ORIGIN", "")
         destination = entities.get("DESTINATION", "")
         
-        origin_resolved = resolve_destination_name(origin)
-        dest_resolved = resolve_destination_name(destination)
-        
-        origin_name = origin_resolved["name"] if origin_resolved else origin
-        dest_name = dest_resolved["name"] if dest_resolved else destination
+        origin_name = normalize_destination_name(origin) or origin
+        dest_name = normalize_destination_name(destination) or destination
         
         return f"Berikut adalah panduan rute dari {origin_name} menuju ke {dest_name}. Silakan tekan tombol 'Lihat Rute' di bawah ini untuk melihat rute lengkapnya di peta."
     
@@ -421,10 +418,8 @@ def build_rich_response(intent: str, entities: dict, text_reply: str) -> dict:
     if intent == "ask_route":
         origin = entities.get("ORIGIN", "")
         destination = entities.get("DESTINATION", "")
-        origin_resolved = resolve_destination_name(origin)
-        dest_resolved = resolve_destination_name(destination)
-        origin_name = origin_resolved["name"] if origin_resolved else origin
-        dest_name_resolved = dest_resolved["name"] if dest_resolved else destination
+        origin_name = normalize_destination_name(origin) or origin
+        dest_name_resolved = normalize_destination_name(destination) or destination
         
         result["actions"] = [{
             "type": "navigate_route",
