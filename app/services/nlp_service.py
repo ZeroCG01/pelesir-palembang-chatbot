@@ -140,8 +140,9 @@ class ChatbotModel:
             
         msg_lower = message.lower()
         
-        CONFIDENCE_THRESHOLD = 0.80
+        CONFIDENCE_THRESHOLD = 0.60
         GENERATIVE_INTENTS = {"ask_recommendation", "ask_category", "ask_hidden_gems", "ask_unrelated"}
+        ENTITY_DEPENDENT_INTENTS = {"ask_ticket_price", "ask_operating_hours", "ask_destination_info", "ask_lrt_destinations", "ask_location_access", "ask_facilities"}
 
         # LANGKAH 1 - Jalankan model lokal DULU
         result = self.engine.process_message(message)
@@ -150,24 +151,49 @@ class ChatbotModel:
         intent = result["intent"]
         entities = result["entities"]
         confidence = result.get("confidence", 1.0)
-        
-        # Fallback NER manual via ABBREVIATIONS bila "DESTINATION" tidak terdeteksi
-        if "DESTINATION" not in entities:
-            msg_clean_punct = message.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "")
-            msg_lower_padded = f" {msg_clean_punct} "
+
+        # Helper function untuk pencarian singkatan manual (Fallback NER)
+        def find_destination_by_abbr(text: str):
+            text_clean = text.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "")
+            text_padded = f" {text_clean} "
             sorted_abbrs = sorted(ABBREVIATIONS.keys(), key=len, reverse=True)
             for short_name in sorted_abbrs:
-                if f" {short_name} " in msg_lower_padded:
-                    entities["DESTINATION"] = short_name
-                    print(f"Fallback NER: Found '{short_name}' manually.")
-                    break
+                if f" {short_name} " in text_padded:
+                    return short_name
+            return None
+        
+        # LANGKAH 2 - MEMORI KONTEKS LOKAL (Pencarian Entity)
+        if "DESTINATION" not in entities and intent in ENTITY_DEPENDENT_INTENTS:
+            # a. Coba pencocokan singkatan pada pesan saat ini dulu
+            found_abbr = find_destination_by_abbr(message)
+            if found_abbr:
+                entities["DESTINATION"] = found_abbr
+                print(f"Memori lokal: Found '{found_abbr}' manually di pesan saat ini.")
+            else:
+                # b. Telusuri history dari terbaru ke terlama
+                print("Memori lokal: Mencari DESTINATION dari riwayat percakapan...")
+                for h in reversed(history):
+                    if h.get("role") == "user":
+                        past_msg = h.get("content", "")
+                        # Coba pakai engine untuk masa lalu
+                        past_result = self.engine.process_message(past_msg)
+                        if "DESTINATION" in past_result["entities"]:
+                            entities["DESTINATION"] = past_result["entities"]["DESTINATION"]
+                            print(f"Memori lokal: DESTINATION='{entities['DESTINATION']}' dari history (ML) → jawab lokal")
+                            break
+                        # Coba pakai singkatan untuk masa lalu
+                        past_abbr = find_destination_by_abbr(past_msg)
+                        if past_abbr:
+                            entities["DESTINATION"] = past_abbr
+                            print(f"Memori lokal: DESTINATION='{past_abbr}' dari history (Abbr) → jawab lokal")
+                            break
 
-        # LANGKAH 2 - GERBANG UTAMA (confidence threshold)
+        # LANGKAH 3 - GERBANG UTAMA (confidence threshold)
         if confidence < CONFIDENCE_THRESHOLD:
             print(f"Gerbang confidence: {confidence:.2f} < {CONFIDENCE_THRESHOLD:.2f} → Gemini")
             return self.generate_gemini_reply(message, history)
 
-        # Penanganan khusus Hotel (Setelah model yakin, sebelum Langkah 3)
+        # Penanganan khusus Hotel (Setelah model yakin, sebelum Langkah 4)
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
             daerah = ""
             murah = "murah" in msg_lower
@@ -181,12 +207,12 @@ class ChatbotModel:
             print("Gerbang hotel: Handler rule_hotel dijalankan.")
             return build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal})
 
-        # LANGKAH 3 - Model yakin. Routing berdasarkan SIFAT intent
+        # LANGKAH 4 - Intent generatif (perlu kemampuan LLM meski model yakin)
         if intent in GENERATIVE_INTENTS:
             print(f"Gerbang intent generatif: '{intent}' membutuhkan kreativitas → Gemini")
             return self.generate_gemini_reply(message, history)
 
-        # LANGKAH 4 - Intent terstruktur → jalur lokal (rule-based)
+        # LANGKAH 5 - Intent terstruktur → jalur LOKAL
         reply_text = build_response(intent, entities)
         if "Maaf," in reply_text:
             print("Jalur lokal gagal/Data tidak ditemukan → Gemini")
