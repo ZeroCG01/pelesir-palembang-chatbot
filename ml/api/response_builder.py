@@ -402,7 +402,7 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
             
             return f"Place '{dest_name}' not found." if en else f"Tempat '{dest_name}' tidak ditemukan."
         
-        return "What facilities are you looking for, and at which location?" if en else "Fasilitas apa yang Anda cari, dan di lokasi mana?"
+        return "Which attraction are you asking about? I can check the facilities for you." if en else "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya."
 
     elif intent == "provide_feedback":
         if en:

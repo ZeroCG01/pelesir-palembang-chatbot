@@ -4,19 +4,18 @@ import time
 import requests
 import argparse
 from dotenv import load_dotenv
-import google.generativeai as genai
+from groq import Groq
 
 # Load environment variables
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    print("❌ GEMINI_API_KEY tidak ditemukan di .env")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    print("❌ GROQ_API_KEY tidak ditemukan di .env")
     exit(1)
 
-genai.configure(api_key=GEMINI_API_KEY)
-# Gunakan Gemini 2.5 Flash
-model = genai.GenerativeModel('gemini-2.5-flash')
+client = Groq(api_key=GROQ_API_KEY)
+model = "llama-3.3-70b-versatile"
 
 parser = argparse.ArgumentParser(description="LLM-as-a-Judge Tester")
 parser.add_argument("--url", default="http://localhost:8000", help="URL API Chatbot (Tanpa /api/chat)")
@@ -26,7 +25,7 @@ args = parser.parse_args()
 API_URL = f"{args.url.rstrip('/')}/api/chat"
 
 def judge_response(question, expected_intent, bot_reply):
-    """Meminta Gemini bertindak sebagai Juri untuk menilai kualitas jawaban bot"""
+    """Meminta Groq bertindak sebagai Juri untuk menilai kualitas jawaban bot"""
     prompt = f"""
     Kamu adalah Juri Evaluasi Chatbot (LLM-as-a-Judge).
     Tugasmu adalah menilai apakah jawaban chatbot sudah tepat dan relevan dengan pertanyaan pengguna.
@@ -38,7 +37,8 @@ def judge_response(question, expected_intent, bot_reply):
     Berikan penilaian objektif berdasarkan kriteria:
     1. Apakah jawaban menjawab inti pertanyaan? (Skor tinggi jika ya)
     2. Apakah chatbot salah paham / salah konteks? (Misal ditanya rute, tapi dikasih alamat -> Skor rendah)
-    3. Apakah informasi yang diberikan berguna?
+    3. ATURAN PENTING: Jika pertanyaan TIDAK menyebutkan nama tempat (misal: "buka 24 jam?", "tiketnya mahal nian dak?"), dan chatbot membalas dengan meminta nama tempat (klarifikasi), berikan skor TINGGI (8-10). Chatbot bertindak BENAR karena pertanyaan tidak memiliki konteks lokasi.
+    4. Jika chatbot berhasil mendeteksi intent dengan benar meski banyak typo/bahasa gaul, berikan apresiasi pada skor.
     
     Keluarkan WAJIB dalam format JSON saja:
     {{
@@ -47,23 +47,28 @@ def judge_response(question, expected_intent, bot_reply):
     }}
     """
     
-    from google.api_core.exceptions import ResourceExhausted
-    
     while True:
         try:
-            res = model.generate_content(prompt)
-            text_output = res.text.strip()
-            if text_output.startswith("```json"):
-                text_output = text_output.replace("```json", "", 1)
-            if text_output.endswith("```"):
-                text_output = text_output[:-3]
+            chat_completion = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    }
+                ],
+                model=model,
+                temperature=0.0,
+                response_format={"type": "json_object"},
+            )
+            text_output = chat_completion.choices[0].message.content.strip()
             
             return json.loads(text_output)
-        except ResourceExhausted:
-            print("  ⏳ [JURI] Terkena limit API. Juri sedang istirahat 35 detik...")
-            time.sleep(35)
         except Exception as e:
-            return {"score": 0, "reasoning": f"Gagal mengevaluasi: {e}"}
+            if "429" in str(e) or "rate limit" in str(e).lower():
+                print("  ⏳ [JURI] Terkena limit API Groq. Juri sedang istirahat 15 detik...")
+                time.sleep(15)
+            else:
+                return {"score": 0, "reasoning": f"Gagal mengevaluasi: {e}"}
 
 def run_evaluation():
     json_path = os.path.join(os.path.dirname(__file__), args.file)

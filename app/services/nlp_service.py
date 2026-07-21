@@ -182,7 +182,7 @@ class ChatbotModel:
                 
         if origin_str and dest_str:
             # Bersihkan tanda baca di akhir dan kata-kata noise
-            noise_words = ['gmna', 'gimana', 'y', 'ya', 'sih', 'dong', 'bang']
+            noise_words = ['gmna', 'gimana', 'y', 'ya', 'sih', 'dong', 'bang', 'lwt mn', 'lwt man', 'lewat mana', 'lewat mn']
             for noise in noise_words:
                 origin_str = re.sub(rf'\b{noise}\b', '', origin_str).strip()
                 dest_str = re.sub(rf'\b{noise}\b', '', dest_str).strip()
@@ -261,7 +261,7 @@ class ChatbotModel:
         # LANGKAH 2.5 - JEBAKAN INTENT (Kesalahan Klasifikasi akibat Kata Kunci)
         # Kasus: User meminta rekomendasi wisata berdasar atribut ("wisata yang buka 24 jam")
         # tapi NLP malah mendeteksi `ask_operating_hours` padahal tidak ada entitas destinasi.
-        is_asking_recommendation = any(kw in msg_lower for kw in ["berikan", "rekomendasi", "apa saja", "wisata yang", "tempat yang", "kasih tau wisata", "cari wisata", "ada gak wisata", "ada nggak wisata", "carikan"])
+        is_asking_recommendation = any(kw in msg_lower for kw in ["berikan", "rekomendasi", "apa saja", "wisata yang", "tempat yang", "kasih tau wisata", "cari wisata", "ada gak wisata", "ada nggak wisata", "carikan", "kmn", "kemana", "ke mana", "bgus ny", "bagus nya", "dimana aja", "di mana aja", "dmn aj"])
         if intent in ENTITY_DEPENDENT_INTENTS and "DESTINATION" not in entities and is_asking_recommendation:
             print(f"Jebakan Intent: Deteksi kata pencarian/rekomendasi. Mengubah intent dari '{intent}' menjadi 'ask_recommendation' → Gemini")
             intent = "ask_recommendation"
