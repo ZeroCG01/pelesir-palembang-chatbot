@@ -161,7 +161,33 @@ class ChatbotModel:
                 if f" {short_name} " in text_padded:
                     return short_name
             return None
-        
+
+        # LANGKAH 1.5 - MEMORI INTENT (Follow-up context)
+        is_follow_up = any(msg_lower.startswith(w) for w in ["kalo ", "kalau ", "gimana ", "bagaimana "])
+        if is_follow_up and history:
+            print("Memori lokal: Pesan terdeteksi sebagai follow-up. Mencari intent sebelumnya...")
+            for h in reversed(history):
+                if h.get("role") == "user":
+                    past_msg = h.get("content", "")
+                    past_result = self.engine.process_message(past_msg)
+                    past_intent = past_result["intent"]
+                    if past_intent in ENTITY_DEPENDENT_INTENTS:
+                        intent = past_intent
+                        confidence = 1.0  # Paksa yakin karena mewarisi histori
+                        print(f"Memori lokal: Mewarisi intent '{intent}' dari histori.")
+                        
+                        # Jika model gagal mendeteksi DESTINATION di pesan pendek ini, paksa sisa kalimat sebagai DESTINATION
+                        if "DESTINATION" not in entities:
+                            sisa_kata = msg_lower
+                            for w in ["kalo di ", "kalau di ", "kalo ", "kalau ", "gimana dengan ", "bagaimana dengan ", "gimana ", "bagaimana "]:
+                                if sisa_kata.startswith(w):
+                                    sisa_kata = sisa_kata.replace(w, "", 1).strip()
+                                    break
+                            if sisa_kata:
+                                entities["DESTINATION"] = sisa_kata
+                                print(f"Memori lokal: Memaksa sisa kalimat '{sisa_kata}' sebagai DESTINATION.")
+                        break
+
         # LANGKAH 2 - MEMORI KONTEKS LOKAL (Pencarian Entity)
         if "DESTINATION" not in entities and intent in ENTITY_DEPENDENT_INTENTS:
             # a. Coba pencocokan singkatan pada pesan saat ini dulu
