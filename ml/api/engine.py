@@ -68,26 +68,36 @@ class ChatbotEngine:
         entities = {}
         current_entity = ""
         current_label = None
+        previous_word_idx = None
 
         for idx, word_idx in enumerate(word_ids):
             if word_idx is None:
                 continue
             
-            label = self.ner_id2tag[predictions[idx]]
-            token = tokens[idx].replace(" ", "") # Bersihkan karakter spesial IndoBERT/RoBERTa
+            token = tokens[idx].replace(" ", "") # Bersihkan karakter spesial
             
-            if label == "O":
-                if current_entity:
-                    entities[current_label] = current_entity.strip()
-                    current_entity = ""
-                    current_label = None
-            elif label.startswith("B-"):
-                if current_entity:
-                    entities[current_label] = current_entity.strip()
-                current_label = label[2:]
-                current_entity = token
-            elif label.startswith("I-") and current_label == label[2:]:
-                current_entity += " " + token
+            if word_idx != previous_word_idx:
+                # Subword pertama dari suatu kata
+                label = self.ner_id2tag[predictions[idx]]
+                if label == "O":
+                    if current_entity:
+                        entities[current_label] = current_entity.strip()
+                        current_entity = ""
+                        current_label = None
+                elif label.startswith("B-"):
+                    if current_entity:
+                        entities[current_label] = current_entity.strip()
+                    current_label = label[2:]
+                    current_entity = token
+                elif label.startswith("I-") and current_label == label[2:]:
+                    current_entity += " " + token
+            else:
+                # Subword lanjutan dari kata yang sama (misal "pt" dan "c" dari "ptc")
+                # Abaikan prediksinya (sering O), ikuti label subword pertama
+                if current_label is not None:
+                    current_entity += " " + token
+            
+            previous_word_idx = word_idx
         
         # Simpan entitas terakhir di ujung kalimat
         if current_entity:
