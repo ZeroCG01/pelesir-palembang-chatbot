@@ -158,9 +158,13 @@ class ChatbotModel:
 
         # INTERCEPT ROUTING EKSPLISIT (Origin -> Destination)
         import re
-        route_match = re.search(r'rute\s+dari\s+(.+?)\s+ke\s+(.+)', msg_lower)
+        
         origin_str, dest_str = None, None
         
+        route_match = re.search(r'(?:rute|jalan|arah|panduan)\s+dari\s+(.+?)\s+ke\s+(.+)', msg_lower)
+        if not route_match:
+            route_match = re.search(r'dari\s+(.+?)\s+ke\s+(.+?)(?:\s+gimana|\s+bagaimana|\s+rutenya|\s+caranya|\?)', msg_lower)
+            
         if route_match:
             origin_str, dest_str = route_match.group(1), route_match.group(2)
         else:
