@@ -164,6 +164,9 @@ class ChatbotModel:
         route_match = re.search(r'(?:rute|jalan|arah|panduan|cara).*?dari\s+(.+?)\s+ke\s+(.+)', msg_lower)
         if not route_match:
             route_match = re.search(r'dari\s+(.+?)\s+ke\s+(.+?)(?:\s+gimana|\s+bagaimana|\s+rutenya|\s+caranya|\?)', msg_lower)
+        if not route_match:
+            # Catcher for 'kalau A ke B' or 'kalau dari A ke B' follow-ups
+            route_match = re.search(r'^(?:kalau|kalo)\s+(?:dari\s+)?(?!pergi|mau|ingin|jalan|liburan)(.+?)\s+ke\s+(.+?)(?:\s+gimana|\s+bagaimana|\s+rutenya|\s+caranya|\?|$)', msg_lower)
             
         if route_match:
             origin_str, dest_str = route_match.group(1), route_match.group(2)
