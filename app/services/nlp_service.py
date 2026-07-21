@@ -74,40 +74,54 @@ class ChatbotModel:
         self.engine = ChatbotEngine()
         self.groq_model = "llama-3.1-8b-instant"
 
-    def generate_groq_reply(self, message: str, history: list) -> str:
+    def evaluate_with_guardrail(self, message: str, draft_reply: str, history: list) -> dict:
         global current_key_idx, groq_client, free_keys
         MAX_RETRIES = 3
-        BASE_WAIT = 5  # Groq lebih cepat, jadi wait tidak perlu lama
+        BASE_WAIT = 5
         
+        history_text = "\n".join([f"{h.get('role', 'user').capitalize()}: {h.get('content', '')}" for h in history[-3:]]) if history else "Tidak ada riwayat."
+        
+        guardrail_prompt = f"""Anda adalah AI Guardrail (Juri Penilai) untuk Chatbot Pelesir Palembang.
+Tugas Anda adalah mengevaluasi Draf Balasan dari NLP Lokal terhadap pesan pengguna.
+
+Riwayat Obrolan (Context):
+{history_text}
+
+Pesan Pengguna Saat Ini: "{message}"
+Draf Balasan Lokal: "{draft_reply}"
+
+ATURAN KETAT:
+1. Jika Draf Balasan akurat, informatif, dan menyambung dengan konteks (ATAU jika draf dengan cerdas meminta klarifikasi seperti "Boleh sebutkan nama lokasinya?"), Anda HARUS membalas tepat dengan 1 kata: PASS
+2. Jika Draf Balasan ngawur, salah sasaran, hanya mengatakan "Maaf, saya tidak mengerti", atau sama sekali tidak informatif, Anda HARUS menolaknya dengan membalas format: FAIL: <tuliskan_jawaban_baru_yang_benar_disini>
+3. Palembang BUKAN kota pesisir laut. Jika ditanya soal laut/pantai alami, arahkan ke Sungai Musi atau Pulau Kemaro.
+
+Evaluasi Anda:"""
+
         for attempt in range(MAX_RETRIES + 1):
             try:
-                print(f"Fallback to Groq LLM with context... (attempt {attempt + 1}, using API Key ke-{current_key_idx + 1})")
-                
-                # Format history untuk Groq (OpenAI style)
-                messages = [{"role": "system", "content": build_system_prompt()}]
-                for h in history:
-                    role = h.get("role", "user")
-                    if role not in ["user", "assistant", "system"]:
-                        role = "user" if role == "user" else "assistant"
-                    messages.append({"role": role, "content": h.get("content", "")})
-                
-                messages.append({"role": "user", "content": message})
+                print(f"🛡️ Guardrail mengecek Draf... (attempt {attempt + 1})")
                 
                 chat_completion = groq_client.chat.completions.create(
-                    messages=messages,
+                    messages=[{"role": "user", "content": guardrail_prompt}],
                     model=self.groq_model,
-                    temperature=0.6,
+                    temperature=0.1,  # Suhu rendah agar stabil membalas PASS
                 )
                 
-                # Hapus karakter markdown ** agar tidak muncul mentah-mentah di aplikasi mobile
                 response_text = chat_completion.choices[0].message.content.strip()
-                clean_text = response_text.replace("**", "")
                 
-                # Enrichment: Scan teks Groq untuk menemukan nama destinasi → Cards & Actions
-                from ml.api.response_builder import enrich_gemini_response
-                rich_result = enrich_gemini_response(clean_text)
-                rich_result["source"] = "groq"
-                return rich_result
+                if response_text.upper().startswith("PASS"):
+                    print("✅ Guardrail: PASS (Meneruskan jawaban lokal)")
+                    return {"reply": draft_reply, "source": "lokal"}
+                else:
+                    print(f"❌ Guardrail: FAIL (LLM mengambil alih)")
+                    # Ambil teks setelah FAIL:
+                    clean_text = response_text.replace("FAIL:", "", 1).strip()
+                    clean_text = clean_text.replace("**", "")
+                    
+                    from ml.api.response_builder import enrich_gemini_response
+                    rich_result = enrich_gemini_response(clean_text)
+                    rich_result["source"] = "groq_guardrail"
+                    return rich_result
                 
             except Exception as e:
                 error_str = str(e).lower()
@@ -115,21 +129,20 @@ class ChatbotModel:
                 
                 if is_rate_limit:
                     if current_key_idx < len(free_keys) - 1:
-                        # Swap API Key
                         current_key_idx += 1
-                        print(f"API Key ke-{current_key_idx} limit (429). Otomatis swap ke API Key ke-{current_key_idx + 1}...")
+                        print(f"API Key ke-{current_key_idx} limit. Swap ke Key ke-{current_key_idx + 1}...")
                         groq_client = groq.Groq(api_key=free_keys[current_key_idx])
-                        continue  # Coba lagi tanpa delay karena pakai key baru
+                        continue
                         
                     elif attempt < MAX_RETRIES:
-                        # Semua key habis, terpaksa backoff delay
                         wait_time = BASE_WAIT * (2 ** attempt)
-                        print(f"Semua API Key limit (429). Retry {attempt + 1}/{MAX_RETRIES} setelah {wait_time}s...")
+                        print(f"Semua Key limit. Retry {attempt + 1}/{MAX_RETRIES} setelah {wait_time}s...")
                         time.sleep(wait_time)
                         continue
                 
-                print(f"Groq Fallback Error (final): {e}")
-                return {"reply": "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang.", "source": "lokal_error"}
+                print(f"⚠️ Guardrail Error: {e} -> Bypass ke lokal")
+                # Jika Groq mati / timeout, biarkan jawaban lokal lewat sebagai fallback terakhir
+                return {"reply": draft_reply, "source": "lokal_bypass"}
 
 
     def generate_reply(self, message: str, history: list = None) -> str:
@@ -261,12 +274,7 @@ class ChatbotModel:
             intent = "ask_recommendation"
             confidence = 1.0  # Paksa yakin masuk ke Gemini
 
-        # LANGKAH 3 - GERBANG UTAMA (confidence threshold)
-        if confidence < CONFIDENCE_THRESHOLD:
-            print(f"Gerbang confidence: {confidence:.2f} < {CONFIDENCE_THRESHOLD:.2f} → Groq")
-            return self.generate_groq_reply(message, history)
-
-        # Penanganan khusus Hotel (Setelah model yakin, sebelum Langkah 4)
+        # LANGKAH 3 - PRODUKSI DRAF LOKAL (The Actor)
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
             daerah = ""
             murah = "murah" in msg_lower
@@ -277,26 +285,23 @@ class ChatbotModel:
                 daerah = msg_lower.split("dekat ")[1].strip()
             elif "di " in msg_lower:
                 daerah = msg_lower.split("di ")[1].strip()
-            print("Gerbang hotel: Handler rule_hotel dijalankan.")
-            return {"reply": build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal}, message), "source": "lokal"}
+            draft_reply = build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal}, message)
+        else:
+            draft_reply = build_response(intent, entities, message)
 
-        # LANGKAH 4 - Intent generatif (perlu kemampuan LLM meski model yakin)
-        if intent in GENERATIVE_INTENTS:
-            print(f"Gerbang intent generatif: '{intent}' membutuhkan kreativitas → Groq")
-            return self.generate_groq_reply(message, history)
-
-        # LANGKAH 5 - Intent terstruktur → jalur LOKAL
-        reply_text = build_response(intent, entities, message)
-        if "Maaf," in reply_text:
-            print("Jalur lokal gagal/Data tidak ditemukan → Groq")
-            return self.generate_groq_reply(message, history)
-            
-        print("Jalur lokal berhasil menjawab.")
-        # Bungkus dengan data terstruktur (cards, actions, dll)
-        from ml.api.response_builder import build_rich_response
-        rich_response = build_rich_response(intent, entities, reply_text)
-        rich_response["source"] = "lokal"
-        return rich_response
+        # LANGKAH 4 - EVALUASI OLEH JURI (The Critic / Guardrail)
+        final_verdict = self.evaluate_with_guardrail(message, draft_reply, history)
+        
+        # LANGKAH 5 - BUNGKUS DENGAN RICH RESPONSES
+        if final_verdict["source"] == "lokal":
+            # Jika lolos sensor Juri, bungkus dengan fitur lengkap peta & kartu
+            from ml.api.response_builder import build_rich_response
+            rich_response = build_rich_response(intent, entities, final_verdict["reply"])
+            rich_response["source"] = "lokal"
+            return rich_response
+        else:
+            # Jika Juri membatalkan dan merangkai baru, kembalikan hasil Juri (yang sudah di-enrich)
+            return final_verdict
 
 # Instansiasi global agar model hanya di-load sekali ke memory
 nlp_model = ChatbotModel()
