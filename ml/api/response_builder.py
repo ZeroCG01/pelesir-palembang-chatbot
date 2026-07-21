@@ -1,5 +1,6 @@
 import os
 import random
+import difflib
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
@@ -70,6 +71,21 @@ def get_destination_from_supabase(destination_name: str):
         response = supabase.table("destinations").select("*").ilike("name", f"%{normalized_name}%").limit(1).execute()
         if response.data and len(response.data) > 0:
             return response.data[0]
+            
+        # Jika tidak ketemu (mungkin typo), coba ambil semua nama dan lakukan fuzzy string matching
+        all_dests = supabase.table("destinations").select("name").execute()
+        if all_dests.data:
+            db_names = [d["name"] for d in all_dests.data]
+            # Cari nama yang paling mirip (toleransi kecocokan 60%)
+            closest_matches = difflib.get_close_matches(normalized_name, db_names, n=1, cutoff=0.6)
+            if closest_matches:
+                best_match = closest_matches[0]
+                print(f"Typo correction: '{normalized_name}' -> '{best_match}'")
+                # Query ulang dengan nama yang benar
+                response = supabase.table("destinations").select("*").eq("name", best_match).limit(1).execute()
+                if response.data and len(response.data) > 0:
+                    return response.data[0]
+                    
         return None
     except Exception as e:
         print(f"Error querying supabase: {e}")
