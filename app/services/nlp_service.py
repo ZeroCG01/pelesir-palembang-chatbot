@@ -165,8 +165,8 @@ class ChatbotModel:
         # LANGKAH 1.5 - MEMORI INTENT (Follow-up context)
         is_follow_up = any(msg_lower.startswith(w) for w in ["kalo ", "kalau ", "gimana ", "bagaimana "])
         
-        # HANYA warisi intent masa lalu JIKA intent saat ini gagal menangkap konteks (misal terdeteksi ask_unrelated)
-        if is_follow_up and history and intent not in ENTITY_DEPENDENT_INTENTS:
+        # HANYA warisi intent masa lalu JIKA intent saat ini tidak eksplisit (unrelated atau sekadar info umum)
+        if is_follow_up and history and intent in ["ask_unrelated", "ask_destination_info"]:
             print("Memori lokal: Pesan ambigu/follow-up. Mencari intent sebelumnya...")
             for h in reversed(history):
                 if h.get("role") == "user":

@@ -62,8 +62,11 @@ def normalize_destination_name(name: str) -> str:
             
     return name_lower
 
+from functools import lru_cache
+
+@lru_cache(maxsize=128)
 def get_destination_from_supabase(destination_name: str):
-    """Fungsi helper untuk mencari destinasi di Supabase berdasarkan nama"""
+    """Fungsi helper untuk mencari destinasi di Supabase berdasarkan nama, dengan in-memory caching"""
     if not supabase:
         return None
     
