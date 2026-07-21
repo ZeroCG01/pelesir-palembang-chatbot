@@ -112,7 +112,7 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
     # Heuristik: Jika model mendeteksi nama destinasi, tetapi intent-nya meleset menjadi hal yang tidak relevan
     info_seeking_intents = [
         "ask_ticket_price", "ask_operating_hours", "ask_lrt_destinations", 
-        "ask_location_access", "ask_destination_info", "ask_facilities", "rule_hotel"
+        "ask_location_access", "ask_destination_info", "ask_facilities", "rule_hotel", "ask_route"
     ]
     if dest_name and intent not in info_seeking_intents:
         intent = "ask_destination_info"
