@@ -154,7 +154,9 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
         origin_name = normalize_destination_name(origin) or origin
         dest_name = normalize_destination_name(destination) or destination
         
-        return f"Berikut adalah panduan rute dari {origin_name} menuju ke {dest_name}. Silakan tekan tombol 'Lihat Rute' di bawah ini untuk melihat rute lengkapnya di peta."
+        if en:
+            return f"To get to {dest_name} from {origin_name}, you can use public transportation, LRT (if available), or online taxis. Please tap the 'Lihat Rute' button below to see the complete map guide."
+        return f"Untuk menuju ke {dest_name} dari {origin_name}, Anda bisa menggunakan transportasi umum, LRT (jika rutenya sejalur), atau taksi/ojek online. Silakan tekan tombol 'Lihat Rute' di bawah ini untuk panduan peta lengkapnya."
     
     elif intent == "rule_hotel":
         daerah = entities.get("DAERAH", "").strip()
@@ -255,6 +257,18 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
 
     elif intent == "ask_recommendation":
         category = entities.get("CATEGORY", "")
+        q_lower = query.lower()
+        
+        # Deteksi keyword spesifik
+        if "live music" in q_lower or "musik" in q_lower:
+            if en:
+                return "Looking for a place with live music? Several cafes around Kambang Iwak or PTC Mall usually have live music. Check the 'Recommendations' tab for cafes!"
+            return "Cari tempat nongkrong yang ada live music ya? Beberapa cafe di sekitar Kambang Iwak atau area PTC Mall biasanya menyediakan live music lho. Cek menu 'Rekomendasi' untuk list cafe-nya ya!"
+        elif "foto" in q_lower or "selfie" in q_lower or "instagramable" in q_lower:
+            if en:
+                return "Looking for photo spots? Ampera Bridge, Sekanak Lambidaro, and Punti Kayu are highly recommended!"
+            return "Nyari spot foto instagramable ya? Kawasan Sekanak Lambidaro, Jembatan Ampera, dan Hutan Punti Kayu bagus banget buat foto-foto!"
+            
         if category:
             if en:
                 return f"For {category}, Palembang has many interesting places! Check out the 'Recommendations' feature in the app for the full list."
@@ -380,9 +394,9 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
                 facilities = dest_data.get("facilities", [])
                 if facilities and isinstance(facilities, list):
                     fac_text = ", ".join(facilities)
-                    return f"The facilities at {dest_data.get('name')} include: {fac_text}." if en else f"Fasilitas yang ada di {dest_data.get('name')} antara lain: {fac_text}."
+                    return f"Yes, available! The facilities at {dest_data.get('name')} include: {fac_text}." if en else f"Ya, tentu ada! Fasilitas yang tersedia di {dest_data.get('name')} antara lain: {fac_text}."
                 elif facilities and isinstance(facilities, str):
-                    return f"Facilities at {dest_data.get('name')}: {facilities}." if en else f"Fasilitas di {dest_data.get('name')}: {facilities}."
+                    return f"Yes, available! Facilities at {dest_data.get('name')}: {facilities}." if en else f"Ya, tentu ada! Fasilitas di {dest_data.get('name')}: {facilities}."
                 
                 return f"Sorry, I don't have facility data for {dest_data.get('name')} right now." if en else f"Maaf, saya tidak memiliki data fasilitas untuk {dest_data.get('name')} saat ini."
             
