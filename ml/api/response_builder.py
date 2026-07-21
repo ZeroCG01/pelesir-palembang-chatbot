@@ -45,7 +45,10 @@ def normalize_destination_name(name: str) -> str:
     if not name:
         return name
     
-    name_lower = name.lower().strip()
+    import re
+    # Bersihkan tanda baca (terutama di akhir, seperti "?", ".", ",") yang sering tertangkap NER
+    name_clean = re.sub(r'[^\w\s]', '', name)
+    name_lower = name_clean.lower().strip()
     
     # Cek kecocokan eksak
     if name_lower in ABBREVIATIONS:
