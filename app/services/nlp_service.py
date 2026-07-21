@@ -247,7 +247,11 @@ class ChatbotModel:
             return self.generate_gemini_reply(message, history)
             
         print("Jalur lokal berhasil menjawab.")
-        return {"reply": reply_text, "source": "lokal"}
+        # Bungkus dengan data terstruktur (cards, actions, dll)
+        from ml.api.response_builder import build_rich_response
+        rich_response = build_rich_response(intent, entities, reply_text)
+        rich_response["source"] = "lokal"
+        return rich_response
 
 # Instansiasi global agar model hanya di-load sekali ke memory
 nlp_model = ChatbotModel()

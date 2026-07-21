@@ -390,3 +390,97 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
     if en:
         return "Sorry, I don't quite understand what you mean. I am a Palembang tourism assistant, you can ask about recommendations, ticket prices, or accommodations!"
     return "Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!"
+
+def build_rich_response(intent: str, entities: dict, text_reply: str) -> dict:
+    """
+    Membungkus text_reply dengan data terstruktur (cards, actions, quick_replies)
+    untuk dirender secara interaktif di aplikasi mobile (Frontend).
+    """
+    result = {
+        "reply": text_reply,
+        "actions": None,
+        "cards": None,
+        "quick_replies": None
+    }
+    
+    dest_name = entities.get("DESTINATION", "").strip()
+    
+    # 1. Intent seputar Destinasi Spesifik
+    if intent in ["ask_destination_info", "ask_ticket_price", "ask_operating_hours", "ask_facilities", "ask_lrt_destinations", "ask_location_access"]:
+        if dest_name:
+            # Karena get_destination_from_supabase menggunakan @lru_cache, 
+            # pemanggilan ulang di sini tidak akan membebani database (0 latency)
+            dest_data = get_destination_from_supabase(dest_name)
+            
+            if dest_data:
+                dest_id = str(dest_data["id"])
+                
+                # --- A. Destination Card ---
+                img_url = None
+                if dest_data.get("image_urls") and isinstance(dest_data["image_urls"], list) and len(dest_data["image_urls"]) > 0:
+                    img_url = dest_data["image_urls"][0]
+                    
+                result["cards"] = [{
+                    "id": dest_id,
+                    "name": dest_data["name"],
+                    "image_url": img_url,
+                    "rating": 4.5, # Default/Mock rating
+                    "category": dest_data.get("category", ""),
+                    "price_text": None
+                }]
+                
+                # --- B. Action Buttons ---
+                actions = [
+                    {"type": "navigate_detail", "label": "📋 Lihat Detail", "destination_id": dest_id}
+                ]
+                
+                if dest_data.get("latitude") and dest_data.get("longitude"):
+                    actions.append({
+                        "type": "navigate_map", 
+                        "label": "🗺️ Buka Peta", 
+                        "destination_id": dest_id,
+                        "lat": float(dest_data["latitude"]),
+                        "lng": float(dest_data["longitude"])
+                    })
+                
+                result["actions"] = actions
+                
+                # --- C. Quick Replies ---
+                # Jangan tampilkan saran pertanyaan yang sama dengan intent saat ini
+                all_suggestions = {
+                    "ask_ticket_price": {"label": "💰 Harga Tiket", "message": f"berapa harga tiket {dest_data['name']}?"},
+                    "ask_operating_hours": {"label": "🕐 Jam Buka", "message": f"jam buka {dest_data['name']}?"},
+                    "ask_facilities": {"label": "🏗️ Fasilitas", "message": f"fasilitas apa saja di {dest_data['name']}?"},
+                    "ask_lrt_destinations": {"label": "🚆 Akses LRT", "message": f"apakah {dest_data['name']} bisa naik LRT?"},
+                    "ask_location_access": {"label": "📍 Alamat", "message": f"alamat {dest_data['name']} dimana?"}
+                }
+                
+                # Hapus intent saat ini dari daftar saran
+                if intent in all_suggestions:
+                    del all_suggestions[intent]
+                    
+                # Ambil 3 saran acak
+                import random
+                suggest_keys = list(all_suggestions.keys())
+                random.shuffle(suggest_keys)
+                
+                result["quick_replies"] = [all_suggestions[k] for k in suggest_keys[:3]]
+                
+    # 2. Intent Sapaan (Greeting)
+    elif intent == "greet":
+        result["quick_replies"] = [
+            {"label": "🏛️ Wisata Sejarah", "message": "rekomendasi wisata sejarah di palembang"},
+            {"label": "🍜 Kuliner Khas", "message": "rekomendasi wisata kuliner di palembang"},
+            {"label": "📅 Buatkan Itinerary", "message": "buatkan jadwal perjalanan 1 hari di palembang"}
+        ]
+        
+    # 3. Intent Rekomendasi Kategori Lokal (Fallbacks)
+    elif intent == "ask_category":
+        result["quick_replies"] = [
+            {"label": "🏛️ Sejarah", "message": "wisata sejarah"},
+            {"label": "🍜 Kuliner", "message": "wisata kuliner"},
+            {"label": "🌳 Alam/Taman", "message": "wisata alam"},
+            {"label": "🕌 Religi", "message": "wisata religi"}
+        ]
+        
+    return result

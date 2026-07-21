@@ -15,7 +15,13 @@ async def chat_endpoint(request: ChatRequest):
         
         # Cek tipe kembalian (untuk backward compatibility jika masih mengembalikan string)
         if isinstance(result, dict):
-            return ChatResponse(reply=result["reply"], source=result.get("source", "local"))
+            return ChatResponse(
+                reply=result["reply"], 
+                source=result.get("source", "local"),
+                actions=result.get("actions"),
+                cards=result.get("cards"),
+                quick_replies=result.get("quick_replies")
+            )
         else:
             return ChatResponse(reply=result, source="local")
     except HTTPException:
