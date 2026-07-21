@@ -72,7 +72,7 @@ class ChatbotModel:
     def __init__(self):
         print("Mempersiapkan model PyTorch/Transformers dari folder ml/saved_models...")
         self.engine = ChatbotEngine()
-        self.groq_model = "llama-3.3-70b-versatile"
+        self.groq_model = "llama-3.1-8b-instant"
 
     def generate_groq_reply(self, message: str, history: list) -> str:
         global current_key_idx, groq_client, free_keys

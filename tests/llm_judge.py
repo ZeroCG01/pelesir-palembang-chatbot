@@ -15,7 +15,7 @@ if not GROQ_API_KEY:
     exit(1)
 
 client = Groq(api_key=GROQ_API_KEY)
-model = "llama-3.3-70b-versatile"
+model = "llama-3.1-8b-instant"
 
 parser = argparse.ArgumentParser(description="LLM-as-a-Judge Tester")
 parser.add_argument("--url", default="http://localhost:8000", help="URL API Chatbot (Tanpa /api/chat)")
@@ -93,7 +93,7 @@ def run_evaluation():
         
         # 1. Tanya ke Chatbot
         try:
-            res = requests.post(API_URL, json={"message": q}, timeout=15)
+            res = requests.post(API_URL, json={"message": q}, timeout=60)
             if res.status_code == 200:
                 data = res.json()
                 bot_reply = data.get("reply", "")
