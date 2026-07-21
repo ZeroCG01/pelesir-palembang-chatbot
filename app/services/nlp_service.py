@@ -106,7 +106,11 @@ class ChatbotModel:
                 # Hapus karakter markdown ** agar tidak muncul mentah-mentah di aplikasi mobile
                 clean_text = response.text.replace("**", "")
                 
-                return {"reply": clean_text, "source": "gemini"}
+                # Enrichment: Scan teks Gemini untuk menemukan nama destinasi → Cards & Actions
+                from ml.api.response_builder import enrich_gemini_response
+                rich_result = enrich_gemini_response(clean_text)
+                rich_result["source"] = "gemini"
+                return rich_result
             except Exception as e:
                 error_str = str(e).lower()
                 is_rate_limit = "429" in str(e) or "resource" in error_str or "quota" in error_str or "rate" in error_str
@@ -215,6 +219,15 @@ class ChatbotModel:
                             entities["DESTINATION"] = past_abbr
                             print(f"Memori lokal: DESTINATION='{past_abbr}' dari history (Abbr) → jawab lokal")
                             break
+                            
+        # LANGKAH 2.5 - JEBAKAN INTENT (Kesalahan Klasifikasi akibat Kata Kunci)
+        # Kasus: User meminta rekomendasi wisata berdasar atribut ("wisata yang buka 24 jam")
+        # tapi NLP malah mendeteksi `ask_operating_hours` padahal tidak ada entitas destinasi.
+        is_asking_recommendation = any(kw in msg_lower for kw in ["berikan", "rekomendasi", "apa saja", "wisata yang", "tempat yang", "kasih tau wisata", "cari wisata", "ada gak wisata", "ada nggak wisata", "carikan"])
+        if intent in ENTITY_DEPENDENT_INTENTS and "DESTINATION" not in entities and is_asking_recommendation:
+            print(f"Jebakan Intent: Deteksi kata pencarian/rekomendasi. Mengubah intent dari '{intent}' menjadi 'ask_recommendation' → Gemini")
+            intent = "ask_recommendation"
+            confidence = 1.0  # Paksa yakin masuk ke Gemini
 
         # LANGKAH 3 - GERBANG UTAMA (confidence threshold)
         if confidence < CONFIDENCE_THRESHOLD:

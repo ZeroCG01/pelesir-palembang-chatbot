@@ -442,6 +442,12 @@ def build_rich_response(intent: str, entities: dict, text_reply: str) -> dict:
                         "lat": float(dest_data["latitude"]),
                         "lng": float(dest_data["longitude"])
                     })
+                    
+                actions.append({
+                    "type": "add_itinerary",
+                    "label": "📅 Tambah ke Jadwal",
+                    "destination_id": dest_id
+                })
                 
                 result["actions"] = actions
                 
@@ -483,4 +489,133 @@ def build_rich_response(intent: str, entities: dict, text_reply: str) -> dict:
             {"label": "🕌 Religi", "message": "wisata religi"}
         ]
         
+    return result
+
+@lru_cache(maxsize=1)
+def get_all_destination_names():
+    """Mengambil semua nama destinasi dari Supabase (di-cache selamanya).
+    Digunakan oleh enrich_gemini_response untuk mencocokkan nama di teks Gemini."""
+    if not supabase:
+        return []
+    try:
+        response = supabase.table("destinations").select("name").execute()
+        if response.data:
+            return [d["name"] for d in response.data]
+    except Exception as e:
+        print(f"Error fetching all destination names: {e}")
+    return []
+
+def enrich_gemini_response(gemini_text: str) -> dict:
+    """
+    Membedah teks jawaban Gemini untuk menemukan nama-nama destinasi,
+    lalu menempelkan cards, actions, dan quick_replies secara otomatis.
+    Membuat respons Gemini sama interaktifnya dengan respons lokal.
+    """
+    result = {
+        "reply": gemini_text,
+        "actions": None,
+        "cards": None,
+        "quick_replies": None
+    }
+    
+    text_lower = gemini_text.lower()
+    all_names = get_all_destination_names()
+    
+    # Cari semua destinasi yang disebutkan dalam teks Gemini
+    found_destinations = []
+    for name in all_names:
+        if name.lower() in text_lower:
+            dest_data = get_destination_from_supabase(name)
+            if dest_data and dest_data not in found_destinations:
+                found_destinations.append(dest_data)
+    
+    # Juga cek singkatan yang mungkin muncul di teks Gemini
+    for abbr, full_name in ABBREVIATIONS.items():
+        if f" {abbr} " in f" {text_lower} " or text_lower.startswith(f"{abbr} ") or text_lower.endswith(f" {abbr}"):
+            dest_data = get_destination_from_supabase(full_name)
+            if dest_data and dest_data not in found_destinations:
+                found_destinations.append(dest_data)
+    
+    # Batasi maksimal 5 kartu agar UI tidak terlalu panjang
+    found_destinations = found_destinations[:5]
+    
+    if found_destinations:
+        cards = []
+        actions = []
+        
+        for dest_data in found_destinations:
+            dest_id = str(dest_data["id"])
+            
+            # Card
+            img_url = None
+            if dest_data.get("image_urls") and isinstance(dest_data["image_urls"], list) and len(dest_data["image_urls"]) > 0:
+                img_url = dest_data["image_urls"][0]
+                
+            cards.append({
+                "id": dest_id,
+                "name": dest_data["name"],
+                "image_url": img_url,
+                "rating": 4.5,
+                "category": dest_data.get("category", ""),
+                "price_text": None
+            })
+            
+            # Action 1: Lihat Detail
+            actions.append({
+                "type": "navigate_detail",
+                "label": f"📋 Info {dest_data['name']}",
+                "destination_id": dest_id
+            })
+            
+            # Action 2: Buka Peta (Rute)
+            if dest_data.get("latitude") and dest_data.get("longitude"):
+                actions.append({
+                    "type": "navigate_map",
+                    "label": f"🗺️ Rute {dest_data['name']}",
+                    "destination_id": dest_id,
+                    "lat": float(dest_data["latitude"]),
+                    "lng": float(dest_data["longitude"])
+                })
+                
+            # Action 3: Tambah Itinerary
+            actions.append({
+                "type": "add_itinerary",
+                "label": f"📅 Tambah {dest_data['name']} ke Jadwal",
+                "destination_id": dest_id
+            })
+        
+        result["cards"] = cards
+        result["actions"] = actions
+    
+    # Quick Replies kontekstual (selalu tampilkan untuk respons Gemini)
+    # Deteksi konteks dari teks jawaban untuk menyesuaikan saran
+    if "itinerary" in text_lower or "jadwal" in text_lower or "perjalanan" in text_lower:
+        result["quick_replies"] = [
+            {"label": "📅 Itinerary 2 Hari", "message": "buatkan jadwal perjalanan 2 hari di palembang"},
+            {"label": "🍜 Tambah Wisata Kuliner", "message": "tambahkan wisata kuliner ke jadwal"},
+            {"label": "💰 Estimasi Budget", "message": "berapa estimasi budget wisata di palembang?"}
+        ]
+    elif "rekomendasi" in text_lower or "recommend" in text_lower:
+        result["quick_replies"] = [
+            {"label": "🏛️ Wisata Sejarah", "message": "rekomendasi wisata sejarah di palembang"},
+            {"label": "🍜 Wisata Kuliner", "message": "rekomendasi wisata kuliner di palembang"},
+            {"label": "🌳 Wisata Alam", "message": "rekomendasi wisata alam di palembang"},
+            {"label": "📅 Buatkan Itinerary", "message": "buatkan jadwal perjalanan 1 hari di palembang"}
+        ]
+    elif found_destinations:
+        # Jika ada destinasi yang ditemukan, sarankan pertanyaan seputar destinasi pertama
+        first_dest = found_destinations[0]["name"]
+        result["quick_replies"] = [
+            {"label": "💰 Harga Tiket", "message": f"berapa harga tiket {first_dest}?"},
+            {"label": "🕐 Jam Buka", "message": f"jam buka {first_dest}?"},
+            {"label": "📍 Lokasi", "message": f"alamat {first_dest} dimana?"}
+        ]
+    else:
+        # Fallback: saran umum
+        result["quick_replies"] = [
+            {"label": "🏛️ Wisata Populer", "message": "rekomendasi wisata populer di palembang"},
+            {"label": "🍜 Kuliner Khas", "message": "rekomendasi kuliner khas palembang"},
+            {"label": "📅 Buatkan Itinerary", "message": "buatkan jadwal perjalanan 1 hari di palembang"}
+        ]
+    
     return result
