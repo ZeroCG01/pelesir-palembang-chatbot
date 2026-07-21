@@ -140,29 +140,34 @@ class ChatbotModel:
             
         msg_lower = message.lower()
         
-        # --- RULE-BASED INTERCEPTOR ---
-        # 1. Intercept Itinerary (SERAHKAN KE GEMINI AGAR DINAMIS)
-        if "itinerary" in msg_lower or "jadwal" in msg_lower or ("hari" in msg_lower and "wisata" in msg_lower):
-            return self.generate_gemini_reply(message, history)
-            
-        # 1.5 Intercept Multi-Intent (Pertanyaan Ganda)
-        has_price = "harga" in msg_lower or "tiket" in msg_lower or "biaya" in msg_lower
-        has_time = "jam" in msg_lower or "buka" in msg_lower or "tutup" in msg_lower
-        has_location = "dimana" in msg_lower or "lokasi" in msg_lower or "alamat" in msg_lower
+        CONFIDENCE_THRESHOLD = 0.80
+        GENERATIVE_INTENTS = {"ask_recommendation", "ask_category", "ask_hidden_gems", "ask_unrelated"}
+
+        # LANGKAH 1 - Jalankan model lokal DULU
+        result = self.engine.process_message(message)
+        print(f"ML Result: {result}")
         
-        if (has_price and has_time) or (has_price and has_location) or (has_time and has_location):
+        intent = result["intent"]
+        entities = result["entities"]
+        confidence = result.get("confidence", 1.0)
+        
+        # Fallback NER manual via ABBREVIATIONS bila "DESTINATION" tidak terdeteksi
+        if "DESTINATION" not in entities:
+            msg_clean_punct = message.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "")
+            msg_lower_padded = f" {msg_clean_punct} "
+            sorted_abbrs = sorted(ABBREVIATIONS.keys(), key=len, reverse=True)
+            for short_name in sorted_abbrs:
+                if f" {short_name} " in msg_lower_padded:
+                    entities["DESTINATION"] = short_name
+                    print(f"Fallback NER: Found '{short_name}' manually.")
+                    break
+
+        # LANGKAH 2 - GERBANG UTAMA (confidence threshold)
+        if confidence < CONFIDENCE_THRESHOLD:
+            print(f"Gerbang confidence: {confidence:.2f} < {CONFIDENCE_THRESHOLD:.2f} → Gemini")
             return self.generate_gemini_reply(message, history)
 
-        # 1.6 Intercept Permintaan Detail
-        if "detail" in msg_lower or "lengkap" in msg_lower:
-            return self.generate_gemini_reply(message, history)
-
-        # 1.7 Intercept Rekomendasi / Hidden Gems / Kategori (SERAHKAN KE GEMINI)
-        recommendation_words = ["rekomendasi", "rekomendasikan", "recommend", "hidden gems", "hidden gem", "saran", "sarankan"]
-        if any(rw in msg_lower for rw in recommendation_words):
-            return self.generate_gemini_reply(message, history)
-
-        # 2. Intercept Hotel/Akomodasi
+        # Penanganan khusus Hotel (Setelah model yakin, sebelum Langkah 3)
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
             daerah = ""
             murah = "murah" in msg_lower
@@ -173,84 +178,21 @@ class ChatbotModel:
                 daerah = msg_lower.split("dekat ")[1].strip()
             elif "di " in msg_lower:
                 daerah = msg_lower.split("di ")[1].strip()
+            print("Gerbang hotel: Handler rule_hotel dijalankan.")
             return build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal})
 
-        # 1. Klasifikasi Intent & Ekstraksi Entitas dari user message
-        result = self.engine.process_message(message)
-        print(f"ML Result: {result}")
-        
-        entities = result["entities"]
-        intent = result["intent"]
-        
-        # --- FALLBACK HEURISTIC LOKAL ---
-        # Coba cocokkan nama destinasi jika ML NER tidak mendeteksi
-        if "DESTINATION" not in entities:
-            # Hapus tanda baca umum agar "bkb?" menjadi "bkb"
-            msg_clean_punct = message.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "")
-            msg_lower_padded = f" {msg_clean_punct} "
-            
-            # Sort by longest key first agar multi-word match duluan (misal "kampung kapitan" sebelum "ki")
-            sorted_abbrs = sorted(ABBREVIATIONS.keys(), key=len, reverse=True)
-            for short_name in sorted_abbrs:
-                if f" {short_name} " in msg_lower_padded:
-                    entities["DESTINATION"] = short_name
-                    print(f"Fallback NER: Found '{short_name}' manually (after removing punctuation).")
-                    break
-        
-        # 2. Hasilkan balasan natural (melibatkan database Supabase di dalam builder)
-        reply_text = build_response(intent, entities)
-        
-        # 3. TRIGGER GEMINI FALLBACK (Smarter Heuristics)
-        fallback_reasons = []
-        msg_clean = message.lower().strip()
-        
-        # 3a. Jika ML lokal menjawab dengan error/template gagal
-        if "Maaf," in reply_text:
-            fallback_reasons.append("Pesan error default lokal")
-        
-        # 3b. Intent yang sebaiknya selalu ditangani Gemini
-        if intent in ["ask_unrelated", "ask_category", "ask_recommendation", "ask_hidden_gems"]:
-            fallback_reasons.append("Pertanyaan rekomendasi, hidden gems, kategori, atau out-of-domain diserahkan ke Gemini")
-                
-        # 3c. Pertanyaan lanjutan (follow-up) berdasarkan kata kunci awalan
-        follow_up_words = ["kalau ", "kalo ", "bagaimana dengan ", "gimana dengan ", "gimana kalo ", "gimana ", "gmana ", "lalu ", "terus ", "trus ", "alam", "sejarah", "kuliner", "religi", "budaya", "taman"]
-        if any(msg_clean.startswith(w) for w in follow_up_words):
-            fallback_reasons.append("Pertanyaan lanjutan (membutuhkan history)")
-            
-        # 3d. Pertanyaan pendek tanpa kata tanya (indikasi follow-up)
-        words = msg_clean.split()
-        if len(words) <= 5 and "DESTINATION" in entities:
-            question_words = ["apa", "info", "deskripsi", "dimana", "di mana", "lokasi", "berapa", "harga", "tiket", "jam", "buka", "tutup"]
-            if not any(q in msg_clean for q in question_words):
-                fallback_reasons.append("Kalimat pendek tanpa kata tanya (indikasi follow-up)")
-
-        # 3e. Pertanyaan tanpa entity TAPI ada history (kemungkinan follow-up kontekstual)
-        if "DESTINATION" not in entities and len(history) > 0:
-            # Jika intent butuh entity tapi tidak ada, kemungkinan besar user lanjut dari percakapan sebelumnya
-            entity_dependent_intents = ["ask_ticket_price", "ask_operating_hours", "ask_destination_info", "ask_lrt_destinations", "ask_location_access", "ask_facilities"]
-            if intent in entity_dependent_intents:
-                fallback_reasons.append("Intent butuh entity tapi tidak ada — kemungkinan follow-up kontekstual")
-
-        # 3f. Pertanyaan perbandingan atau opini (selalu serahkan ke Gemini)
-        comparison_words = ["lebih bagus", "lebih baik", "dibanding", "banding", "versus", "vs ", "atau ", "pilih mana", "mending"]
-        if any(cw in msg_clean for cw in comparison_words):
-            fallback_reasons.append("Pertanyaan perbandingan/opini (serahkan ke Gemini)")
-        
-        # 3g. Pertanyaan dengan kata tanya umum tanpa kata kunci spesifik intent
-        generic_question_words = ["kenapa", "mengapa", "bagaimana", "gimana", "gmana", "apakah", "bisakah", "bolehkah"]
-        if any(msg_clean.startswith(gq) for gq in generic_question_words) and "DESTINATION" not in entities:
-            fallback_reasons.append("Pertanyaan generik tanpa entity (serahkan ke Gemini)")
-
-        # 3h. Confidence Score Rendah (Model ML Ragu-ragu)
-        confidence = result.get("confidence", 1.0)
-        if confidence < 0.80:
-            fallback_reasons.append(f"Confidence ML lokal rendah ({confidence:.2f} < 0.80)")
-
-        if len(fallback_reasons) > 0:
-            print(f"Trigger Gemini Fallback karena: {fallback_reasons}")
+        # LANGKAH 3 - Model yakin. Routing berdasarkan SIFAT intent
+        if intent in GENERATIVE_INTENTS:
+            print(f"Gerbang intent generatif: '{intent}' membutuhkan kreativitas → Gemini")
             return self.generate_gemini_reply(message, history)
-        
-        # Jika bukan error dan bukan follow-up, kembalikan jawaban dari ML Lokal
+
+        # LANGKAH 4 - Intent terstruktur → jalur lokal (rule-based)
+        reply_text = build_response(intent, entities)
+        if "Maaf," in reply_text:
+            print("Jalur lokal gagal/Data tidak ditemukan → Gemini")
+            return self.generate_gemini_reply(message, history)
+            
+        print("Jalur lokal berhasil menjawab.")
         return reply_text
 
 # Instansiasi global agar model hanya di-load sekali ke memory
