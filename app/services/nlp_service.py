@@ -106,7 +106,7 @@ class ChatbotModel:
                 # Hapus karakter markdown ** agar tidak muncul mentah-mentah di aplikasi mobile
                 clean_text = response.text.replace("**", "")
                 
-                return clean_text
+                return {"reply": clean_text, "source": "gemini"}
             except Exception as e:
                 error_str = str(e).lower()
                 is_rate_limit = "429" in str(e) or "resource" in error_str or "quota" in error_str or "rate" in error_str
@@ -132,7 +132,7 @@ class ChatbotModel:
                         continue
                 
                 print(f"Gemini Fallback Error (final): {e}")
-                return "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang."
+                return {"reply": "Maaf, saya tidak mengerti maksud Anda. Silakan coba tanyakan hal lain seputar wisata Palembang.", "source": "lokal_error"}
 
     def generate_reply(self, message: str, history: list = None) -> str:
         if history is None:
@@ -233,7 +233,7 @@ class ChatbotModel:
             elif "di " in msg_lower:
                 daerah = msg_lower.split("di ")[1].strip()
             print("Gerbang hotel: Handler rule_hotel dijalankan.")
-            return build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal}, message)
+            return {"reply": build_response("rule_hotel", {"DAERAH": daerah, "MURAH": murah, "MAHAL": mahal}, message), "source": "lokal"}
 
         # LANGKAH 4 - Intent generatif (perlu kemampuan LLM meski model yakin)
         if intent in GENERATIVE_INTENTS:
@@ -247,7 +247,7 @@ class ChatbotModel:
             return self.generate_gemini_reply(message, history)
             
         print("Jalur lokal berhasil menjawab.")
-        return reply_text
+        return {"reply": reply_text, "source": "lokal"}
 
 # Instansiasi global agar model hanya di-load sekali ke memory
 nlp_model = ChatbotModel()

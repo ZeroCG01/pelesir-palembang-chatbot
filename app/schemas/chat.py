@@ -7,3 +7,4 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     reply: str
+    source: Optional[str] = "local"

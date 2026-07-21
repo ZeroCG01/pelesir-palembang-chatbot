@@ -38,8 +38,8 @@ class Color:
     END = "\033[0m"
 
 
-def send_chat(api_url: str, message: str, history: list) -> str:
-    """Kirim pesan ke API chatbot dan kembalikan balasannya. Retry jika 500/429."""
+def send_chat(api_url: str, message: str, history: list) -> tuple:
+    """Kirim pesan ke API chatbot dan kembalikan balasannya beserta sumbernya. Retry jika 500/429."""
     MAX_RETRIES = 2
     for attempt in range(MAX_RETRIES + 1):
         try:
@@ -56,18 +56,19 @@ def send_chat(api_url: str, message: str, history: list) -> str:
                 time.sleep(wait)
                 continue
             response.raise_for_status()
-            return response.json().get("reply", "")
+            data = response.json()
+            return (data.get("reply", ""), data.get("source", "unknown"))
         except requests.exceptions.Timeout:
-            return "[ERROR: TIMEOUT - Server tidak merespons dalam 120 detik]"
+            return ("[ERROR: TIMEOUT - Server tidak merespons dalam 120 detik]", "error")
         except requests.exceptions.ConnectionError:
-            return "[ERROR: CONNECTION - Tidak bisa terhubung ke server]"
+            return ("[ERROR: CONNECTION - Tidak bisa terhubung ke server]", "error")
         except Exception as e:
             if attempt < MAX_RETRIES and ("500" in str(e) or "429" in str(e)):
                 wait = 20 * (attempt + 1)
                 print(f"  {Color.YELLOW}⏳ Error: {str(e)[:60]}, retry {attempt+1}/{MAX_RETRIES} setelah {wait}s...{Color.END}")
                 time.sleep(wait)
                 continue
-            return f"[ERROR: {str(e)}]"
+            return (f"[ERROR: {str(e)}]", "error")
 
 
 def check_response(reply: str, must_contain: list, must_not: list) -> tuple:
@@ -108,7 +109,7 @@ def run_test_case(api_url: str, test_case: dict) -> dict:
         must_not = turn.get("response_must_not", [])
 
         # Kirim ke API
-        reply = send_chat(api_url, user_input, history)
+        reply, source = send_chat(api_url, user_input, history)
 
         # Cek error koneksi
         if reply.startswith("[ERROR"):
@@ -116,6 +117,7 @@ def run_test_case(api_url: str, test_case: dict) -> dict:
                 "turn": i + 1,
                 "input": user_input,
                 "reply": reply,
+                "source": source,
                 "passed": False,
                 "failures": [f"  ❌ {reply}"]
             })
@@ -131,6 +133,7 @@ def run_test_case(api_url: str, test_case: dict) -> dict:
             "turn": i + 1,
             "input": user_input,
             "reply": reply[:200] + "..." if len(reply) > 200 else reply,
+            "source": source,
             "passed": passed,
             "failures": failures
         })
@@ -158,8 +161,10 @@ def print_result(result: dict):
 
     for tr in result["turn_results"]:
         turn_status = "✅" if tr["passed"] else "❌"
+        source_badge = f"{Color.BOLD}{Color.CYAN}[{tr['source'].upper()}]{Color.END}" if tr['source'] == "gemini" else f"{Color.BOLD}{Color.GREEN}[{tr['source'].upper()}]{Color.END}"
+        
         print(f"  {Color.DIM}Turn {tr['turn']}:{Color.END} \"{tr['input']}\"")
-        print(f"  {Color.DIM}Reply:{Color.END} {tr['reply'][:150]}{'...' if len(tr['reply']) > 150 else ''}")
+        print(f"  {Color.DIM}Reply {source_badge}:{Color.END} {tr['reply'][:150]}{'...' if len(tr['reply']) > 150 else ''}")
         
         if not tr["passed"]:
             for f in tr["failures"]:
