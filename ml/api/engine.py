@@ -1,8 +1,8 @@
 import os
 import json
 import torch
-from transformers import BertTokenizerFast, BertForSequenceClassification
-from transformers import AutoTokenizer, AutoModelForTokenClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoModelForTokenClassification
 from huggingface_hub import hf_hub_download
 
 class ChatbotEngine:
@@ -10,15 +10,26 @@ class ChatbotEngine:
         print("Memuat model Intent & NER...")
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
-        # Load Intent Model dari Hugging Face Hub
+        # Load Intent Model dari Hugging Face Hub (XLM-RoBERTa)
         intent_path = "ZeroCG/pelesir-intent"
-        self.intent_tokenizer = BertTokenizerFast.from_pretrained(intent_path)
-        self.intent_model = BertForSequenceClassification.from_pretrained(intent_path).to(self.device)
+        self.intent_tokenizer = AutoTokenizer.from_pretrained(intent_path)
+        self.intent_model = AutoModelForSequenceClassification.from_pretrained(intent_path).to(self.device)
         self.intent_model.eval()
         # Ambil custom id2label.json menggunakan HF Hub downloader
         intent_label_file = hf_hub_download(repo_id=intent_path, filename="id2label.json")
         with open(intent_label_file, 'r') as f:
             self.intent_id2label = {int(k): v for k, v in json.load(f).items()}
+
+        # Load Temperature Scaling (Kalibrasi Confidence)
+        self.temperature = 1.0  # Default: tanpa kalibrasi
+        try:
+            calib_file = hf_hub_download(repo_id=intent_path, filename="calibration.json")
+            with open(calib_file, 'r') as f:
+                calib_data = json.load(f)
+                self.temperature = calib_data.get("temperature", 1.0)
+            print(f"Temperature Scaling loaded: T = {self.temperature:.4f}")
+        except Exception as e:
+            print(f"calibration.json tidak ditemukan, menggunakan T=1.0 (tanpa kalibrasi): {e}")
 
         # Load NER Model dari Hugging Face Hub
         ner_path = "ZeroCG/pelesir-ner"
@@ -34,8 +45,9 @@ class ChatbotEngine:
         inputs = self.intent_tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(self.device)
         with torch.no_grad():
             outputs = self.intent_model(**inputs)
-            # Hitung probabilitas dengan softmax
-            probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
+            # Bagi logits dengan Temperature sebelum softmax (Kalibrasi Confidence)
+            calibrated_logits = outputs.logits / self.temperature
+            probs = torch.nn.functional.softmax(calibrated_logits, dim=-1)
             confidence, pred_idx = torch.max(probs, dim=-1)
             
             pred_idx = pred_idx.item()
@@ -99,4 +111,4 @@ class ChatbotEngine:
             "intent": intent,
             "confidence": confidence,
             "entities": entities
-        }
+        }

@@ -1,0 +1,13060 @@
+[
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "SMB",
+      "II",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "PIM"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "religi",
+      "di",
+      "Palembang",
+      "yang",
+      "buka",
+      "24",
+      "jam"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "tempat",
+      "makan",
+      "nasi",
+      "padang",
+      "enak",
+      "di",
+      "sekitar",
+      "Monpera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "buka",
+      "siang"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "is",
+      "the",
+      "best",
+      "to",
+      "visit",
+      "Punti",
+      "Kayu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "Siguntang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Siguntang",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "Jakabaring",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Panduan",
+      "rute",
+      "ke",
+      "Al-Qur'an",
+      "Al-Akbar",
+      "untuk",
+      "besok",
+      "sore"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PTC",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "taman",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "ticket",
+      "to",
+      "Kampung",
+      "Kapitan",
+      "tonight",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "kuliner",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "sejarah",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "olahraga",
+      "yang",
+      "ada",
+      "kolam",
+      "renangnya",
+      "di",
+      "Palembang"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "SMB"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "Monpera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "tempat",
+      "makan",
+      "di",
+      "tepi",
+      "Sungai",
+      "Musi"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Kawah",
+      "Tengkurep",
+      "buka",
+      "jam",
+      "10"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "SMB",
+      "II",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "kuliner",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jembatan",
+      "Ampera",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Pulau",
+      "Kemaro",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "Ampera"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "SMB",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "pengen",
+      "makan",
+      "nasi",
+      "goreng",
+      "nusantara",
+      "nanti",
+      "malam"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Amanzi",
+      "Waterpark",
+      "ada",
+      "di",
+      "Jalan",
+      "Merdeka"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "Waterpark",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Fasilitas",
+      "Monpera",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Punti",
+      "Kayu",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kemaro",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Monpera",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Akses",
+      "jalan",
+      "ke",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "dari",
+      "sini",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tell",
+      "me",
+      "about",
+      "Ampera",
+      "Bridge"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kambang",
+      "Iwak",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Monpera",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "PTC",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "ticket",
+      "to",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "sejarah",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jembatan",
+      "Ampera",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "wisata",
+      "alam",
+      "Punti",
+      "Kayu",
+      "besok",
+      "pagi",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "pengen",
+      "ke",
+      "wisata",
+      "religi",
+      "di",
+      "daerah",
+      "Seberang",
+      "Ulu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "info",
+      "fasilitas",
+      "di",
+      "Bukit",
+      "Siguntang",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "edukasi",
+      "untuk",
+      "besok",
+      "siang"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "ada",
+      "di",
+      "Jalan",
+      "Merdeka"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "air",
+      "yang",
+      "buka",
+      "sore",
+      "hari",
+      "di",
+      "mana",
+      "?"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "Taman",
+      "Punti",
+      "Kayu",
+      "hari",
+      "Jumat",
+      "pagi"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "museum",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Angkot",
+      "ke",
+      "Punti",
+      "Kayu",
+      "dari",
+      "stasiun",
+      "Kertapati",
+      "ada",
+      "yang",
+      "langsung",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "PTC",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Fantasy",
+      "Island",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "religi",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Pulau",
+      "Kemaro",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "tempat",
+      "ngopi",
+      "dengan",
+      "pemandangan",
+      "bagus",
+      "di",
+      "sekitar",
+      "sini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "Punti",
+      "Kayu",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "kuliner",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "Waterpark",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Find",
+      "me",
+      "a",
+      "good",
+      "culinary",
+      "spot",
+      "near",
+      "Kemaro",
+      "Island"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Ampera",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Kapitan",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "Museum",
+      "Sriwijaya",
+      "ada",
+      "di",
+      "Kawasan",
+      "Seberang",
+      "Ulu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jembatan",
+      "Ampera",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "BKB",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "KI",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "PIM",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Monpera",
+      "ada",
+      "di",
+      "Kertapati"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "tempat",
+      "ngopi",
+      "lokal",
+      "di",
+      "daerah",
+      "Seberang",
+      "Ilir"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tell",
+      "me",
+      "about",
+      "Grand",
+      "Mosque"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Punti",
+      "Kayu",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Di",
+      "mana",
+      "letak",
+      "tempat",
+      "makan",
+      "bakso",
+      "rudal",
+      "terdekat",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Fasilitas",
+      "Punti",
+      "Kayu",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "Siguntang"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "ke",
+      "PTC"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "alam",
+      "yang",
+      "tiketnya",
+      "gratis",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "BKB",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "belanja",
+      "oleh-oleh",
+      "khas",
+      "dengan",
+      "harga",
+      "pas"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "tempat",
+      "makan",
+      "ayam",
+      "cabe",
+      "ijo",
+      "di",
+      "sini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Amanzi",
+      "Waterpark",
+      "ada",
+      "di",
+      "Seberang",
+      "Ilir"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "Rp",
+      "50.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "Waterpark",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kemaro",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PIM",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "PTC",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "ongkos",
+      "ke",
+      "Jakabaring",
+      "kalau",
+      "budget",
+      "cuma",
+      "50",
+      "ribu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "ticket",
+      "to",
+      "Kambang",
+      "Iwak",
+      "Park",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "BKB",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "Ampera",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "SMB",
+      "II",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "tempat",
+      "makan",
+      "pempek",
+      "murah",
+      "di",
+      "dekat",
+      "bandara",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "religi",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "buka",
+      "jam",
+      "8"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Jakabaring",
+      "Sport",
+      "City",
+      "ada",
+      "di",
+      "Jalan",
+      "Merdeka"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "tunjukkan",
+      "arah",
+      "ke",
+      "Taman",
+      "Purbakala",
+      "Kerajaan",
+      "Sriwijaya",
+      "dari",
+      "bandara",
+      "SMB",
+      "II"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Kambang",
+      "Iwak",
+      "ada",
+      "di",
+      "Ilir",
+      "Barat"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "BKB",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Siguntang",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "jalan-jalan",
+      "sore",
+      "ke",
+      "Kampung",
+      "Kapitan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-TIME",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "BKB",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "makan",
+      "siang",
+      "yang",
+      "enak",
+      "di",
+      "dekat",
+      "Museum",
+      "SMB",
+      "II"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kemaro",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "biaya",
+      "masuk",
+      "taman",
+      "air",
+      "OPI",
+      "Water",
+      "Fun",
+      "hari",
+      "Minggu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "bayar",
+      "berapa",
+      "sih",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Siguntang",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "SMB",
+      "II",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "taman",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "I",
+      "want",
+      "to",
+      "eat",
+      "pempek",
+      "near",
+      "Palembang",
+      "Grand",
+      "Mosque"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "Rp",
+      "50.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "PTC"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "rekomendasi",
+      "wisata",
+      "alam",
+      "yang",
+      "buka",
+      "pagi",
+      "hari",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "sejarah",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tarif",
+      "masuk",
+      "kolam",
+      "renang",
+      "saat",
+      "weekend",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Kawah",
+      "Tengkurep",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "religi",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "KI",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "budaya",
+      "gratis",
+      "yang",
+      "bisa",
+      "dikunjungi",
+      "nanti",
+      "sore"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Ampera",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "KI",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "ada",
+      "wisata",
+      "edukasi",
+      "yang",
+      "buka",
+      "hari",
+      "Selasa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Fantasy",
+      "Island",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "pengen",
+      "ke",
+      "wisata",
+      "alam",
+      "yang",
+      "HTM",
+      "nya",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PIM",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "kulineran",
+      "di",
+      "Kawasan",
+      "16",
+      "Ilir",
+      "siapkan",
+      "budget",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Where",
+      "is",
+      "Ampera",
+      "Bridge",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "LRT",
+      "ke",
+      "stasiun",
+      "Bumi",
+      "Sriwijaya",
+      "berapa",
+      "harganya",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kambang",
+      "Iwak",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "ke",
+      "Al-Qur'an",
+      "Al-Akbar",
+      "berapa",
+      "rupiah",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Rute",
+      "jalan",
+      "ke",
+      "Kampung",
+      "Kapitan",
+      "dari",
+      "Jembatan",
+      "Ampera"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "ongkos",
+      "LRT",
+      "ke",
+      "stasiun",
+      "Ampera",
+      "sekarang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "museum",
+      "Balaputradewa",
+      "buka",
+      "sampai",
+      "sore",
+      "dengan",
+      "tiket",
+      "gratis",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-TIME",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Monpera",
+      "buka",
+      "malam"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "sejarah",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "pariwisata",
+      "alam",
+      "yang",
+      "bagus",
+      "buat",
+      "besok",
+      "pagi"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "Kemaro"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "alam",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "jual",
+      "pempek",
+      "asli",
+      "di",
+      "Kampung",
+      "Kapitan",
+      "Kawasan",
+      "7",
+      "Ulu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "diskon",
+      "pelajar",
+      "untuk",
+      "masuk",
+      "Monpera",
+      "hari",
+      "ini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "ada",
+      "di",
+      "Seberang",
+      "Ulu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Pulau",
+      "Kemaro",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Bukit",
+      "Siguntang",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "itu",
+      "gratis",
+      "atau",
+      "bayar",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-PRICE",
+      "O",
+      "B-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "religi",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "buka",
+      "hari",
+      "Minggu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "sejarah",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Kapitan",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jembatan",
+      "Ampera",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "KI",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Kasih",
+      "rekomendasi",
+      "hidden",
+      "gem",
+      "di",
+      "sekitar",
+      "stasiun",
+      "LRT"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "buka",
+      "siang"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "Jakabaring",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Does",
+      "Punti",
+      "Kayu",
+      "Park",
+      "have",
+      "expensive",
+      "tickets",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "masuk",
+      "ke",
+      "Bukit",
+      "Siguntang",
+      "sekarang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "ada",
+      "diskon",
+      "tiket",
+      "ke",
+      "Al-Qur'an",
+      "Al-Akbar",
+      "besok",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-PRICE",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Jadwal",
+      "buka",
+      "Pulau",
+      "Kemaro",
+      "pas",
+      "hari",
+      "libur",
+      "nasional"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Jalan",
+      "ke",
+      "Bukit",
+      "Siguntang",
+      "lewat",
+      "Ilir",
+      "Barat",
+      "bisa",
+      "nggak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "berapa",
+      "biasanya",
+      "Monpera",
+      "buka",
+      "di",
+      "hari",
+      "biasa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "KI"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Bukit",
+      "Siguntang",
+      "berapa",
+      "harganya",
+      "kalau",
+      "akhir",
+      "pekan",
+      "?"
+    ],
+    "tags": [
+      "B-PRICE",
+      "I-PRICE",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-PRICE",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "SMB",
+      "II",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Is",
+      "there",
+      "any",
+      "historical",
+      "places",
+      "open",
+      "on",
+      "Monday",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Ampera",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Where",
+      "can",
+      "I",
+      "find",
+      "historical",
+      "places",
+      "near",
+      "LRT",
+      "station",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Kalau",
+      "mau",
+      "ke",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "harus",
+      "lewat",
+      "Jakabaring",
+      "ya",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "SMB"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "Ampera",
+      "Bridge",
+      "light",
+      "up",
+      "at",
+      "night",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "Kemaro",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "carikan",
+      "wisata",
+      "edukasi",
+      "yang",
+      "murah",
+      "buat",
+      "anak-anak"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "buka",
+      "weekend"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "karcis",
+      "Museum",
+      "Sriwijaya",
+      "di",
+      "bawah",
+      "50",
+      "ribu",
+      "kan",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "budaya",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Agung",
+      "itu",
+      "di",
+      "bawah",
+      "50rb",
+      "nggak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "religi",
+      "yang",
+      "tidak",
+      "ada",
+      "tiket",
+      "masuknya"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "alam",
+      "yang",
+      "sejuk",
+      "di",
+      "Palembang",
+      "selain",
+      "Punti",
+      "Kayu"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Siguntang",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "mencari",
+      "wisata",
+      "keluarga",
+      "tiket",
+      "masuk",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "PTC",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "taman",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "sejarah",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "museum",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "di",
+      "Jalan",
+      "Sudirman",
+      "Palembang",
+      "yang",
+      "bagus",
+      "apa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "olahraga",
+      "selain",
+      "di",
+      "daerah",
+      "Seberang",
+      "Ulu"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "buka",
+      "sore"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "KI",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "budget",
+      "ke",
+      "Monpera",
+      "kalau",
+      "hari",
+      "biasa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Apa",
+      "ada",
+      "wisata",
+      "olahraga",
+      "gratis",
+      "di",
+      "dekat",
+      "sini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "museum",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Kapitan",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "ke",
+      "Amanzi"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Fantasy",
+      "Island",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "makan",
+      "pempek",
+      "murah",
+      "dekat",
+      "stasiun",
+      "LRT"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "B-PRICE",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "alam",
+      "di",
+      "Palembang",
+      "buat",
+      "healing",
+      "besok",
+      "sore"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kawah",
+      "Tengkurep",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Bukit",
+      "Siguntang",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "Kemaro",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "Siguntang"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "LRT",
+      "kalau",
+      "malam",
+      "hari",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "BKB",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Daftar",
+      "pantai",
+      "dengan",
+      "biaya",
+      "masuk",
+      "terjangkau"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Kawah",
+      "Tengkurep",
+      "buka",
+      "weekend"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "sejarah",
+      "di",
+      "pusat",
+      "kota",
+      "yang",
+      "bisa",
+      "jalan",
+      "kaki"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "masuk",
+      "ke",
+      "Monpera",
+      "itu",
+      "gratis",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "B-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "sejarah",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "SMB",
+      "II",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "Masjid",
+      "Agung",
+      "buka",
+      "24",
+      "jam",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "religi",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "Punti",
+      "Kayu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Kambang",
+      "Iwak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "berapa",
+      "pertunjukan",
+      "air",
+      "mancur",
+      "di",
+      "Kambang",
+      "Iwak",
+      "mulai",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "arahkan",
+      "ke",
+      "tempat",
+      "makan",
+      "nasi",
+      "goreng",
+      "nusantara"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY"
+    ]
+  },
+  {
+    "tokens": [
+      "Jakabaring",
+      "Sport",
+      "City",
+      "ada",
+      "di",
+      "dekat",
+      "sungai",
+      "Musi"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "KI",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Punti",
+      "Kayu",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Show",
+      "me",
+      "some",
+      "nature",
+      "parks",
+      "that",
+      "open",
+      "early",
+      "morning"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kemaro",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "karcis",
+      "masuk",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "saat",
+      "weekend"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "tempat",
+      "makan",
+      "nasi",
+      "goreng",
+      "di",
+      "sekitar",
+      "stasiun",
+      "LRT"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "operasional",
+      "Pulau",
+      "Kemaro",
+      "hari",
+      "Minggu",
+      "jam",
+      "berapa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "Punti",
+      "Kayu",
+      "Park",
+      "open",
+      "tomorrow",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Show",
+      "me",
+      "the",
+      "way",
+      "to",
+      "Al-Qur'an",
+      "Al-Akbar",
+      "from",
+      "the",
+      "airport"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Kemaro",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Are",
+      "there",
+      "any",
+      "cheap",
+      "food",
+      "stalls",
+      "near",
+      "Jakabaring",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "promo",
+      "tiket",
+      "murah",
+      "nggak",
+      "buat",
+      "masuk",
+      "Punti",
+      "Kayu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "wisata",
+      "edukasi",
+      "dengan",
+      "tiket",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kawah",
+      "Tengkurep",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Bukit",
+      "Siguntang",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "Ampera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "buka",
+      "hari",
+      "Sabtu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Are",
+      "there",
+      "any",
+      "nature",
+      "parks",
+      "open",
+      "at",
+      "night",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "SMB",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Fasilitas",
+      "PIM",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "wisata",
+      "budaya",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kambang",
+      "Iwak",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tarif",
+      "LRT",
+      "dari",
+      "stasiun",
+      "bandara",
+      "ke",
+      "Ampera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kawah",
+      "Tengkurep",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "ada",
+      "di",
+      "dekat",
+      "sungai",
+      "Musi"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "ticket",
+      "to",
+      "Ampera",
+      "Bridge",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "to",
+      "pay",
+      "for",
+      "Ampera",
+      "Bridge",
+      "at",
+      "night",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "tempat",
+      "ngopi",
+      "aesthetic",
+      "yang",
+      "buka",
+      "sampai",
+      "malam"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "KI",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "PTC",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Bukit",
+      "Siguntang",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "taman",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tell",
+      "me",
+      "about",
+      "Kemaro",
+      "Island"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "ticket",
+      "to",
+      "Grand",
+      "Mosque",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Fantasy",
+      "Island",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "masuk",
+      "wisata",
+      "sejarah",
+      "ini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "alam",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "PTC",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "Kemaro"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "Waterpark",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "ke",
+      "Museum",
+      "SMB",
+      "II",
+      "hari",
+      "ini",
+      "berapa",
+      "ya",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "sejarah",
+      "yang",
+      "gratis",
+      "di",
+      "Palembang"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-PRICE",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Fasilitas",
+      "PTC",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Monpera",
+      "ada",
+      "di",
+      "pusat",
+      "kota"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kambang",
+      "Iwak",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Pulau",
+      "Kemaro",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "karcis",
+      "ke",
+      "Bukit",
+      "Siguntang",
+      "saat",
+      "ini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "wisata",
+      "religi",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Pulau",
+      "Kemaro",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Find",
+      "me",
+      "a",
+      "cheap",
+      "nature",
+      "destination",
+      "for",
+      "the",
+      "weekend"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "buka",
+      "malam"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "Amanzi",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jakabaring",
+      "Sport",
+      "City",
+      "ada",
+      "di",
+      "pusat",
+      "kota"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "tempat",
+      "kuliner",
+      "murah",
+      "di",
+      "Palembang",
+      "saat",
+      "malam",
+      "hari"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "B-PRICE",
+      "O",
+      "B-LOCATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "taman",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Ampera",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "kuliner",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "Rp",
+      "50.000"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Are",
+      "there",
+      "any",
+      "cheap",
+      "coffee",
+      "shops",
+      "near",
+      "the",
+      "airport",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "budaya",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "KI"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Amanzi",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "Jakabaring"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "food",
+      "in",
+      "Kampung",
+      "Kapitan",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tell",
+      "me",
+      "about",
+      "Benteng",
+      "Kuto",
+      "Besak"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "ingin",
+      "makan",
+      "nasi",
+      "goreng",
+      "di",
+      "daerah",
+      "Ilir",
+      "Barat"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "museum",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Monpera",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Amanzi",
+      "Waterpark",
+      "buka",
+      "malam"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Show",
+      "me",
+      "cheap",
+      "historical",
+      "tours",
+      "around",
+      "Ilir",
+      "area"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Jembatan",
+      "Ampera",
+      "buka",
+      "sore"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "PIM",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "Kemaro",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "SMB",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "Jakabaring",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "SMB",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "PIM"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "butuh",
+      "wisata",
+      "alam",
+      "yang",
+      "buka",
+      "24",
+      "jam"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Biaya",
+      "masuk",
+      "museum",
+      "di",
+      "Kawasan",
+      "Seberang",
+      "Ulu",
+      "berapa",
+      "ya",
+      "?"
+    ],
+    "tags": [
+      "B-PRICE",
+      "I-PRICE",
+      "B-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Monpera",
+      "buka",
+      "hari",
+      "Sabtu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "taman",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "BKB",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "alam",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "PTC"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "the",
+      "cinema",
+      "at",
+      "PIM",
+      "open",
+      "tomorrow",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Monpera",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "ke",
+      "Jakabaring"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Kawah",
+      "Tengkurep",
+      "buka",
+      "sore"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PTC",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "SMB",
+      "II"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "BKB",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Fantasy",
+      "Island",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Punti",
+      "Kayu",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Monpera",
+      "buka",
+      "sore"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Give",
+      "me",
+      "cheap",
+      "culinary",
+      "spots",
+      "near",
+      "Jakabaring",
+      "Sport",
+      "City"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Fasilitas",
+      "SMB",
+      "II",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "BKB"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Ampera",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "is",
+      "the",
+      "ticket",
+      "to",
+      "Kemaro",
+      "Island",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Fantasy",
+      "Island",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "kuliner",
+      "malam",
+      "di",
+      "Palembang",
+      "yang",
+      "murah"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-TIME",
+      "O",
+      "B-LOCATION",
+      "O",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "edukasi",
+      "murah",
+      "buat",
+      "hari",
+      "Minggu"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Where",
+      "is",
+      "the",
+      "best",
+      "coffee",
+      "shop",
+      "near",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Ampera",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Siguntang",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Fasilitas",
+      "Kemaro",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "taman",
+      "hiburan",
+      "yang",
+      "lokasinya",
+      "di",
+      "daerah",
+      "Ilir",
+      "Timur"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "Jakabaring",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "alam",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "berapa",
+      "biasanya",
+      "Kambang",
+      "Iwak",
+      "rame",
+      "pas",
+      "weekend",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "SMB",
+      "II",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Fantasy",
+      "Island",
+      "ada",
+      "di",
+      "Seberang",
+      "Ulu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "Pulau",
+      "Kemaro",
+      "buka",
+      "untuk",
+      "umum",
+      "hari",
+      "ini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "restoran",
+      "yang",
+      "jual",
+      "bakso",
+      "rudal",
+      "nanti",
+      "sore"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "ke",
+      "SMB",
+      "II"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "Monpera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "SMB",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "olahraga",
+      "yang",
+      "buka",
+      "pagi",
+      "ini",
+      "di",
+      "Palembang"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "tempat",
+      "wisata",
+      "religi",
+      "sekitar",
+      "sini"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PIM",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "carikan",
+      "wisata",
+      "sejarah",
+      "di",
+      "sekitar",
+      "Jembatan",
+      "Ampera"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Monpera",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "Waterpark",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "BKB",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "to",
+      "get",
+      "to",
+      "Al-Qur'an",
+      "Al-Akbar",
+      "this",
+      "afternoon",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "jauh",
+      "Monpera",
+      "dari",
+      "Kawasan",
+      "16",
+      "Ilir",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "info",
+      "harga",
+      "tiket",
+      "Museum",
+      "SMB",
+      "II",
+      "buat",
+      "besok",
+      "pagi"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jembatan",
+      "Ampera",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Siguntang",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harganya",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Show",
+      "me",
+      "historical",
+      "museums",
+      "that",
+      "are",
+      "free",
+      "to",
+      "enter"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Punti",
+      "Kayu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tarif",
+      "masuk",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "itu",
+      "gratis",
+      "atau",
+      "bayar",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-PRICE",
+      "O",
+      "B-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "is",
+      "the",
+      "entrance",
+      "fee",
+      "for",
+      "Kemaro",
+      "Island",
+      "today",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Is",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "open",
+      "at",
+      "night",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "taman",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Monpera",
+      "Rp",
+      "50.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "Monpera",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "BKB"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Makan",
+      "mie",
+      "ayam",
+      "paling",
+      "enak",
+      "di",
+      "daerah",
+      "Seberang",
+      "Ulu",
+      "di",
+      "mana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Kambang",
+      "Iwak",
+      "ada",
+      "di",
+      "Jalan",
+      "Merdeka"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "tempat",
+      "makan",
+      "bakso",
+      "murah",
+      "di",
+      "sekitar",
+      "Kambang",
+      "Iwak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "budaya",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Monpera",
+      "buka",
+      "hari",
+      "Minggu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Punti",
+      "Kayu",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "buka",
+      "24",
+      "jam"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "SMB",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "buka",
+      "jam",
+      "10"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Jadwal",
+      "buka",
+      "Museum",
+      "SMB",
+      "II",
+      "selama",
+      "bulan",
+      "puasa"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "budaya",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "Ampera",
+      "Bridge",
+      "open",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Punti",
+      "Kayu",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Kapitan",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "ada",
+      "di",
+      "dekat",
+      "sungai",
+      "Musi"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Fantasy",
+      "Island",
+      "ada",
+      "di",
+      "Ilir",
+      "Barat"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "religi",
+      "di",
+      "Palembang",
+      "yang",
+      "bisa",
+      "jalan",
+      "kaki"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "carikan",
+      "wisata",
+      "religi",
+      "yang",
+      "tidak",
+      "bayar"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "Kemaro",
+      "Island",
+      "open",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "the",
+      "historical",
+      "museum",
+      "open",
+      "on",
+      "weekends",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "wisata",
+      "religi",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Siguntang",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "SMB",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Lokasi",
+      "Kambang",
+      "Iwak",
+      "itu",
+      "di",
+      "Jalan",
+      "Tasik",
+      "bukan",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Monpera",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Is",
+      "there",
+      "any",
+      "historical",
+      "museum",
+      "near",
+      "Jakabaring",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "operasional",
+      "Bukit",
+      "Siguntang",
+      "itu",
+      "sampai",
+      "jam",
+      "berapa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "Museum",
+      "Sriwijaya",
+      "tutup",
+      "jam",
+      "5",
+      "sore",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "SMB",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PTC",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "PTC",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "taman",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Find",
+      "me",
+      "a",
+      "legendary",
+      "restaurant",
+      "around",
+      "Ampera",
+      "Bridge"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Siguntang",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "SMB",
+      "II",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "religi",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Kawah",
+      "Tengkurep",
+      "ada",
+      "di",
+      "Seberang",
+      "Ulu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Punti",
+      "Kayu",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "Grand",
+      "Mosque",
+      "open",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "berapa",
+      "biasanya",
+      "Kambang",
+      "Iwak",
+      "tutup",
+      "hari",
+      "Minggu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Lokasi",
+      "wisata",
+      "budaya",
+      "terdekat",
+      "dari",
+      "stasiun",
+      "LRT"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "SMB",
+      "II",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "KI",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "Punti",
+      "Kayu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Monpera",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Monpera",
+      "ada",
+      "di",
+      "dekat",
+      "sungai",
+      "Musi"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Kapitan",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "to",
+      "pay",
+      "for",
+      "parking",
+      "at",
+      "Jakabaring",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jadwal",
+      "operasional",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "hari",
+      "ini"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "SMB",
+      "II",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "taman",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "ke",
+      "sana",
+      "di",
+      "bawah",
+      "20",
+      "ribu",
+      "kan",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "Jakabaring"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "sewa",
+      "perahu",
+      "di",
+      "Sungai",
+      "Musi",
+      "sekitar",
+      "150",
+      "ribu",
+      "per",
+      "jam"
+    ],
+    "tags": [
+      "B-PRICE",
+      "I-PRICE",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "kapal",
+      "ke",
+      "Pulau",
+      "Kemaro",
+      "dari",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "kena",
+      "biaya",
+      "berapa",
+      "?"
+    ],
+    "tags": [
+      "B-PRICE",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jembatan",
+      "Ampera",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "budget",
+      "makan",
+      "di",
+      "Kawasan",
+      "7",
+      "Ulu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "Punti",
+      "Kayu",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "Amanzi",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Bukit",
+      "Siguntang",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "I",
+      "want",
+      "to",
+      "visit",
+      "a",
+      "cheap",
+      "religious",
+      "tourism",
+      "spot"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "info",
+      "wisata",
+      "religi",
+      "di",
+      "Palembang",
+      "yang",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "O",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "makan",
+      "mie",
+      "ayam",
+      "murah",
+      "di",
+      "sekitar",
+      "sini"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Bukit",
+      "Siguntang",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kemaro",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "ada",
+      "wisata",
+      "edukasi",
+      "yang",
+      "buka",
+      "hari",
+      "Senin",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "cari",
+      "tempat",
+      "nongkrong",
+      "di",
+      "sekitar",
+      "Kawasan",
+      "7",
+      "Ulu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "Waterpark",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Siguntang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "SMB",
+      "II"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "KI",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "SMB",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "Amanzi",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Find",
+      "me",
+      "a",
+      "nature",
+      "park",
+      "that",
+      "is",
+      "free",
+      "of",
+      "charge"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "nongkrong",
+      "malam",
+      "hari",
+      "di",
+      "pusat",
+      "kota"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Jembatan",
+      "Ampera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "taman",
+      "hiburan",
+      "murah",
+      "di",
+      "Palembang",
+      "buat",
+      "besok",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "B-LOCATION",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Di",
+      "sekitar",
+      "Jembatan",
+      "Ampera",
+      "ada",
+      "parkiran",
+      "luas",
+      "tidak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Is",
+      "Kemaro",
+      "Island",
+      "accessible",
+      "by",
+      "LRT",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "sejarah",
+      "yang",
+      "buka",
+      "jam",
+      "8",
+      "pagi",
+      "dengan",
+      "biaya",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "I-TIME",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "Siguntang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "budaya",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "I",
+      "need",
+      "nature",
+      "destinations",
+      "that",
+      "are",
+      "free",
+      "of",
+      "charge"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "Pulau",
+      "Kemaro",
+      "buka",
+      "besok",
+      "pagi",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "BKB",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Monpera",
+      "Rp",
+      "50.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Punti",
+      "Kayu",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "budaya",
+      "di",
+      "daerah",
+      "Seberang",
+      "Ilir",
+      "apa",
+      "saja",
+      "?"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tarif",
+      "masuk",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "hari",
+      "Senin",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "tempat",
+      "wisata",
+      "religi",
+      "sekitar",
+      "Jakabaring",
+      "Sport",
+      "City"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "KI",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "I",
+      "am",
+      "looking",
+      "for",
+      "cheap",
+      "culinary",
+      "tourism",
+      "in",
+      "Palembang"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "Waterpark",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Amanzi",
+      "Waterpark",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "How",
+      "much",
+      "does",
+      "it",
+      "cost",
+      "to",
+      "enter",
+      "Monpera",
+      "today",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Kawah",
+      "Tengkurep",
+      "ada",
+      "di",
+      "Jalan",
+      "Merdeka"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "tempat",
+      "kuliner",
+      "dengan",
+      "harga",
+      "murah",
+      "meriah"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "tempat",
+      "wisata",
+      "budaya",
+      "yang",
+      "HTM-nya",
+      "murah"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Where",
+      "is",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "tempat",
+      "beli",
+      "pempek",
+      "murah",
+      "di",
+      "dekat",
+      "Jembatan",
+      "Ampera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "wisata",
+      "budaya",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "Punti",
+      "Kayu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "nggak",
+      "wisata",
+      "sejarah",
+      "yang",
+      "dekat",
+      "dari",
+      "sini",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "B-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Fantasy",
+      "Island",
+      "Rp",
+      "50.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "I",
+      "want",
+      "to",
+      "find",
+      "nature",
+      "tourism",
+      "near",
+      "Ampera",
+      "Bridge"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Ampera",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "cari",
+      "hotel",
+      "dekat",
+      "Benteng",
+      "Kuto",
+      "Besak",
+      "di",
+      "pusat",
+      "kota"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "BKB",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Kapitan",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kawah",
+      "Tengkurep",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Punti",
+      "Kayu",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "alam",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Saya",
+      "mau",
+      "wisata",
+      "alam",
+      "nanti",
+      "malam",
+      "bareng",
+      "keluarga"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "taman",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "museum",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "KI",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "Taman",
+      "Kambang",
+      "Iwak",
+      "buka",
+      "nanti",
+      "malam",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PIM",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "olahraga",
+      "selain",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Punti",
+      "Kayu",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Monpera",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Pulau",
+      "Kemaro",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "SMB",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "PTC",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jembatan",
+      "Ampera",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "religi",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Bukit",
+      "Siguntang",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "religi",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Ampera",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "operasional",
+      "Monpera",
+      "kalau",
+      "hari",
+      "libur",
+      "itu",
+      "sama",
+      "nggak",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "Siguntang",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "Amanzi"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "masuk",
+      "Museum",
+      "SMB",
+      "II",
+      "saat",
+      "weekend",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Fasilitas",
+      "SMB",
+      "apa",
+      "aja",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "wisata",
+      "kuliner",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "SMB",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "cari",
+      "wisata",
+      "kuliner",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tolong",
+      "carikan",
+      "tempat",
+      "wisata",
+      "religi",
+      "di",
+      "sekitar",
+      "stasiun",
+      "DJKA"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "taman",
+      "hiburan",
+      "itu",
+      "tarifnya",
+      "50",
+      "ribu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "Monpera"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kambang",
+      "Iwak",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kambang",
+      "Iwak",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "KI",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "PTC",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "PIM",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Does",
+      "Balaputra",
+      "Dewa",
+      "Museum",
+      "open",
+      "on",
+      "Sunday",
+      "morning",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "ke",
+      "Punti",
+      "Kayu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "ada",
+      "tiket",
+      "promo",
+      "15",
+      "ribu",
+      "untuk",
+      "wisata",
+      "di",
+      "Kertapati",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Daftar",
+      "pusat",
+      "perbelanjaan",
+      "di",
+      "Ilir",
+      "Barat",
+      "yang",
+      "buka",
+      "siang",
+      "ini"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "20",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "Punti",
+      "Kayu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "Ampera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kawah",
+      "Tengkurep",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Hutan",
+      "Wisata",
+      "Punti",
+      "Kayu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "Amanzi",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "BKB",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jembatan",
+      "Ampera",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "sejarah",
+      "yang",
+      "ada",
+      "pemandu",
+      "wisatanya"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "taman",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Rute",
+      "menuju",
+      "Pulau",
+      "Kemaro",
+      "dari",
+      "Ilir",
+      "Timur",
+      "bagaimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kambang",
+      "Iwak",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Amanzi",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Find",
+      "me",
+      "a",
+      "cheap",
+      "coffee",
+      "shop",
+      "around",
+      "Kemaro",
+      "Island"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "Punti",
+      "Kayu",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "KI",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Bukit",
+      "Siguntang",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "PIM",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Siguntang",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Apakah",
+      "ada",
+      "taman",
+      "kota",
+      "gratis",
+      "buat",
+      "nongkrong",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-PRICE",
+      "O",
+      "B-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kemaro",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Info",
+      "tentang",
+      "Monpera"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "Kemaro",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Kapitan",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "museum",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Ampera",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "alam",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "PIM",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "Monpera",
+      "gimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Amanzi",
+      "Waterpark",
+      "buka",
+      "hari",
+      "Minggu"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kemaro",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "sejarah",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tell",
+      "me",
+      "about",
+      "Kambang",
+      "Iwak",
+      "Park"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Amanzi",
+      "Waterpark",
+      "buka",
+      "jam",
+      "10"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "restoran",
+      "padang",
+      "yang",
+      "harganya",
+      "murah",
+      "di",
+      "Palembang"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-PRICE",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Jam",
+      "buka",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "hari",
+      "Sabtu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "wisata",
+      "alam",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "sejarah",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Fantasy",
+      "Island",
+      "ada",
+      "di",
+      "Jalan",
+      "Merdeka"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kawah",
+      "Tengkurep",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Pulau",
+      "Kemaro",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kawah",
+      "Tengkurep",
+      "gratis"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "SMB",
+      "II",
+      "Rp",
+      "5.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "Jakabaring",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "BKB",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "ke",
+      "KI"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "PIM",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "HTM",
+      "Bukit",
+      "Siguntang",
+      "itu",
+      "sekitar",
+      "10",
+      "ribu",
+      "bukan",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-PRICE",
+      "I-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "air",
+      "di",
+      "Palembang",
+      "yang",
+      "buka",
+      "hari",
+      "Minggu"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "the",
+      "Al-Qur'an",
+      "Al-Akbar",
+      "close",
+      "on",
+      "weekends",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Ceritakan",
+      "tentang",
+      "Amanzi"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "harga",
+      "tiket",
+      "PIM",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "budaya",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Jembatan",
+      "Ampera",
+      "buka",
+      "jam",
+      "8"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "tempat",
+      "ngopi",
+      "malam",
+      "ini",
+      "di",
+      "sekitar",
+      "sini"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-TIME",
+      "I-TIME",
+      "O",
+      "O",
+      "B-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kemaro",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "beli",
+      "oleh-oleh",
+      "makanan",
+      "khas",
+      "di",
+      "sekitar",
+      "Ampera"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Masjid",
+      "Agung",
+      "Palembang",
+      "50",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Find",
+      "me",
+      "a",
+      "good",
+      "place",
+      "to",
+      "eat",
+      "around",
+      "Punti",
+      "Kayu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "di",
+      "bawah",
+      "20rb",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Adakah",
+      "pulau",
+      "yang",
+      "bisa",
+      "dikunjungi",
+      "secara",
+      "gratis",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Kawah",
+      "Tengkurep",
+      "ada",
+      "di",
+      "dekat",
+      "sungai",
+      "Musi"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "SMB",
+      "II",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kampung",
+      "Kapitan",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Show",
+      "me",
+      "the",
+      "cheapest",
+      "culinary",
+      "tourism",
+      "in",
+      "the",
+      "city",
+      "center"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "What",
+      "time",
+      "does",
+      "Siguntang",
+      "Hill",
+      "close",
+      "today",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "karcis",
+      "Taman",
+      "Kambang",
+      "Iwak",
+      "berapa",
+      "ya",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Where",
+      "is",
+      "the",
+      "nearest",
+      "historical",
+      "museum",
+      "from",
+      "here",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Does",
+      "the",
+      "LRT",
+      "operate",
+      "until",
+      "midnight",
+      "today",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-TIME",
+      "B-TIME",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "kuliner",
+      "di",
+      "sekitar",
+      "Jakabaring",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Is",
+      "there",
+      "any",
+      "cheap",
+      "nature",
+      "tourism",
+      "around",
+      "here",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-PRICE",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kambang",
+      "Iwak",
+      "lima",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Fantasy",
+      "Island",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "museum",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Show",
+      "me",
+      "the",
+      "route",
+      "to",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "from",
+      "here"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "KI",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Rekomendasi",
+      "wisata",
+      "religi",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Al",
+      "Quran",
+      "Al",
+      "Akbar",
+      "buka",
+      "pagi"
+    ],
+    "tags": [
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Pulau",
+      "Kemaro",
+      "Rp",
+      "15.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kambang",
+      "Iwak",
+      "Rp",
+      "25.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "jalan-jalan",
+      "ke",
+      "museum",
+      "tanpa",
+      "biaya"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "museum",
+      "di",
+      "Palembang",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Pulau",
+      "Kemaro",
+      "Rp",
+      "10.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Fantasy",
+      "Island",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "PTC",
+      "10",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Arab",
+      "Al-Munawar",
+      "dua",
+      "puluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Kasih",
+      "tau",
+      "tempat",
+      "beli",
+      "pempek",
+      "di",
+      "dekat",
+      "LRT",
+      "Bumi",
+      "Sriwijaya"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "100",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "Siguntang",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Berapa",
+      "tiket",
+      "Ampera",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "masuk",
+      "Museum",
+      "Balaputra",
+      "Dewa",
+      "buat",
+      "pelajar",
+      "berapa",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Are",
+      "there",
+      "any",
+      "legendary",
+      "padang",
+      "restaurants",
+      "around",
+      "here",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "B-LOCATION",
+      "I-LOCATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Dimana",
+      "lokasi",
+      "PIM",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cari",
+      "wisata",
+      "religi",
+      "di",
+      "dekat",
+      "pusat",
+      "kota",
+      "Palembang"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "B-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION",
+      "I-LOCATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Mau",
+      "ke",
+      "Siguntang"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION"
+    ]
+  },
+  {
+    "tokens": [
+      "Harganya",
+      "Rp",
+      "20.000"
+    ],
+    "tags": [
+      "O",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Tempat",
+      "wisata",
+      "kuliner",
+      "dong"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Pulau",
+      "Kemaro",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Ada",
+      "wisata",
+      "alam",
+      "yang",
+      "bagus",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "masuk",
+      "Masjid",
+      "Cheng",
+      "Ho",
+      "itu",
+      "gratis",
+      "kan",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-PRICE",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jembatan",
+      "Ampera",
+      "sepuluh",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Alamat",
+      "SMB",
+      "dimana",
+      "?"
+    ],
+    "tags": [
+      "O",
+      "B-DESTINATION",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Wisata",
+      "air",
+      "yang",
+      "buka",
+      "jam",
+      "10",
+      "pagi",
+      "di",
+      "mana",
+      "ya",
+      "?"
+    ],
+    "tags": [
+      "B-CATEGORY",
+      "I-CATEGORY",
+      "O",
+      "O",
+      "B-TIME",
+      "I-TIME",
+      "I-TIME",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "tokens": [
+      "Cara",
+      "ke",
+      "Kampung",
+      "Kapitan",
+      "dari",
+      "bandara",
+      "sore",
+      "ini"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "O",
+      "B-LOCATION",
+      "B-TIME",
+      "I-TIME"
+    ]
+  },
+  {
+    "tokens": [
+      "Tiket",
+      "masuk",
+      "Kampung",
+      "Kapitan",
+      "15",
+      "ribuan"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Kambang",
+      "Iwak",
+      "30",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  },
+  {
+    "tokens": [
+      "Harga",
+      "tiket",
+      "Jakabaring",
+      "Sport",
+      "City",
+      "seratus",
+      "ribu"
+    ],
+    "tags": [
+      "O",
+      "O",
+      "B-DESTINATION",
+      "I-DESTINATION",
+      "I-DESTINATION",
+      "B-PRICE",
+      "I-PRICE"
+    ]
+  }
+]

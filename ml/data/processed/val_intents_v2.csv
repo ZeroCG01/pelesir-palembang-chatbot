@@ -1,0 +1,794 @@
+text,label
+Halo Jam operasionalnya? dong,ask_operating_hours
+"Hello, How much is the ticket to Kampung Kapitan? thanks",ask_ticket_price
+Wisata apa aja yang dekat jalur LRT?,ask_lrt_destinations
+Tiketnya mahal gak?,ask_ticket_price
+Mau nanya dong Jadwal kereta api Jakarta? ya,ask_unrelated
+Permisi Museum Balaputra Dewa fasilitasnya apa aja? dong kak,ask_facilities
+Mau nanya dong Palembang punya museum apa? ya,ask_category
+Museum Sultan Mahmud Badaruddin II bagus gak?,ask_destination_info
+Permisi Hlo sih,greet
+Kak Wonderful dong,provide_feedback
+Bang Info jam buka SMB II dong,ask_operating_hours
+Maaf mau tanya LRT friendly tourist destinations? sih,ask_lrt_destinations
+Bang Facilities at Benteng Kuto Besak? sih,ask_facilities
+Taman Kebon Rojo mulai buka jam berapa?,ask_operating_hours
+Mantap kak,provide_feedback
+Noted kak,provide_feedback
+Permisi Destinasi yang dekat stasiun LRT? dong kak,ask_lrt_destinations
+Halo Lesser known attractions in Palembang? dong kak,ask_hidden_gems
+Halo LRT friendly tourist destinations? ya,ask_lrt_destinations
+Eh Jembatan Ampera di mana ya? ya kak,ask_location_access
+Halo Kak ada museum gak di Palembang? sih,ask_category
+Halo Min kasih tau hidden gems Palembang dong kak,ask_hidden_gems
+Tess dong,greet
+Permisi Benteng Kuto Besak buka jam berapa? deh,ask_operating_hours
+Min Ada wifi di Jembatan Ampera? ya,ask_facilities
+Makasih dong kak,goodbye
+Is it worth visiting?,ask_destination_info
+Bang KI itu apa? ya kak,ask_destination_info
+Mau nanya dong KI itu apa? dong,ask_destination_info
+Where is Monpera located?,ask_location_access
+Palembang punya museum apa?,ask_category
+Permisi Hidden gems in Palembang? dong,ask_hidden_gems
+Permisi Address of Ampera Bridge? ya kak,ask_location_access
+Alamat lengkap SMB II?,ask_location_access
+Bang Thank you very much nih,goodbye
+Mau nanya dong Details about Kambang Iwak Park? deh,ask_destination_info
+Famous places in Palembang?,ask_recommendation
+Eh Any hidden gems to visit? sih,ask_hidden_gems
+Min Tempat wisata murah di Palembang? ya kak,ask_recommendation
+Bang Rekomendasi hidden gems dong kak,ask_hidden_gems
+Bang Suka deh nih,provide_feedback
+Halo,greet
+Siap kak,provide_feedback
+Permisi PIM gratis gak sih? ya kak,ask_ticket_price
+Maaf mau tanya Tess sih,greet
+Permisi Enaknya kemana ya di Palembang?,ask_recommendation
+Ceritakan joke dong,ask_unrelated
+"Hello, Does Jakabaring Sport City have a mosque? thanks",ask_facilities
+Kasih tau dong tentang Bukit Siguntang,ask_destination_info
+Permisi Food tourism in Palembang? ya,ask_category
+Bang tiket Hutan Wisata Punti Kayu berapa?,ask_ticket_price
+Mau nanya dong Rekomendasi wisata Palembang dong deh,ask_recommendation
+BKB itu tempat apa sih? dong,ask_destination_info
+Menarik gak OPI Mall?,ask_destination_info
+"Hello, I'm looking for help",greet
+Kak Min tolong saran wisata dong dong,ask_recommendation
+Permisi Enaknya kemana ya di Palembang? sih,ask_recommendation
+Buka hari apa aja?,ask_operating_hours
+Permisi Cara daftar CPNS gimana? dong kak,ask_unrelated
+Oke segitu dulu,goodbye
+Cara daftar CPNS gimana? ya,ask_unrelated
+Min Rekomendasi wisata yang dekat stasiun LRT ya,ask_lrt_destinations
+Min Mau ke tempat bersejarah di Palembang ya,ask_category
+Maaf mau tanya Cara daftar CPNS gimana? ya,ask_unrelated
+Mau nanya dong Permisi kak nih,greet
+Maaf mau tanya Jelas banget penjelasannya deh,provide_feedback
+Permisi Info lengkap Punti Kayu dong dong kak,ask_destination_info
+Halo Lesser known attractions in Palembang? dong,ask_hidden_gems
+Permisi Numpang tanya dong deh,greet
+Bang Cara daftar CPNS gimana?,ask_unrelated
+Alamat Palembang Trade Center dimana?,ask_location_access
+Kak Mau tanya dong kak harga tiket Benteng Kuto Besak,ask_ticket_price
+Kambang Iwak jauh gak dari pusat kota?,ask_location_access
+Permisi Makasih nih,goodbye
+Kak Jembatan Ampera di mana ya?,ask_location_access
+Mau nanya dong Tourist spots along LRT route? deh,ask_lrt_destinations
+Kak ada wisata sejarah gak di Palembang?,ask_category
+Bang That's helpful ya kak,provide_feedback
+What's Kemaro Island like?,ask_destination_info
+Ceritakan tentang Ampera,ask_destination_info
+Min Mau ke tempat bersejarah di Palembang,ask_category
+What's the entrance fee at Punti Kayu Forest?,ask_ticket_price
+Siguntang buka dari jam berapa sampai jam berapa?,ask_operating_hours
+I want to know Does Jakabaring Sport City have a mosque? please,ask_facilities
+Kak berapa harga tiket Al Quran Al Akbar?,ask_ticket_price
+Halo Best destinations in Palembang? nih,ask_recommendation
+cara daftar cpns gimana?,ask_unrelated
+Jadwal buka Siguntang kapan ya?,ask_operating_hours
+Kak Hidden gems in Palembang? deh,ask_hidden_gems
+Halo Destinasi yang dekat stasiun LRT? sih,ask_lrt_destinations
+Halo Rekomendasi wisata Palembang dong,ask_recommendation
+Maaf mau tanya Deskripsi Bukit Siguntang,ask_destination_info
+Cara daftar CPNS gimana? sih,ask_unrelated
+Min Naik apa ke Pasar 16 Ilir?,ask_location_access
+Permisi kak ya kak,greet
+Halo Alternative tourist spots in Palembang? nih,ask_hidden_gems
+Min Rekomendasi wisata Palembang dong nih,ask_recommendation
+Mau nanya dong Makasih sih,goodbye
+Halo Suka deh dong,provide_feedback
+Ke SMB II bayar berapa ya?,ask_ticket_price
+Permisi Numpang tanya dong sih,greet
+Bang Museum Sultan Mahmud Badaruddin II lokasinya dimana? ya kak,ask_location_access
+Min info wisata dekat LRT dong,ask_lrt_destinations
+Sejarah Hutan Wisata Punti Kayu apa ya?,ask_destination_info
+Mau nanya dong Alternative tourist spots in Palembang? nih,ask_hidden_gems
+Min Thank you very much dong kak,goodbye
+Eh Jembatan Ampera di mana ya? deh,ask_location_access
+Info tentang OPI Mall,ask_destination_info
+Can you tell me Does Jakabaring Sport City have a mosque? please,ask_facilities
+Min Mau tanya dong kak harga tiket Benteng Kuto Besak deh,ask_ticket_price
+Thank you very much sih,goodbye
+Can you tell me Is Kampung Kapitan open in the morning??,ask_operating_hours
+Min Hai kak masih aktif? nih,greet
+Maaf mau tanya Alternative tourist spots in Palembang?,ask_hidden_gems
+Min Destinasi yang dekat stasiun LRT?,ask_lrt_destinations
+Kak Info jam buka SMB II dong,ask_operating_hours
+Maaf mau tanya Help me please deh,greet
+Min Recipe for chocolate cake? sih,ask_unrelated
+Great info,provide_feedback
+Eh Suka deh sih,provide_feedback
+Halo Thank you very much deh,goodbye
+Harga tiket Siguntang berapa ya?,ask_ticket_price
+"Mau nanya dong That's enough, thank you",goodbye
+Halo siapa di sini?,greet
+Makasih udah bantu,goodbye
+Halo Makasih ya,goodbye
+Mau nanya dong Jelas banget penjelasannya dong,provide_feedback
+Maaf mau tanya Tolong kasih tau wisata dekat LRT deh,ask_lrt_destinations
+"Hi, What facilities are available at Jakabaring Sport City? thanks",ask_facilities
+Got it,provide_feedback
+Halo Help me please,greet
+Permisi Food tourism in Palembang? sih,ask_category
+Rekomendasi wisata untuk liburan singkat sih,ask_recommendation
+Info fasilitas Amanzi Waterpark dong,ask_facilities
+Kalo hari Sabtu Kawah Tengkurep buka?,ask_operating_hours
+Mau nanya dong Food tourism in Palembang?,ask_category
+Bang Min tolong saran wisata dong deh,ask_recommendation
+Maaf mau tanya Bye kak ya kak,goodbye
+Jelas banget penjelasannya,provide_feedback
+Numpang tanya dong dong,greet
+Min Jembatan Ampera di mana ya? deh,ask_location_access
+Why is Jakabaring Sport City famous?,ask_destination_info
+Bang Details about Kambang Iwak Park? deh,ask_destination_info
+Kamu punya perasaan?,ask_unrelated
+Min Jadwal kereta api Jakarta? ya kak,ask_unrelated
+Kak Kak ada museum gak di Palembang? ya kak,ask_category
+Halo Enaknya kemana ya di Palembang?,ask_recommendation
+Maaf mau tanya Museum Balaputra Dewa fasilitasnya apa aja? nih,ask_facilities
+That's helpful dong kak,provide_feedback
+Halo Oke makasih kak sangat membantu nih,goodbye
+Kak Amanzi Waterpark buka jam berapa ya?,ask_operating_hours
+Kak Facilities at Benteng Kuto Besak? ya kak,ask_facilities
+Maaf mau tanya BKB itu tempat apa sih? deh,ask_destination_info
+Halo Details about Kambang Iwak Park? dong kak,ask_destination_info
+Hai selamat siang,greet
+Tiket masuk SMB berapa?,ask_ticket_price
+Kak Suka deh ya kak,provide_feedback
+Posisi Masjid Agung Palembang dimana ya?,ask_location_access
+Mau nanya dong Palembang punya museum apa? deh,ask_category
+SMB hari libur buka gak?,ask_operating_hours
+Kak That's helpful,provide_feedback
+Kak Destinasi yang dekat stasiun LRT? sih,ask_lrt_destinations
+Bang Deskripsi Bukit Siguntang dong,ask_destination_info
+Makasih ya kak sangat berguna infonya,goodbye
+Bang Jembatan Ampera di mana ya? ya,ask_location_access
+Yang termasuk wisata alam apa aja?,ask_category
+Mau nanya dong Enaknya kemana ya di Palembang? ya kak,ask_recommendation
+Maaf mau tanya Destinasi yang LRT accessible?,ask_lrt_destinations
+Bang Apakah Jakabaring gratis?,ask_ticket_price
+Ping,greet
+Halo Apakah Jakabaring gratis?,ask_ticket_price
+Min Food tourism in Palembang? ya,ask_category
+Fasilitas umum di Bukit Siguntang apa aja?,ask_facilities
+Sekarang masih buka?,ask_operating_hours
+Maaf mau tanya Bisa naik LRT ke BKB? sih,ask_lrt_destinations
+Kalo hari Sabtu SMB buka?,ask_operating_hours
+Oke bagus,provide_feedback
+Oke mantap kak,goodbye
+Mau nanya dong Wisata tersembunyi di Palembang? ya kak,ask_hidden_gems
+Mau nanya dong Hidden gems in Palembang? dong,ask_hidden_gems
+Bang Wisata apa yang recommended di Palembang? dong,ask_recommendation
+Kak Mau ke tempat bersejarah di Palembang,ask_category
+Wisata sore hari di Palembang?,ask_recommendation
+Bang Tolong kasih tau wisata dekat LRT deh,ask_lrt_destinations
+Maaf mau tanya Wonderful nih,provide_feedback
+Amanzi tutup jam berapa?,ask_operating_hours
+Min Details about Kambang Iwak Park?,ask_destination_info
+Halo LRT friendly tourist destinations? nih,ask_lrt_destinations
+Taman Kebon Rojo jauh gak dari pusat kota?,ask_location_access
+Maaf mau tanya Makasih,goodbye
+Bang Rekomendasi wisata untuk liburan singkat dong,ask_recommendation
+"Mau nanya dong That's enough, thank you deh",goodbye
+Info jam buka SMB II dong sih,ask_operating_hours
+Mau nanya dong Terima kasih infonya deh,goodbye
+Eh Help me please deh,greet
+Halo KI itu apa? ya,ask_destination_info
+Min Benteng Kuto Besak buka jam berapa? sih,ask_operating_hours
+Chatbot nya bagus dong kak,provide_feedback
+Bang Hidden gems in Palembang? ya,ask_hidden_gems
+Mau tanya jam operasional BKB,ask_operating_hours
+Permisi Excellent information dong,provide_feedback
+Eh Makasih deh,goodbye
+Destinasi tersembunyi Palembang ada gak?,ask_hidden_gems
+Hai kak masih aktif,greet
+"that's enough, thank you",goodbye
+Recommend places to see in Palembang,ask_recommendation
+cultural tourism places in Palembang?,ask_category
+Wah keren infonya,provide_feedback
+SMB ada toilet gak?,ask_facilities
+Mau ke tempat bersejarah di Palembang?,ask_category
+Mau nanya dong Chatbot nya bagus dong,provide_feedback
+Eh Destinasi yang dekat stasiun LRT? ya,ask_lrt_destinations
+Halo Museum Balaputra Dewa fasilitasnya apa aja? ya,ask_facilities
+Min Numpang tanya dong deh,greet
+Kak Hlo dong kak,greet
+PIM ramah anak gak?,ask_facilities
+Bisa naik LRT ke BKB? sih,ask_lrt_destinations
+Kak Pagi kak dong,greet
+Halo Jembatan Ampera di mana ya? dong kak,ask_location_access
+Kak PIM gratis gak sih? ya kak,ask_ticket_price
+Pasar 16 Ilir ada di daerah mana?,ask_location_access
+Bang Oke cukup kak makasih banyak ya kak,goodbye
+Suka sama aplikasinya,provide_feedback
+Mau tanya dong kak harga tiket Benteng Kuto Besak dong kak,ask_ticket_price
+Update harga tiket Masjid Cheng Ho dong,ask_ticket_price
+Halo Makasih dong kak,goodbye
+Rekomendasi wisata Palembang dong dong,ask_recommendation
+Maaf mau tanya Cara daftar CPNS gimana?,ask_unrelated
+Eh Wonderful,provide_feedback
+Halo Wisata tersembunyi di Palembang? ya kak,ask_hidden_gems
+Kak Benteng Kuto Besak buka jam berapa? sih,ask_operating_hours
+Mau tau tentang Punti Kayu,ask_destination_info
+Maaf mau tanya Famous places in Palembang? dong kak,ask_recommendation
+Halo apakah botnya aktif?,greet
+Can you tell me Does Jakabaring Sport City have a mosque?,ask_facilities
+Hey How much is the ticket to Kampung Kapitan??,ask_ticket_price
+Permisi Recipe for chocolate cake? dong,ask_unrelated
+Eh Tess dong,greet
+Wisata tersembunyi di Palembang? ya kak,ask_hidden_gems
+Halo Info lengkap Punti Kayu dong sih,ask_destination_info
+Permisi,greet
+Kapan Museum Balaputra Dewa buka?,ask_operating_hours
+Eh Info lengkap Punti Kayu dong sih,ask_destination_info
+Eh Oke makasih kak sangat membantu dong,goodbye
+Halo Info jam buka SMB II dong nih,ask_operating_hours
+Kak Chatbot nya bagus dong,provide_feedback
+Ampera jauh gak dari pusat kota?,ask_location_access
+Maaf mau tanya Kampung Arab Al-Munawar ada di daerah mana? sih,ask_location_access
+Bisa naik LRT ke BKB? nih,ask_lrt_destinations
+Eh Terima kasih infonya dong kak,goodbye
+Kak Info jam buka SMB II dong deh,ask_operating_hours
+Min Taxi online di Palembang? dong kak,ask_unrelated
+Permisi Info lengkap Punti Kayu dong dong,ask_destination_info
+Tiket masuk ke Amanzi Waterpark sekarang berapa ya?,ask_ticket_price
+Hotel murah di Jakarta?,ask_unrelated
+Min Taxi online di Palembang? nih,ask_unrelated
+Permisi Tourist spots along LRT route? dong kak,ask_lrt_destinations
+That's helpful ya,provide_feedback
+Maaf mau tanya Thank you very much deh,goodbye
+Address of Ampera Bridge? ya kak,ask_location_access
+Kak Wonderful ya kak,provide_feedback
+Min Palembang punya museum apa?,ask_category
+Eh Numpang tanya dong dong,greet
+Min PIM ada tempat parkir?,ask_facilities
+Eh Thank you very much ya,goodbye
+Very helpful,provide_feedback
+Mau nanya dong Deskripsi Bukit Siguntang ya,ask_destination_info
+Permisi Info wisata budaya Palembang dong dong,ask_category
+Mau nanya dong Kamu siapa? ya kak,ask_unrelated
+Permisi Terima kasih infonya,goodbye
+"Min That's enough, thank you sih",goodbye
+Bang Wisata apa yang recommended di Palembang? sih,ask_recommendation
+Kak Wisata Palembang yang aesthetic tapi sepi? ya,ask_hidden_gems
+Min kasih tau hidden gems Palembang deh,ask_hidden_gems
+Permisi Bye kak deh,goodbye
+Maaf mau tanya Cara daftar CPNS gimana? ya kak,ask_unrelated
+Maaf mau tanya Rekomendasi wisata untuk liburan singkat ya kak,ask_recommendation
+Kak Wisata tersembunyi di Palembang? ya,ask_hidden_gems
+Halo Tourist spots along LRT route?,ask_lrt_destinations
+Eh Cara daftar CPNS gimana?,ask_unrelated
+Halo What time does Kampung Kapitan close? dong kak,ask_operating_hours
+Bang Info wisata budaya Palembang dong ya,ask_category
+Fasilitas apa saja di PIM?,ask_facilities
+Lesser known attractions in Palembang? ya kak,ask_hidden_gems
+Min Info jam buka SMB II dong dong kak,ask_operating_hours
+Harga tiket masuk Kampung Kapitan sekarang berapa?,ask_ticket_price
+"Kak That's enough, thank you deh",goodbye
+Bisa naik angkot ke Jembatan Ampera?,ask_location_access
+LRT bisa ke Monpera gak?,ask_lrt_destinations
+Eh Ada wifi di Jembatan Ampera? dong,ask_facilities
+How do I get to Al-Munawar Arab Village?,ask_location_access
+Bang Rekomendasi wisata Palembang dong sih,ask_recommendation
+Maaf mau tanya Masjid Cheng Ho ada spot foto gak? nih,ask_facilities
+Kambang Iwak itu tempat apa sih?,ask_destination_info
+Halo Hai kak masih aktif? deh,greet
+"Hello, How much is the ticket to Kampung Kapitan??",ask_ticket_price
+Oke makasih kak sangat membantu?,goodbye
+Sore min,greet
+Permisi Recipe for chocolate cake? dong kak,ask_unrelated
+Eh Address of Ampera Bridge? ya kak,ask_location_access
+Best universities in Indonesia?,ask_unrelated
+Taxi online di Palembang? dong,ask_unrelated
+Mau ke Kambang Iwak lewat mana?,ask_location_access
+Kak Destinasi wisata sejarah Palembang? nih,ask_category
+Kenapa Siguntang terkenal?,ask_destination_info
+Eh Min kasih tau hidden gems Palembang sih,ask_hidden_gems
+Kemaro ada di daerah mana?,ask_location_access
+Waalaikumsalam,goodbye
+Bang Alternative tourist spots in Palembang? deh,ask_hidden_gems
+Lokasi Amanzi Waterpark dimana kak?,ask_location_access
+Halo Museum Balaputra Dewa fasilitasnya apa aja? ya kak,ask_facilities
+Kak Hai kak masih aktif? ya kak,greet
+Min Destinasi wisata sejarah Palembang? dong,ask_category
+Bang Museum Balaputra Dewa fasilitasnya apa aja? ya,ask_facilities
+Lesser known attractions in Palembang? dong kak,ask_hidden_gems
+Min Museum Balaputra Dewa fasilitasnya apa aja?,ask_facilities
+Masjid Cheng Ho ada spot foto gak,ask_facilities
+Permisi What time does Kampung Kapitan close? sih,ask_operating_hours
+Kak Pagi kak,greet
+Halo Min tolong saran wisata dong ya,ask_recommendation
+Bang Jadwal kereta api Jakarta? ya,ask_unrelated
+Cerita sejarah Kampung Arab Al-Munawar dong,ask_destination_info
+Min Rekomendasi hidden gems dong kak dong,ask_hidden_gems
+Min PIM ada tempat parkir? nih,ask_facilities
+Bye,goodbye
+Maaf mau tanya KI itu apa? dong,ask_destination_info
+Permisi Permisi kak ya kak,greet
+Min tolong saran wisata dong?,ask_recommendation
+Maaf mau tanya Makasih ya,goodbye
+Halo Wisata Palembang yang aesthetic tapi sepi? dong kak,ask_hidden_gems
+Where can I find religious tourism in Palembang?,ask_category
+Permisi Rekomendasi wisata Palembang dong ya kak,ask_recommendation
+Mau nanya dong Jam operasionalnya?,ask_operating_hours
+Bang Help me please,greet
+Kak Rekomendasi wisata untuk liburan singkat ya,ask_recommendation
+Kak Museum Balaputra Dewa fasilitasnya apa aja? ya,ask_facilities
+Mau nanya dong Suka sama jawabannya dong kak,provide_feedback
+Halo Mau ke tempat bersejarah di Palembang ya,ask_category
+Great bot,provide_feedback
+Eh Wisata apa yang recommended di Palembang? nih,ask_recommendation
+Taxi online di Palembang,ask_unrelated
+Halo Permisi kak sih,greet
+Kak Rekomendasi wisata Palembang dong ya kak,ask_recommendation
+Mau nanya dong Benteng Kuto Besak buka jam berapa? ya kak,ask_operating_hours
+Bang Recipe for chocolate cake? deh,ask_unrelated
+Kak Terima kasih infonya dong kak,goodbye
+Kak Kampung Arab Al-Munawar ada di daerah mana? dong,ask_location_access
+Dari jam berapa Kawah Tengkurep buka?,ask_operating_hours
+Permisi Tess,greet
+Min Destinasi yang dekat stasiun LRT? deh,ask_lrt_destinations
+Kak PIM gratis gak sih? nih,ask_ticket_price
+Min Info wisata budaya Palembang dong dong,ask_category
+Where can I find cultural tourism in Palembang?,ask_category
+Maaf mau tanya Info wisata budaya Palembang dong ya,ask_category
+Bang PIM gratis gak sih?,ask_ticket_price
+Smart bot,provide_feedback
+Wisata air di Palembang ada?,ask_category
+Min Famous places in Palembang? deh,ask_recommendation
+Permisi Jembatan Ampera di mana ya? ya kak,ask_location_access
+Halo PIM gratis gak sih? ya kak,ask_ticket_price
+Min Bye kak deh,goodbye
+Halo Tess dong kak,greet
+I want to know What facilities are available at Jakabaring Sport City??,ask_facilities
+Dimana lokasi Jembatan Ampera?,ask_location_access
+Permisi Apakah Jakabaring gratis?,ask_ticket_price
+Min PIM ada tempat parkir? deh,ask_facilities
+Yang termasuk wisata religi apa aja?,ask_category
+Recipe for chocolate cake?,ask_unrelated
+Oke cukup kak makasih banyak?,goodbye
+Halo Recipe for chocolate cake? dong kak,ask_unrelated
+"Min That's enough, thank you deh",goodbye
+Mau nanya dong Destinasi yang LRT accessible? dong kak,ask_lrt_destinations
+Apa yang menarik dari Al-Munawar?,ask_destination_info
+Mau nanya dong Hai kak masih aktif? ya,greet
+Permisi Museum Balaputra Dewa fasilitasnya apa aja?,ask_facilities
+Where should I go in Palembang?,ask_recommendation
+"Hi, What should I visit in Palembang??",ask_recommendation
+Mau nanya dong Apakah Jakabaring gratis?,ask_ticket_price
+Maaf mau tanya Info jam buka SMB II dong dong,ask_operating_hours
+Facilities at Benteng Kuto Besak?,ask_facilities
+Buka sampai malam?,ask_operating_hours
+Mau nanya dong Wonderful nih,provide_feedback
+Can I take public transport to Grand Mosque of Palembang?,ask_location_access
+Maaf mau tanya BKB itu tempat apa sih? ya kak,ask_destination_info
+Religious sites in Palembang?,ask_category
+Maaf mau tanya Suka deh ya,provide_feedback
+Permisi Bisa naik LRT ke BKB? dong kak,ask_lrt_destinations
+Min Rekomendasi wisata yang dekat stasiun LRT dong,ask_lrt_destinations
+Min Wisata tersembunyi di Palembang? dong,ask_hidden_gems
+Permisi Rekomendasi hidden gems dong kak nih,ask_hidden_gems
+Mau nanya dong Tess dong kak,greet
+Maaf mau tanya Destinasi wisata sejarah Palembang?,ask_category
+Bang Museum Sultan Mahmud Badaruddin II lokasinya dimana? dong,ask_location_access
+Mau nanya dong Oke makasih kak sangat membantu sih,goodbye
+Info jam buka SMB II dong dong,ask_operating_hours
+Maaf mau tanya Famous places in Palembang? dong,ask_recommendation
+Oke sip,provide_feedback
+Min Benteng Kuto Besak buka jam berapa? ya,ask_operating_hours
+Tempat makan di sekitar Monpera ada?,ask_facilities
+Halo Tolong kasih tau wisata dekat LRT ya kak,ask_lrt_destinations
+Min PIM gratis gak sih? ya kak,ask_ticket_price
+Min Food tourism in Palembang? ya kak,ask_category
+Is Sultan Mahmud Badaruddin II Museum open on weekends?,ask_operating_hours
+Mau nanya dong LRT friendly tourist destinations? deh,ask_lrt_destinations
+Eh LRT friendly tourist destinations? dong kak,ask_lrt_destinations
+Bang Famous places in Palembang? ya kak,ask_recommendation
+What facilities are available at Kampung Kapitan?,ask_facilities
+Bang Wonderful nih,provide_feedback
+Min Mau ke tempat bersejarah di Palembang ya kak,ask_category
+Eh Thank you very much dong,goodbye
+Destinasi taman Palembang?,ask_category
+Tiket Taman Kambang Iwak Besak berapa sih?,ask_ticket_price
+Mau nanya dong Tourist spots along LRT route? dong kak,ask_lrt_destinations
+Suka deh ya,provide_feedback
+Mau nanya dong Info wisata budaya Palembang dong dong,ask_category
+Can you tell me How much is the ticket to Kampung Kapitan? thanks,ask_ticket_price
+Kak Mau tanya dong kak harga tiket Benteng Kuto Besak ya kak,ask_ticket_price
+Ada wisata alam di Palembang?,ask_category
+Kampung Arab Al-Munawar itu tempat apa sih?,ask_destination_info
+Cerita sejarah SMB dong,ask_destination_info
+Kak Suka sama jawabannya dong,provide_feedback
+Eh Rekomendasi wisata yang dekat stasiun LRT dong,ask_lrt_destinations
+Kak Wonderful ya,provide_feedback
+Mau nanya dong Destinasi yang LRT accessible?,ask_lrt_destinations
+Hey How to move on? thanks,ask_unrelated
+Eh Oke cukup kak makasih banyak ya kak,goodbye
+Min Any hidden gems to visit? sih,ask_hidden_gems
+List of cultural tourism in Palembang?,ask_category
+Jadwal kereta api Jakarta? deh,ask_unrelated
+Is it open today?,ask_operating_hours
+Bagaimana cara ke Museum Sultan Mahmud Badaruddin II?,ask_location_access
+Min Oke cukup kak makasih banyak sih,goodbye
+Hai chatbot,greet
+Opening hours for Benteng Kuto Besak?,ask_operating_hours
+Eh Any hidden gems to visit?,ask_hidden_gems
+SMB terkenal karena apa?,ask_destination_info
+How to reach Sultan Mahmud Badaruddin II Museum?,ask_location_access
+Mau nanya dong Min kasih tau hidden gems Palembang nih,ask_hidden_gems
+Kak Tourist spots along LRT route? dong kak,ask_lrt_destinations
+Rekomendasi wisata yang dekat stasiun LRT nih,ask_lrt_destinations
+Permisi Makasih deh,goodbye
+Maaf mau tanya Jam operasionalnya? sih,ask_operating_hours
+Bang Rekomendasi wisata Palembang dong nih,ask_recommendation
+Maaf mau tanya That's helpful deh,provide_feedback
+Mau nanya dong Oke makasih kak sangat membantu ya kak,goodbye
+Location of Al-Munawar Arab Village?,ask_location_access
+Maaf mau tanya Kak ada museum gak di Palembang? nih,ask_category
+Min Oke cukup kak makasih banyak ya,goodbye
+Min Tempat wisata murah di Palembang? ya,ask_recommendation
+Halo Jelas banget penjelasannya,provide_feedback
+Destinasi yang LRT accessible? dong kak,ask_lrt_destinations
+Halo LRT friendly tourist destinations? sih,ask_lrt_destinations
+Kak Food tourism in Palembang? sih,ask_category
+Rekomendasi hidden gems dong kak sih,ask_hidden_gems
+Can I take public transport to Ampera Bridge?,ask_location_access
+Kak Rekomendasi wisata yang dekat stasiun LRT ya,ask_lrt_destinations
+PIM gratis gak sih? ya,ask_ticket_price
+Min Cara main saham? ya kak,ask_unrelated
+Bang Pagi kak nih,greet
+"Hi, Does Jakabaring Sport City have a mosque??",ask_facilities
+Maaf mau tanya Destinasi yang LRT accessible? dong,ask_lrt_destinations
+Maaf mau tanya Kak ada museum gak di Palembang? deh,ask_category
+Recipe for chocolate cake? ya kak,ask_unrelated
+Translate bahasa Inggris dong,ask_unrelated
+Maaf mau tanya Wisata tersembunyi di Palembang? sih,ask_hidden_gems
+Eh Kak ada museum gak di Palembang? dong,ask_category
+Kak Suka sama jawabannya deh,provide_feedback
+Eh Museum Balaputra Dewa fasilitasnya apa aja? deh,ask_facilities
+Kak Kampung Arab Al-Munawar ada di daerah mana? nih,ask_location_access
+PIM gratis gak sih? sih,ask_ticket_price
+What makes Al-Munawar Arab Village unique?,ask_destination_info
+"Hello, How to move on??",ask_unrelated
+Maaf mau tanya Any hidden gems to visit? deh,ask_hidden_gems
+Bang Mau tanya dong kak harga tiket Benteng Kuto Besak dong,ask_ticket_price
+Kak BKB itu tempat apa sih? sih,ask_destination_info
+Mau nanya dong Cara daftar CPNS gimana? dong,ask_unrelated
+Mau nanya dong Excellent information nih,provide_feedback
+Bang PIM gratis gak sih? deh,ask_ticket_price
+Permisi Wisata Palembang yang aesthetic tapi sepi? dong,ask_hidden_gems
+Wisata Palembang yang belum banyak orang kunjungi?,ask_hidden_gems
+Min Numpang tanya dong dong,greet
+Halo Wisata apa yang recommended di Palembang? sih,ask_recommendation
+Kak Rekomendasi wisata Palembang dong,ask_recommendation
+"Eh That's enough, thank you dong kak",goodbye
+Price to enter Punti Kayu Forest?,ask_ticket_price
+Permisi Destinasi yang dekat stasiun LRT?,ask_lrt_destinations
+Describe Grand Mosque of Palembang,ask_destination_info
+Permisi Wisata Palembang yang aesthetic tapi sepi? sih,ask_hidden_gems
+Kak Benteng Kuto Besak buka jam berapa?,ask_operating_hours
+Is Punti Kayu Forest child-friendly?,ask_facilities
+Tourist spots along LRT route? ya kak,ask_lrt_destinations
+Apa Taman Kebon Rojo bayar?,ask_ticket_price
+Siang,greet
+Eh Min tolong saran wisata dong ya kak,ask_recommendation
+Min kasih tau hidden gems Palembang sih,ask_hidden_gems
+Kak Rekomendasi wisata Palembang dong dong kak,ask_recommendation
+"Excuse me, What parks are in Palembang? thanks",ask_category
+Permisi KI itu apa?,ask_destination_info
+Mau nanya dong PIM ada tempat parkir? dong,ask_facilities
+Kak Destinasi yang dekat stasiun LRT? dong,ask_lrt_destinations
+Min Any hidden gems to visit? ya kak,ask_hidden_gems
+Mau nanya dong Rekomendasi wisata untuk liburan singkat dong,ask_recommendation
+Eh Help me please nih,greet
+Jelaskan tentang Museum Balaputra Dewa,ask_destination_info
+Maaf mau tanya LRT friendly tourist destinations? deh,ask_lrt_destinations
+Are there toilets at Punti Kayu Forest?,ask_facilities
+Kak Tess ya,greet
+Permisi Destinasi yang LRT accessible? deh,ask_lrt_destinations
+Permisi Pagi kak,greet
+Halo Rekomendasi hidden gems dong kak,ask_hidden_gems
+Kak Taxi online di Palembang? nih,ask_unrelated
+Maaf mau tanya Min tolong saran wisata dong dong,ask_recommendation
+how much is the ticket to kampung kapitan?,ask_ticket_price
+Jembatan Ampera di mana ya? ya,ask_location_access
+Permisi Bye kak dong,goodbye
+Maaf mau tanya Wisata Palembang yang aesthetic tapi sepi? ya kak,ask_hidden_gems
+Min KI itu apa? deh,ask_destination_info
+Kak Destinasi yang LRT accessible? dong,ask_lrt_destinations
+Cara daftar kuliah?,ask_unrelated
+Mau nanya dong Bisa naik LRT ke BKB? nih,ask_lrt_destinations
+Permisi Taxi online di Palembang? ya kak,ask_unrelated
+Eh Info jam buka SMB II dong ya,ask_operating_hours
+Permisi Excellent information sih,provide_feedback
+What days is Punti Kayu Forest open?,ask_operating_hours
+Can you tell me What's the location of Ampera Bridge? please,ask_location_access
+Mau nanya dong That's helpful dong kak,provide_feedback
+Harga masuk Palembang Icon berapa ya kak?,ask_ticket_price
+Eh That's helpful dong kak,provide_feedback
+Min Apakah Ampera dekat stasiun LRT? dong,ask_lrt_destinations
+Mau nanya dong Recipe for chocolate cake? ya kak,ask_unrelated
+"Eh That's enough, thank you",goodbye
+Maaf mau tanya Wisata apa yang recommended di Palembang?,ask_recommendation
+Halo Apakah Jakabaring gratis? sih,ask_ticket_price
+Mau tanya fasilitas di PTC,ask_facilities
+Permisi Destinasi wisata sejarah Palembang? sih,ask_category
+Halo Resep nasi goreng dong dong,ask_unrelated
+Halo Jelas banget penjelasannya ya kak,provide_feedback
+Wisata alam di Palembang ada apa aja?,ask_category
+Bang Rekomendasi wisata untuk liburan singkat deh,ask_recommendation
+Halo Recipe for chocolate cake? sih,ask_unrelated
+Maaf mau tanya Museum Balaputra Dewa fasilitasnya apa aja? deh,ask_facilities
+What amenities does Kampung Kapitan offer?,ask_facilities
+Info lengkap Monpera dong,ask_destination_info
+Bang Terima kasih infonya dong,goodbye
+Hai saya baru ke Palembang,greet
+Food tourism in Palembang? dong,ask_category
+Permisi PIM ada tempat parkir? ya kak,ask_facilities
+Min Hai kak masih aktif? dong,greet
+Good evening,greet
+"Hello, What's the location of Ampera Bridge? please",ask_location_access
+Mau nanya dong Jadwal kereta api Jakarta? dong,ask_unrelated
+Kak Palembang Trade Center buka jam berapa ya?,ask_operating_hours
+"Hello, How much is the ticket to Kampung Kapitan? please",ask_ticket_price
+What amenities does Benteng Kuto Besak offer?,ask_facilities
+Bang Suka deh dong kak,provide_feedback
+Cara menuju Kampung Kapitan gimana?,ask_location_access
+Al Quran Al Akbar ada area bermain anak?,ask_facilities
+Maaf mau tanya Address of Ampera Bridge? sih,ask_location_access
+Halo Alternative tourist spots in Palembang? dong,ask_hidden_gems
+Min Details about Kambang Iwak Park? dong kak,ask_destination_info
+museum balaputra dewa fasilitasnya apa aja?,ask_facilities
+Eh Bye kak deh,goodbye
+Eh Numpang tanya dong ya kak,greet
+Maaf mau tanya Excellent information nih,provide_feedback
+Permisi Museum Sultan Mahmud Badaruddin II lokasinya dimana? dong kak,ask_location_access
+Mau nanya dong Hlo deh,greet
+Eh Info jam buka SMB II dong dong kak,ask_operating_hours
+Maaf mau tanya Rekomendasi wisata yang dekat stasiun LRT,ask_lrt_destinations
+Kak Min tolong saran wisata dong nih,ask_recommendation
+What's up,greet
+Halo Kampung Arab Al-Munawar ada di daerah mana? dong kak,ask_location_access
+Min Wisata tersembunyi di Palembang? ya kak,ask_hidden_gems
+Permisi Info wisata budaya Palembang dong,ask_category
+Maaf mau tanya Tourist spots along LRT route? ya,ask_lrt_destinations
+Maaf mau tanya Rekomendasi hidden gems dong kak ya kak,ask_hidden_gems
+Permisi Jadwal kereta api Jakarta? ya,ask_unrelated
+Bang Tourist spots along LRT route?,ask_lrt_destinations
+Permisi Numpang tanya dong nih,greet
+Eh Wonderful dong,provide_feedback
+Hey What should I visit in Palembang?,ask_recommendation
+Info lengkap Punti Kayu dong sih,ask_destination_info
+Halo kamu cantik,ask_unrelated
+Eh Jadwal kereta api Jakarta? ya kak,ask_unrelated
+Halo permisi,greet
+Min Cara daftar CPNS gimana? nih,ask_unrelated
+Info tentang SMB II,ask_destination_info
+Eh Hidden gems in Palembang? dong kak,ask_hidden_gems
+Bang Wisata tersembunyi di Palembang? sih,ask_hidden_gems
+Permisi That's helpful nih,provide_feedback
+Maaf mau tanya Terima kasih infonya dong,goodbye
+Seru gak Jakabaring Sport City?,ask_destination_info
+Maaf mau tanya Famous places in Palembang? nih,ask_recommendation
+Bang Museum Balaputra Dewa fasilitasnya apa aja? deh,ask_facilities
+Mau nanya dong Any hidden gems to visit? ya,ask_hidden_gems
+Kak BKB buka jam berapa ya?,ask_operating_hours
+Bang Destinasi yang dekat stasiun LRT? dong,ask_lrt_destinations
+Ada wisata religi di Palembang?,ask_category
+I want to know What should I visit in Palembang??,ask_recommendation
+Mau tanya dong kak harga tiket Benteng Kuto Besak deh,ask_ticket_price
+Halo Ada wifi di Jembatan Ampera?,ask_facilities
+Halo Facilities at Benteng Kuto Besak? dong,ask_facilities
+Halo Rekomendasi wisata yang dekat stasiun LRT ya,ask_lrt_destinations
+Permisi Any hidden gems to visit? ya,ask_hidden_gems
+Mau nanya dong Best destinations in Palembang? ya,ask_recommendation
+Enaknya kemana ya di Palembang? sih,ask_recommendation
+Where is it located?,ask_location_access
+Permisi Mau tanya dong kak harga tiket Benteng Kuto Besak dong,ask_ticket_price
+Min Oke cukup kak makasih banyak dong,goodbye
+Mau nanya dong Alternative tourist spots in Palembang? dong kak,ask_hidden_gems
+Halo Bye kak deh,goodbye
+Halo Excellent information dong kak,provide_feedback
+Mau nanya dong Numpang tanya dong dong,greet
+Is Sultan Mahmud Badaruddin II Museum child-friendly?,ask_facilities
+Halo Taxi online di Palembang? ya,ask_unrelated
+Dari jam berapa Taman Kebon Rojo buka?,ask_operating_hours
+Kak Rekomendasi wisata yang dekat stasiun LRT dong kak,ask_lrt_destinations
+Hlo dong,greet
+Halo Kampung Arab Al-Munawar ada di daerah mana? deh,ask_location_access
+Bisa naik angkot ke Masjid Cheng Ho?,ask_location_access
+Permisi Enaknya kemana ya di Palembang? dong,ask_recommendation
+Min Deskripsi Bukit Siguntang dong,ask_destination_info
+Min alamat Al Quran Al Akbar apa ya?,ask_location_access
+Mau nanya dong Food tourism in Palembang? nih,ask_category
+Apakah Palembang Trade Center buka hari Minggu?,ask_operating_hours
+Min Wisata apa yang recommended di Palembang? dong,ask_recommendation
+Berapa harga iPhone terbaru?,ask_unrelated
+"Hi, What facilities are available at Jakabaring Sport City? please",ask_facilities
+Berapa biaya masuk ke PTC?,ask_ticket_price
+Hey How much is the ticket to Kampung Kapitan?,ask_ticket_price
+Eh Ada wifi di Jembatan Ampera? sih,ask_facilities
+Mau nanya dong PIM gratis gak sih? nih,ask_ticket_price
+Maaf mau tanya Enaknya kemana ya di Palembang? ya,ask_recommendation
+Recommend museums in Palembang,ask_category
+Kak Deskripsi Bukit Siguntang dong,ask_destination_info
+Min Rekomendasi wisata untuk liburan singkat nih,ask_recommendation
+Any hidden gems to visit? sih,ask_hidden_gems
+Permisi PIM ada tempat parkir? ya,ask_facilities
+Halo Facilities at Benteng Kuto Besak? ya,ask_facilities
+Mau nanya dong Mau tanya dong kak harga tiket Benteng Kuto Besak,ask_ticket_price
+Halo Suka sama jawabannya ya kak,provide_feedback
+Eh Jelas banget penjelasannya,provide_feedback
+Eh PIM ada tempat parkir? deh,ask_facilities
+Info jam buka Pulau Kemaro dong,ask_operating_hours
+Deskripsi Kambang Iwak,ask_destination_info
+"Excuse me, Exactly what I needed",provide_feedback
+Maaf mau tanya BKB itu tempat apa sih? nih,ask_destination_info
+Maaf mau tanya KI itu apa? ya kak,ask_destination_info
+Kak Jadwal kereta api Jakarta? sih,ask_unrelated
+How much does it cost to enter Benteng Kuto Besak?,ask_ticket_price
+Maaf mau tanya Numpang tanya dong nih,greet
+Mau nanya dong Min tolong saran wisata dong dong kak,ask_recommendation
+Bang Terima kasih infonya deh,goodbye
+Eh Lesser known attractions in Palembang?,ask_hidden_gems
+Kak Tourist spots along LRT route? nih,ask_lrt_destinations
+Tiket Pasar 16 Ilir berapa sih?,ask_ticket_price
+Permisi Cara main saham? deh,ask_unrelated
+What's the ticket price for Monpera?,ask_ticket_price
+Eh Cara daftar CPNS gimana? ya,ask_unrelated
+Mau nanya dong Hidden gems in Palembang? ya kak,ask_hidden_gems
+Bang Address of Ampera Bridge? ya,ask_location_access
+Eh Mau ke tempat bersejarah di Palembang ya,ask_category
+Kak Numpang tanya dong nih,greet
+Halo Bye kak dong,goodbye
+Bang Recipe for chocolate cake? sih,ask_unrelated
+Halo LRT friendly tourist destinations? ya kak,ask_lrt_destinations
+Halo Palembang punya museum apa? deh,ask_category
+Mau nanya dong Masjid Cheng Ho ada spot foto gak? nih,ask_facilities
+Halo Apakah Ampera dekat stasiun LRT?,ask_lrt_destinations
+Bang Pagi kak dong,greet
+Please Is Kampung Kapitan open in the morning? please,ask_operating_hours
+Jembatan Ampera di mana ya? dong,ask_location_access
+"Excuse me, Do I need to pay to enter Monpera??",ask_ticket_price
+Kak ada wisata kuliner gak di Palembang?,ask_category
+Kak Min kasih tau hidden gems Palembang ya,ask_hidden_gems
+Permisi Jadwal kereta api Jakarta? sih,ask_unrelated
+Ticket price?,ask_ticket_price
+Rekomendasi wisata untuk liburan singkat dong kak,ask_recommendation
+"Maaf mau tanya That's enough, thank you deh",goodbye
+What days is Sultan Mahmud Badaruddin II Museum open?,ask_operating_hours
+I want to know Does Jakabaring Sport City have a mosque?,ask_facilities
+Halo ada admin?,greet
+Kak Museum Sultan Mahmud Badaruddin II lokasinya dimana? sih,ask_location_access
+Maaf mau tanya Recipe for chocolate cake?,ask_unrelated
+Eh PIM gratis gak sih? nih,ask_ticket_price
+Bang Wisata tersembunyi di Palembang? ya,ask_hidden_gems
+Museum Balaputra Dewa fasilitasnya apa aja? dong kak,ask_facilities
+Halo Hlo dong,greet
+Bang Chatbot nya bagus nih,provide_feedback
+Halo Details about Kambang Iwak Park? deh,ask_destination_info
+Mau nanya dong Terima kasih infonya ya kak,goodbye
+Mau nanya dong PIM ada tempat parkir?,ask_facilities
+Tourist spots along LRT route? sih,ask_lrt_destinations
+Kak LRT friendly tourist destinations? nih,ask_lrt_destinations
+Kak Oke cukup kak makasih banyak dong kak,goodbye
+Apa itu Jembatan Ampera?,ask_destination_info
+Halo Jadwal kereta api Jakarta? dong kak,ask_unrelated
+How much is the ticket to Kampung Kapitan? please,ask_ticket_price
+Jam tutup Masjid Cheng Ho kapan?,ask_operating_hours
+Halo Enaknya kemana ya di Palembang? nih,ask_recommendation
+Maaf mau tanya Hidden gems in Palembang? dong kak,ask_hidden_gems
+Masjid Agung Palembang buka sampai malam gak?,ask_operating_hours
+Maaf mau tanya Mau ke tempat bersejarah di Palembang deh,ask_category
+Min Cara main saham? sih,ask_unrelated
+Kak Lesser known attractions in Palembang?,ask_hidden_gems
+enaknya kemana ya di palembang?,ask_recommendation
+Apa keunikan Al Quran Al Akbar?,ask_destination_info
+Resep kue bolu?,ask_unrelated
+Bang Benteng Kuto Besak buka jam berapa? nih,ask_operating_hours
+Opening hours for Kampung Kapitan?,ask_operating_hours
+Mau tanya harga tiket Museum Balaputra Dewa,ask_ticket_price
+Tempat wisata budaya Palembang?,ask_category
+Eh What time does Kampung Kapitan close? nih,ask_operating_hours
+Arah ke Palembang Trade Center gimana?,ask_location_access
+Bang PIM gratis gak sih? dong,ask_ticket_price
+"Hi, How much is the ticket to Kampung Kapitan?",ask_ticket_price
+Eh Jembatan Ampera di mana ya? sih,ask_location_access
+Halo Apakah Jakabaring gratis? nih,ask_ticket_price
+Can you tell me What's the location of Ampera Bridge??,ask_location_access
+Eh Recipe for chocolate cake? ya kak,ask_unrelated
+Kak What time does Kampung Kapitan close? nih,ask_operating_hours
+Maaf mau tanya Any hidden gems to visit?,ask_hidden_gems
+Gimana Jembatan Ampera?,ask_destination_info
+Permisi Famous places in Palembang? nih,ask_recommendation
+Mau nanya dong Kampung Arab Al-Munawar ada di daerah mana? ya kak,ask_location_access
+info jam buka smb ii dong,ask_operating_hours
+Mau nanya dong Wisata apa yang recommended di Palembang? nih,ask_recommendation
+"Hello, How to move on? thanks",ask_unrelated
+Nice info,provide_feedback
+Posisi Monpera dimana ya?,ask_location_access
+Bang Info lengkap Punti Kayu dong ya kak,ask_destination_info
+Kak Alternative tourist spots in Palembang?,ask_hidden_gems
+Mau nanya dong Famous places in Palembang? ya,ask_recommendation
+Jembatan Ampera di mana ya?,ask_location_access
+Kak Apakah Ampera dekat stasiun LRT? sih,ask_lrt_destinations
+Can you tell me What parks are in Palembang? thanks,ask_category
+Min Apakah Jakabaring gratis? sih,ask_ticket_price
+Best places for tourists in Palembang?,ask_recommendation
+Eh LRT friendly tourist destinations? dong,ask_lrt_destinations
+Mau nanya dong Tolong kasih tau wisata dekat LRT ya kak,ask_lrt_destinations
+Oke noted makasih,goodbye
+Min Min kasih tau hidden gems Palembang ya kak,ask_hidden_gems
+Kak Benteng Kuto Besak buka jam berapa? nih,ask_operating_hours
+Bang Cara daftar CPNS gimana? sih,ask_unrelated
+Halo BKB itu tempat apa sih?,ask_destination_info
+PIM ada tempat parkir? ya,ask_facilities
+"Min That's enough, thank you ya",goodbye
+Permisi Kamu siapa?,ask_unrelated
+"Excuse me, What parks are in Palembang?",ask_category
+Mau nanya dong Chatbot nya bagus deh,provide_feedback
+Jam tutup Kampung Arab Al-Munawar kapan?,ask_operating_hours
+Tess?,greet
+Chatbot nya bagus sih,provide_feedback
+Is there an entry fee for Kemaro Island?,ask_ticket_price
+Maaf mau tanya Info lengkap Punti Kayu dong ya kak,ask_destination_info
+Gimana Monpera?,ask_destination_info
+Review tentang Hutan Wisata Punti Kayu,ask_destination_info
+Tolong kasih tau alamat Ampera,ask_location_access
+Eh Ada wifi di Jembatan Ampera?,ask_facilities
+Opening hours for Grand Mosque of Palembang?,ask_operating_hours
+Hi chatbot,greet
+Is Kampung Kapitan open in the morning? thanks,ask_operating_hours
+Parkiran Amanzi luas gak?,ask_facilities
+Akses ke OPI Mall mudah gak?,ask_location_access
+What parks are in Palembang? thanks,ask_category
+Location of Sultan Mahmud Badaruddin II Museum?,ask_location_access
+Eh Numpang tanya dong dong kak,greet
+Maaf mau tanya Oke cukup kak makasih banyak dong kak,goodbye
+Kak Rekomendasi hidden gems dong kak deh,ask_hidden_gems
+Please What parks are in Palembang? please,ask_category
+Min Apakah Ampera dekat stasiun LRT? ya kak,ask_lrt_destinations
+Mau nanya dong Jembatan Ampera di mana ya? nih,ask_location_access
+Ada wifi di Jembatan Ampera? ya,ask_facilities
+Kak ada museum gak di Palembang? sih,ask_category
+Bang Mau tanya dong kak harga tiket Benteng Kuto Besak ya,ask_ticket_price
+Permisi Benteng Kuto Besak buka jam berapa? dong,ask_operating_hours
+Info harga tiket Palembang Trade Center dong kak,ask_ticket_price
+Benteng Kuto Besak itu tempat apa sih?,ask_destination_info
+Halo Mau tanya dong kak harga tiket Benteng Kuto Besak dong,ask_ticket_price
+Permisi Chatbot nya bagus sih,provide_feedback
+Bang Destinasi wisata sejarah Palembang? sih,ask_category
+Kak Info wisata budaya Palembang dong sih,ask_category
+Maaf mau tanya Palembang punya museum apa? ya,ask_category
+Tolong kasih tau alamat Palembang Trade Center,ask_location_access
+Bang Excellent information sih,provide_feedback
+Maaf mau tanya Jadwal kereta api Jakarta? ya,ask_unrelated
+Kak Hidden gems in Palembang? dong,ask_hidden_gems
+Al Quran Al Akbar buka hari apa aja?,ask_operating_hours
+Halo LRT friendly tourist destinations? dong kak,ask_lrt_destinations
+Bang Jam operasionalnya? deh,ask_operating_hours
+Ada fasilitas apa di Pulau Kemaro?,ask_facilities
+SMB II ada di daerah mana?,ask_location_access
+Rekomendasi hidden gems dong kak,ask_hidden_gems
+Min Jelas banget penjelasannya nih,provide_feedback

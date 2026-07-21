@@ -7,7 +7,7 @@ from ml.api.response_builder import build_response
 # Inisialisasi API dan Engine
 app = FastAPI(title="Chatbot NLP Engine Palembang")
 
-# Tambahkan CORS Middleware agar bisa diakses dari React Native (Expo)
+# Menambahkan CORS Middleware agar bisa diakses dari React Native (Expo)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], # Mengizinkan akses dari mana saja (sementara untuk dev)
