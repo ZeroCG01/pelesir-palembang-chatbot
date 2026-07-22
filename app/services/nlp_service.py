@@ -161,7 +161,6 @@ Evaluasi Anda:"""
             
         msg_lower = message.lower()
         
-        CONFIDENCE_THRESHOLD = 0.60
         GENERATIVE_INTENTS = {"ask_recommendation", "ask_category", "ask_hidden_gems", "ask_unrelated"}
         ENTITY_DEPENDENT_INTENTS = {"ask_ticket_price", "ask_operating_hours", "ask_destination_info", "ask_lrt_destinations", "ask_location_access", "ask_facilities"}
 
