@@ -4,6 +4,9 @@ import groq
 from ml.api.engine import ChatbotEngine
 from ml.api.response_builder import build_response, ABBREVIATIONS, supabase
 
+# Cek Provider LLM Utama
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "gemini").lower()
+
 # Konfigurasi Groq API (Bisa rotasi multi-key)
 raw_keys = os.environ.get("GROQ_API_KEY", "")
 free_keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
@@ -12,6 +15,13 @@ if not free_keys:
 
 current_key_idx = 0
 groq_client = groq.Groq(api_key=free_keys[current_key_idx])
+
+# Konfigurasi Gemini API
+if LLM_PROVIDER == "gemini":
+    import google.generativeai as genai
+    genai.configure(api_key=os.environ.get("GEMINI_API_KEY", ""))
+    gemini_guardrail_model = genai.GenerativeModel('gemini-1.5-flash')
+
 
 def build_system_prompt():
     base_prompt = """Anda adalah TanyaKito, asisten virtual ramah untuk aplikasi Pelesir Palembang.
@@ -107,13 +117,20 @@ Evaluasi Anda:"""
             try:
                 print(f"🛡️ Guardrail mengecek Draf... (attempt {attempt + 1})")
                 
-                chat_completion = groq_client.chat.completions.create(
-                    messages=[{"role": "user", "content": guardrail_prompt}],
-                    model=self.groq_model,
-                    temperature=0.1,  # Suhu rendah agar stabil membalas PASS
-                )
-                
-                response_text = chat_completion.choices[0].message.content.strip()
+                if LLM_PROVIDER == "gemini":
+                    generation_config = genai.types.GenerationConfig(temperature=0.1)
+                    chat_completion = gemini_guardrail_model.generate_content(
+                        guardrail_prompt,
+                        generation_config=generation_config
+                    )
+                    response_text = chat_completion.text.strip()
+                else:
+                    chat_completion = groq_client.chat.completions.create(
+                        messages=[{"role": "user", "content": guardrail_prompt}],
+                        model=self.groq_model,
+                        temperature=0.1,  # Suhu rendah agar stabil membalas PASS
+                    )
+                    response_text = chat_completion.choices[0].message.content.strip()
                 
                 if response_text.upper().startswith("PASS"):
                     print("✅ Guardrail: PASS (Meneruskan jawaban lokal)")
