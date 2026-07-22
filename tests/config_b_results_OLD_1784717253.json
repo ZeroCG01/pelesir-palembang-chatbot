@@ -1,0 +1,227 @@
+[
+    {
+        "no": 1,
+        "category": "normal",
+        "query": "berapa harga tiket masuk benteng kuto besak?",
+        "intent": "ask_ticket_price",
+        "entities": {
+            "DESTINATION": "benteng kuto besak?"
+        },
+        "draf_actor": "Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.",
+        "intervensi": false,
+        "latency_llm_detik": 1.0215,
+        "latency_total_detik": 2.7037
+    },
+    {
+        "no": 2,
+        "category": "normal",
+        "query": "jam buka museum balaputradewa?",
+        "intent": "ask_operating_hours",
+        "entities": {
+            "CATEGORY": "museum balaputradewa?"
+        },
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Museum Balaputra Dewa buka dari Selasa hingga Minggu, pukul 08.00-15.30 WIB. Anda dapat memeriksa informasi lebih lanjut di Museum Balaputra Dewa.",
+        "intervensi": true,
+        "latency_llm_detik": 21.8094,
+        "latency_total_detik": 22.1457
+    },
+    {
+        "no": 3,
+        "category": "normal",
+        "query": "fasilitas apa saja yang ada di punti kayu?",
+        "intent": "ask_facilities",
+        "entities": {
+            "LOCATION": "punti kayu?"
+        },
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Fasilitas yang ada di Punti Kayu adalah wahana permainan, kebun binatang mini, spot foto, gazebo, dan area parkir.",
+        "intervensi": true,
+        "latency_llm_detik": 40.7131,
+        "latency_total_detik": 40.8051
+    },
+    {
+        "no": 4,
+        "category": "normal",
+        "query": "apakah museum smb ii dekat lrt?",
+        "intent": "ask_lrt_destinations",
+        "entities": {
+            "CATEGORY": "museummbi"
+        },
+        "draf_actor": "Transportasi LRT sangat efisien lho di Palembang! Sebutkan tempat wisatanya, nanti saya bantu carikan stasiun LRT terdekatnya.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Museum SMB II terletak di dekat LRT. Anda dapat menemukannya di sekitar LRT dengan menggunakan peta atau aplikasi navigasi. Museum ini menawarkan informasi sejarah dan budaya Palembang yang menarik.",
+        "intervensi": true,
+        "latency_llm_detik": 36.8214,
+        "latency_total_detik": 36.8853
+    },
+    {
+        "no": 5,
+        "category": "normal",
+        "query": "rekomendasi wisata sejarah di palembang dong",
+        "intent": "ask_category",
+        "entities": {
+            "CATEGORY": "wisata sejarah",
+            "LOCATION": "palembang"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Rekomendasi wisata sejarah di Palembang adalah Museum Balaputra Dewa, Monumen Perjuangan Rakyat (Monpera), Museum Sultan Mahmud Badaruddin II, dan Kawasan Benteng Kuto Besak (BKB). Masing-masing tempat menawarkan pengalaman unik dan pengetahuan tentang sejarah Palembang. Museum Balaputra Dewa menampilkan koleksi artefak dan informasi tentang sejarah Palembang, sementara Monumen Perjuangan Rakyat (Monpera) menghormati perjuangan rakyat Palembang. Museum Sultan Mahmud Badaruddin II menampilkan koleksi artefak dan informasi tentang sejarah Sultan Mahmud Badaruddin II, sementara Kawasan Benteng Kuto Besak (BKB) menawarkan pengalaman unik dengan melihat benteng kuno dan mengetahui sejarahnya.",
+        "intervensi": true,
+        "latency_llm_detik": 39.4436,
+        "latency_total_detik": 39.5112
+    },
+    {
+        "no": 6,
+        "category": "normal",
+        "query": "kasih tau wisata kuliner dong",
+        "intent": "ask_category",
+        "entities": {
+            "CATEGORY": "wisata kuliner"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Wisata kuliner di Palembang yang populer adalah Lorong Basah Night Culinary Market, Pempek Candy, Kawasan Pasar 16 Ilir, Pempek Lala 26 Ilir, Restoran River Side, RM Sri Melayu, Martabak HAR, dan beberapa tempat lainnya. Anda dapat mencoba salah satu dari mereka untuk menikmati kuliner khas Palembang.",
+        "intervensi": true,
+        "latency_llm_detik": 40.9588,
+        "latency_total_detik": 41.0311
+    },
+    {
+        "no": 7,
+        "category": "trap",
+        "query": "buka 24 jam",
+        "intent": "ask_operating_hours",
+        "entities": {
+            "TIME": "24 jam"
+        },
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
+        "intervensi": false,
+        "latency_llm_detik": 38.7432,
+        "latency_total_detik": 38.8154
+    },
+    {
+        "no": 8,
+        "category": "trap",
+        "query": "rekomendasi wisata pantai alami",
+        "intent": "ask_category",
+        "entities": {
+            "CATEGORY": "pantai alami"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Maaf, Palembang tidak memiliki wisata pantai alami.",
+        "intervensi": true,
+        "latency_llm_detik": 38.2532,
+        "latency_total_detik": 38.3687
+    },
+    {
+        "no": 9,
+        "category": "trap",
+        "query": "harganya brapa?",
+        "intent": "ask_ticket_price",
+        "entities": {},
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi harga tiketnya.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi harga tiketnya.",
+        "intervensi": false,
+        "latency_llm_detik": 37.7018,
+        "latency_total_detik": 37.7702
+    },
+    {
+        "no": 10,
+        "category": "trap",
+        "query": "ada fasilitas kolam renang ga disana?",
+        "intent": "ask_facilities",
+        "entities": {
+            "CATEGORY": "kolam renang"
+        },
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
+        "intervensi": false,
+        "latency_llm_detik": 37.9382,
+        "latency_total_detik": 37.9989
+    },
+    {
+        "no": 11,
+        "category": "trap",
+        "query": "aku mau tidur di smb",
+        "intent": "greet",
+        "entities": {
+            "DESTINATION": "smb"
+        },
+        "draf_actor": "Berikut info singkat tentang Museum Sultan Mahmud Badaruddin II: Museum Sultan Mahmud Badaruddin II merupakan museum sejarah yang menempati bangunan peninggalan kolonial Belanda di tepi Sungai Musi. Museum ini menyimpan berbagai koleksi tentang Kesultanan Palembang... Jika butuh info lebih detail, silakan tanyakan lagi!",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Museum Sultan Mahmud Badaruddin II (SMB II) adalah sebuah museum sejarah dan budaya, bukan tempat penginapan atau hotel.",
+        "intervensi": true,
+        "latency_llm_detik": 37.9077,
+        "latency_total_detik": 39.1386
+    },
+    {
+        "no": 12,
+        "category": "ood",
+        "query": "tolong beritahu saya resep membuat pempek",
+        "intent": "ask_unrelated",
+        "entities": {
+            "CATEGORY": "pempek"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
+        "intervensi": false,
+        "latency_llm_detik": 39.0304,
+        "latency_total_detik": 39.3615
+    },
+    {
+        "no": 13,
+        "category": "ood",
+        "query": "siapa presiden prancis saat ini?",
+        "intent": "ask_unrelated",
+        "entities": {
+            "TIME": "saat ini?"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
+        "intervensi": false,
+        "latency_llm_detik": 37.73,
+        "latency_total_detik": 37.9215
+    },
+    {
+        "no": 14,
+        "category": "ood",
+        "query": "bagaimana cuaca di palembang hari ini?",
+        "intent": "ask_unrelated",
+        "entities": {
+            "LOCATION": "palembang",
+            "TIME": "hari ini?"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
+        "intervensi": false,
+        "latency_llm_detik": 36.7965,
+        "latency_total_detik": 37.072
+    },
+    {
+        "no": 15,
+        "category": "ood",
+        "query": "buatkan saya kode python",
+        "intent": "ask_unrelated",
+        "entities": {
+            "CATEGORY": "python"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
+        "intervensi": false,
+        "latency_llm_detik": 39.763,
+        "latency_total_detik": 39.814
+    }
+]

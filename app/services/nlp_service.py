@@ -7,14 +7,16 @@ from ml.api.response_builder import build_response, ABBREVIATIONS, supabase
 # Cek Provider LLM Utama
 LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "gemini").lower()
 
-# Konfigurasi Groq API (Bisa rotasi multi-key)
-raw_keys = os.environ.get("GROQ_API_KEY", "")
-free_keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
-if not free_keys:
-    free_keys = [""]  # Fallback agar tidak crash
+# Konfigurasi OpenRouter (menggunakan SDK OpenAI)
+openrouter_key = os.environ.get("OPENROUTER_API_KEY", "")
 
+from openai import OpenAI
+groq_client = OpenAI(
+    api_key=openrouter_key,
+    base_url="https://openrouter.ai/api/v1"
+)
 current_key_idx = 0
-groq_client = groq.Groq(api_key=free_keys[current_key_idx])
+free_keys = [openrouter_key]  # Pertahankan variabel ini agar tidak merusak logika fallback error 429
 
 # Konfigurasi Gemini API
 if LLM_PROVIDER == "gemini":
@@ -82,7 +84,7 @@ class ChatbotModel:
     def __init__(self):
         print("Mempersiapkan model PyTorch/Transformers dari folder ml/saved_models...")
         self.engine = ChatbotEngine()
-        self.groq_model = "llama-3.1-8b-instant"
+        self.groq_model = "meta-llama/llama-3.1-8b-instruct:free"
 
     def evaluate_with_guardrail(self, message: str, draft_reply: str, history: list) -> dict:
         global current_key_idx, groq_client, free_keys
