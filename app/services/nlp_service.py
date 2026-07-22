@@ -1,28 +1,18 @@
 import os
 import time
-import groq
 from ml.api.engine import ChatbotEngine
 from ml.api.response_builder import build_response, ABBREVIATIONS, supabase
-
-# Cek Provider LLM Utama
-LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "gemini").lower()
 
 # Konfigurasi OpenRouter (menggunakan SDK OpenAI)
 openrouter_key = os.environ.get("OPENROUTER_API_KEY", "")
 
 from openai import OpenAI
-groq_client = OpenAI(
+llm_client = OpenAI(
     api_key=openrouter_key,
     base_url="https://openrouter.ai/api/v1"
 )
 current_key_idx = 0
 free_keys = [openrouter_key]  # Pertahankan variabel ini agar tidak merusak logika fallback error 429
-
-# Konfigurasi Gemini API
-if LLM_PROVIDER == "gemini":
-    import google.generativeai as genai
-    genai.configure(api_key=os.environ.get("GEMINI_API_KEY", ""))
-    gemini_guardrail_model = genai.GenerativeModel('gemini-1.5-flash')
 
 
 def build_system_prompt():
@@ -84,10 +74,10 @@ class ChatbotModel:
     def __init__(self):
         print("Mempersiapkan model PyTorch/Transformers dari folder ml/saved_models...")
         self.engine = ChatbotEngine()
-        self.groq_model = "meta-llama/llama-3.1-8b-instruct:free"
+        self.llm_model = "google/gemini-2.5-flash"
 
     def evaluate_with_guardrail(self, message: str, draft_reply: str, history: list) -> dict:
-        global current_key_idx, groq_client, free_keys
+        global current_key_idx, llm_client, free_keys
         MAX_RETRIES = 3
         BASE_WAIT = 5
         
@@ -119,20 +109,12 @@ Evaluasi Anda:"""
             try:
                 print(f"🛡️ Guardrail mengecek Draf... (attempt {attempt + 1})")
                 
-                if LLM_PROVIDER == "gemini":
-                    generation_config = genai.types.GenerationConfig(temperature=0.1)
-                    chat_completion = gemini_guardrail_model.generate_content(
-                        guardrail_prompt,
-                        generation_config=generation_config
-                    )
-                    response_text = chat_completion.text.strip()
-                else:
-                    chat_completion = groq_client.chat.completions.create(
-                        messages=[{"role": "user", "content": guardrail_prompt}],
-                        model=self.groq_model,
-                        temperature=0.1,  # Suhu rendah agar stabil membalas PASS
-                    )
-                    response_text = chat_completion.choices[0].message.content.strip()
+                chat_completion = llm_client.chat.completions.create(
+                    messages=[{"role": "user", "content": guardrail_prompt}],
+                    model=self.llm_model,
+                    temperature=0.1,  # Suhu rendah agar stabil membalas PASS
+                )
+                response_text = chat_completion.choices[0].message.content.strip()
                 
                 if response_text.upper().startswith("PASS"):
                     print("✅ Guardrail: PASS (Meneruskan jawaban lokal)")
@@ -145,7 +127,7 @@ Evaluasi Anda:"""
                     
                     from ml.api.response_builder import enrich_gemini_response
                     rich_result = enrich_gemini_response(clean_text)
-                    rich_result["source"] = "groq_guardrail"
+                    rich_result["source"] = "gemini_guardrail"
                     return rich_result
                 
             except Exception as e:
@@ -156,7 +138,10 @@ Evaluasi Anda:"""
                     if current_key_idx < len(free_keys) - 1:
                         current_key_idx += 1
                         print(f"API Key ke-{current_key_idx} limit. Swap ke Key ke-{current_key_idx + 1}...")
-                        groq_client = groq.Groq(api_key=free_keys[current_key_idx])
+                        llm_client = OpenAI(
+                            api_key=free_keys[current_key_idx],
+                            base_url="https://openrouter.ai/api/v1"
+                        )
                         continue
                         
                     elif attempt < MAX_RETRIES:
