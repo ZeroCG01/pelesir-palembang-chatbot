@@ -81,10 +81,16 @@ class ChatbotModel:
         
         history_text = "\n".join([f"{h.get('role', 'user').capitalize()}: {h.get('content', '')}" for h in history[-3:]]) if history else "Tidak ada riwayat."
         
+        db_context = build_system_prompt()
+        
         guardrail_prompt = f"""Anda adalah AI Guardrail (Juri Penilai) untuk Chatbot Pelesir Palembang.
 Tugas Anda adalah mengevaluasi Draf Balasan dari NLP Lokal terhadap pesan pengguna.
 
-Riwayat Obrolan (Context):
+[REFERENSI DATABASE]
+{db_context}
+
+[KONTEKS OBROLAN]
+Riwayat Obrolan:
 {history_text}
 
 Pesan Pengguna Saat Ini: "{message}"
@@ -92,7 +98,7 @@ Draf Balasan Lokal: "{draft_reply}"
 
 ATURAN KETAT:
 1. Jika Draf Balasan akurat, informatif, dan menyambung dengan konteks (ATAU jika draf dengan cerdas meminta klarifikasi seperti "Boleh sebutkan nama lokasinya?"), Anda HARUS membalas tepat dengan 1 kata: PASS
-2. Jika Draf Balasan ngawur, salah sasaran, hanya mengatakan "Maaf, saya tidak mengerti", atau sama sekali tidak informatif, Anda HARUS menolaknya dengan membalas format: FAIL: <tuliskan_jawaban_baru_yang_benar_disini>
+2. Jika Draf Balasan ngawur, salah sasaran, hanya mengatakan "Maaf, saya tidak mengerti", atau sama sekali tidak informatif, Anda HARUS menolaknya dengan membalas format: FAIL: <tuliskan_jawaban_baru_yang_benar_disini_berdasarkan_REFERENSI_DATABASE>
 3. Palembang BUKAN kota pesisir laut. Jika ditanya soal laut/pantai alami, arahkan ke Sungai Musi atau Pulau Kemaro.
 
 Evaluasi Anda:"""
