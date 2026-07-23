@@ -574,8 +574,8 @@ def enrich_gemini_response(gemini_text: str) -> dict:
             if dest_data and dest_data not in found_destinations:
                 found_destinations.append(dest_data)
     
-    # Batasi maksimal 5 kartu agar UI tidak terlalu panjang
-    found_destinations = found_destinations[:5]
+    # Batasan maksimal dihapus sesuai permintaan agar semua destinasi yang disebut muncul
+    # found_destinations = found_destinations[:5]
     
     if found_destinations:
         cards = []
