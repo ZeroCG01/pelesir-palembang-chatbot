@@ -108,6 +108,7 @@ Evaluasi Anda:"""
         for attempt in range(MAX_RETRIES + 1):
             try:
                 print(f"🛡️ Guardrail mengecek Draf... (attempt {attempt + 1})")
+                print(f"   [Draf Lokal]: {draft_reply}")
                 
                 chat_completion = llm_client.chat.completions.create(
                     messages=[{"role": "user", "content": guardrail_prompt}],
@@ -121,6 +122,7 @@ Evaluasi Anda:"""
                     return {"reply": draft_reply, "source": "lokal"}
                 else:
                     print(f"❌ Guardrail: FAIL (LLM mengambil alih)")
+                    print(f"   [Alasan/Jawaban LLM]: {response_text}")
                     # Ambil teks setelah FAIL:
                     clean_text = response_text.replace("FAIL:", "", 1).strip()
                     clean_text = clean_text.replace("**", "")
