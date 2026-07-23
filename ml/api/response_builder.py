@@ -269,10 +269,20 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
                 return "Looking for photo spots? Ampera Bridge, Sekanak Lambidaro, and Punti Kayu are highly recommended!"
             return "Nyari spot foto instagramable ya? Kawasan Sekanak Lambidaro, Jembatan Ampera, dan Hutan Punti Kayu bagus banget buat foto-foto!"
             
-        if category:
-            if en:
-                return f"For {category}, Palembang has many interesting places! Check out the 'Recommendations' feature in the app for the full list."
-            return f"Untuk kategori {category}, Palembang punya banyak tempat menarik! Coba kunjungi fitur 'Rekomendasi' di aplikasi untuk melihat daftar lengkapnya."
+        if category and supabase:
+            try:
+                # Map nama entitas kategori dari NLP ke nama kolom kategori di Supabase
+                cat_db = category.lower().replace("wisata ", "").strip()
+                res = supabase.table("destinations").select("name").ilike("category", f"%{cat_db}%").limit(5).execute()
+                if res.data and len(res.data) > 0:
+                    places = [d['name'] for d in res.data]
+                    random.shuffle(places)
+                    places_str = ", ".join(places[:3])
+                    if en:
+                        return f"For {category}, Palembang has many interesting places! Some recommendations are: {places_str}. Check out the 'Recommendations' feature for more."
+                    return f"Untuk kategori {category}, Palembang punya banyak tempat menarik! Beberapa di antaranya adalah {places_str}. Kunjungi fitur 'Rekomendasi' di aplikasi untuk daftar lengkapnya."
+            except Exception as e:
+                print("Error fetching category:", e)
         
         if en:
             return "Palembang has many cool spots! Try visiting Ampera Bridge at night, or Al-Munawar Arab Village for historical tourism. Do you want more specific recommendations like culinary or museums?"
@@ -383,6 +393,21 @@ def build_response(intent: str, entities: dict, query: str = "") -> str:
         return "Where do you want to go today? Mention the location, and I'll give you the full address." if en else "Mau ke mana hari ini? Sebutkan lokasinya, nanti saya beri tahu alamat lengkapnya."
 
     elif intent == "ask_category":
+        category = entities.get("CATEGORY", "")
+        if category and supabase:
+            try:
+                cat_db = category.lower().replace("wisata ", "").strip()
+                res = supabase.table("destinations").select("name").ilike("category", f"%{cat_db}%").limit(5).execute()
+                if res.data and len(res.data) > 0:
+                    places = [d['name'] for d in res.data]
+                    random.shuffle(places)
+                    places_str = ", ".join(places[:3])
+                    if en:
+                        return f"You are interested in {category}? Great choice! Some popular spots are {places_str}. You can see more in the 'Recommendations' menu."
+                    return f"Wah, Anda tertarik dengan {category} ya? Pilihan yang bagus! Beberapa tempat populer adalah {places_str}. Anda bisa melihat lebih banyak di menu 'Rekomendasi'."
+            except Exception as e:
+                print("Error fetching category:", e)
+                
         if en:
             return "The Pelesir Palembang app has several tourism categories: History, Culture, Culinary, Religious, and Nature/Parks. Which category are you interested in?"
         return "Aplikasi Pelesir Palembang memiliki beberapa kategori wisata: Sejarah, Budaya, Kuliner, Religi, dan Taman/Alam. Anda sedang tertarik ke kategori yang mana?"
