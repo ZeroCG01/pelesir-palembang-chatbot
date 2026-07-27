@@ -74,7 +74,7 @@ class ChatbotModel:
     def __init__(self):
         print("Mempersiapkan model PyTorch/Transformers dari folder ml/saved_models...")
         self.engine = ChatbotEngine()
-        self.llm_model = "google/gemini-2.5-flash"
+        self.llm_model = "google/gemini-2.5-flash-8b"
 
     def evaluate_with_guardrail(self, message: str, draft_reply: str, history: list) -> dict:
         global current_key_idx, llm_client, free_keys
