@@ -171,23 +171,37 @@ def main():
                 else:
                     # 2. Fuzzy Match ke Database Supabase
                     import difflib
-                    res = supabase.table("destinations").select("name").execute()
-                    if res.data:
-                        db_names = [d["name"] for d in res.data]
+                    from app.services.nlp_service import get_destination_names
+                    
+                    db_names = get_destination_names()
+                    if db_names:
                         noise_words = ["berapa", "harga", "tiket", "masuk", "dari", "ke", "di", "untuk", 
                                        "jam", "buka", "tutup", "operasional", "alamat", "lokasi", "dimana",
                                        "fasilitas", "apa", "saja", "ada", "yang", "nya", "dong", "ya",
                                        "kasih", "tau", "info", "tentang", "gimana", "bagaimana", "museum",
                                        "wisata", "tempat", "taman", "masjid", "kampung", "kawasan", "pulau",
-                                       "jembatan", "hutan", "sungai"]
-                        words = text_clean.split()
+                                       "jembatan", "hutan", "sungai", "kolam", "renang", "wahana", "kuliner",
+                                       "sejarah", "kategori", "disana", "sini", "sana", "buat",
+                                       "apakah", "ga", "gak", "nggak"]
+                        
+                        text_clean_stripped = query.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "").strip()
+                        words = text_clean_stripped.split()
                         candidates = []
                         for length in range(len(words), 0, -1):
                             for start in range(len(words) - length + 1):
                                 chunk = " ".join(words[start:start+length])
                                 chunk_words = chunk.split()
+                                
+                                # Hapus chunk yang HANYA berisi noise words
                                 if all(w in noise_words for w in chunk_words):
                                     continue
+                                    
+                                # SKIP jika chunk yang tersisa (setelah dibersihkan) sangat pendek (< 4 karakter)
+                                clean_chunk_words = [w for w in chunk_words if w not in noise_words]
+                                clean_chunk = " ".join(clean_chunk_words).strip()
+                                if len(clean_chunk) < 4:
+                                    continue
+                                    
                                 candidates.append(chunk)
                         
                         best_match = None
@@ -199,6 +213,7 @@ def main():
                                     best_score = score
                                     best_match = db_name
                         if best_match:
+                            print(f"🔍 Fuzzy Match: '{text_clean_stripped}' -> '{best_match}' (skor: {best_score:.2f})")
                             entities["DESTINATION"] = best_match
             # --- SELESAI LOGIKA RESOLUSI ENTITAS ---
             

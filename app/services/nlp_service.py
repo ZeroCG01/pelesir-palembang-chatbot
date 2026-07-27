@@ -13,6 +13,18 @@ llm_client = OpenAI(
 )
 current_key_idx = 0
 free_keys = [openrouter_key]  # Pertahankan variabel ini agar tidak merusak logika fallback error 429
+import difflib
+
+# Cache global untuk nama destinasi (mencegah query berulang ke Supabase setiap panggil fuzzy)
+DESTINATIONS_CACHE = []
+
+def get_destination_names():
+    global DESTINATIONS_CACHE
+    if not DESTINATIONS_CACHE and supabase:
+        res = supabase.table("destinations").select("name").execute()
+        if res.data:
+            DESTINATIONS_CACHE = [d["name"] for d in res.data]
+    return DESTINATIONS_CACHE
 
 
 def build_system_prompt():
@@ -74,7 +86,7 @@ class ChatbotModel:
     def __init__(self):
         print("Mempersiapkan model PyTorch/Transformers dari folder ml/saved_models...")
         self.engine = ChatbotEngine()
-        self.llm_model = "meta-llama/llama-3.1-8b-instruct"
+        self.llm_model = "google/gemini-2.5-flash"
 
     def evaluate_with_guardrail(self, message: str, draft_reply: str, history: list) -> dict:
         global current_key_idx, llm_client, free_keys
@@ -222,19 +234,16 @@ Evaluasi Anda:"""
                     return short_name
             return None
 
+        # Konstanta Threshold untuk Fuzzy Match
+        FUZZY_MATCH_THRESHOLD = 0.55  # Pertahankan 0.55 agar kasus seperti Punti Kayu tetap lolos
+
         # Helper function untuk fuzzy matching ke database Supabase
-        def find_destination_fuzzy(text: str, threshold: float = 0.55):
+        def find_destination_fuzzy(text: str, threshold: float = FUZZY_MATCH_THRESHOLD):
             """Cocokkan sisa teks query ke daftar nama destinasi di database menggunakan fuzzy matching."""
-            if not supabase:
-                return None
             try:
-                import difflib
-                # Ambil semua nama destinasi dari database (cached oleh Supabase client)
-                res = supabase.table("destinations").select("name").execute()
-                if not res.data:
+                db_names = get_destination_names()
+                if not db_names:
                     return None
-                
-                db_names = [d["name"] for d in res.data]
                 
                 # Bersihkan teks query dari noise
                 text_clean = text.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "").strip()
@@ -244,17 +253,27 @@ Evaluasi Anda:"""
                                "fasilitas", "apa", "saja", "ada", "yang", "nya", "dong", "ya",
                                "kasih", "tau", "info", "tentang", "gimana", "bagaimana", "museum",
                                "wisata", "tempat", "taman", "masjid", "kampung", "kawasan", "pulau",
-                               "jembatan", "hutan", "sungai"]
+                               "jembatan", "hutan", "sungai", "kolam", "renang", "wahana", "kuliner",
+                               "sejarah", "kategori", "disana", "sini", "sana", "buat",
+                               "apakah", "ga", "gak", "nggak"]
                 words = text_clean.split()
                 # Bangun kandidat: coba semua substring 1-4 kata berturut-turut
                 candidates = []
                 for length in range(len(words), 0, -1):
                     for start in range(len(words) - length + 1):
                         chunk = " ".join(words[start:start+length])
-                        # Hapus chunk yang HANYA berisi noise words
                         chunk_words = chunk.split()
+                        
+                        # Hapus chunk yang HANYA berisi noise words
                         if all(w in noise_words for w in chunk_words):
                             continue
+                            
+                        # SKIP jika chunk yang tersisa (setelah dibersihkan) sangat pendek (< 4 karakter)
+                        clean_chunk_words = [w for w in chunk_words if w not in noise_words]
+                        clean_chunk = " ".join(clean_chunk_words).strip()
+                        if len(clean_chunk) < 4:
+                            continue
+                            
                         candidates.append(chunk)
                 
                 best_match = None
@@ -267,11 +286,10 @@ Evaluasi Anda:"""
                         if score > best_score and score >= threshold:
                             best_score = score
                             best_match = db_name
-                
+                            
                 if best_match:
-                    print(f"🔍 Fuzzy Match: '{text_clean}' → '{best_match}' (skor: {best_score:.2f})")
+                    print(f"🔍 Fuzzy Match: '{text_clean}' -> '{best_match}' (skor: {best_score:.2f})")
                     return best_match
-                    
             except Exception as e:
                 print(f"Fuzzy match error: {e}")
             return None
