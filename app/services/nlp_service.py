@@ -184,7 +184,6 @@ Evaluasi Anda:"""
         
         intent = result["intent"]
         entities = result["entities"]
-        confidence = result.get("confidence", 1.0)
 
         # INTERCEPT ROUTING EKSPLISIT (Origin -> Destination)
         import re
@@ -307,7 +306,6 @@ Evaluasi Anda:"""
                     past_intent = past_result["intent"]
                     if past_intent in ENTITY_DEPENDENT_INTENTS:
                         intent = past_intent
-                        confidence = 1.0  # Paksa yakin karena mewarisi histori
                         print(f"Memori lokal: Mewarisi intent '{intent}' dari histori.")
                         
                         # Jika model gagal mendeteksi DESTINATION di pesan pendek ini, paksa sisa kalimat sebagai DESTINATION
@@ -364,7 +362,6 @@ Evaluasi Anda:"""
         if intent in ENTITY_DEPENDENT_INTENTS and "DESTINATION" not in entities and is_asking_recommendation:
             print(f"Jebakan Intent: Deteksi kata pencarian/rekomendasi. Mengubah intent dari '{intent}' menjadi 'ask_recommendation' → Gemini")
             intent = "ask_recommendation"
-            confidence = 1.0  # Paksa yakin masuk ke Gemini
 
         # LANGKAH 3 - PRODUKSI DRAF LOKAL (The Actor)
         if "hotel" in msg_lower or "penginapan" in msg_lower or "menginap" in msg_lower:
