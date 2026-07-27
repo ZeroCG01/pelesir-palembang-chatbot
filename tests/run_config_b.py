@@ -151,6 +151,57 @@ def main():
             intent = ml_res.get("intent", "unknown")
             entities = ml_res.get("entities", {})
             
+            # --- MULAI LOGIKA RESOLUSI ENTITAS (Sinkron dengan nlp_service.py) ---
+            ENTITY_DEPENDENT_INTENTS = {"ask_ticket_price", "ask_operating_hours", "ask_destination_info", "ask_lrt_destinations", "ask_location_access", "ask_facilities"}
+            
+            if "DESTINATION" not in entities and intent in ENTITY_DEPENDENT_INTENTS:
+                # 1. Abbreviation Match
+                from ml.api.response_builder import ABBREVIATIONS
+                text_clean = query.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "")
+                text_padded = f" {text_clean} "
+                sorted_abbrs = sorted(ABBREVIATIONS.keys(), key=len, reverse=True)
+                found_abbr = None
+                for short_name in sorted_abbrs:
+                    if f" {short_name} " in text_padded:
+                        found_abbr = short_name
+                        break
+                
+                if found_abbr:
+                    entities["DESTINATION"] = found_abbr
+                else:
+                    # 2. Fuzzy Match ke Database Supabase
+                    import difflib
+                    res = supabase.table("destinations").select("name").execute()
+                    if res.data:
+                        db_names = [d["name"] for d in res.data]
+                        noise_words = ["berapa", "harga", "tiket", "masuk", "dari", "ke", "di", "untuk", 
+                                       "jam", "buka", "tutup", "operasional", "alamat", "lokasi", "dimana",
+                                       "fasilitas", "apa", "saja", "ada", "yang", "nya", "dong", "ya",
+                                       "kasih", "tau", "info", "tentang", "gimana", "bagaimana", "museum",
+                                       "wisata", "tempat", "taman", "masjid", "kampung", "kawasan", "pulau",
+                                       "jembatan", "hutan", "sungai"]
+                        words = text_clean.split()
+                        candidates = []
+                        for length in range(len(words), 0, -1):
+                            for start in range(len(words) - length + 1):
+                                chunk = " ".join(words[start:start+length])
+                                chunk_words = chunk.split()
+                                if all(w in noise_words for w in chunk_words):
+                                    continue
+                                candidates.append(chunk)
+                        
+                        best_match = None
+                        best_score = 0.0
+                        for candidate in candidates:
+                            for db_name in db_names:
+                                score = difflib.SequenceMatcher(None, candidate, db_name.lower()).ratio()
+                                if score > best_score and score >= 0.55:
+                                    best_score = score
+                                    best_match = db_name
+                        if best_match:
+                            entities["DESTINATION"] = best_match
+            # --- SELESAI LOGIKA RESOLUSI ENTITAS ---
+            
             if intent in ["ask_recommendation", "ask_category", "ask_hidden_gems", "ask_unrelated"]:
                 draft_text = "Maaf, saya tidak mengerti maksud Anda."
             else:
