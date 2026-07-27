@@ -222,6 +222,60 @@ Evaluasi Anda:"""
                     return short_name
             return None
 
+        # Helper function untuk fuzzy matching ke database Supabase
+        def find_destination_fuzzy(text: str, threshold: float = 0.55):
+            """Cocokkan sisa teks query ke daftar nama destinasi di database menggunakan fuzzy matching."""
+            if not supabase:
+                return None
+            try:
+                import difflib
+                # Ambil semua nama destinasi dari database (cached oleh Supabase client)
+                res = supabase.table("destinations").select("name").execute()
+                if not res.data:
+                    return None
+                
+                db_names = [d["name"] for d in res.data]
+                
+                # Bersihkan teks query dari noise
+                text_clean = text.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "").strip()
+                # Hapus kata-kata umum non-destinasi agar matching lebih akurat
+                noise_words = ["berapa", "harga", "tiket", "masuk", "dari", "ke", "di", "untuk", 
+                               "jam", "buka", "tutup", "operasional", "alamat", "lokasi", "dimana",
+                               "fasilitas", "apa", "saja", "ada", "yang", "nya", "dong", "ya",
+                               "kasih", "tau", "info", "tentang", "gimana", "bagaimana", "museum",
+                               "wisata", "tempat", "taman", "masjid", "kampung", "kawasan", "pulau",
+                               "jembatan", "hutan", "sungai"]
+                words = text_clean.split()
+                # Bangun kandidat: coba semua substring 1-4 kata berturut-turut
+                candidates = []
+                for length in range(len(words), 0, -1):
+                    for start in range(len(words) - length + 1):
+                        chunk = " ".join(words[start:start+length])
+                        # Hapus chunk yang HANYA berisi noise words
+                        chunk_words = chunk.split()
+                        if all(w in noise_words for w in chunk_words):
+                            continue
+                        candidates.append(chunk)
+                
+                best_match = None
+                best_score = 0.0
+                
+                for candidate in candidates:
+                    for db_name in db_names:
+                        # Bandingkan candidate dengan nama db (case-insensitive)
+                        score = difflib.SequenceMatcher(None, candidate, db_name.lower()).ratio()
+                        if score > best_score and score >= threshold:
+                            best_score = score
+                            best_match = db_name
+                
+                if best_match:
+                    print(f"🔍 Fuzzy Match: '{text_clean}' → '{best_match}' (skor: {best_score:.2f})")
+                    return best_match
+                    
+            except Exception as e:
+                print(f"Fuzzy match error: {e}")
+            return None
+
         # LANGKAH 1.5 - MEMORI INTENT (Follow-up context)
         is_follow_up = any(msg_lower.startswith(w) for w in ["kalo ", "kalau ", "gimana ", "bagaimana "])
         
@@ -250,7 +304,10 @@ Evaluasi Anda:"""
                                 print(f"Memori lokal: Memaksa sisa kalimat '{sisa_kata}' sebagai DESTINATION.")
                         break
 
-        # LANGKAH 2 - MEMORI KONTEKS LOKAL (Pencarian Entity)
+        # LANGKAH 1.8 - FUZZY MATCHING KE DATABASE (Sebelum Fallback Histori)
+        # Urutan resolusi: NER (Langkah 1) → Abbreviation → Fuzzy DB Match → Histori (Langkah 2)
+        # Ini mencegah sistem salah mengambil destinasi dari histori padahal nama destinasi
+        # masih ada di dalam kalimat query saat ini (hanya gagal ditangkap oleh NER).
         if "DESTINATION" not in entities and intent in ENTITY_DEPENDENT_INTENTS:
             # a. Coba pencocokan singkatan pada pesan saat ini dulu
             found_abbr = find_destination_by_abbr(message)
@@ -258,23 +315,29 @@ Evaluasi Anda:"""
                 entities["DESTINATION"] = found_abbr
                 print(f"Memori lokal: Found '{found_abbr}' manually di pesan saat ini.")
             else:
-                # b. Telusuri history dari terbaru ke terlama
-                print("Memori lokal: Mencari DESTINATION dari riwayat percakapan...")
-                for h in reversed(history):
-                    if h.get("role") == "user":
-                        past_msg = h.get("content", "")
-                        # Coba pakai engine untuk masa lalu
-                        past_result = self.engine.process_message(past_msg)
-                        if "DESTINATION" in past_result["entities"]:
-                            entities["DESTINATION"] = past_result["entities"]["DESTINATION"]
-                            print(f"Memori lokal: DESTINATION='{entities['DESTINATION']}' dari history (ML) → jawab lokal")
-                            break
-                        # Coba pakai singkatan untuk masa lalu
-                        past_abbr = find_destination_by_abbr(past_msg)
-                        if past_abbr:
-                            entities["DESTINATION"] = past_abbr
-                            print(f"Memori lokal: DESTINATION='{past_abbr}' dari history (Abbr) → jawab lokal")
-                            break
+                # b. (BARU!) Coba fuzzy matching ke database Supabase
+                fuzzy_result = find_destination_fuzzy(message)
+                if fuzzy_result:
+                    entities["DESTINATION"] = fuzzy_result
+                    print(f"🔍 Memori lokal: DESTINATION='{fuzzy_result}' dari Fuzzy DB Match → jawab lokal")
+                else:
+                    # c. Telusuri history dari terbaru ke terlama (opsi TERAKHIR)
+                    print("Memori lokal: Mencari DESTINATION dari riwayat percakapan...")
+                    for h in reversed(history):
+                        if h.get("role") == "user":
+                            past_msg = h.get("content", "")
+                            # Coba pakai engine untuk masa lalu
+                            past_result = self.engine.process_message(past_msg)
+                            if "DESTINATION" in past_result["entities"]:
+                                entities["DESTINATION"] = past_result["entities"]["DESTINATION"]
+                                print(f"Memori lokal: DESTINATION='{entities['DESTINATION']}' dari history (ML) → jawab lokal")
+                                break
+                            # Coba pakai singkatan untuk masa lalu
+                            past_abbr = find_destination_by_abbr(past_msg)
+                            if past_abbr:
+                                entities["DESTINATION"] = past_abbr
+                                print(f"Memori lokal: DESTINATION='{past_abbr}' dari history (Abbr) → jawab lokal")
+                                break
                             
         # LANGKAH 2.5 - JEBAKAN INTENT (Kesalahan Klasifikasi akibat Kata Kunci)
         # Kasus: User meminta rekomendasi wisata berdasar atribut ("wisata yang buka 24 jam")
