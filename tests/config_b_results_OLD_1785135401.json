@@ -12,7 +12,7 @@
         "jawaban_akhir": "Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 2.4179
+        "latency_llm_detik": 3.3259
     },
     {
         "no": 2,
@@ -28,7 +28,7 @@
         "jawaban_akhir": "Jam operasional Museum Balaputra Dewa adalah: Selasa – Minggu, 08.00 – 15.30.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 0.8658
+        "latency_llm_detik": 1.2815
     },
     {
         "no": 3,
@@ -44,7 +44,7 @@
         "jawaban_akhir": "Ya, tentu ada! Fasilitas yang tersedia di Hutan Wisata Punti Kayu antara lain: Wahana permainan, kebun binatang mini, spot foto, gazebo, area parkir.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 1.2955
+        "latency_llm_detik": 1.2561
     },
     {
         "no": 4,
@@ -60,7 +60,7 @@
         "jawaban_akhir": "Ya! Anda bisa menggunakan fasilitas LRT untuk menuju ke Museum Sultan Mahmud Badaruddin II.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 0.8064
+        "latency_llm_detik": 1.0685
     },
     {
         "no": 5,
@@ -76,7 +76,7 @@
         "jawaban_akhir": "Tentu, Palembang memiliki beberapa destinasi wisata sejarah yang menarik. Berikut rekomendasinya:\n\n*   **Museum Balaputra Dewa**: Buka Selasa – Minggu, 08.00 – 15.30. Harga tiket Rp 2.000 - Rp 5.000.\n*   **Monumen Perjuangan Rakyat (Monpera)**: Buka Setiap Hari, 08.00 – 16.00. Harga tiket Rp 2.000.\n*   **Makam Ki Gede Ing Suro**: Buka 08:00 - 17:00 WIB. Gratis.\n*   **Museum AK. Gani**: Buka 09:00 - 17:00 WIB (Sabtu, Minggu, dan Senin Tutup). Harga tiket Rp 1.000 - Rp 2.000.\n*   **Museum Sultan Mahmud Badaruddin II**: Buka Selasa – Minggu, 08.00 - 15.00. Harga tiket Rp 1.000.\n*   **Kawasan Benteng Kuto Besak (BKB)**: Buka Setiap Hari, 08.00 - 21.00 WIB (area dalam), 24 jam (area luar). Harga tiket Rp 0 - Rp 5.000.\n*   **Jembatan Ampera**: Buka Setiap Hari, 24 Jam. Gratis.\n*   **Kampung Kapitan**: Buka Setiap Hari, 08.00 – 17.00. Harga tiket Rp 5.000.\n*   **Taman Purbakala Kerajaan Sriwijaya**: Buka Setiap Hari, 08.00 – 18.00. Harga tiket Rp 5.000.\n\nSemoga daftar ini membantu Anda merencanakan perjalanan wisata sejarah di Palembang!",
         "intervensi": true,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 2.281
+        "latency_llm_detik": 2.6677
     },
     {
         "no": 6,
@@ -91,7 +91,7 @@
         "jawaban_akhir": "Tentu, Palembang punya banyak pilihan wisata kuliner yang menarik! Berikut beberapa di antaranya:\n\n*   **Toko Kopi Har**: Buka pukul 08:00 - 20:00 WIB.\n*   **Lorong Basah Night Culinary Market**: Buka setiap hari pukul 18.00 – 02.00.\n*   **Pempek Candy**: Buka pukul 06:30 - 22:00 WIB.\n*   **Kawasan Pasar 16 Ilir**: Buka pukul 09:00 - 17:00 WIB.\n*   **Pempek Lala 26 Ilir**: Buka pukul 08:00 - 20:00 WIB.\n*   **Restoran River Side**: Buka pukul 10:00 - 22:00 WIB.\n*   **RM Sri Melayu**: Buka pukul 10:00 - 22:00 WIB.\n*   **Martabak HAR**: Buka pukul 06:00 - 23:45 WIB.\n\nSemoga daftar ini membantumu menemukan tempat makan yang pas!",
         "intervensi": true,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 1.9142
+        "latency_llm_detik": 1.8863
     },
     {
         "no": 7,
@@ -106,7 +106,7 @@
         "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 0.7961
+        "latency_llm_detik": 0.9261
     },
     {
         "no": 8,
@@ -121,7 +121,7 @@
         "jawaban_akhir": "Mohon maaf, Palembang tidak memiliki wisata pantai alami. Apakah Anda ingin rekomendasi wisata alam lainnya seperti bukit, hutan, atau danau?",
         "intervensi": true,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 0.932
+        "latency_llm_detik": 1.4035
     },
     {
         "no": 9,
@@ -134,7 +134,7 @@
         "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi harga tiketnya.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 1.298
+        "latency_llm_detik": 0.8371
     },
     {
         "no": 10,
@@ -142,14 +142,15 @@
         "query": "ada fasilitas kolam renang ga disana?",
         "intent": "ask_facilities",
         "entities": {
-            "CATEGORY": "kolam renang"
+            "CATEGORY": "kolam renang",
+            "DESTINATION": "Kambang Iwak Besak"
         },
-        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
-        "verdict": "PASS",
-        "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
-        "intervensi": false,
+        "draf_actor": "Ya, tentu ada! Fasilitas yang tersedia di Kambang Iwak Besak antara lain: Jogging track, area bermain anak, alat olahraga publik, pedagang makanan keliling.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Mohon maaf, berdasarkan informasi yang saya miliki, Kambang Iwak Besak tidak memiliki fasilitas kolam renang. Fasilitas yang tersedia di sana antara lain jogging track, area bermain anak, alat olahraga publik, dan pedagang makanan keliling.",
+        "intervensi": true,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 0.8124
+        "latency_llm_detik": 1.6328
     },
     {
         "no": 11,
@@ -164,7 +165,7 @@
         "jawaban_akhir": "Museum Sultan Mahmud Badaruddin II adalah museum sejarah, bukan tempat untuk menginap. Jika Anda mencari akomodasi di Palembang, saya bisa merekomendasikan beberapa hotel seperti Novotel Palembang, Amaris Hotel Palembang, The Zuri Palembang, atau Hotel Aston Palembang.",
         "intervensi": true,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 1.034
+        "latency_llm_detik": 1.0937
     },
     {
         "no": 12,
@@ -179,7 +180,7 @@
         "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 1.5391
+        "latency_llm_detik": 2.3147
     },
     {
         "no": 13,
@@ -194,7 +195,7 @@
         "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 0.8011
+        "latency_llm_detik": 0.8713
     },
     {
         "no": 14,
@@ -210,7 +211,7 @@
         "jawaban_akhir": "Maaf, saya tidak bisa memberikan informasi mengenai cuaca. Saya hanya bisa membantu Anda dengan informasi seputar wisata di Palembang.",
         "intervensi": true,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 0.9032
+        "latency_llm_detik": 0.9453
     },
     {
         "no": 15,
@@ -225,6 +226,6 @@
         "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
         "intervensi": false,
         "model": "google/gemini-2.5-flash",
-        "latency_llm_detik": 1.3679
+        "latency_llm_detik": 0.8932
     }
 ]

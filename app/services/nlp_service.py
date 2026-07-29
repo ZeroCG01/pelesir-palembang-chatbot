@@ -184,6 +184,11 @@ Evaluasi Anda:"""
         
         intent = result["intent"]
         entities = result["entities"]
+        confidence = result.get("confidence", 1.0)
+        
+        if confidence < 0.65:
+            print(f"⚠️ LOW CONFIDENCE INTENT: {intent} ({confidence:.2f}). Fallback ke ask_unrelated.")
+            intent = "ask_unrelated"
 
         # INTERCEPT ROUTING EKSPLISIT (Origin -> Destination)
         import re
@@ -254,7 +259,8 @@ Evaluasi Anda:"""
                                "wisata", "tempat", "taman", "masjid", "kampung", "kawasan", "pulau",
                                "jembatan", "hutan", "sungai", "kolam", "renang", "wahana", "kuliner",
                                "sejarah", "kategori", "disana", "sini", "sana", "buat",
-                               "apakah", "ga", "gak", "nggak"]
+                               "apakah", "ga", "gak", "nggak",
+                               "palembang", "naik", "dekat"]
                 words = text_clean.split()
                 # Bangun kandidat: coba semua substring 1-4 kata berturut-turut
                 candidates = []

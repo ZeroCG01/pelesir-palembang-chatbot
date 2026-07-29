@@ -9,7 +9,7 @@
             "DESTINATION": "benteng kuto besak?"
         },
         "answer_A": "Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.",
-        "latency_sec": 1.5219
+        "latency_sec": 0.9639
     },
     {
         "id": 2,
@@ -18,10 +18,11 @@
         "predicted_intent": "ask_operating_hours",
         "predicted_intent_confidence": 0.9106841087341309,
         "entities": {
-            "CATEGORY": "museum balaputradewa?"
+            "CATEGORY": "museum balaputradewa?",
+            "DESTINATION": "Museum Balaputra Dewa"
         },
-        "answer_A": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
-        "latency_sec": 0.381
+        "answer_A": "Jam operasional Museum Balaputra Dewa adalah: Selasa – Minggu, 08.00 – 15.30.",
+        "latency_sec": 0.1916
     },
     {
         "id": 3,
@@ -30,10 +31,11 @@
         "predicted_intent": "ask_facilities",
         "predicted_intent_confidence": 0.9126561880111694,
         "entities": {
-            "LOCATION": "punti kayu?"
+            "LOCATION": "punti kayu?",
+            "DESTINATION": "punti kayu"
         },
-        "answer_A": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
-        "latency_sec": 0.4859
+        "answer_A": "Ya, tentu ada! Fasilitas yang tersedia di Hutan Wisata Punti Kayu antara lain: Wahana permainan, kebun binatang mini, spot foto, gazebo, area parkir.",
+        "latency_sec": 0.1396
     },
     {
         "id": 4,
@@ -42,10 +44,11 @@
         "predicted_intent": "ask_lrt_destinations",
         "predicted_intent_confidence": 0.9048171639442444,
         "entities": {
-            "CATEGORY": "museummbi"
+            "CATEGORY": "museummbi",
+            "DESTINATION": "museum smb"
         },
-        "answer_A": "Transportasi LRT sangat efisien lho di Palembang! Sebutkan tempat wisatanya, nanti saya bantu carikan stasiun LRT terdekatnya.",
-        "latency_sec": 0.4683
+        "answer_A": "Ya! Anda bisa menggunakan fasilitas LRT untuk menuju ke Museum Sultan Mahmud Badaruddin II.",
+        "latency_sec": 0.1089
     },
     {
         "id": 5,
@@ -58,7 +61,7 @@
             "LOCATION": "palembang"
         },
         "answer_A": "Maaf, saya tidak mengerti maksud Anda.",
-        "latency_sec": 0.4327
+        "latency_sec": 0.0526
     },
     {
         "id": 6,
@@ -70,7 +73,7 @@
             "CATEGORY": "wisata kuliner"
         },
         "answer_A": "Maaf, saya tidak mengerti maksud Anda.",
-        "latency_sec": 0.2311
+        "latency_sec": 0.0543
     },
     {
         "id": 7,
@@ -82,7 +85,7 @@
             "TIME": "24 jam"
         },
         "answer_A": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
-        "latency_sec": 0.2362
+        "latency_sec": 0.0434
     },
     {
         "id": 8,
@@ -94,7 +97,7 @@
             "CATEGORY": "pantai alami"
         },
         "answer_A": "Maaf, saya tidak mengerti maksud Anda.",
-        "latency_sec": 0.2299
+        "latency_sec": 0.0551
     },
     {
         "id": 9,
@@ -104,7 +107,7 @@
         "predicted_intent_confidence": 0.9079654216766357,
         "entities": {},
         "answer_A": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi harga tiketnya.",
-        "latency_sec": 0.2348
+        "latency_sec": 0.0551
     },
     {
         "id": 10,
@@ -116,7 +119,7 @@
             "CATEGORY": "kolam renang"
         },
         "answer_A": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
-        "latency_sec": 0.6553
+        "latency_sec": 0.055
     },
     {
         "id": 11,
@@ -128,7 +131,7 @@
             "DESTINATION": "smb"
         },
         "answer_A": "Berikut info singkat tentang Museum Sultan Mahmud Badaruddin II: Museum Sultan Mahmud Badaruddin II merupakan museum sejarah yang menempati bangunan peninggalan kolonial Belanda di tepi Sungai Musi. Museum ini menyimpan berbagai koleksi tentang Kesultanan Palembang... Jika butuh info lebih detail, silakan tanyakan lagi!",
-        "latency_sec": 0.3291
+        "latency_sec": 0.1718
     },
     {
         "id": 12,
@@ -140,7 +143,7 @@
             "CATEGORY": "pempek"
         },
         "answer_A": "Maaf, saya tidak mengerti maksud Anda.",
-        "latency_sec": 0.3166
+        "latency_sec": 0.0581
     },
     {
         "id": 13,
@@ -152,7 +155,7 @@
             "TIME": "saat ini?"
         },
         "answer_A": "Maaf, saya tidak mengerti maksud Anda.",
-        "latency_sec": 0.3476
+        "latency_sec": 0.0589
     },
     {
         "id": 14,
@@ -165,7 +168,7 @@
             "TIME": "hari ini?"
         },
         "answer_A": "Maaf, saya tidak mengerti maksud Anda.",
-        "latency_sec": 0.5237
+        "latency_sec": 0.0518
     },
     {
         "id": 15,
@@ -177,6 +180,6 @@
             "CATEGORY": "python"
         },
         "answer_A": "Maaf, saya tidak mengerti maksud Anda.",
-        "latency_sec": 0.4367
+        "latency_sec": 0.0539
     }
 ]

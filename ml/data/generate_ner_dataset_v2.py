@@ -116,7 +116,7 @@ def generate_price_sentences():
     samples = []
     
     for dest_name, dest_tokens in DESTINATIONS + [(k, v) for k, v in ABBR_TOKENS.items()]:
-        for price_tokens, _ in random.sample(PRICES, min(5, len(PRICES))):
+        for price_tokens, _ in PRICES: # Use all prices instead of sample(5)
             # "Harga tiket {dest} {price}"
             tokens = ["Harga", "tiket"] + dest_tokens + price_tokens
             entities = [
@@ -125,11 +125,6 @@ def generate_price_sentences():
             ]
             samples.append({"tokens": tokens, "tags": make_bio_tags(tokens, entities)})
             
-            # "Berapa harga tiket {dest}?"
-            tokens2 = ["Berapa", "harga", "tiket"] + dest_tokens + ["?"]
-            entities2 = [(3, 3 + len(dest_tokens), "DESTINATION")]
-            samples.append({"tokens": tokens2, "tags": make_bio_tags(tokens2, entities2)})
-            
             # "Tiket masuk {dest} {price}"
             tokens3 = ["Tiket", "masuk"] + dest_tokens + price_tokens
             entities3 = [
@@ -137,7 +132,15 @@ def generate_price_sentences():
                 (2 + len(dest_tokens), 2 + len(dest_tokens) + len(price_tokens), "PRICE"),
             ]
             samples.append({"tokens": tokens3, "tags": make_bio_tags(tokens3, entities3)})
-    
+            
+            # "{dest} harganya {price} ya ?"
+            tokens4 = dest_tokens + ["harganya"] + price_tokens + ["ya", "?"]
+            entities4 = [
+                (0, len(dest_tokens), "DESTINATION"),
+                (len(dest_tokens) + 1, len(dest_tokens) + 1 + len(price_tokens), "PRICE"),
+            ]
+            samples.append({"tokens": tokens4, "tags": make_bio_tags(tokens4, entities4)})
+
     # Kalimat harga tanpa destinasi
     for price_tokens, _ in PRICES:
         tokens = ["Berapa", "harganya", "?"]
@@ -146,6 +149,10 @@ def generate_price_sentences():
         tokens2 = ["Harganya"] + price_tokens
         entities2 = [(1, 1 + len(price_tokens), "PRICE")]
         samples.append({"tokens": tokens2, "tags": make_bio_tags(tokens2, entities2)})
+        
+        tokens3 = ["Kira-kira", "sekitar"] + price_tokens
+        entities3 = [(2, 2 + len(price_tokens), "PRICE")]
+        samples.append({"tokens": tokens3, "tags": make_bio_tags(tokens3, entities3)})
     
     return samples
 
@@ -188,6 +195,9 @@ def generate_category_sentences():
         ["Tempat"],
         ["Mau", "cari"],
         ["Cari"],
+        ["Info"],
+        ["Destinasi"],
+        ["Tolong", "carikan"],
     ]
     
     templates_suffix = [
@@ -195,16 +205,22 @@ def generate_category_sentences():
         ["Palembang", "?"],
         ["dong"],
         ["yang", "bagus", "?"],
+        ["yang", "lagi", "hits", "?"],
+        ["buat", "keluarga"],
     ]
     
     for cat_name, cat_tokens in CATEGORIES.items():
         for prefix in templates_prefix:
-            for suffix in random.sample(templates_suffix, 2):
+            for suffix in templates_suffix:
                 tokens = prefix + cat_tokens + suffix
                 cat_start = len(prefix)
                 cat_end = cat_start + len(cat_tokens)
                 entities = [(cat_start, cat_end, "CATEGORY")]
                 samples.append({"tokens": tokens, "tags": make_bio_tags(tokens, entities)})
+                
+                # typo casing: lowercase all
+                tokens_lower = [t.lower() for t in tokens]
+                samples.append({"tokens": tokens_lower, "tags": make_bio_tags(tokens_lower, entities)})
     
     return samples
 
@@ -213,8 +229,8 @@ def generate_time_sentences():
     """Generate kalimat dengan entity TIME"""
     samples = []
     
-    for dest_name, dest_tokens in random.sample(DESTINATIONS, 8):
-        for time_tokens, _ in random.sample(TIMES, 4):
+    for dest_name, dest_tokens in DESTINATIONS + [(k, v) for k, v in ABBR_TOKENS.items()]:
+        for time_tokens, _ in TIMES:
             # "{dest} buka jam {time}"
             tokens = dest_tokens + ["buka"] + time_tokens
             entities = [
@@ -222,6 +238,22 @@ def generate_time_sentences():
                 (len(dest_tokens) + 1, len(dest_tokens) + 1 + len(time_tokens), "TIME"),
             ]
             samples.append({"tokens": tokens, "tags": make_bio_tags(tokens, entities)})
+            
+            # "{dest} tutup jam {time} ?"
+            tokens2 = dest_tokens + ["tutup"] + time_tokens + ["?"]
+            entities2 = [
+                (0, len(dest_tokens), "DESTINATION"),
+                (len(dest_tokens) + 1, len(dest_tokens) + 1 + len(time_tokens), "TIME"),
+            ]
+            samples.append({"tokens": tokens2, "tags": make_bio_tags(tokens2, entities2)})
+            
+            # "kalo {time} {dest} buka gak ?"
+            tokens3 = ["kalo"] + time_tokens + dest_tokens + ["buka", "gak", "?"]
+            entities3 = [
+                (1, 1 + len(time_tokens), "TIME"),
+                (1 + len(time_tokens), 1 + len(time_tokens) + len(dest_tokens), "DESTINATION"),
+            ]
+            samples.append({"tokens": tokens3, "tags": make_bio_tags(tokens3, entities3)})
     
     return samples
 

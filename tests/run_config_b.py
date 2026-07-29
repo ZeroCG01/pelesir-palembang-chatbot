@@ -182,7 +182,8 @@ def main():
                                        "wisata", "tempat", "taman", "masjid", "kampung", "kawasan", "pulau",
                                        "jembatan", "hutan", "sungai", "kolam", "renang", "wahana", "kuliner",
                                        "sejarah", "kategori", "disana", "sini", "sana", "buat",
-                                       "apakah", "ga", "gak", "nggak"]
+                                       "apakah", "ga", "gak", "nggak",
+                                       "palembang", "naik", "dekat"]
                         
                         text_clean_stripped = query.lower().replace("?", "").replace("!", "").replace(".", "").replace(",", "").strip()
                         words = text_clean_stripped.split()

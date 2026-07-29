@@ -58,7 +58,7 @@ NER_BATCH_SIZE = 16
 NER_EPOCHS = 25
 NER_LR = 2e-5
 NER_WEIGHT_DECAY = 0.01
-NER_PATIENCE = 5
+NER_PATIENCE = 3
 NER_WARMUP_RATIO = 0.1
 
 NER_TAGS = [
@@ -395,7 +395,7 @@ def train_ner():
 
     tokenizer = AutoTokenizer.from_pretrained(NER_MODEL_NAME)
     model = AutoModelForTokenClassification.from_pretrained(
-        NER_MODEL_NAME, num_labels=len(NER_TAGS), ignore_mismatched_sizes=True
+        NER_MODEL_NAME, num_labels=len(NER_TAGS), ignore_mismatched_sizes=True, classifier_dropout=0.3
     ).to(DEVICE)
 
     train_ds = NERDataset(train_path, tokenizer, NER_MAX_LEN, NER_TAG2ID)
@@ -576,7 +576,7 @@ def calibrate_temperature(intent_save_dir):
     labels = torch.cat(all_labels, dim=0)
 
     # Temperature parameter (optimizable)
-    temperature = nn.Parameter(torch.ones(1) * 1.5)
+    temperature = nn.Parameter(torch.ones(1) * 1.0)
     optimizer = torch.optim.LBFGS([temperature], lr=0.01, max_iter=50)
 
     # NLL before calibration
