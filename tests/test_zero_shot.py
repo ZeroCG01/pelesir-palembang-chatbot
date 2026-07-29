@@ -40,13 +40,7 @@ async def main():
             outputs = engine.intent_model(**inputs)
             probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
             
-            # Kalibrasi
-            if engine.temperature is not None and engine.temperature != 1.0:
-                logits = outputs.logits / engine.temperature
-                cal_probs = torch.nn.functional.softmax(logits, dim=-1)
-                prob_val = cal_probs.max().item()
-            else:
-                prob_val = probs.max().item()
+            prob_val = probs.max().item()
                 
             pred_idx = torch.argmax(probs, dim=-1).item()
             pred_intent = engine.intent_id2label[pred_idx]
