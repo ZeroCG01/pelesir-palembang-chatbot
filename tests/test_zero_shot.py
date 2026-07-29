@@ -30,8 +30,8 @@ async def main():
     engine = ChatbotEngine()
     
     print("\nMemulai Uji Coba Zero-Shot...\n")
-    print("| No | Kalimat (Zero-Shot) | Target Intent | Prediksi Intent | Confidence | Status | NER Ekstraksi |")
-    print("|---|---|---|---|---|---|---|")
+    print("| No | Kalimat (Zero-Shot) | Target Intent | Prediksi Intent | Status | NER Ekstraksi |")
+    print("|---|---|---|---|---|---|")
     
     for i, (text, target) in enumerate(sentences):
         # We only want to test the raw model prediction before fallback
@@ -39,8 +39,6 @@ async def main():
         with torch.no_grad():
             outputs = engine.intent_model(**inputs)
             probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
-            
-            prob_val = probs.max().item()
                 
             pred_idx = torch.argmax(probs, dim=-1).item()
             pred_intent = engine.intent_id2label[pred_idx]
@@ -55,7 +53,7 @@ async def main():
         if target == "ask_recommendation" and pred_intent == "ask_hidden_gems":
             status = "✅ PASS (Valid)"
         
-        print(f"| {i+1} | {text} | `{target}` | `{pred_intent}` | {prob_val:.2f} | {status} | {ner_str} |")
+        print(f"| {i+1} | {text} | `{target}` | `{pred_intent}` | {status} | {ner_str} |")
 
 if __name__ == '__main__':
     asyncio.run(main())
