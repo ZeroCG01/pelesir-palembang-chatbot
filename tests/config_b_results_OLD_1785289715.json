@@ -1,0 +1,230 @@
+[
+    {
+        "no": 1,
+        "category": "normal",
+        "query": "berapa harga tiket masuk benteng kuto besak?",
+        "intent": "ask_ticket_price",
+        "entities": {
+            "DESTINATION": "benteng kuto besak?"
+        },
+        "draf_actor": "Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 3.4101
+    },
+    {
+        "no": 2,
+        "category": "normal",
+        "query": "jam buka museum balaputradewa?",
+        "intent": "ask_operating_hours",
+        "entities": {
+            "CATEGORY": "museum balaputradewa?",
+            "DESTINATION": "Museum Balaputra Dewa"
+        },
+        "draf_actor": "Jam operasional Museum Balaputra Dewa adalah: Selasa – Minggu, 08.00 – 15.30.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Jam operasional Museum Balaputra Dewa adalah: Selasa – Minggu, 08.00 – 15.30.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 1.173
+    },
+    {
+        "no": 3,
+        "category": "normal",
+        "query": "fasilitas apa saja yang ada di punti kayu?",
+        "intent": "ask_facilities",
+        "entities": {
+            "LOCATION": "punti kayu?",
+            "DESTINATION": "punti kayu"
+        },
+        "draf_actor": "Ya, tentu ada! Fasilitas yang tersedia di Hutan Wisata Punti Kayu antara lain: Wahana permainan, kebun binatang mini, spot foto, gazebo, area parkir.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Ya, tentu ada! Fasilitas yang tersedia di Hutan Wisata Punti Kayu antara lain: Wahana permainan, kebun binatang mini, spot foto, gazebo, area parkir.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 1.0611
+    },
+    {
+        "no": 4,
+        "category": "normal",
+        "query": "apakah museum smb ii dekat lrt?",
+        "intent": "ask_lrt_destinations",
+        "entities": {
+            "CATEGORY": "museummbi",
+            "DESTINATION": "museum smb"
+        },
+        "draf_actor": "Ya! Anda bisa menggunakan fasilitas LRT untuk menuju ke Museum Sultan Mahmud Badaruddin II.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Ya! Anda bisa menggunakan fasilitas LRT untuk menuju ke Museum Sultan Mahmud Badaruddin II.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 0.8953
+    },
+    {
+        "no": 5,
+        "category": "normal",
+        "query": "rekomendasi wisata sejarah di palembang dong",
+        "intent": "ask_category",
+        "entities": {
+            "CATEGORY": "wisata sejarah",
+            "LOCATION": "palembang"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Tentu, Palembang memiliki beberapa destinasi wisata sejarah yang menarik. Berikut rekomendasinya:\n\n*   **Museum Balaputra Dewa**: Buka Selasa – Minggu, 08.00 – 15.30. Harga tiket Rp 2.000 - Rp 5.000.\n*   **Monumen Perjuangan Rakyat (Monpera)**: Buka Setiap Hari, 08.00 – 16.00. Harga tiket Rp 2.000.\n*   **Makam Ki Gede Ing Suro**: Buka 08:00 - 17:00 WIB. Gratis.\n*   **Museum AK. Gani**: Buka 09:00 - 17:00 WIB (Sabtu, Minggu, dan Senin Tutup). Harga tiket Rp 1.000 - Rp 2.000.\n*   **Museum Sultan Mahmud Badaruddin II**: Buka Selasa – Minggu, 08.00 - 15.00. Harga tiket Rp 1.000.\n*   **Kawasan Benteng Kuto Besak (BKB)**: Buka Setiap Hari, 08.00 - 21.00 WIB (area dalam), 24 jam (area luar). Harga tiket Rp 0 - Rp 5.000.\n*   **Jembatan Ampera**: Buka Setiap Hari, 24 Jam. Gratis.\n*   **Kampung Kapitan**: Buka Setiap Hari, 08.00 – 17.00. Harga tiket Rp 5.000.\n*   **Taman Purbakala Kerajaan Sriwijaya**: Buka Setiap Hari, 08.00 – 18.00. Harga tiket Rp 5.000.\n\nSemoga daftar ini membantu Anda merencanakan perjalanan wisata sejarah di Palembang!",
+        "intervensi": true,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 2.9552
+    },
+    {
+        "no": 6,
+        "category": "normal",
+        "query": "kasih tau wisata kuliner dong",
+        "intent": "ask_category",
+        "entities": {
+            "CATEGORY": "wisata kuliner"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Tentu, Palembang punya banyak pilihan wisata kuliner yang menarik! Berikut beberapa di antaranya:\n\n*   **Toko Kopi Har**: Buka pukul 08:00 - 20:00 WIB.\n*   **Lorong Basah Night Culinary Market**: Buka setiap hari pukul 18.00 – 02.00.\n*   **Pempek Candy**: Buka pukul 06:30 - 22:00 WIB.\n*   **Kawasan Pasar 16 Ilir**: Buka pukul 09:00 - 17:00 WIB.\n*   **Pempek Lala 26 Ilir**: Buka pukul 08:00 - 20:00 WIB.\n*   **Restoran River Side**: Buka pukul 10:00 - 22:00 WIB.\n*   **RM Sri Melayu**: Buka pukul 10:00 - 22:00 WIB.\n*   **Martabak HAR**: Buka pukul 06:00 - 23:45 WIB.\n\nSemoga daftar ini membantumu menemukan tempat makan yang pas!",
+        "intervensi": true,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 2.6552
+    },
+    {
+        "no": 7,
+        "category": "trap",
+        "query": "buka 24 jam",
+        "intent": "ask_operating_hours",
+        "entities": {
+            "TIME": "24 jam"
+        },
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 0.9709
+    },
+    {
+        "no": 8,
+        "category": "trap",
+        "query": "rekomendasi wisata pantai alami",
+        "intent": "ask_category",
+        "entities": {
+            "CATEGORY": "pantai alami"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Mohon maaf, Palembang tidak memiliki wisata pantai alami. Apakah Anda ingin rekomendasi wisata alam lainnya seperti bukit, hutan, atau danau?",
+        "intervensi": true,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 1.2088
+    },
+    {
+        "no": 9,
+        "category": "trap",
+        "query": "harganya brapa?",
+        "intent": "ask_ticket_price",
+        "entities": {},
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi harga tiketnya.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi harga tiketnya.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 0.9193
+    },
+    {
+        "no": 10,
+        "category": "trap",
+        "query": "ada fasilitas kolam renang ga disana?",
+        "intent": "ask_facilities",
+        "entities": {
+            "CATEGORY": "kolam renang"
+        },
+        "draf_actor": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 0.9493
+    },
+    {
+        "no": 11,
+        "category": "trap",
+        "query": "aku mau tidur di smb",
+        "intent": "greet",
+        "entities": {
+            "DESTINATION": "smb"
+        },
+        "draf_actor": "Berikut info singkat tentang Museum Sultan Mahmud Badaruddin II: Museum Sultan Mahmud Badaruddin II merupakan museum sejarah yang menempati bangunan peninggalan kolonial Belanda di tepi Sungai Musi. Museum ini menyimpan berbagai koleksi tentang Kesultanan Palembang... Jika butuh info lebih detail, silakan tanyakan lagi!",
+        "verdict": "FAIL",
+        "jawaban_akhir": "Museum Sultan Mahmud Badaruddin II adalah museum sejarah, bukan tempat untuk menginap. Jika Anda mencari akomodasi di Palembang, saya bisa merekomendasikan beberapa hotel seperti Novotel Palembang, Amaris Hotel Palembang, The Zuri Palembang, atau Hotel Aston Palembang.",
+        "intervensi": true,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 0.9684
+    },
+    {
+        "no": 12,
+        "category": "ood",
+        "query": "tolong beritahu saya resep membuat pempek",
+        "intent": "ask_unrelated",
+        "entities": {
+            "CATEGORY": "pempek"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 1.4744
+    },
+    {
+        "no": 13,
+        "category": "ood",
+        "query": "siapa presiden prancis saat ini?",
+        "intent": "ask_unrelated",
+        "entities": {
+            "TIME": "saat ini?"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 1.6211
+    },
+    {
+        "no": 14,
+        "category": "ood",
+        "query": "bagaimana cuaca di palembang hari ini?",
+        "intent": "ask_unrelated",
+        "entities": {
+            "LOCATION": "palembang",
+            "TIME": "hari ini?"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak bisa memberikan informasi mengenai cuaca. Saya hanya bisa membantu Anda dengan informasi seputar wisata di Palembang.",
+        "intervensi": true,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 1.3015
+    },
+    {
+        "no": 15,
+        "category": "ood",
+        "query": "buatkan saya kode python",
+        "intent": "ask_unrelated",
+        "entities": {
+            "CATEGORY": "python"
+        },
+        "draf_actor": "Maaf, saya tidak mengerti maksud Anda.",
+        "verdict": "PASS",
+        "jawaban_akhir": "Maaf, saya tidak mengerti maksud Anda.",
+        "intervensi": false,
+        "model": "google/gemini-2.5-flash",
+        "latency_llm_detik": 0.8298
+    }
+]
