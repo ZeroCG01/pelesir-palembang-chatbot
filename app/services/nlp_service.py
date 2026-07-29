@@ -184,11 +184,6 @@ Evaluasi Anda:"""
         
         intent = result["intent"]
         entities = result["entities"]
-        confidence = result.get("confidence", 1.0)
-        
-        if confidence < 0.65:
-            print(f"⚠️ LOW CONFIDENCE INTENT: {intent} ({confidence:.2f}). Fallback ke ask_unrelated.")
-            intent = "ask_unrelated"
 
         # INTERCEPT ROUTING EKSPLISIT (Origin -> Destination)
         import re

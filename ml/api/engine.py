@@ -20,16 +20,7 @@ class ChatbotEngine:
         with open(intent_label_file, 'r') as f:
             self.intent_id2label = {int(k): v for k, v in json.load(f).items()}
 
-        # Load Temperature Scaling (Kalibrasi Confidence)
-        self.temperature = 1.0  # Default: tanpa kalibrasi
-        try:
-            calib_file = hf_hub_download(repo_id=intent_path, filename="calibration.json")
-            with open(calib_file, 'r') as f:
-                calib_data = json.load(f)
-                self.temperature = calib_data.get("temperature", 1.0)
-            print(f"Temperature Scaling loaded: T = {self.temperature:.4f}")
-        except Exception as e:
-            print(f"calibration.json tidak ditemukan, menggunakan T=1.0 (tanpa kalibrasi): {e}")
+
 
         # Load NER Model dari Hugging Face Hub
         ner_path = "ZeroCG/pelesir-ner"
@@ -45,9 +36,7 @@ class ChatbotEngine:
         inputs = self.intent_tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(self.device)
         with torch.no_grad():
             outputs = self.intent_model(**inputs)
-            # Bagi logits dengan Temperature sebelum softmax (Kalibrasi Confidence)
-            calibrated_logits = outputs.logits / self.temperature
-            probs = torch.nn.functional.softmax(calibrated_logits, dim=-1)
+            probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
             confidence, pred_idx = torch.max(probs, dim=-1)
             
             pred_idx = pred_idx.item()
