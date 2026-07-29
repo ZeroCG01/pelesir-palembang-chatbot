@@ -31,7 +31,8 @@ def get_signature(text):
     sig = text.lower()
     # Sort dari terpanjang agar replace tidak terpotong
     for ent in sorted(ALL_DEST, key=len, reverse=True):
-        sig = sig.replace(ent.lower(), "[DEST]")
+        pattern = r'\b' + re.escape(ent.lower()) + r'\b'
+        sig = re.sub(pattern, "[DEST]", sig)
     # Hilangkan angka dan harga
     sig = re.sub(r'\b\d+\b', '[NUM]', sig)
     sig = re.sub(r'rp\s?\d+', '[PRICE]', sig)
@@ -47,6 +48,10 @@ def group_split(items, get_text_func, ratios=(0.8, 0.1, 0.1)):
     # Shuffle grup agar distribusinya acak
     group_list = list(groups.values())
     random.shuffle(group_list)
+    
+    n_groups = len(group_list)
+    if n_groups < 3:
+        print(f"⚠️  WARNING: Hanya {n_groups} grup template unik. Split tidak dijamin representatif.")
     
     train, val, test = [], [], []
     n_total = len(items)
@@ -65,8 +70,25 @@ def group_split(items, get_text_func, ratios=(0.8, 0.1, 0.1)):
     if not test and len(train) > 1:
         test.extend(group_list[-1])
         train = [x for g in group_list[:-1] for x in g]
+        group_list = group_list[:-1]
+        
+    # Jika val kosong
+    if not val and len(train) > 1:
+        val.extend(group_list[-1])
+        train = [x for g in group_list[:-1] for x in g]
         
     return train, val, test
+
+def verify_no_overlap(train_data, val_data, test_data, get_text_func, label=""):
+    sig_train = set(get_signature(get_text_func(x)) for x in train_data)
+    sig_val   = set(get_signature(get_text_func(x)) for x in val_data)
+    sig_test  = set(get_signature(get_text_func(x)) for x in test_data)
+    ott = sig_train & sig_test
+    otv = sig_train & sig_val
+    if ott or otv:
+        print(f"⚠️  [{label}] Overlap train-test: {len(ott)}, train-val: {len(otv)}")
+        if ott: print("   Contoh bocor:", list(ott)[:3])
+    return len(ott) == 0 and len(otv) == 0
 
 def split_intent_dataset():
     input_path = "ml/data/raw/intents_bilingual_v2.csv"
@@ -83,6 +105,13 @@ def split_intent_dataset():
     for label, items in sorted(data_by_label.items()):
         # Split per label berdasarkan signature
         tr, va, te = group_split(items, lambda x: x['text'])
+        
+        # VERIFIKASI TIDAK ADA KEBOCORAN (OVERLAP)
+        is_clean = verify_no_overlap(tr, va, te, lambda x: x['text'], label=label)
+        if not is_clean:
+            print(f"❌ ERROR: Terdeteksi kebocoran data pada intent '{label}'. Proses dibatalkan.")
+            return
+
         train_data.extend(tr)
         val_data.extend(va)
         test_data.extend(te)
@@ -116,6 +145,12 @@ def split_ner_dataset():
     
     tr, va, te = group_split(data, lambda x: " ".join(x['tokens']))
     
+    # VERIFIKASI TIDAK ADA KEBOCORAN (OVERLAP)
+    is_clean = verify_no_overlap(tr, va, te, lambda x: " ".join(x['tokens']), label="NER")
+    if not is_clean:
+        print(f"❌ ERROR: Terdeteksi kebocoran data pada NER. Proses dibatalkan.")
+        return
+        
     random.shuffle(tr)
     random.shuffle(va)
     random.shuffle(te)
