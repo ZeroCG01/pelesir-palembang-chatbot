@@ -389,7 +389,7 @@ def train_ner():
     print("PART 2: TRAINING NER MODEL (XLM-RoBERTa)")
     print("=" * 60)
 
-    train_path = os.path.join(DATA_DIR, "train_ner_v2.json")
+    train_path = os.path.join(DATA_DIR, "train_ner_augmented_v2.json")
     val_path = os.path.join(DATA_DIR, "val_ner_v2.json")
     test_path = os.path.join(DATA_DIR, "test_ner_v2.json")
 
