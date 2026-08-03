@@ -495,6 +495,14 @@ def gen_ask_destination_info():
         "Mau tau sejarah {dest}",
         "Ceritain {dest} dong kak",
         "{dest} bagus gak?",
+        "di dalem situ ada apa aja sih?",
+        "ceritain dong kenapa tempat ini viral",
+        "apa yang bikin {dest} ini spesial?",
+        "kenapa orang-orang suka ke {dest}?",
+        "di {dest} itu kita bisa ngapain aja?",
+        "ada apa aja sih di {dest}?",
+        "dulu tempat ini bekas apa?",
+        "asal usul {dest} ini gimana ceritanya?",
     ]
     
     en_templates = [
@@ -658,6 +666,13 @@ def gen_ask_recommendation():
         "Wisata yang bisa dikunjungi sehari",
         "Kak rekomendasiin dong wisata di Palembang",
         "Min tolong saran wisata dong",
+        "anakku suka main air, enaknya bawa kemana ya?",
+        "aku lagi pengen makan enak sambil liat sungai",
+        "bingung mau bawa keluarga jalan-jalan kemana",
+        "ada ide tempat buat nongkrong sore?",
+        "tempat yang bagus buat foto-foto keluarga di mana ya?",
+        "aku butuh tempat healing yang tenang",
+        "lagi pengen liat pemandangan kota dari atas",
     ]
     
     en_list = [
@@ -914,6 +929,14 @@ def gen_ask_unrelated():
         "Halo kamu cantik", "Kamu pintar ya", "Kamu bodoh",
         "1+1 berapa?", "Akar kuadrat dari 144?",
         "Translate bahasa Inggris dong", "Apa bahasa Inggrisnya kucing?",
+        "kamu bot beneran ya?",
+        "kok jawabannya lambat",
+        "ini jawaban template ya?",
+        "siapa yang bikin kamu?",
+        "kamu bisa jawab apa aja sih?",
+        "kamu manusia apa robot?",
+        "aku lagi ngomong sama komputer ya?",
+        "adminnya mana?",
     ]
     
     en_list = [

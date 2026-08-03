@@ -32,9 +32,9 @@ TAG2ID = {tag: id for id, tag in enumerate(TAGS)}
 ID2TAG = {id: tag for tag, id in TAG2ID.items()}
 
 # === DATA PATHS ===
-TRAIN_DATA_PATH = "ml/data/processed/train_ner_augmented.json"
-VAL_DATA_PATH   = "ml/data/processed/val_ner.json"
-TEST_DATA_PATH  = "ml/data/processed/test_ner.json"
+TRAIN_DATA_PATH = "ml/data/processed/train_ner_augmented_v2.json"
+VAL_DATA_PATH   = "ml/data/processed/val_ner_v2.json"
+TEST_DATA_PATH  = "ml/data/processed/test_ner_v2.json"
 SAVE_MODEL_PATH = "ml/saved_models/ner/"
 
 os.makedirs(SAVE_MODEL_PATH, exist_ok=True)

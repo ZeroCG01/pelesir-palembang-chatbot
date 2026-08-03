@@ -76,9 +76,9 @@ LOCATION_SYNONYMS = [
 ]
 
 PRICE_SYNONYMS = [
-    ["murah", "terjangkau", "ekonomis", "harga pas", "budget friendly"],
-    ["gratis", "free", "tidak berbayar", "tanpa biaya", "bebas biaya"],
-    ["mahal", "premium", "luxury"],
+    ["murah", "terjangkau", "ekonomis", "harga pas", "budget friendly", "merakyat"],
+    ["gratis", "free", "tidak berbayar", "tanpa biaya", "bebas biaya", "gratisan", "cuma-cuma"],
+    ["mahal", "premium", "luxury", "mehul", "kuras kantong"],
     ["harga", "tarif", "biaya", "tiket", "HTM"],
     ["budget", "anggaran", "modal"],
     ["promo", "diskon", "potongan harga", "hemat"],
@@ -246,9 +246,10 @@ def token_dropout_augment(sample, dropout_rate=0.15):
     if len(tokens) < 5:
         return []
 
+    important_prepositions = {"di", "ke", "dari", "yang", "buat"}
     new_tokens, new_tags = [], []
     for token, tag in zip(tokens, tags):
-        if tag == "O" and random.random() < dropout_rate:
+        if tag == "O" and token.lower() not in important_prepositions and random.random() < dropout_rate:
             continue  # Drop token O ini
         new_tokens.append(token)
         new_tags.append(tag)
@@ -257,6 +258,34 @@ def token_dropout_augment(sample, dropout_rate=0.15):
     if new_tokens == tokens or len(new_tokens) < 3:
         return []
     return [{"tokens": new_tokens, "tags": new_tags}]
+
+
+def typo_augment(sample, prob=0.15):
+    """
+    Secara acak menghilangkan 1 huruf vokal dari token ber-tag 'O' yang panjangnya > 3 karakter,
+    untuk mensimulasikan typo/singkatan user.
+    """
+    tokens = sample["tokens"]
+    tags = sample["tags"]
+    vowels = "aeiouAEIOU"
+    
+    new_tokens = []
+    has_changed = False
+    
+    for token, tag in zip(tokens, tags):
+        if tag == "O" and len(token) > 3 and random.random() < prob:
+            vowel_indices = [i for i, char in enumerate(token) if char in vowels]
+            if vowel_indices:
+                drop_idx = random.choice(vowel_indices)
+                new_token = token[:drop_idx] + token[drop_idx+1:]
+                new_tokens.append(new_token)
+                has_changed = True
+                continue
+        new_tokens.append(token)
+        
+    if has_changed:
+        return [{"tokens": new_tokens, "tags": tags[:]}]
+    return []
 
 
 def augment_dataset(input_path, output_path, multiplier=3):
@@ -281,6 +310,10 @@ def augment_dataset(input_path, output_path, multiplier=3):
         dropped = token_dropout_augment(sample, dropout_rate=0.15)
         augmented.extend(dropped)
 
+        # Typo augment
+        typos = typo_augment(sample, prob=0.15)
+        augmented.extend(typos)
+
     # Deduplicate berdasarkan token sequence
     seen = set()
     unique = []
@@ -302,8 +335,8 @@ def augment_dataset(input_path, output_path, multiplier=3):
 if __name__ == "__main__":
     import os
 
-    train_path = "ml/data/processed/train_ner.json"
-    aug_path   = "ml/data/processed/train_ner_augmented.json"
+    train_path = "ml/data/processed/train_ner_v2.json"
+    aug_path   = "ml/data/processed/train_ner_augmented_v2.json"
 
     if not os.path.exists(train_path):
         print(f"ERROR: File tidak ditemukan: {train_path}")

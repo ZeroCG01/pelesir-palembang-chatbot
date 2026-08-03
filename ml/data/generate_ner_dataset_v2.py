@@ -85,6 +85,12 @@ PRICES = [
     (["15", "ribuan"], "15 ribuan"),
     (["100", "ribu"], "100 ribu"),
     (["seratus", "ribu"], "seratus ribu"),
+    (["10rb"], "10rb"),
+    (["10k"], "10k"),
+    (["50rb"], "50rb"),
+    (["goceng"], "goceng"),
+    (["cuma", "20", "ribu"], "cuma 20 ribu"),
+    (["di", "bawah", "50rb"], "di bawah 50rb"),
 ]
 
 TIMES = [
@@ -99,6 +105,9 @@ TIMES = [
     (["hari", "Sabtu"], "hari Sabtu"),
     (["weekend"], "weekend"),
     (["24", "jam"], "24 jam"),
+    (["maghrib"], "maghrib"),
+    (["isya"], "isya"),
+    (["abis", "isya"], "abis isya"),
 ]
 
 def make_bio_tags(tokens, entity_ranges):
@@ -254,6 +263,22 @@ def generate_time_sentences():
                 (1 + len(time_tokens), 1 + len(time_tokens) + len(dest_tokens), "DESTINATION"),
             ]
             samples.append({"tokens": tokens3, "tags": make_bio_tags(tokens3, entities3)})
+            
+            # "{dest} tutup abis {time} ?"
+            tokens4 = dest_tokens + ["tutup", "abis"] + time_tokens + ["?"]
+            entities4 = [
+                (0, len(dest_tokens), "DESTINATION"),
+                (len(dest_tokens) + 2, len(dest_tokens) + 2 + len(time_tokens), "TIME"),
+            ]
+            samples.append({"tokens": tokens4, "tags": make_bio_tags(tokens4, entities4)})
+            
+            # "kalo {time} {dest} buka ?"
+            tokens5 = ["kalo"] + time_tokens + dest_tokens + ["buka", "?"]
+            entities5 = [
+                (1, 1 + len(time_tokens), "TIME"),
+                (1 + len(time_tokens), 1 + len(time_tokens) + len(dest_tokens), "DESTINATION"),
+            ]
+            samples.append({"tokens": tokens5, "tags": make_bio_tags(tokens5, entities5)})
     
     return samples
 
@@ -272,8 +297,8 @@ def generate_location_sentences():
         (["Ilir", "Barat"], "Ilir Barat"),
     ]
     
-    for dest_name, dest_tokens in random.sample(DESTINATIONS, 8):
-        for loc_tokens, _ in random.sample(locations, 3):
+    for dest_name, dest_tokens in DESTINATIONS:
+        for loc_tokens, _ in locations:
             # "{dest} ada di {location}"
             tokens = dest_tokens + ["ada", "di"] + loc_tokens
             entities = [
@@ -281,6 +306,37 @@ def generate_location_sentences():
                 (len(dest_tokens) + 2, len(dest_tokens) + 2 + len(loc_tokens), "LOCATION"),
             ]
             samples.append({"tokens": tokens, "tags": make_bio_tags(tokens, entities)})
+            
+            # "Gimana cara ke {dest} dari {location} ?"
+            tokens2 = ["Gimana", "cara", "ke"] + dest_tokens + ["dari"] + loc_tokens + ["?"]
+            entities2 = [
+                (3, 3 + len(dest_tokens), "DESTINATION"),
+                (4 + len(dest_tokens), 4 + len(dest_tokens) + len(loc_tokens), "LOCATION"),
+            ]
+            samples.append({"tokens": tokens2, "tags": make_bio_tags(tokens2, entities2)})
+            
+            # "Jalan dari {location} ke {dest}"
+            tokens3 = ["Jalan", "dari"] + loc_tokens + ["ke"] + dest_tokens
+            entities3 = [
+                (2, 2 + len(loc_tokens), "LOCATION"),
+                (3 + len(loc_tokens), 3 + len(loc_tokens) + len(dest_tokens), "DESTINATION"),
+            ]
+            samples.append({"tokens": tokens3, "tags": make_bio_tags(tokens3, entities3)})
+
+    for loc_tokens, _ in locations:
+        # "Banyak tempat makan di {location}"
+        tokens4 = ["Banyak", "tempat", "makan", "di"] + loc_tokens
+        entities4 = [
+            (4, 4 + len(loc_tokens), "LOCATION"),
+        ]
+        samples.append({"tokens": tokens4, "tags": make_bio_tags(tokens4, entities4)})
+        
+        # "Angkot yang lewat {location} ada gak ?"
+        tokens5 = ["Angkot", "yang", "lewat"] + loc_tokens + ["ada", "gak", "?"]
+        entities5 = [
+            (3, 3 + len(loc_tokens), "LOCATION"),
+        ]
+        samples.append({"tokens": tokens5, "tags": make_bio_tags(tokens5, entities5)})
     
     return samples
 
@@ -366,6 +422,15 @@ def main():
             unique.append(item)
     
     random.shuffle(unique)
+    
+    # Lowercase 30%
+    final_unique = []
+    for item in unique:
+        if random.random() < 0.3:
+            final_unique.append({"tokens": [t.lower() for t in item["tokens"]], "tags": item["tags"]})
+        else:
+            final_unique.append(item)
+    unique = final_unique
     
     # Save
     output_path = "ml/data/raw/ner_dataset_v2.json"
