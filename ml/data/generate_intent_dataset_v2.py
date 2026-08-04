@@ -997,6 +997,17 @@ def swap_destination_in_text(text):
             return re.sub(pattern, new_ent, text, flags=re.IGNORECASE)
     return text
 
+def clean_stacked_fillers(text):
+    """Membersihkan filler bertumpuk, duplikasi filler, dan tanda baca di tengah filler"""
+    t = text
+    # Fix repeated consecutive words (e.g. "sih sih" -> "sih", "ya ya" -> "ya")
+    t = re.sub(r'\b(sih|ya|dong|deh|nih|kak|min|bang)\s+\1\b', r'\1', t, flags=re.IGNORECASE)
+    # Fix ? or . followed by trailing filler (e.g. "? dong" -> "?", "? ya kak" -> "?")
+    t = re.sub(r'([\?\!\.])\s*(ya|ya kak|dong|dong kak|nih|sih|deh|please|thanks)[\?\.\!]?$', r'\1', t, flags=re.IGNORECASE)
+    # Fix trailing double fillers (e.g. "sih deh" -> "sih")
+    t = re.sub(r'\b(sih|ya|dong|deh|nih)\s+(sih|ya|dong|deh|nih)\b', r'\1', t, flags=re.IGNORECASE)
+    return re.sub(r'\s+', ' ', t).strip()
+
 def balance_dataset(all_sentences, target_per_class=615):
     """Seimbangkan jumlah kalimat per intent dengan variasi cerdas & distribusi merata (round-robin)"""
     from collections import defaultdict
@@ -1004,9 +1015,8 @@ def balance_dataset(all_sentences, target_per_class=615):
     
     by_label = defaultdict(list)
     for text, label in all_sentences:
-        by_label[label].append((text, label))
+        by_label[label].append((clean_stacked_fillers(text), label))
     
-    # Prefiks dan sufiks untuk variasi
     prefixes_id = ["Kak ", "Min ", "Bang ", "Permisi ", "Halo ", "Maaf mau tanya ", "Mau nanya dong ", "Eh ", ""]
     suffixes_id = ["", " ya", " ya kak", " dong", " dong kak", " nih", " sih", " deh"]
     prefixes_en = ["Hey ", "Excuse me, ", "Hi, ", "Hello, ", "Please ", "Can you tell me ", "I want to know ", ""]
@@ -1016,8 +1026,7 @@ def balance_dataset(all_sentences, target_per_class=615):
     
     balanced = []
     for label, items in sorted(by_label.items()):
-        # Hapus duplikat, pertahankan urutan unik
-        unique_texts = list(dict.fromkeys(t for t, _ in items))
+        unique_texts = list(dict.fromkeys(clean_stacked_fillers(t) for t, _ in items))
         random.shuffle(unique_texts)
         
         unique_tuples = [(t, label) for t in unique_texts]
@@ -1030,7 +1039,6 @@ def balance_dataset(all_sentences, target_per_class=615):
             existing_texts = set(unique_texts)
             extra = []
             
-            # Buat daftar kandidat variasi per teks dasar
             candidates_per_text = []
             for text in unique_texts:
                 text_vars = []
@@ -1050,8 +1058,7 @@ def balance_dataset(all_sentences, target_per_class=615):
                 for base in bases:
                     for pfx in prefixes:
                         for sfx in suffixes:
-                            variant = (pfx + base + sfx).strip()
-                            # Swapping entitas agar tidak terjadi penumpukan destinasi tertentu
+                            variant = clean_stacked_fillers(pfx + base + sfx)
                             variant_swapped = swap_destination_in_text(variant)
                             if variant_swapped and variant_swapped not in existing_texts and variant_swapped not in text_vars:
                                 text_vars.append(variant_swapped)

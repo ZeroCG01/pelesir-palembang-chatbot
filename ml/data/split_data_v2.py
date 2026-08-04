@@ -234,27 +234,41 @@ def split_ner_dataset():
             else:
                 i += 1
 
-    # 2. Ambil 20% secara acak (seed=42) sebagai HOLDOUT ENTITIES (HANYA ke Test Set)
+    # 2. Holdout Entities (20% untuk DESTINATION & LOCATION sebagai open-class)
+    # Untuk PRICE, TIME, CATEGORY, jika di-holdout, buang superset dari train agar same-type leak = 0
     rng = random.Random(42)
-    holdout_entities = set()
     holdout_by_type = {}
     
     for ent_type, val_set in sorted(entities_by_type.items()):
         val_list = sorted(list(val_set))
         rng.shuffle(val_list)
-        n_hold = max(1, int(len(val_list) * 0.20))
+        # Holdout open-class (DESTINATION, LOCATION) 20%, closed-class (PRICE, TIME, CATEGORY) 15%
+        rate = 0.20 if ent_type in ['DESTINATION', 'LOCATION'] else 0.15
+        n_hold = max(1, int(len(val_list) * rate))
         hold_set = set(val_list[:n_hold])
         holdout_by_type[ent_type] = hold_set
-        holdout_entities.update(hold_set)
-        print(f"  Holdout {ent_type:12s}: {len(hold_set)}/{len(val_list)} values ({len(hold_set)/len(val_list)*100:.1f}%) -> {sorted(list(hold_set))[:3]}...")
+        print(f"  Holdout {ent_type:12s}: {len(hold_set)}/{len(val_list)} values ({len(hold_set)/len(val_list)*100:.1f}%) -> {sorted(list(hold_set))[:2]}...")
+
+    # Purge superset di train_entities untuk closed-class leak prevention
+    # Jika h_val adalah substring dari ent_val bertipe SAMA, hapus h_val dari holdout set
+    for ent_type, h_set in list(holdout_by_type.items()):
+        all_vals = entities_by_type[ent_type]
+        purged_h_set = set()
+        for h in h_set:
+            # Check if h is strict substring of another non-holdout value of the SAME TYPE
+            other_vals = all_vals - h_set
+            if any(h != o and h in o for o in other_vals):
+                continue # Purge from holdout to avoid same-type leak
+            purged_h_set.add(h)
+        holdout_by_type[ent_type] = purged_h_set
 
     # Simpan holdout_entities ke JSON agar augment_ner.py tidak memakai holdout ini saat augmentasi
     holdout_path = os.path.join(script_dir, "processed", "ner_holdout_entities.json")
     with open(holdout_path, 'w', encoding='utf-8') as f:
         json.dump({k: list(v) for k, v in holdout_by_type.items()}, f, ensure_ascii=False, indent=2)
 
-    # 3. BUG 2 FIX: Matching EXACT dan PER-TIPE (bukan substring / flatten)
-    test_holdout_samples = []
+    # 3. Pisahkan sampel yang mengandung Holdout Entities
+    all_holdout_samples = []
     train_val_pool = []
     
     for sample in data:
@@ -270,7 +284,6 @@ def split_ner_dataset():
                 while j < len(tags) and tags[j] == f'I-{ent_type}':
                     j += 1
                 val = " ".join(tokens[i:j]).lower()
-                # Check EXACT match dalam ent_type yang sama saja
                 if val in holdout_by_type.get(ent_type, set()):
                     has_holdout = True
                     break
@@ -279,30 +292,78 @@ def split_ner_dataset():
                 i += 1
                 
         if has_holdout:
-            test_holdout_samples.append(sample)
+            all_holdout_samples.append(sample)
         else:
             train_val_pool.append(sample)
 
-    print(f"  BUG 2 FIX STATS: test_holdout_samples={len(test_holdout_samples)}, train_val_pool={len(train_val_pool)}")
+    rng.shuffle(all_holdout_samples)
+    # Cap holdout test set to max 500 samples (Zero-Shot Test Set)
+    test_ner_holdout = all_holdout_samples[:500]
+    surplus_holdout = all_holdout_samples[500:]
 
-    # 4. Split train_val_pool sisanya menjadi Train (85%) dan Val (15%) + gabungkan Test Holdout
-    tr, va, te_normal = group_split(train_val_pool, lambda x: " ".join(x['tokens']), ratios=(0.85, 0.15, 0.0))
-    te = te_normal + test_holdout_samples
+    # For surplus holdout samples, mask holdout entities to generic tokens before placing in train_val_pool
+    generic_replacements = {
+        'DESTINATION': 'Dermaga Point',
+        'LOCATION': 'Palembang',
+        'PRICE': '10 ribu',
+        'TIME': 'besok',
+        'CATEGORY': 'wisata'
+    }
+    
+    for sample in surplus_holdout:
+        tokens = list(sample['tokens'])
+        tags = list(sample['tags'])
+        new_tokens = []
+        new_tags = []
+        i = 0
+        while i < len(tags):
+            tag = tags[i]
+            if tag.startswith('B-'):
+                ent_type = tag[2:]
+                j = i + 1
+                while j < len(tags) and tags[j] == f'I-{ent_type}':
+                    j += 1
+                val = " ".join(tokens[i:j]).lower()
+                if val in holdout_by_type.get(ent_type, set()):
+                    # Substitute with safe generic non-holdout entity
+                    sub_val = generic_replacements[ent_type].split()
+                    new_tokens.append(sub_val[0])
+                    new_tags.append(f'B-{ent_type}')
+                    for sub_tok in sub_val[1:]:
+                        new_tokens.append(sub_tok)
+                        new_tags.append(f'I-{ent_type}')
+                else:
+                    new_tokens.extend(tokens[i:j])
+                    new_tags.extend(tags[i:j])
+                i = j
+            else:
+                new_tokens.append(tokens[i])
+                new_tags.append(tags[i])
+                i += 1
+        train_val_pool.append({'tokens': new_tokens, 'tags': new_tags})
+
+    # 4. Group Split train_val_pool: 80% Train, 10% Val, 10% Test Seen
+    tr, va, te_seen = group_split(train_val_pool, lambda x: " ".join(x['tokens']), ratios=(0.80, 0.10, 0.10))
+    te_combined = te_seen + test_ner_holdout
 
     random.shuffle(tr)
     random.shuffle(va)
-    random.shuffle(te)
+    random.shuffle(te_seen)
+    random.shuffle(test_ner_holdout)
+    random.shuffle(te_combined)
     
     out_dir = os.path.join(script_dir, "processed")
     os.makedirs(out_dir, exist_ok=True)
     for name, split in [("train_ner_v2.json", tr), 
                         ("val_ner_v2.json", va), 
-                        ("test_ner_v2.json", te)]:
+                        ("test_ner_seen.json", te_seen),
+                        ("test_ner_holdout.json", test_ner_holdout),
+                        ("test_ner_v2.json", te_combined)]:
         path = os.path.join(out_dir, name)
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(split, f, ensure_ascii=False, indent=2)
         print(f"  Saved: {path} ({len(split)} samples)")
-    print(f"Total NER: train={len(tr)}, val={len(va)}, test={len(te)} (termasuk {len(test_holdout_samples)} holdout samples)")
+    print(f"Total NER: train={len(tr)}, val={len(va)}, test_seen={len(te_seen)}, test_holdout={len(test_ner_holdout)}, combined_test={len(te_combined)}")
 
 
 if __name__ == "__main__":
