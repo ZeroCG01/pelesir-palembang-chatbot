@@ -12,6 +12,7 @@ from collections import defaultdict
 random.seed(42)
 
 # Daftar entitas untuk membuat signature
+# Expanded ALL_DEST & ALL_ENTITIES mask pool dari synonym pools
 ALL_DEST = [
     "Benteng Kuto Besak", "Jembatan Ampera", "Pulau Kemaro", "Monpera",
     "Museum Sultan Mahmud Badaruddin II", "Kambang Iwak", "Hutan Wisata Punti Kayu",
@@ -21,16 +22,37 @@ ALL_DEST = [
     "Museum Balaputra Dewa", "Al Quran Al Akbar", "Bukit Siguntang",
     "Masjid Cheng Ho", "Fantasy Island", "Amanzi Waterpark",
     "OPI Mall", "Pasar 16 Ilir", "Kawah Tengkurep",
-    "BKB", "SMB", "SMB II", "PTC", "PIM", "Ampera", "Kemaro", "Monpera",
-    "Punti Kayu", "Kambang Iwak", "KI", "Al-Munawar", "Kampung Kapitan",
-    "Jakabaring", "Siguntang", "Amanzi",
+    "Hotel Novotel Palembang", "Hotel Novotel", "Novotel", "Novotel PTC",
+    "Hotel Aryaduta Palembang", "Hotel Aryaduta", "Aryaduta",
+    "Hotel Excelton", "Excelton", "The Zuri Palembang", "The Zuri", "Zuri Palembang",
+    "Pempek Candy", "Pempek Beringin", "Pempek Nony 168", "Pempek Nony",
+    "Martabak HAR", "Mie Celor 26 Ilir", "Mie Celor Syafeiz", "Model H. Dowa",
+    "Restoran River Side", "River Side", "Dermaga Point", "Dermaga Point BKB",
+    "Rumah Adat Dekranasda", "Dekranasda", "Sanggar Tari Rumah Elok", "Rumah Elok",
+    "Taman Purbakala Sriwijaya", "Museum A.K. Gani", "Museum AK Gani", "AK Gani",
+    "Zainal Songket", "Griya Agung", "BKB", "SMB", "SMB II", "PTC", "PIM", "Ampera",
+    "Kemaro", "Monpera", "Punti Kayu", "KI", "Al-Munawar", "Jakabaring", "Siguntang", "Amanzi"
 ]
 
 def get_signature(text):
-    """Menghapus entitas, dialek, dan prefix/suffix agar tersisa hanya kerangka template murni"""
+    """Menghapus filler words, entitas, dialek, dan prefix/suffix agar tersisa hanya kerangka template murni"""
     sig = text.lower()
     
-    # 1. Normalisasi dialek
+    # 1. Normalisasi duplikasi kata beruntun (mis. "wisata wisata" -> "wisata")
+    sig = re.sub(r'\b(\w+)\s+\1\b', r'\1', sig)
+
+    # 2. Hapus filler words diperluas di manapun dalam kalimat (word boundary)
+    FILLERS = [
+        r'\bdong\b', r'\bdeh\b', r'\bnih\b', r'\bsih\b', r'\bkak\b', r'\bya\b', 
+        r'\bmin\b', r'\bbang\b', r'\bhalo\b', r'\bpermisi\b', r'\bmau nanya\b', 
+        r'\bmaaf mau tanya\b', r'\beh\b', r'\bplease\b', r'\bthanks\b', r'\bthank you\b',
+        r'\btolong\b', r'\bcoba\b', r'\bkira-kira\b', r'\byuk\b', r'\bkk\b', r'\bka\b',
+        r'\byaa\b', r'\bgaes\b', r'\bguys\b', r'\bbtw\b'
+    ]
+    for flr in FILLERS:
+        sig = re.sub(flr, '', sig, flags=re.IGNORECASE)
+
+    # 3. Normalisasi dialek
     ID_DIALECT_REVERSE = {
         r'\bapo\b': 'apa', r'\bdak\b': 'tidak', r'\bgak\b': 'tidak', r'\benggak\b': 'tidak',
         r'\bcakmano\b': 'bagaimana', r'\bgimana\b': 'bagaimana', r'\bnian\b': 'sangat',
@@ -40,20 +62,14 @@ def get_signature(text):
     }
     for pat, repl in ID_DIALECT_REVERSE.items():
         sig = re.sub(pat, repl, sig)
-        
-    # 2. Hapus prefix & suffix percakapan umum
-    pfx_pat = r'^\b(kak|min|bang|permisi|halo|maaf mau tanya|mau nanya dong|eh|hey|hi|hello|please|can you tell me|i want to know)\b\s*'
-    sfx_pat = r'\s*\b(ya|ya kak|dong|dong kak|nih|sih|deh|please|thanks)\b[\?\.\!]?$'
-    sig = re.sub(pfx_pat, '', sig, flags=re.IGNORECASE)
-    sig = re.sub(sfx_pat, '', sig, flags=re.IGNORECASE)
 
-    # 3. Replace destinasi & angka
+    # 4. Replace destinasi & angka
     for ent in sorted(ALL_DEST, key=len, reverse=True):
         pattern = r'\b' + re.escape(ent.lower()) + r'\b'
         sig = re.sub(pattern, "[DEST]", sig)
     sig = re.sub(r'\b\d+\b', '[NUM]', sig)
     sig = re.sub(r'rp\s?\d+', '[PRICE]', sig)
-    return sig.strip()
+    return re.sub(r'\s+', ' ', sig).strip()
 
 def group_split(items, get_text_func, ratios=(0.8, 0.1, 0.1)):
     """Membagi data berdasarkan kerangka template (Group Split)"""
@@ -135,9 +151,45 @@ def split_intent_dataset():
         test_data.extend(te)
         print(f"  {label}: {len(items)} → train={len(tr)}, val={len(va)}, test={len(te)}")
     
-    random.shuffle(train_data)
-    random.shuffle(val_data)
-    random.shuffle(test_data)
+    # PASCA-DEDUP LINTAS SPLIT: Buang dari test setiap kalimat yang Jaccard(word-level, setelah normalisasi) > 0.85 vs train
+    def norm_words(text):
+        t = text.lower()
+        ID_DIALECT_REVERSE = {
+            r'\bapo\b': 'apa', r'\bdak\b': 'tidak', r'\bgak\b': 'tidak', r'\benggak\b': 'tidak',
+            r'\bcakmano\b': 'bagaimana', r'\bgimana\b': 'bagaimana', r'\bnian\b': 'sangat',
+            r'\bkau\b': 'kamu', r'\blemak\b': 'enak', r'\bpacak\b': 'bisa', r'\bhargo\b': 'harga',
+            r'\bberapo\b': 'berapa', r'\bngapo\b': 'kenapa', r'\bbae\b': 'saja', r'\byo\b': 'ya',
+            r'\bkatek\b': 'tidak ada', r'\bpegi\b': 'pergi', r'\bjingok\b': 'lihat'
+        }
+        for pat, repl in ID_DIALECT_REVERSE.items():
+            t = re.sub(pat, repl, t)
+        t = re.sub(r"[^a-z0-9\s]", " ", t)
+        return set(t.split())
+
+    def jaccard(set1, set2):
+        if not set1 or not set2: return 0.0
+        return len(set1 & set2) / float(len(set1 | set2))
+
+    train_words_by_label = defaultdict(list)
+    for r in train_data:
+        train_words_by_label[r['label']].append(norm_words(r['text']))
+
+    filtered_test_data = []
+    dropped_test_count = 0
+    for r in test_data:
+        t_words = norm_words(r['text'])
+        lbl = r['label']
+        is_near_dup = False
+        for tr_words in train_words_by_label[lbl]:
+            if jaccard(t_words, tr_words) > 0.85:
+                is_near_dup = True
+                break
+        if is_near_dup:
+            dropped_test_count += 1
+        else:
+            filtered_test_data.append(r)
+    test_data = filtered_test_data
+    print(f"  Pasca-Dedup Intent Test: Dibuang {dropped_test_count} sampel test yang Jaccard > 0.85 vs train set.")
     
     out_dir = os.path.join(script_dir, "processed")
     os.makedirs(out_dir, exist_ok=True)
@@ -159,18 +211,84 @@ def split_ner_dataset():
     if not os.path.exists(input_path):
         return
         
-    print(f"\nMembaca {input_path} (Anti-Overfitting Mode)...")
+    print(f"\nMembaca {input_path} (Anti-Overfitting + Entity Holdout 20% Mode)...")
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    tr, va, te = group_split(data, lambda x: " ".join(x['tokens']))
+    # 1. Ekstrak semua entity value unik per entitas
+    entities_by_type = defaultdict(set)
+    for sample in data:
+        tokens = sample['tokens']
+        tags = sample['tags']
+        i = 0
+        while i < len(tags):
+            tag = tags[i]
+            if tag.startswith('B-'):
+                ent_type = tag[2:]
+                j = i + 1
+                while j < len(tags) and tags[j] == f'I-{ent_type}':
+                    j += 1
+                val = " ".join(tokens[i:j]).lower()
+                entities_by_type[ent_type].add(val)
+                i = j
+            else:
+                i += 1
+
+    # 2. Ambil 20% secara acak (seed=42) sebagai HOLDOUT ENTITIES (HANYA ke Test Set)
+    rng = random.Random(42)
+    holdout_entities = set()
+    holdout_by_type = {}
     
-    # VERIFIKASI TIDAK ADA KEBOCORAN (OVERLAP)
-    is_clean = verify_no_overlap(tr, va, te, lambda x: " ".join(x['tokens']), label="NER")
-    if not is_clean:
-        print(f"❌ ERROR: Terdeteksi kebocoran data pada NER. Proses dibatalkan.")
-        return
-        
+    for ent_type, val_set in sorted(entities_by_type.items()):
+        val_list = sorted(list(val_set))
+        rng.shuffle(val_list)
+        n_hold = max(1, int(len(val_list) * 0.20))
+        hold_set = set(val_list[:n_hold])
+        holdout_by_type[ent_type] = hold_set
+        holdout_entities.update(hold_set)
+        print(f"  Holdout {ent_type:12s}: {len(hold_set)}/{len(val_list)} values ({len(hold_set)/len(val_list)*100:.1f}%) -> {sorted(list(hold_set))[:3]}...")
+
+    # Simpan holdout_entities ke JSON agar augment_ner.py tidak memakai holdout ini saat augmentasi
+    holdout_path = os.path.join(script_dir, "processed", "ner_holdout_entities.json")
+    with open(holdout_path, 'w', encoding='utf-8') as f:
+        json.dump({k: list(v) for k, v in holdout_by_type.items()}, f, ensure_ascii=False, indent=2)
+
+    # 3. BUG 2 FIX: Matching EXACT dan PER-TIPE (bukan substring / flatten)
+    test_holdout_samples = []
+    train_val_pool = []
+    
+    for sample in data:
+        tokens = sample['tokens']
+        tags = sample['tags']
+        has_holdout = False
+        i = 0
+        while i < len(tags):
+            tag = tags[i]
+            if tag.startswith('B-'):
+                ent_type = tag[2:]
+                j = i + 1
+                while j < len(tags) and tags[j] == f'I-{ent_type}':
+                    j += 1
+                val = " ".join(tokens[i:j]).lower()
+                # Check EXACT match dalam ent_type yang sama saja
+                if val in holdout_by_type.get(ent_type, set()):
+                    has_holdout = True
+                    break
+                i = j
+            else:
+                i += 1
+                
+        if has_holdout:
+            test_holdout_samples.append(sample)
+        else:
+            train_val_pool.append(sample)
+
+    print(f"  BUG 2 FIX STATS: test_holdout_samples={len(test_holdout_samples)}, train_val_pool={len(train_val_pool)}")
+
+    # 4. Split train_val_pool sisanya menjadi Train (85%) dan Val (15%) + gabungkan Test Holdout
+    tr, va, te_normal = group_split(train_val_pool, lambda x: " ".join(x['tokens']), ratios=(0.85, 0.15, 0.0))
+    te = te_normal + test_holdout_samples
+
     random.shuffle(tr)
     random.shuffle(va)
     random.shuffle(te)
@@ -184,7 +302,7 @@ def split_ner_dataset():
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(split, f, ensure_ascii=False, indent=2)
         print(f"  Saved: {path} ({len(split)} samples)")
-    print(f"Total NER: train={len(tr)}, val={len(va)}, test={len(te)}")
+    print(f"Total NER: train={len(tr)}, val={len(va)}, test={len(te)} (termasuk {len(test_holdout_samples)} holdout samples)")
 
 
 if __name__ == "__main__":

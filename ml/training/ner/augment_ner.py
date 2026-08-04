@@ -13,6 +13,7 @@ ATAU jalankan manual lalu gabungkan ke train_ner.json.
 """
 
 import json
+import os
 import random
 import copy
 
@@ -158,6 +159,37 @@ DESTINATION_SYNONYMS = [
     ["Rumah Adat Dekranasda", "Dekranasda", "rumah adat Jakabaring"],
     ["Sanggar Tari Rumah Elok", "Rumah Elok", "sanggar tari Palembang"],
 ]
+
+# Filter out holdout entities agar tidak di-inject ke train_ner_augmented_v2.json
+script_dir = os.path.dirname(os.path.abspath(__file__))
+holdout_file = os.path.join(script_dir, "..", "..", "data", "processed", "ner_holdout_entities.json")
+print(f"DEBUG: holdout_file path = {holdout_file}")
+print(f"DEBUG: os.path.exists = {os.path.exists(holdout_file)}")
+
+if os.path.exists(holdout_file):
+    with open(holdout_file, 'r', encoding='utf-8') as f:
+        holdout_dict = json.load(f)
+    holdout_set = set(v.lower() for v_list in holdout_dict.values() for v in v_list)
+else:
+    holdout_set = set()
+
+print(f"DEBUG: len(holdout_set) = {len(holdout_set)}")
+if len(holdout_set) == 0:
+    raise ValueError("ERROR: len(holdout_set) is 0! Holdout file missing or empty.")
+
+def filter_candidates(groups, holdouts):
+    filtered = []
+    for g in groups:
+        clean_g = [w for w in g if w.lower() not in holdouts and not any(h in w.lower() for h in holdouts)]
+        if clean_g:
+            filtered.append(clean_g)
+    return filtered
+
+PRICE_SYNONYMS = filter_candidates(PRICE_SYNONYMS, holdout_set)
+LOCATION_SYNONYMS = filter_candidates(LOCATION_SYNONYMS, holdout_set)
+TIME_SYNONYMS = filter_candidates(TIME_SYNONYMS, holdout_set)
+CATEGORY_SYNONYMS = filter_candidates(CATEGORY_SYNONYMS, holdout_set)
+DESTINATION_SYNONYMS = filter_candidates(DESTINATION_SYNONYMS, holdout_set)
 
 def find_entity_spans(tags):
     """Ekstrak semua span entitas dari list tag BIO."""
