@@ -5,6 +5,8 @@ Untuk retraining model Intent Classification XLM-RoBERTa
 import csv
 import random
 import os
+import itertools
+import re
 
 random.seed(42)
 
@@ -36,6 +38,16 @@ DESTINATIONS_EN = [
 ]
 
 ALL_DEST = DESTINATIONS_FULL + DESTINATIONS_SHORT
+
+def get_dest_cycle():
+    shuffled = ALL_DEST[:]
+    random.shuffle(shuffled)
+    return itertools.cycle(shuffled)
+
+def get_dest_cycle_en():
+    shuffled = DESTINATIONS_EN[:]
+    random.shuffle(shuffled)
+    return itertools.cycle(shuffled)
 
 CATEGORIES_ID = ["wisata alam", "wisata sejarah", "wisata kuliner", "wisata religi", "wisata budaya", "taman", "museum", "masjid"]
 CATEGORIES_EN = ["nature tourism", "historical sites", "culinary tourism", "religious tourism", "cultural tourism", "parks", "museums"]
@@ -242,12 +254,14 @@ def gen_ask_ticket_price():
         "How much does it cost?", "Price?", "Ticket price?",
     ]
     
+    dest_cycle = get_dest_cycle()
+    dest_cycle_en = get_dest_cycle_en()
     for t in id_templates:
-        for dest in random.sample(ALL_DEST, min(8, len(ALL_DEST))):
-            sentences.append((t.format(dest=dest), "ask_ticket_price"))
+        for _ in range(8):
+            sentences.append((t.format(dest=next(dest_cycle)), "ask_ticket_price"))
     for t in en_templates:
-        for dest in random.sample(DESTINATIONS_EN, min(5, len(DESTINATIONS_EN))):
-            sentences.append((t.format(dest=dest), "ask_ticket_price"))
+        for _ in range(5):
+            sentences.append((t.format(dest=next(dest_cycle_en)), "ask_ticket_price"))
     for s in no_dest_id:
         sentences.append((s, "ask_ticket_price"))
     for s in no_dest_en:
@@ -315,12 +329,14 @@ def gen_ask_operating_hours():
         "Opening hours?", "Is it open today?", "Operating hours?",
     ]
     
+    dest_cycle = get_dest_cycle()
+    dest_cycle_en = get_dest_cycle_en()
     for t in id_templates:
-        for dest in random.sample(ALL_DEST, min(8, len(ALL_DEST))):
-            sentences.append((t.format(dest=dest), "ask_operating_hours"))
+        for _ in range(8):
+            sentences.append((t.format(dest=next(dest_cycle)), "ask_operating_hours"))
     for t in en_templates:
-        for dest in random.sample(DESTINATIONS_EN, min(5, len(DESTINATIONS_EN))):
-            sentences.append((t.format(dest=dest), "ask_operating_hours"))
+        for _ in range(5):
+            sentences.append((t.format(dest=next(dest_cycle_en)), "ask_operating_hours"))
     for s in no_dest_id:
         sentences.append((s, "ask_operating_hours"))
     for s in no_dest_en:
@@ -387,12 +403,14 @@ def gen_ask_location_access():
         "Where is it located?", "How far is it?", "Directions?",
     ]
     
+    dest_cycle = get_dest_cycle()
+    dest_cycle_en = get_dest_cycle_en()
     for t in id_templates:
-        for dest in random.sample(ALL_DEST, min(8, len(ALL_DEST))):
-            sentences.append((t.format(dest=dest), "ask_location_access"))
+        for _ in range(8):
+            sentences.append((t.format(dest=next(dest_cycle)), "ask_location_access"))
     for t in en_templates:
-        for dest in random.sample(DESTINATIONS_EN, min(5, len(DESTINATIONS_EN))):
-            sentences.append((t.format(dest=dest), "ask_location_access"))
+        for _ in range(5):
+            sentences.append((t.format(dest=next(dest_cycle_en)), "ask_location_access"))
     for s in no_dest_id:
         sentences.append((s, "ask_location_access"))
     for s in no_dest_en:
@@ -451,12 +469,14 @@ def gen_ask_facilities():
         "Is there parking?", "Are there restrooms?", "Facilities?",
     ]
     
+    dest_cycle = get_dest_cycle()
+    dest_cycle_en = get_dest_cycle_en()
     for t in id_templates:
-        for dest in random.sample(ALL_DEST, min(8, len(ALL_DEST))):
-            sentences.append((t.format(dest=dest), "ask_facilities"))
+        for _ in range(8):
+            sentences.append((t.format(dest=next(dest_cycle)), "ask_facilities"))
     for t in en_templates:
-        for dest in random.sample(DESTINATIONS_EN, min(5, len(DESTINATIONS_EN))):
-            sentences.append((t.format(dest=dest), "ask_facilities"))
+        for _ in range(5):
+            sentences.append((t.format(dest=next(dest_cycle_en)), "ask_facilities"))
     for s in no_dest_id:
         sentences.append((s, "ask_facilities"))
     for s in no_dest_en:
@@ -530,12 +550,14 @@ def gen_ask_destination_info():
         "Describe it", "What's it like?", "Is it worth visiting?",
     ]
     
+    dest_cycle = get_dest_cycle()
+    dest_cycle_en = get_dest_cycle_en()
     for t in id_templates:
-        for dest in random.sample(ALL_DEST, min(8, len(ALL_DEST))):
-            sentences.append((t.format(dest=dest), "ask_destination_info"))
+        for _ in range(8):
+            sentences.append((t.format(dest=next(dest_cycle)), "ask_destination_info"))
     for t in en_templates:
-        for dest in random.sample(DESTINATIONS_EN, min(5, len(DESTINATIONS_EN))):
-            sentences.append((t.format(dest=dest), "ask_destination_info"))
+        for _ in range(5):
+            sentences.append((t.format(dest=next(dest_cycle_en)), "ask_destination_info"))
     for s in no_dest_id:
         sentences.append((s, "ask_destination_info"))
     for s in no_dest_en:
@@ -966,9 +988,19 @@ def gen_ask_unrelated():
     return sentences
 
 
+def swap_destination_in_text(text):
+    """Ganti entitas destinasi dalam kalimat dengan destinasi acak dari ALL_DEST"""
+    for ent in sorted(ALL_DEST, key=len, reverse=True):
+        pattern = r'\b' + re.escape(ent) + r'\b'
+        if re.search(pattern, text, re.IGNORECASE):
+            new_ent = random.choice(ALL_DEST)
+            return re.sub(pattern, new_ent, text, flags=re.IGNORECASE)
+    return text
+
 def balance_dataset(all_sentences, target_per_class=615):
-    """Seimbangkan jumlah kalimat per intent dengan variasi cerdas"""
+    """Seimbangkan jumlah kalimat per intent dengan variasi cerdas & distribusi merata (round-robin)"""
     from collections import defaultdict
+    import random
     
     by_label = defaultdict(list)
     for text, label in all_sentences:
@@ -980,64 +1012,71 @@ def balance_dataset(all_sentences, target_per_class=615):
     prefixes_en = ["Hey ", "Excuse me, ", "Hi, ", "Hello, ", "Please ", "Can you tell me ", "I want to know ", ""]
     suffixes_en = ["", " please", " thanks", "?"]
     
+    en_words = {"what", "where", "how", "when", "is", "are", "do", "can", "tell", "the", "to", "in", "of", "for", "at", "it", "i", "you", "this", "that", "not", "with", "have", "has", "an", "a"}
+    
     balanced = []
-    for label, items in by_label.items():
-        # Hapus duplikat
-        unique_texts = list(set(items))
+    for label, items in sorted(by_label.items()):
+        # Hapus duplikat, pertahankan urutan unik
+        unique_texts = list(dict.fromkeys(t for t, _ in items))
+        random.shuffle(unique_texts)
         
-        if len(unique_texts) >= target_per_class:
-            balanced.extend(random.sample(unique_texts, target_per_class))
+        unique_tuples = [(t, label) for t in unique_texts]
+        
+        if len(unique_tuples) >= target_per_class:
+            balanced.extend(random.sample(unique_tuples, target_per_class))
         else:
-            balanced.extend(unique_texts)
-            remaining = target_per_class - len(unique_texts)
-            existing_texts = set(t for t, _ in unique_texts)
+            balanced.extend(unique_tuples)
+            remaining = target_per_class - len(unique_tuples)
+            existing_texts = set(unique_texts)
             extra = []
             
-            for text, lab in unique_texts:
-                if len(extra) >= remaining:
-                    break
-                
-                is_english = any(c in text.lower().split()[0] if text.split() else "" for c in ["what", "where", "how", "when", "is", "are", "do", "can", "tell", "which", "hello", "hi", "hey", "thank", "good", "bye", "great"])
-                
-                # Deteksi bahasa sederhana
-                en_words = {"what", "where", "how", "when", "is", "are", "do", "can", "tell", "the", "to", "in", "of", "for", "at", "it", "i", "you", "this", "that", "not", "with", "have", "has", "an", "a"}
+            # Buat daftar kandidat variasi per teks dasar
+            candidates_per_text = []
+            for text in unique_texts:
+                text_vars = []
                 words_in_text = set(text.lower().split())
                 is_en = len(words_in_text & en_words) >= 2
-                
                 prefixes = prefixes_en if is_en else prefixes_id
                 suffixes = suffixes_en if is_en else suffixes_id
                 
-                for pfx in prefixes:
-                    for sfx in suffixes:
-                        variant = pfx + text + sfx
-                        variant = variant.strip()
-                        if variant not in existing_texts and len(variant) > 2:
-                            extra.append((variant, lab))
-                            existing_texts.add(variant)
+                bases = [text]
+                if text.lower() != text:
+                    bases.append(text.lower())
+                if text.endswith("?"):
+                    bases.append(text[:-1].strip())
+                elif not text.endswith((".", "!", "?")):
+                    bases.append(text + "?")
+                
+                for base in bases:
+                    for pfx in prefixes:
+                        for sfx in suffixes:
+                            variant = (pfx + base + sfx).strip()
+                            # Swapping entitas agar tidak terjadi penumpukan destinasi tertentu
+                            variant_swapped = swap_destination_in_text(variant)
+                            if variant_swapped and variant_swapped not in existing_texts and variant_swapped not in text_vars:
+                                text_vars.append(variant_swapped)
+                random.shuffle(text_vars)
+                candidates_per_text.append(text_vars)
+            
+            # Interleave variasi secara ROUND-ROBIN antar semua teks dasar
+            var_idx = 0
+            while len(extra) < remaining:
+                added_any = False
+                for cand_list in candidates_per_text:
+                    if var_idx < len(cand_list):
+                        v = cand_list[var_idx]
+                        if v not in existing_texts:
+                            extra.append((v, label))
+                            existing_texts.add(v)
+                            added_any = True
                             if len(extra) >= remaining:
                                 break
-                    if len(extra) >= remaining:
-                        break
-                
-                # Variasi lowercase
-                if text.lower() not in existing_texts:
-                    extra.append((text.lower(), lab))
-                    existing_texts.add(text.lower())
-                
-                # Variasi tanpa tanda tanya
-                if text.endswith("?"):
-                    no_q = text[:-1].strip()
-                    if no_q not in existing_texts:
-                        extra.append((no_q, lab))
-                        existing_texts.add(no_q)
-                elif not text.endswith((".", "!", "?")):
-                    with_q = text + "?"
-                    if with_q not in existing_texts:
-                        extra.append((with_q, lab))
-                        existing_texts.add(with_q)
-            
+                var_idx += 1
+                if not added_any:
+                    break
+                    
             balanced.extend(extra[:remaining])
-    
+            
     return balanced
 
 

@@ -91,7 +91,10 @@ def verify_no_overlap(train_data, val_data, test_data, get_text_func, label=""):
     return len(ott) == 0 and len(otv) == 0
 
 def split_intent_dataset():
-    input_path = "ml/data/raw/intents_bilingual_v2.csv"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_path = os.path.join(script_dir, "processed", "intents_augmented_v2.csv")
+    if not os.path.exists(input_path):
+        input_path = os.path.join(script_dir, "raw", "intents_bilingual_v2.csv")
     print(f"Membaca {input_path} (Anti-Overfitting Mode)...")
     
     data_by_label = defaultdict(list)
@@ -121,11 +124,12 @@ def split_intent_dataset():
     random.shuffle(val_data)
     random.shuffle(test_data)
     
-    os.makedirs("ml/data/processed", exist_ok=True)
+    out_dir = os.path.join(script_dir, "processed")
+    os.makedirs(out_dir, exist_ok=True)
     for name, data in [("train_intents_v2.csv", train_data), 
                        ("val_intents_v2.csv", val_data), 
                        ("test_intents_v2.csv", test_data)]:
-        path = f"ml/data/processed/{name}"
+        path = os.path.join(out_dir, name)
         with open(path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=['text', 'label'])
             writer.writeheader()
@@ -135,7 +139,8 @@ def split_intent_dataset():
 
 
 def split_ner_dataset():
-    input_path = "ml/data/raw/ner_dataset_v2.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_path = os.path.join(script_dir, "raw", "ner_dataset_v2.json")
     if not os.path.exists(input_path):
         return
         
@@ -155,11 +160,12 @@ def split_ner_dataset():
     random.shuffle(va)
     random.shuffle(te)
     
-    os.makedirs("ml/data/processed", exist_ok=True)
+    out_dir = os.path.join(script_dir, "processed")
+    os.makedirs(out_dir, exist_ok=True)
     for name, split in [("train_ner_v2.json", tr), 
                         ("val_ner_v2.json", va), 
                         ("test_ner_v2.json", te)]:
-        path = f"ml/data/processed/{name}"
+        path = os.path.join(out_dir, name)
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(split, f, ensure_ascii=False, indent=2)
         print(f"  Saved: {path} ({len(split)} samples)")
