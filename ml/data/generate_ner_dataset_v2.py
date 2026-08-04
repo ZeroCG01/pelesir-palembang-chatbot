@@ -39,6 +39,22 @@ DESTINATIONS = [
     ("Fantasy Island", ["Fantasy", "Island"]),
     ("Amanzi Waterpark", ["Amanzi", "Waterpark"]),
     ("Kawah Tengkurep", ["Kawah", "Tengkurep"]),
+    ("Hotel Novotel Palembang", ["Hotel", "Novotel", "Palembang"]),
+    ("Hotel Aryaduta Palembang", ["Hotel", "Aryaduta", "Palembang"]),
+    ("Hotel Excelton", ["Hotel", "Excelton"]),
+    ("The Zuri Palembang", ["The", "Zuri", "Palembang"]),
+    ("Pempek Candy", ["Pempek", "Candy"]),
+    ("Pempek Beringin", ["Pempek", "Beringin"]),
+    ("Martabak HAR", ["Martabak", "HAR"]),
+    ("Mie Celor 26 Ilir", ["Mie", "Celor", "26", "Ilir"]),
+    ("Restoran River Side", ["Restoran", "River", "Side"]),
+    ("Dermaga Point", ["Dermaga", "Point"]),
+    ("Rumah Adat Dekranasda", ["Rumah", "Adat", "Dekranasda"]),
+    ("Sanggar Tari Rumah Elok", ["Sanggar", "Tari", "Rumah", "Elok"]),
+    ("Taman Purbakala Sriwijaya", ["Taman", "Purbakala", "Sriwijaya"]),
+    ("Museum A.K. Gani", ["Museum", "A.K.", "Gani"]),
+    ("Zainal Songket", ["Zainal", "Songket"]),
+    ("Griya Agung", ["Griya", "Agung"]),
 ]
 
 ABBR_TOKENS = {
@@ -63,8 +79,26 @@ CATEGORIES = {
     "wisata kuliner": ["wisata", "kuliner"],
     "wisata religi": ["wisata", "religi"],
     "wisata budaya": ["wisata", "budaya"],
+    "wisata malam": ["wisata", "malam"],
+    "wisata keluarga": ["wisata", "keluarga"],
+    "wisata edukasi": ["wisata", "edukasi"],
+    "wisata murah": ["wisata", "murah"],
     "taman": ["taman"],
+    "taman kota": ["taman", "kota"],
     "museum": ["museum"],
+    "masjid": ["masjid"],
+    "tempat makan": ["tempat", "makan"],
+    "kuliner": ["kuliner"],
+    "makanan": ["makanan"],
+    "nasi padang": ["nasi", "padang"],
+    "pempek": ["pempek"],
+    "food": ["food"],
+    "cafe": ["cafe"],
+    "kafe": ["kafe"],
+    "coffee shop": ["coffee", "shop"],
+    "spot foto": ["spot", "foto"],
+    "wahana air": ["wahana", "air"],
+    "pusat oleh-oleh": ["pusat", "oleh-oleh"],
 }
 
 PRICES = [
@@ -284,17 +318,55 @@ def generate_time_sentences():
 
 
 def generate_location_sentences():
-    """Generate kalimat dengan entity LOCATION"""
+    """Generate kalimat dengan entity LOCATION (termasuk contoh kontras 'Palembang' mandiri vs 'Palembang' di nama destinasi)"""
     samples = []
     
     locations = [
         (["Jalan", "Merdeka"], "Jalan Merdeka"),
+        (["Jalan", "Sudirman"], "Jalan Sudirman"),
+        (["Demang", "Lebar", "Daun"], "Demang Lebar Daun"),
+        (["Jalan", "Radial"], "Jalan Radial"),
+        (["R.", "Sukamto"], "R. Sukamto"),
+        (["Basuki", "Rahmat"], "Basuki Rahmat"),
+        (["Kapten", "A.", "Rivai"], "Kapten A. Rivai"),
+        (["Jalan", "Diponegoro"], "Jalan Diponegoro"),
+        (["MP", "Mangkunegara"], "MP Mangkunegara"),
+        (["Ki", "Gede", "Ing", "Suro"], "Ki Gede Ing Suro"),
+        (["Jalan", "Tasik"], "Jalan Tasik"),
+        (["Letkol", "Iskandar"], "Letkol Iskandar"),
         (["Seberang", "Ulu"], "Seberang Ulu"),
         (["Seberang", "Ilir"], "Seberang Ilir"),
-        (["pusat", "kota"], "pusat kota"),
-        (["dekat", "sungai", "Musi"], "dekat sungai Musi"),
-        (["Kertapati"], "Kertapati"),
         (["Ilir", "Barat"], "Ilir Barat"),
+        (["Ilir", "Timur"], "Ilir Timur"),
+        (["Bukit", "Kecil"], "Bukit Kecil"),
+        (["Bukit", "Lama"], "Bukit Lama"),
+        (["Bukit", "Besar"], "Bukit Besar"),
+        (["Jakabaring"], "Jakabaring"),
+        (["Kertapati"], "Kertapati"),
+        (["Plaju"], "Plaju"),
+        (["Sekip"], "Sekip"),
+        (["Kenten"], "Kenten"),
+        (["16", "Ilir"], "16 Ilir"),
+        (["7", "Ulu"], "7 Ulu"),
+        (["10", "Ulu"], "10 Ulu"),
+        (["9", "Ilir"], "9 Ilir"),
+        (["19", "Ilir"], "19 Ilir"),
+        (["32", "Ilir"], "32 Ilir"),
+        (["13", "Ulu"], "13 Ulu"),
+        (["Talang", "Semut"], "Talang Semut"),
+        (["Gandus"], "Gandus"),
+        (["Alang-Alang", "Lebar"], "Alang-Alang Lebar"),
+        (["KM", "5"], "KM 5"),
+        (["pusat", "kota"], "pusat kota"),
+        (["tengah", "kota"], "tengah kota"),
+        (["sekitar", "sini"], "sekitar sini"),
+        (["dekat", "sini"], "dekat sini"),
+        (["dekat", "sungai", "Musi"], "dekat sungai Musi"),
+        (["pinggir", "Musi"], "pinggir Musi"),
+        (["area", "PTC"], "area PTC"),
+        (["komplek", "Transmart"], "komplek Transmart"),
+        (["Palembang"], "Palembang"),
+        (["kota", "Palembang"], "kota Palembang"),
     ]
     
     for dest_name, dest_tokens in DESTINATIONS:
@@ -324,19 +396,51 @@ def generate_location_sentences():
             samples.append({"tokens": tokens3, "tags": make_bio_tags(tokens3, entities3)})
 
     for loc_tokens, _ in locations:
-        # "Banyak tempat makan di {location}"
         tokens4 = ["Banyak", "tempat", "makan", "di"] + loc_tokens
-        entities4 = [
-            (4, 4 + len(loc_tokens), "LOCATION"),
-        ]
+        entities4 = [(4, 4 + len(loc_tokens), "LOCATION")]
         samples.append({"tokens": tokens4, "tags": make_bio_tags(tokens4, entities4)})
         
-        # "Angkot yang lewat {location} ada gak ?"
         tokens5 = ["Angkot", "yang", "lewat"] + loc_tokens + ["ada", "gak", "?"]
-        entities5 = [
-            (3, 3 + len(loc_tokens), "LOCATION"),
-        ]
+        entities5 = [(3, 3 + len(loc_tokens), "LOCATION")]
         samples.append({"tokens": tokens5, "tags": make_bio_tags(tokens5, entities5)})
+
+        tokens6 = ["Rekomendasi", "tempat", "wisata", "di"] + loc_tokens
+        entities6 = [(4, 4 + len(loc_tokens), "LOCATION")]
+        samples.append({"tokens": tokens6, "tags": make_bio_tags(tokens6, entities6)})
+        
+        tokens7 = ["Mau", "jalan-jalan", "ke"] + loc_tokens
+        entities7 = [(3, 3 + len(loc_tokens), "LOCATION")]
+        samples.append({"tokens": tokens7, "tags": make_bio_tags(tokens7, entities7)})
+
+    # Kalimat kontras khusus: Palembang B-LOCATION vs I-DESTINATION
+    samples.append({
+        "tokens": ["Rekomendasi", "tempat", "kuliner", "murah", "di", "Palembang"],
+        "tags": ["O", "O", "B-CATEGORY", "O", "O", "B-LOCATION"]
+    })
+    samples.append({
+        "tokens": ["Ada", "apa", "aja", "di", "Palembang", "saat", "malam", "hari"],
+        "tags": ["O", "O", "O", "O", "B-LOCATION", "O", "B-TIME", "I-TIME"]
+    })
+    samples.append({
+        "tokens": ["Wisata", "populer", "sekitar", "kota", "Palembang"],
+        "tags": ["O", "O", "O", "B-LOCATION", "I-LOCATION"]
+    })
+    samples.append({
+        "tokens": ["Mau", "cari", "hotel", "di", "Palembang"],
+        "tags": ["O", "O", "B-CATEGORY", "O", "B-LOCATION"]
+    })
+    samples.append({
+        "tokens": ["Dimana", "lokasi", "Masjid", "Agung", "Palembang", "?"],
+        "tags": ["O", "O", "B-DESTINATION", "I-DESTINATION", "I-DESTINATION", "O"]
+    })
+    samples.append({
+        "tokens": ["Cara", "ke", "Hotel", "Aryaduta", "Palembang", "gimana", "?"],
+        "tags": ["O", "O", "B-DESTINATION", "I-DESTINATION", "I-DESTINATION", "O", "O"]
+    })
+    samples.append({
+        "tokens": ["Info", "Novotel", "Palembang", "dong"],
+        "tags": ["O", "B-DESTINATION", "I-DESTINATION", "O"]
+    })
     
     return samples
 
@@ -384,8 +488,9 @@ def main():
     existing_path = "ml/data/raw/ner_dataset.json"
     if os.path.exists(existing_path):
         with open(existing_path, 'r', encoding='utf-8') as f:
-            existing = json.load(f)
-        print(f"  Loaded existing: {len(existing)} samples")
+            existing_raw = json.load(f)
+        print(f"  Loaded existing: {len(existing_raw)} samples")
+        existing = clean_v1_price_tags(existing_raw)
     else:
         existing = []
         print("  No existing dataset found, starting fresh")
