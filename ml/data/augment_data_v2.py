@@ -141,8 +141,8 @@ def augment_data(input_file, output_file):
         
 if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    input_csv = os.path.join(current_dir, "raw", "intents_bilingual_v2.csv")
-    output_csv = os.path.join(current_dir, "processed", "intents_augmented_v2.csv")
+    input_csv = os.path.join(current_dir, "processed", "train_intents_raw_v2.csv")
+    output_csv = os.path.join(current_dir, "processed", "train_intents_v2.csv")
     
     print(f"Starting data augmentation...")
     print(f"Input: {input_csv}")

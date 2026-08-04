@@ -27,13 +27,30 @@ ALL_DEST = [
 ]
 
 def get_signature(text):
-    """Menghapus entitas spesifik agar tersisa hanya kerangka template (grammar)"""
+    """Menghapus entitas, dialek, dan prefix/suffix agar tersisa hanya kerangka template murni"""
     sig = text.lower()
-    # Sort dari terpanjang agar replace tidak terpotong
+    
+    # 1. Normalisasi dialek
+    ID_DIALECT_REVERSE = {
+        r'\bapo\b': 'apa', r'\bdak\b': 'tidak', r'\bgak\b': 'tidak', r'\benggak\b': 'tidak',
+        r'\bcakmano\b': 'bagaimana', r'\bgimana\b': 'bagaimana', r'\bnian\b': 'sangat',
+        r'\bkau\b': 'kamu', r'\blemak\b': 'enak', r'\bpacak\b': 'bisa', r'\bhargo\b': 'harga',
+        r'\bberapo\b': 'berapa', r'\bngapo\b': 'kenapa', r'\bbae\b': 'saja', r'\byo\b': 'ya',
+        r'\bkatek\b': 'tidak ada', r'\bpegi\b': 'pergi', r'\bjingok\b': 'lihat'
+    }
+    for pat, repl in ID_DIALECT_REVERSE.items():
+        sig = re.sub(pat, repl, sig)
+        
+    # 2. Hapus prefix & suffix percakapan umum
+    pfx_pat = r'^\b(kak|min|bang|permisi|halo|maaf mau tanya|mau nanya dong|eh|hey|hi|hello|please|can you tell me|i want to know)\b\s*'
+    sfx_pat = r'\s*\b(ya|ya kak|dong|dong kak|nih|sih|deh|please|thanks)\b[\?\.\!]?$'
+    sig = re.sub(pfx_pat, '', sig, flags=re.IGNORECASE)
+    sig = re.sub(sfx_pat, '', sig, flags=re.IGNORECASE)
+
+    # 3. Replace destinasi & angka
     for ent in sorted(ALL_DEST, key=len, reverse=True):
         pattern = r'\b' + re.escape(ent.lower()) + r'\b'
         sig = re.sub(pattern, "[DEST]", sig)
-    # Hilangkan angka dan harga
     sig = re.sub(r'\b\d+\b', '[NUM]', sig)
     sig = re.sub(r'rp\s?\d+', '[PRICE]', sig)
     return sig.strip()
@@ -92,10 +109,8 @@ def verify_no_overlap(train_data, val_data, test_data, get_text_func, label=""):
 
 def split_intent_dataset():
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    input_path = os.path.join(script_dir, "processed", "intents_augmented_v2.csv")
-    if not os.path.exists(input_path):
-        input_path = os.path.join(script_dir, "raw", "intents_bilingual_v2.csv")
-    print(f"Membaca {input_path} (Anti-Overfitting Mode)...")
+    input_path = os.path.join(script_dir, "raw", "intents_bilingual_v2.csv")
+    print(f"Membaca {input_path} (Anti-Overfitting & Strict Anti-Leakage Mode)...")
     
     data_by_label = defaultdict(list)
     with open(input_path, 'r', encoding='utf-8') as f:
@@ -126,7 +141,7 @@ def split_intent_dataset():
     
     out_dir = os.path.join(script_dir, "processed")
     os.makedirs(out_dir, exist_ok=True)
-    for name, data in [("train_intents_v2.csv", train_data), 
+    for name, data in [("train_intents_raw_v2.csv", train_data), 
                        ("val_intents_v2.csv", val_data), 
                        ("test_intents_v2.csv", test_data)]:
         path = os.path.join(out_dir, name)
