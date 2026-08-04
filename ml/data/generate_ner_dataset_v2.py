@@ -480,6 +480,43 @@ def generate_english_ner():
     
     return samples
 
+def clean_v1_price_tags(samples):
+    """
+    Audit & bersihkan tag PRICE yang longgar/salah pada dataset v1 lama
+    (misal: 'Tiket masuk', 'harganya', 'cheapest', 'tanpa tiket' yang di-tag PRICE menjadi 'O')
+    """
+    invalid_spans = {
+        'Biaya masuk', 'Tiket biaya', 'Tiket masuk harganya', 'biaya masuk', 
+        'biaya masuk terjangkau', 'cheap', 'cheapest', 'expensive', 'harga tiket', 
+        'harga tiket masuk', 'ongkos', 'tanpa tiket masuk', 'tarif', 'tarif masuk', 
+        'tidak bayar', 'tiket masuk', 'harganya', 'tiketnya'
+    }
+    cleaned_count = 0
+    cleaned_samples = []
+    
+    for sample in samples:
+        tokens = list(sample["tokens"])
+        tags = list(sample["tags"])
+        i = 0
+        while i < len(tags):
+            if tags[i] == 'B-PRICE':
+                j = i + 1
+                while j < len(tags) and tags[j] == 'I-PRICE':
+                    j += 1
+                span_str = ' '.join(tokens[i:j])
+                has_digit = any(c.isdigit() for c in span_str)
+                has_price_val = any(w in span_str.lower() for w in ['gratis', 'free', 'ribu', 'rupiah', 'goceng', 'rb', 'k', '50k', '100k', '5k', '10k', '20k', '15k', 'ribuan'])
+                if span_str in invalid_spans or (not has_digit and not has_price_val):
+                    for k in range(i, j):
+                        tags[k] = 'O'
+                    cleaned_count += 1
+                i = j
+            else:
+                i += 1
+        cleaned_samples.append({"tokens": tokens, "tags": tags})
+    print(f"  Sanitized {cleaned_count} loose/invalid PRICE spans from v1 data")
+    return cleaned_samples
+
 
 def main():
     print("Generating NER Dataset v2...")
