@@ -999,13 +999,13 @@ def swap_destination_in_text(text):
 
 def clean_stacked_fillers(text):
     """Membersihkan filler bertumpuk, duplikasi filler, dan tanda baca di tengah filler"""
-    t = text
-    # Fix repeated consecutive words (e.g. "sih sih" -> "sih", "ya ya" -> "ya")
-    t = re.sub(r'\b(sih|ya|dong|deh|nih|kak|min|bang)\s+\1\b', r'\1', t, flags=re.IGNORECASE)
-    # Fix ? or . followed by trailing filler (e.g. "? dong" -> "?", "? ya kak" -> "?")
+    fillers = ['halo', 'hai', 'permisi', 'misi', 'maaf', 'min', 'kak', 'bang', 'dong', 'deh', 'nih', 'sih', 'ya', 'kaa', 'kk', 'gaes', 'guys', 'btw', 'tolong']
+    pattern = r'(?:\b(?:' + '|'.join(fillers) + r')\b\s*){2,}'
+    def replace_stacked(match):
+        words = match.group(0).strip().split()
+        return words[0]
+    t = re.sub(pattern, lambda m: replace_stacked(m) + ' ', text, flags=re.IGNORECASE)
     t = re.sub(r'([\?\!\.])\s*(ya|ya kak|dong|dong kak|nih|sih|deh|please|thanks)[\?\.\!]?$', r'\1', t, flags=re.IGNORECASE)
-    # Fix trailing double fillers (e.g. "sih deh" -> "sih")
-    t = re.sub(r'\b(sih|ya|dong|deh|nih)\s+(sih|ya|dong|deh|nih)\b', r'\1', t, flags=re.IGNORECASE)
     return re.sub(r'\s+', ' ', t).strip()
 
 def balance_dataset(all_sentences, target_per_class=615):
@@ -1087,6 +1087,10 @@ def balance_dataset(all_sentences, target_per_class=615):
     return balanced
 
 
+def augment_intent_train(train_tuples, target_per_class=500):
+    """Augmentasi HANYA untuk split Train"""
+    return balance_dataset(train_tuples, target_per_class=target_per_class)
+
 def main():
     print("Generating dataset Intent v2 (bilingual, 13 intents)...")
     
@@ -1109,46 +1113,32 @@ def main():
     
     for name, gen_fn in generators:
         data = gen_fn()
-        print(f"  {name}: {len(data)} kalimat (sebelum balancing)")
+        print(f"  {name}: {len(data)} kalimat (base)")
         all_data.extend(data)
     
-    print(f"\nTotal sebelum balancing: {len(all_data)}")
+    print(f"\nTotal base dataset: {len(all_data)} kalimat")
     
-    # Balance ke ~615 per kelas × 13 = ~8000
-    balanced = balance_dataset(all_data, target_per_class=615)
-    
-    # Shuffle
-    random.shuffle(balanced)
-    
-    # Hapus duplikat final
+    # Clean stacked fillers pada base
+    cleaned_base = []
     seen = set()
-    final = []
-    for text, label in balanced:
-        key = (text.strip(), label)
+    for text, label in all_data:
+        t_clean = clean_stacked_fillers(text)
+        key = (t_clean, label)
         if key not in seen:
             seen.add(key)
-            final.append((text.strip(), label))
-    
-    # Simpan
-    output_path = "ml/data/raw/intents_bilingual_v2.csv"
+            cleaned_base.append((t_clean, label))
+            
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(script_dir, "raw", "intents_base_v2.csv")
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     with open(output_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(["text", "label"])
-        for text, label in final:
+        for text, label in cleaned_base:
             writer.writerow([text, label])
-    
-    # Print statistik
-    from collections import Counter
-    counts = Counter(label for _, label in final)
-    print(f"\nTotal final: {len(final)} kalimat")
-    print("\nDistribusi per intent:")
-    for label, count in sorted(counts.items()):
-        print(f"  {label}: {count}")
-    
-    print(f"\nDataset disimpan di: {output_path}")
-
+            
+    print(f"Dataset Base disimpan di: {output_path} ({len(cleaned_base)} baris)")
 
 if __name__ == "__main__":
     main()

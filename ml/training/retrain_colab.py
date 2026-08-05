@@ -488,38 +488,56 @@ def train_ner():
         json.dump(NER_TAG2ID, f, indent=2)
 
     # ---- NER EVALUATION ----
-    print("\n--- NER Evaluasi pada Test Set ---")
+    print("\n--- NER Evaluasi pada Test Sets (Combined, Seen, Holdout) ---")
     model = AutoModelForTokenClassification.from_pretrained(ner_save_dir).to(DEVICE)
     model.eval()
 
-    all_true_tags, all_pred_tags = [], []
-    with torch.no_grad():
-        for batch in test_loader:
-            input_ids = batch['input_ids'].to(DEVICE)
-            attention_mask = batch['attention_mask'].to(DEVICE)
-            labels = batch['labels']
+    def eval_ner_file(filepath):
+        if not os.path.exists(filepath):
+            return 0.0, "File not found"
+        ds = NERDataset(filepath, tokenizer, NER_MAX_LEN, NER_TAG2ID)
+        loader = DataLoader(ds, batch_size=NER_BATCH_SIZE, shuffle=False)
+        true_tags, pred_tags = [], []
+        with torch.no_grad():
+            for batch in loader:
+                input_ids = batch['input_ids'].to(DEVICE)
+                attention_mask = batch['attention_mask'].to(DEVICE)
+                labels = batch['labels']
+                outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+                preds = torch.argmax(outputs.logits, dim=2).cpu().numpy()
+                labels_np = labels.numpy()
 
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
-            preds = torch.argmax(outputs.logits, dim=2).cpu().numpy()
-            labels_np = labels.numpy()
+                for i in range(len(preds)):
+                    t_seq, p_seq = [], []
+                    for j in range(len(preds[i])):
+                        if labels_np[i][j] != -100:
+                            t_seq.append(NER_ID2TAG[labels_np[i][j]])
+                            p_seq.append(NER_ID2TAG[preds[i][j]])
+                    true_tags.append(t_seq)
+                    pred_tags.append(p_seq)
+        return seq_f1(true_tags, pred_tags), seq_report(true_tags, pred_tags)
 
-            for i in range(len(preds)):
-                true_seq, pred_seq = [], []
-                for j in range(len(preds[i])):
-                    if labels_np[i][j] != -100:
-                        true_seq.append(NER_ID2TAG[labels_np[i][j]])
-                        pred_seq.append(NER_ID2TAG[preds[i][j]])
-                all_true_tags.append(true_seq)
-                all_pred_tags.append(pred_seq)
+    combined_f1, combined_rep = eval_ner_file(test_path)
+    seen_path = os.path.join(DATA_DIR, "test_ner_seen.json")
+    seen_f1, seen_rep = eval_ner_file(seen_path)
+    holdout_path = os.path.join(DATA_DIR, "test_ner_holdout.json")
+    holdout_f1, holdout_rep = eval_ner_file(holdout_path)
 
-    ner_report = seq_report(all_true_tags, all_pred_tags)
-    ner_f1 = seq_f1(all_true_tags, all_pred_tags)
-    print(f"\nEntity-level F1: {ner_f1:.4f}")
-    print(ner_report)
+    print(f"\nNER F1 Combined         : {combined_f1:.4f}")
+    print(f"NER F1 Seen (In-Domain)  : {seen_f1:.4f}")
+    print(f"NER F1 Holdout (ZeroShot): {holdout_f1:.4f}")
+    print("\n--- COMBINED CLASSIFICATION REPORT ---")
+    print(combined_rep)
 
     reports_dir = os.path.join(OUTPUT_DIR, "reports")
-    with open(os.path.join(reports_dir, 'ner_classification_report.txt'), 'w') as f:
-        f.write(f"Entity-level F1: {ner_f1:.4f}\n\n{ner_report}")
+    os.makedirs(reports_dir, exist_ok=True)
+    with open(os.path.join(reports_dir, 'ner_classification_report.txt'), 'w', encoding='utf-8') as f:
+        f.write(f"NER F1 Combined         : {combined_f1:.4f}\n")
+        f.write(f"NER F1 Seen (In-Domain)  : {seen_f1:.4f}\n")
+        f.write(f"NER F1 Holdout (ZeroShot): {holdout_f1:.4f}\n\n")
+        f.write("=== COMBINED REPORT ===\n" + combined_rep + "\n\n")
+        f.write("=== SEEN ENTITY REPORT ===\n" + seen_rep + "\n\n")
+        f.write("=== HOLDOUT (ZERO-SHOT) REPORT ===\n" + holdout_rep + "\n")
 
     # Plot NER Loss
     plt.figure(figsize=(10, 6))
@@ -535,7 +553,7 @@ def train_ner():
     plt.savefig(os.path.join(reports_dir, 'ner_training_curves.png'), dpi=300)
     plt.close()
 
-    return ner_save_dir, ner_f1
+    return ner_save_dir, combined_f1
 
 
 # ============================================================

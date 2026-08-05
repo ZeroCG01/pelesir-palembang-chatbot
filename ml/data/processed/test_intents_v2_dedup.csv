@@ -1,0 +1,165 @@
+text,label
+Min mau cari masjid di palembang dong,ask_category
+Eh mau cari masjid di palembang dong,ask_category
+Mau cari masjid di Palembang,ask_category
+Min Mau cari masjid di Palembang dong,ask_category
+Maaf mau tanya Ceritain Al-Munawar dong kak?,ask_destination_info
+Ceritain PIM dong kak?,ask_destination_info
+Halo Ceritain KI dong kak?,ask_destination_info
+Bang Ceritain Bukit Siguntang dong kak?,ask_destination_info
+di Kambang Iwak itu kita bisa ngapain aja?,ask_destination_info
+di Masjid Agung Palembang itu kita bisa ngapain aja?,ask_destination_info
+di Amanzi Waterpark itu kita bisa ngapain aja?,ask_destination_info
+Min di OPI Mall itu kita bisa ngapain aja?,ask_destination_info
+di Museum Balaputra Dewa itu kita bisa ngapain aja?,ask_destination_info
+di Monpera itu kita bisa ngapain aja?,ask_destination_info
+Halo di Kambang Iwak itu kita bisa ngapain aja?,ask_destination_info
+Kak di Jakabaring Sport City itu kita bisa ngapain aja?,ask_destination_info
+di Pulau Kemaro itu kita bisa ngapain aja?,ask_destination_info
+di Kampung Kapitan itu kita bisa ngapain aja?,ask_destination_info
+Kasih info Kampung Arab Al-Munawar ya kak,ask_destination_info
+Kasih info Masjid Cheng Ho ya kak,ask_destination_info
+Permisi Kasih info Amanzi Waterpark ya kak deh,ask_destination_info
+Kasih info Jakabaring ya kak,ask_destination_info
+Kasih info Palembang Trade Center ya kak,ask_destination_info
+Maaf mau tanya kasih info Amanzi ya kak ya kak,ask_destination_info
+Mau nanya dong kasih info Pulau Kemaro ya kak,ask_destination_info
+Maaf mau tanya Kasih info Palembang Square ya kak ya,ask_destination_info
+Bang Kasih info Al Quran Al Akbar ya kak nih,ask_destination_info
+Kasih info Palembang Icon ya kak,ask_destination_info
+Kasih info PTC ya kak,ask_destination_info
+Min What's available at Kambang Iwak Island deh,ask_facilities
+Does Al-Munawar Arab Village have a mosque?,ask_facilities
+Pulau Kemaro ada kantin gak?,ask_facilities
+Ampera ada kantin gak?,ask_facilities
+Halo PIM ada kantin gak?,ask_facilities
+Bang Kampung Kapitan ada kantin gak?,ask_facilities
+Kemaro ada kantin gak?,ask_facilities
+Min Museum Sultan Mahmud Badaruddin II ada kantin gak?,ask_facilities
+Permisi Kawah Tengkurep ada kantin gak?,ask_facilities
+Bukit Siguntang ada kantin gak?,ask_facilities
+Jembatan Ampera ada kantin gak?,ask_facilities
+Mau nanya dong Siguntang ada kantin gak?,ask_facilities
+Min Palembang Square ada kantin gak?,ask_facilities
+Museum Sultan Mahmud Badaruddin II ada kantin gak?,ask_facilities
+Masjid Cheng Ho ada kantin gak?,ask_facilities
+KI ada kantin gak?,ask_facilities
+Siguntang ada kantin gak?,ask_facilities
+Min Any hidden gems to visit,ask_hidden_gems
+Maaf mau tanya Any hidden gems to visit dong,ask_hidden_gems
+Maaf mau tanya Any hidden gems to visit ya kak,ask_hidden_gems
+Any hidden gems to visit dong,ask_hidden_gems
+Bang Any hidden gems to visit ya,ask_hidden_gems
+Maaf mau tanya Any hidden gems to visit dong kak,ask_hidden_gems
+Min Any hidden gems to visit ya kak,ask_hidden_gems
+How do I get to Kambang Iwak Park?,ask_location_access
+I want to know is Kambang Iwak far from the city center?,ask_location_access
+"Excuse me, How do I get there please",ask_location_access
+Bisa naik apa ke sana?,ask_location_access
+Akses ke Museum Sultan Mahmud Badaruddin II mudah gak?,ask_location_access
+Akses ke Monpera mudah gak?,ask_location_access
+Akses ke PTC mudah gak?,ask_location_access
+Akses ke KI mudah gak?,ask_location_access
+Maaf mau tanya akses ke OPI Mall mudah gak?,ask_location_access
+Bang akses ke Pulau Kemaro mudah gak?,ask_location_access
+Halo Akses ke Palembang Trade Center mudah gak?,ask_location_access
+Mau nanya dong akses ke PIM mudah gak?,ask_location_access
+Akses ke Kawah Tengkurep mudah gak?,ask_location_access
+Bang akses ke Kambang Iwak mudah gak?,ask_location_access
+Akses ke Pulau Kemaro mudah gak?,ask_location_access
+Akses ke Jembatan Ampera mudah gak?,ask_location_access
+Akses ke Punti Kayu mudah gak?,ask_location_access
+"Hello, is Kambang Iwak near an lrt station?",ask_lrt_destinations
+Hey Can I take LRT to Siguntang Bridge please,ask_lrt_destinations
+What time does Punti Kayu Forest close?,ask_operating_hours
+Min What time does Benteng Kuto Besak Forest close?,ask_operating_hours
+Buka sampai malam?,ask_operating_hours
+What time does Kemaro Island open?,ask_operating_hours
+Maaf mau tanya what time does Bukit Siguntang island open?,ask_operating_hours
+Must-visit places in Palembang?,ask_recommendation
+Min Famous places in Palembang deh,ask_recommendation
+Bang Famous places in Palembang deh,ask_recommendation
+Halo Famous places in Palembang dong kak,ask_recommendation
+Maaf mau tanya Famous places in Palembang dong,ask_recommendation
+Kak Famous places in Palembang ya kak,ask_recommendation
+Kak Famous places in Palembang sih,ask_recommendation
+Kak Famous places in Palembang ya,ask_recommendation
+Bang wisata gratis di palembang ada gak?,ask_recommendation
+Bang Wisata gratis di Palembang ada gak?,ask_recommendation
+Wisata gratis di Palembang ada gak?,ask_recommendation
+"Excuse me, How much for Al-Munawar tickets please",ask_ticket_price
+How much to get into Ampera Bridge?,ask_ticket_price
+Kak Berapa duit masuk Pasar 16 Ilir sih,ask_ticket_price
+Berapa duit masuk Kemaro nih,ask_ticket_price
+Min Berapa biaya masuk ke Jakabaring?,ask_ticket_price
+Berapa biaya masuk ke Masjid Cheng Ho?,ask_ticket_price
+Bang berapa biaya masuk ke Jakabaring Sport City?,ask_ticket_price
+Berapa biaya masuk ke Benteng Kuto Besak?,ask_ticket_price
+Eh Berapa biaya masuk ke Kambang Iwak?,ask_ticket_price
+Eh berapa biaya masuk ke Palembang Trade Center?,ask_ticket_price
+Berapa biaya masuk ke Punti Kayu?,ask_ticket_price
+Berapa biaya masuk ke Jakabaring?,ask_ticket_price
+Berapa biaya masuk ke Museum Balaputra Dewa?,ask_ticket_price
+Berapa biaya masuk ke SMB II?,ask_ticket_price
+Berapa biaya masuk ke Siguntang?,ask_ticket_price
+Halo Berapa biaya masuk ke Amanzi Waterpark?,ask_ticket_price
+Berapa biaya masuk ke Pulau Kemaro?,ask_ticket_price
+What's the entrance fee at Monpera?,ask_ticket_price
+What's the entrance fee at Kampung Kapitan?,ask_ticket_price
+Halo kak berapa harga tiket PTC?,ask_ticket_price
+Kak berapa harga tiket Al Quran Al Akbar?,ask_ticket_price
+Kak berapa harga tiket Al-Munawar?,ask_ticket_price
+Bang kak berapa harga tiket Fantasy Island?,ask_ticket_price
+Kak berapa harga tiket Taman Kebon Rojo?,ask_ticket_price
+Kak berapa harga tiket Amanzi?,ask_ticket_price
+Kak berapa harga tiket Monpera?,ask_ticket_price
+Kak berapa harga tiket Kampung Arab Al-Munawar?,ask_ticket_price
+Kak berapa harga tiket Taman Kambang Iwak Besak?,ask_ticket_price
+Kak berapa harga tiket Jembatan Ampera?,ask_ticket_price
+Recipe for chocolate cake?,ask_unrelated
+Maaf mau tanya Bagaimana cara move on ya kak,ask_unrelated
+Maaf mau tanya Bagaimana cara move on dong kak,ask_unrelated
+Eh Bagaimana cara move on dong,ask_unrelated
+"Hi, How to make money online??",ask_unrelated
+Halo Kode pos Palembang berapa?,ask_unrelated
+Kode pos Palembang berapa?,ask_unrelated
+Min Selamat tinggal nih,goodbye
+Permisi selamat tinggal nih,goodbye
+Selamat tinggal,goodbye
+Mau nanya dong selamat tinggal dong,goodbye
+Min Selamat tinggal dong,goodbye
+Mau nanya dong Hi there dong kak,greet
+Permisi hi there,greet
+Hi there,greet
+Mau nanya dong Hi there sih,greet
+Permisi saya ingin bertanya,greet
+Mau nanya dong Permisi saya ingin bertanya,greet
+Min permisi saya ingin bertanya deh,greet
+Bang Permisi saya ingin bertanya deh,greet
+Eh tanya dong kak,greet
+Bang Tanya dong kak,greet
+tanya dong kak,greet
+Tanya dong,greet
+Mau nanya dong Sip lanjut kak dong kak,provide_feedback
+Kak sip lanjut kak deh,provide_feedback
+Kak Sip lanjut kak dong kak,provide_feedback
+Permisi sip lanjut kak sih,provide_feedback
+Halo sip lanjut kak deh,provide_feedback
+Sip lanjut kak,provide_feedback
+Bang Nice ya,provide_feedback
+Permisi nice dong,provide_feedback
+Mau nanya dong Nice nih,provide_feedback
+Kak nice ya kak,provide_feedback
+Nice,provide_feedback
+Halo Nice dong,provide_feedback
+Mau nanya dong Nice ya kak,provide_feedback
+Eh nice ya,provide_feedback
+Bang Informatif banget?,provide_feedback
+Kak Chatbot nya bagus dong,provide_feedback
+Chatbot nya bagus ya kak,provide_feedback
+chatbot nya bagus sih,provide_feedback
+Kak Chatbot nya bagus,provide_feedback
+Permisi Chatbot nya bagus dong,provide_feedback
+Bang Chatbot nya bagus ya,provide_feedback
+chatbot nya bagus ya kak,provide_feedback
+Chatbot nya bagus,provide_feedback

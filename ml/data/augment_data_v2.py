@@ -144,6 +144,13 @@ if __name__ == "__main__":
     input_csv = os.path.join(current_dir, "processed", "train_intents_raw_v2.csv")
     output_csv = os.path.join(current_dir, "processed", "train_intents_v2.csv")
     
+    if os.path.exists(output_csv):
+        with open(output_csv, 'r', encoding='utf-8') as f:
+            row_count = sum(1 for _ in f) - 1
+        if row_count >= 2000:
+            print(f"train_intents_v2.csv sudah berisi {row_count} sampel dari split_data_v2.py. Melewati augmentasi lama.")
+            exit(0)
+
     print(f"Starting data augmentation...")
     print(f"Input: {input_csv}")
     print(f"Output: {output_csv}")

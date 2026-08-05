@@ -1,54 +1,54 @@
 {
   "CATEGORY": [
-    "kafe hits",
-    "pariwisata alam",
-    "taman kota",
-    "makanan",
     "historical places",
-    "tempat makan nasi goreng nusantara",
-    "penginapan",
+    "makanan",
     "tempat beli oleh-oleh makanan",
+    "tempat beli oleh-oleh makanan khas",
+    "taman kota",
+    "penginapan",
+    "pariwisata alam",
+    "tempat makan nasi goreng nusantara",
     "padang restaurants",
-    "tempat beli oleh-oleh makanan khas"
+    "kafe hits"
   ],
   "DESTINATION": [
-    "stasiun lrt ampera",
-    "kambang iwak park",
-    "monpera",
     "pempek candy",
     "pim",
+    "monpera",
     "jembatan ampera",
+    "stasiun lrt ampera",
     "hotel novotel palembang",
-    "at jakabaring",
     "al-qur'an al-akbar",
-    "the zuri palembang"
+    "the zuri palembang",
+    "kambang iwak park",
+    "at jakabaring"
   ],
   "LOCATION": [
-    "dekat stasiun lrt",
-    "jalan diponegoro",
-    "kawasan 7 ulu",
-    "jalan radial",
-    "ki gede ing suro",
-    "around here",
-    "kawasan 16 ilir",
-    "from here",
-    "13 ulu",
-    "mp mangkunegara",
     "around palembang grand mosque",
-    "terdekat"
+    "around here",
+    "13 ulu",
+    "ki gede ing suro",
+    "kawasan 16 ilir",
+    "kawasan 7 ulu",
+    "terdekat",
+    "jalan radial",
+    "from here",
+    "dekat stasiun lrt",
+    "mp mangkunegara",
+    "jalan diponegoro"
   ],
   "PRICE": [
     "150 ribu",
-    "di bawah 20rb",
     "5000 rupiah",
+    "di bawah 20rb",
     "di bawah 50 ribu"
   ],
   "TIME": [
+    "pagi ?",
+    "hari selasa",
     "sore ini",
     "jam 5 sore",
-    "hari selasa",
-    "pagi ?",
-    "bulan puasa",
-    "besok siang"
+    "besok siang",
+    "bulan puasa"
   ]
 }

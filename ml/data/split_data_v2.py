@@ -63,10 +63,33 @@ def get_signature(text):
     for pat, repl in ID_DIALECT_REVERSE.items():
         sig = re.sub(pat, repl, sig)
 
-    # 4. Replace destinasi & angka
+    # 4. Replace destinasi, angka, dan entitas lainnya
     for ent in sorted(ALL_DEST, key=len, reverse=True):
         pattern = r'\b' + re.escape(ent.lower()) + r'\b'
         sig = re.sub(pattern, "[DEST]", sig)
+        
+    # Expand to other entity types to prevent group split fragmentation
+    PRICE_WORDS = ['murah', 'terjangkau', 'ekonomis', 'harga pas', 'budget friendly', 'merakyat', 
+                   'gratis', 'free', 'tidak berbayar', 'tanpa biaya', 'bebas biaya', 'gratisan', 'cuma-cuma',
+                   'mahal', 'premium', 'luxury', 'mehul', 'kuras kantong', 'harga', 'tarif', 'biaya', 'tiket', 'htm',
+                   'budget', 'anggaran', 'modal', 'promo', 'diskon', 'potongan harga', 'hemat', 'ribu', 'rupiah', 'ribuan']
+    TIME_WORDS = ['pagi', 'pagi hari', 'pagi-pagi', 'siang', 'siang hari', 'tengah hari', 'sore', 'sore hari', 'petang',
+                  'malam', 'malam hari', 'malem', 'weekend', 'akhir pekan', 'sabtu minggu', 'sabtu-minggu', 
+                  'hari ini', 'sekarang', 'saat ini', 'besok', 'besoknya', 'esok hari', 'libur', 'hari libur', 'tanggal merah',
+                  'jam']
+    CATEGORY_WORDS = ['wisata alam', 'destinasi alam', 'tempat alam', 'wisata sejarah', 'destinasi sejarah', 'tempat bersejarah',
+                      'kuliner', 'makanan', 'tempat makan', 'restaurant', 'restoran', 'wisata keluarga', 'destinasi keluarga', 
+                      'tempat keluarga', 'wisata budaya', 'destinasi budaya', 'tempat budaya', 'hotel', 'penginapan', 'akomodasi', 
+                      'tempat menginap', 'cafe', 'kafe', 'coffee shop', 'ngopi', 'museum', 'masjid', 'taman', 'wahana air', 
+                      'spot foto', 'pusat oleh-oleh']
+                      
+    for w in sorted(CATEGORY_WORDS, key=len, reverse=True):
+        sig = re.sub(r'\b' + re.escape(w) + r'\b', '[CATEGORY]', sig)
+    for w in sorted(TIME_WORDS, key=len, reverse=True):
+        sig = re.sub(r'\b' + re.escape(w) + r'\b', '[TIME]', sig)
+    for w in sorted(PRICE_WORDS, key=len, reverse=True):
+        sig = re.sub(r'\b' + re.escape(w) + r'\b', '[PRICE]', sig)
+        
     sig = re.sub(r'\b\d+\b', '[NUM]', sig)
     sig = re.sub(r'rp\s?\d+', '[PRICE]', sig)
     return re.sub(r'\s+', ' ', sig).strip()
@@ -125,8 +148,8 @@ def verify_no_overlap(train_data, val_data, test_data, get_text_func, label=""):
 
 def split_intent_dataset():
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    input_path = os.path.join(script_dir, "raw", "intents_bilingual_v2.csv")
-    print(f"Membaca {input_path} (Anti-Overfitting & Strict Anti-Leakage Mode)...")
+    input_path = os.path.join(script_dir, "raw", "intents_base_v2.csv")
+    print(f"Membaca {input_path} (Strict Signature Group Split Mode)...")
     
     data_by_label = defaultdict(list)
     with open(input_path, 'r', encoding='utf-8') as f:
@@ -134,24 +157,30 @@ def split_intent_dataset():
         for row in reader:
             data_by_label[row['label']].append(row)
     
-    train_data, val_data, test_data = [], [], []
+    train_base_data, val_data, test_data = [], [], []
     
     for label, items in sorted(data_by_label.items()):
-        # Split per label berdasarkan signature
-        tr, va, te = group_split(items, lambda x: x['text'])
+        # Split per label berdasarkan signature (75% Train, 12.5% Val, 12.5% Test)
+        tr, va, te = group_split(items, lambda x: x['text'], ratios=(0.75, 0.125, 0.125))
         
-        # VERIFIKASI TIDAK ADA KEBOCORAN (OVERLAP)
+        # VERIFIKASI TIDAK ADA KEBOCORAN TEMPLATE
         is_clean = verify_no_overlap(tr, va, te, lambda x: x['text'], label=label)
         if not is_clean:
             print(f"❌ ERROR: Terdeteksi kebocoran data pada intent '{label}'. Proses dibatalkan.")
             return
 
-        train_data.extend(tr)
+        train_base_data.extend(tr)
         val_data.extend(va)
         test_data.extend(te)
-        print(f"  {label}: {len(items)} → train={len(tr)}, val={len(va)}, test={len(te)}")
-    
-    # PASCA-DEDUP LINTAS SPLIT: Buang dari test setiap kalimat yang Jaccard(word-level, setelah normalisasi) > 0.85 vs train
+        print(f"  {label}: {len(items)} → train_base={len(tr)}, val={len(va)}, test={len(te)}")
+
+    # Augmentasi HANYA untuk split Train Base
+    from generate_intent_dataset_v2 import augment_intent_train
+    train_tuples = [(r['text'], r['label']) for r in train_base_data]
+    augmented_tuples = augment_intent_train(train_tuples, target_per_class=500)
+    train_augmented_data = [{'text': t, 'label': l} for t, l in augmented_tuples]
+
+    # PASCA-DEDUP TEST SET TERHADAP TRAIN AUGMENTED (train_intents_v2.csv)
     def norm_words(text):
         t = text.lower()
         ID_DIALECT_REVERSE = {
@@ -170,17 +199,19 @@ def split_intent_dataset():
         if not set1 or not set2: return 0.0
         return len(set1 & set2) / float(len(set1 | set2))
 
-    train_words_by_label = defaultdict(list)
-    for r in train_data:
-        train_words_by_label[r['label']].append(norm_words(r['text']))
+    train_aug_exact = set(r['text'].strip().lower() for r in train_augmented_data)
+    train_aug_wordsets = [norm_words(r['text']) for r in train_augmented_data]
 
     filtered_test_data = []
     dropped_test_count = 0
     for r in test_data:
-        t_words = norm_words(r['text'])
-        lbl = r['label']
+        txt = r['text'].strip()
+        if txt.lower() in train_aug_exact:
+            dropped_test_count += 1
+            continue
+        t_words = norm_words(txt)
         is_near_dup = False
-        for tr_words in train_words_by_label[lbl]:
+        for tr_words in train_aug_wordsets:
             if jaccard(t_words, tr_words) > 0.85:
                 is_near_dup = True
                 break
@@ -188,12 +219,14 @@ def split_intent_dataset():
             dropped_test_count += 1
         else:
             filtered_test_data.append(r)
+            
     test_data = filtered_test_data
-    print(f"  Pasca-Dedup Intent Test: Dibuang {dropped_test_count} sampel test yang Jaccard > 0.85 vs train set.")
+    print(f"  Pasca-Dedup Intent Test vs Augmented Train: Dibuang {dropped_test_count} sampel test.")
     
     out_dir = os.path.join(script_dir, "processed")
     os.makedirs(out_dir, exist_ok=True)
-    for name, data in [("train_intents_raw_v2.csv", train_data), 
+    for name, data in [("train_intents_v2.csv", train_augmented_data),
+                       ("train_intents_raw_v2.csv", train_base_data), 
                        ("val_intents_v2.csv", val_data), 
                        ("test_intents_v2.csv", test_data)]:
         path = os.path.join(out_dir, name)
@@ -202,7 +235,7 @@ def split_intent_dataset():
             writer.writeheader()
             writer.writerows(data)
         print(f"  Saved: {path} ({len(data)} rows)")
-    print(f"\nTotal Intent: train={len(train_data)}, val={len(val_data)}, test={len(test_data)}")
+    print(f"\nTotal Intent: train_augmented={len(train_augmented_data)}, train_raw={len(train_base_data)}, val={len(val_data)}, test={len(test_data)}")
 
 
 def split_ner_dataset():
@@ -267,7 +300,8 @@ def split_ner_dataset():
     with open(holdout_path, 'w', encoding='utf-8') as f:
         json.dump({k: list(v) for k, v in holdout_by_type.items()}, f, ensure_ascii=False, indent=2)
 
-    # 3. Pisahkan sampel yang mengandung Holdout Entities
+    # 3. Pisahkan sampel yang mengandung Holdout Entities (Global Check across all types)
+    all_holdout_values_global = set(v.lower() for v_list in holdout_by_type.values() for v in v_list)
     all_holdout_samples = []
     train_val_pool = []
     
@@ -284,7 +318,7 @@ def split_ner_dataset():
                 while j < len(tags) and tags[j] == f'I-{ent_type}':
                     j += 1
                 val = " ".join(tokens[i:j]).lower()
-                if val in holdout_by_type.get(ent_type, set()):
+                if val in all_holdout_values_global:
                     has_holdout = True
                     break
                 i = j
@@ -299,48 +333,8 @@ def split_ner_dataset():
     rng.shuffle(all_holdout_samples)
     # Cap holdout test set to max 500 samples (Zero-Shot Test Set)
     test_ner_holdout = all_holdout_samples[:500]
-    surplus_holdout = all_holdout_samples[500:]
-
-    # For surplus holdout samples, mask holdout entities to generic tokens before placing in train_val_pool
-    generic_replacements = {
-        'DESTINATION': 'Dermaga Point',
-        'LOCATION': 'Palembang',
-        'PRICE': '10 ribu',
-        'TIME': 'besok',
-        'CATEGORY': 'wisata'
-    }
-    
-    for sample in surplus_holdout:
-        tokens = list(sample['tokens'])
-        tags = list(sample['tags'])
-        new_tokens = []
-        new_tags = []
-        i = 0
-        while i < len(tags):
-            tag = tags[i]
-            if tag.startswith('B-'):
-                ent_type = tag[2:]
-                j = i + 1
-                while j < len(tags) and tags[j] == f'I-{ent_type}':
-                    j += 1
-                val = " ".join(tokens[i:j]).lower()
-                if val in holdout_by_type.get(ent_type, set()):
-                    # Substitute with safe generic non-holdout entity
-                    sub_val = generic_replacements[ent_type].split()
-                    new_tokens.append(sub_val[0])
-                    new_tags.append(f'B-{ent_type}')
-                    for sub_tok in sub_val[1:]:
-                        new_tokens.append(sub_tok)
-                        new_tags.append(f'I-{ent_type}')
-                else:
-                    new_tokens.extend(tokens[i:j])
-                    new_tags.extend(tags[i:j])
-                i = j
-            else:
-                new_tokens.append(tokens[i])
-                new_tags.append(tags[i])
-                i += 1
-        train_val_pool.append({'tokens': new_tokens, 'tags': new_tags})
+    # OPTION A: Drop all surplus holdout samples (do NOT add to train_val_pool) to prevent collision & leakage
+    print(f"  [OPTION A] Dropping {len(all_holdout_samples) - len(test_ner_holdout)} surplus holdout samples.")
 
     # 4. Group Split train_val_pool: 80% Train, 10% Val, 10% Test Seen
     tr, va, te_seen = group_split(train_val_pool, lambda x: " ".join(x['tokens']), ratios=(0.80, 0.10, 0.10))

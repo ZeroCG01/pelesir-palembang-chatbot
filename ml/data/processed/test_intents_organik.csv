@@ -1,0 +1,66 @@
+text,label
+jenis wisata apo bae yang ado di palembang?,ask_category
+kategori tempat wisata di sini ado apo aja sih,ask_category
+ceritain dong tentang Pulau Kemaro tu apo,ask_destination_info
+Benteng Kuto Besak tu tempat apo yo?,ask_destination_info
+di Kambang Iwak ado toilet samo mushola dak?,ask_facilities
+fasilitas di Punti Kayu lengkap idak?,ask_facilities
+ado tempat tersembunyi yang jarang didatengi turis dak?,ask_hidden_gems
+spot hidden gem di palembang yang belom rame apo yo,ask_hidden_gems
+cak mano caro ke Al-Qur'an Al-Akbar dari bandara?,ask_location_access
+Bukit Siguntang tu di daerah mano sih,ask_location_access
+wisata apo bae yang biso didatengi naik lrt?,ask_lrt_destinations
+kalo naik lrt turun di mano buat ke tempat wisata,ask_lrt_destinations
+Museum Balaputera Dewa buka sampe jam berapo?,ask_operating_hours
+jam operasional Jakabaring hari minggu gimana,ask_operating_hours
+rekomendasiin tempat wisata kuliner dong buat besok,ask_recommendation
+enaknyo ke mano yo weekend ini di palembang,ask_recommendation
+tiket masuk ke Pulau Kemaro berapo duit?,ask_ticket_price
+harga karcis Monpera mahal idak?,ask_ticket_price
+cuaco hari ni panas nian yo,ask_unrelated
+resep pempek yang enak cak mano bikinnyo,ask_unrelated
+"yowes makasih banyak yo, aku cabut dulu",goodbye
+"oke segitu bae, dadah",goodbye
+"assalamualaikum, pagi min",greet
+"halo bang, ado waktu bentar?",greet
+"chatbot ni ngebantu nian, mantep",provide_feedback
+"jawabannyo kurang jelas sih tadi, agak bingung",provide_feedback
+min ado tempat wisata sejarah apo bae yo di plg?,ask_category
+spotted spot instagramable yg lg hits dong kka,ask_category
+rekomen sentra kerajinan songket yg bagus dmano,ask_category
+infokan seputar Danau OPI dunk bang,ask_destination_info
+jingok foto Kampung Gelam cakmano elok idak?,ask_destination_info
+spot Taman Sekanak Molek tu isinyo apo bae sih,ask_destination_info
+di Jembatan Musi IV ado parkiran motor dak min,ask_facilities
+Rumah Syahab ado tempat sholat samo toilet dk?,ask_facilities
+fasilitas kursi ama resto apung dsekitar situ lengkap dk,ask_facilities
+spill tempat nugas sepi yg katek uwang tau di kenten dong,ask_hidden_gems
+wisata sejarah malam yg belom viral dmano yo,ask_hidden_gems
+kalo nak cari tempat santai pinggir sungai yg sepi kmano,ask_hidden_gems
+rute naik angkot ke Kelenteng Chandra Nadi drmana yo,ask_location_access
+pake gmaps nak ke Masjid Al-Mahdi lewat jalan mano bang,ask_location_access
+lokasi Dermaga Keramasan tu daerah mana sih min,ask_location_access
+naik stasiun lrt mana yg deket ama Pulau Borang,ask_lrt_destinations
+kalo mo ke Kawasan Sekanak Besolek pake lrt bisa gak,ask_lrt_destinations
+setop lrt terdekat dr Monumen Dwikora tuh dmana ya,ask_lrt_destinations
+jm brp biasanya spot foto Rumah Syahab buka bang,ask_operating_hours
+toko oleh-oleh khas plg buka jam brapa pas malam minggu,ask_operating_hours
+Dermaga Keramasan sampe jam 3 sore masih buka dk,ask_operating_hours
+rekomen tempat wisata keluarga murah meriah dsekitar plg,ask_recommendation
+kalo nak nongkrong santai senja hari mending kmano ya,ask_recommendation
+tolong spil tempat makan makanan tradisional khas plg bwt besok,ask_recommendation
+tikt msk ke Danau OPI brp duit skrg min,ask_ticket_price
+hargo mlebu Kampung Gelam mahal dk yo per org,ask_ticket_price
+masuk ke Kelenteng Chandra Nadi keno biaya brp,ask_ticket_price
+kito nak meli baju kaos dmano yg murah nian,ask_unrelated
+skor bola sriwijaya fc td malam brp yo mang,ask_unrelated
+cuaca palembang lg ujan terus nih males keluar,ask_unrelated
+"makasih infonyo yo mang, kito pamit dulu",goodbye
+"mksih bnyk kka, sy mau lanjut jalan ya bye",goodbye
+"ok sip tengkiu min, smoga harimu menyenangkan",goodbye
+"malam min, lg online dk nih?",greet
+"halo kka bot, biso bantu aku dk",greet
+"spadaa minn, mau nanya2 dunk",greet
+"jawaban bot ny mantap nian, fast respon pulok!",provide_feedback
+"infonya agak rancu min, coba perbaiki lg ya",provide_feedback
+"suka bgt sm pelayanan chatbot nyo, josss",provide_feedback

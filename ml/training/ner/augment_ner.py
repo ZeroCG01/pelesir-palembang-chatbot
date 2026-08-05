@@ -180,7 +180,7 @@ if len(holdout_set) == 0:
 def filter_candidates(groups, holdouts):
     filtered = []
     for g in groups:
-        clean_g = [w for w in g if w.lower() not in holdouts and not any(h in w.lower() for h in holdouts)]
+        clean_g = [w for w in g if w.lower() not in holdouts and not any(h in w.lower() or w.lower() in h for h in holdouts)]
         if clean_g:
             filtered.append(clean_g)
     return filtered
@@ -365,14 +365,11 @@ def augment_dataset(input_path, output_path, multiplier=3):
 
 
 if __name__ == "__main__":
-    import os
-
-    train_path = "ml/data/processed/train_ner_v2.json"
-    aug_path   = "ml/data/processed/train_ner_augmented_v2.json"
+    train_path = os.path.join(script_dir, "..", "..", "data", "processed", "train_ner_v2.json")
+    aug_path   = os.path.join(script_dir, "..", "..", "data", "processed", "train_ner_augmented_v2.json")
 
     if not os.path.exists(train_path):
         print(f"ERROR: File tidak ditemukan: {train_path}")
-        print("Pastikan script dijalankan dari root folder proyek (bukan dari folder training/ner/)")
     else:
         augmented_data = augment_dataset(train_path, aug_path)
         print("\nSelesai! Sekarang update TRAIN_DATA_PATH di config.py:")
