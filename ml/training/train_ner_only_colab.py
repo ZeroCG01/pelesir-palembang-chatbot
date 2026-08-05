@@ -16,16 +16,14 @@ import os
 import sys
 import json
 import random
-import shutil
 import numpy as np
 import torch
-import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from torch.optim import AdamW
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import seaborn as sns
+import pandas as pd
 
 from transformers import (
     AutoTokenizer,
@@ -33,10 +31,9 @@ from transformers import (
     get_linear_schedule_with_warmup
 )
 from seqeval.metrics import classification_report as seq_report, f1_score as seq_f1
-from huggingface_hub import HfApi, login
 
 # ============================================================
-# KONFIGURASI HYPEPARAMETER & PATHS
+# KONFIGURASI HYPERPARAMETER & PATHS
 # ============================================================
 SEED = 42
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -53,6 +50,7 @@ WARMUP_RATIO = 0.1
 HF_REPO_ID = "ZeroCG/pelesir-ner"
 DATA_DIR = "ml/data/processed"
 OUTPUT_DIR = "output/ner"
+REPORTS_DIR = os.path.join(OUTPUT_DIR, "reports")
 
 NER_TAGS = [
     "O",
@@ -64,6 +62,7 @@ NER_TAGS = [
 ]
 NER_TAG2ID = {tag: i for i, tag in enumerate(NER_TAGS)}
 NER_ID2TAG = {i: tag for tag, i in NER_TAG2ID.items()}
+TARGET_ENTITIES = ["DESTINATION", "TIME", "CATEGORY", "PRICE", "LOCATION"]
 
 # Set Seed
 def set_seed(seed):
@@ -122,7 +121,7 @@ class NERDataset(Dataset):
         }
 
 # ============================================================
-# MAIN TRAINING LOOP
+# MAIN TRAINING & PLOTTING LOOP
 # ============================================================
 def train_ner():
     print("=" * 60)
@@ -187,6 +186,8 @@ def train_ner():
     best_val_f1 = 0.0
     patience_counter = 0
 
+    history = {"train_loss": [], "val_loss": [], "val_f1": []}
+
     print(f"\nMulai Training ({EPOCHS} Epochs)...")
     for epoch in range(EPOCHS):
         model.train()
@@ -239,6 +240,10 @@ def train_ner():
         avg_val_loss = val_loss / len(val_loader)
         val_f1 = seq_f1(val_true, val_pred)
 
+        history["train_loss"].append(avg_train_loss)
+        history["val_loss"].append(avg_val_loss)
+        history["val_f1"].append(val_f1)
+
         print(f"Epoch {epoch+1:02d}/{EPOCHS:02d} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f} | Val F1: {val_f1:.4f}")
 
         if val_f1 > best_val_f1:
@@ -286,14 +291,82 @@ def train_ner():
     report_str = seq_report(test_true, test_pred, digits=4)
     print(report_str)
 
-    # Save report to text file
-    reports_dir = os.path.join(OUTPUT_DIR, "reports")
-    os.makedirs(reports_dir, exist_ok=True)
-    with open(os.path.join(reports_dir, "ner_test_report.txt"), "w", encoding="utf-8") as f:
+    os.makedirs(REPORTS_DIR, exist_ok=True)
+    with open(os.path.join(REPORTS_DIR, "ner_test_report.txt"), "w", encoding="utf-8") as f:
         f.write(report_str + "\n")
 
-    print(f"\n✅ Model NER berhasil dilatih dan disimpan di: {OUTPUT_DIR}")
+    # ============================================================
+    # PLOTTING GRAFIK REPORT
+    # ============================================================
+    generate_reports(history, test_true, test_pred)
+
+    print(f"\n✅ Model & Grafik NER berhasil disimpan di: {OUTPUT_DIR}")
     return OUTPUT_DIR
+
+
+def generate_reports(history, test_true, test_pred):
+    os.makedirs(REPORTS_DIR, exist_ok=True)
+    epochs_range = range(1, len(history['train_loss']) + 1)
+
+    # Grafik 1: Training & Validation Loss Curves
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+    ax1.plot(epochs_range, history['train_loss'], 'b-o', label='Train Loss', linewidth=2)
+    ax1.plot(epochs_range, history['val_loss'], 'r-o', label='Val Loss', linewidth=2)
+    ax1.set_title('NER: Loss Training vs Validation', fontsize=12, fontweight='bold')
+    ax1.set_xlabel('Epoch')
+    ax1.set_ylabel('Loss')
+    ax1.legend()
+    ax1.grid(True, linestyle='--', alpha=0.6)
+
+    ax2.plot(epochs_range, history['val_f1'], 'g-o', label='Val F1 Score', linewidth=2)
+    ax2.set_title('NER: Validation F1 Score Curve', fontsize=12, fontweight='bold')
+    ax2.set_xlabel('Epoch')
+    ax2.set_ylabel('F1 Score')
+    ax2.legend()
+    ax2.grid(True, linestyle='--', alpha=0.6)
+
+    plt.tight_layout()
+    plot_path_loss = os.path.join(REPORTS_DIR, 'ner_training_curves.png')
+    plt.savefig(plot_path_loss, dpi=300)
+    plt.close()
+    print(f"📈 Grafik Loss & F1 Curve disimpan: {plot_path_loss}")
+
+    # Grafik 2: Per-Entity Performance Bar Chart
+    from seqeval.metrics import classification_report as seq_report_dict
+    report_dict = seq_report_dict(test_true, test_pred, output_dict=True)
+
+    entities = [e for e in TARGET_ENTITIES if e in report_dict]
+    precisions = [report_dict[e]['precision'] for e in entities]
+    recalls = [report_dict[e]['recall'] for e in entities]
+    f1_scores = [report_dict[e]['f1-score'] for e in entities]
+
+    x = np.arange(len(entities))
+    width = 0.25
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(x - width, precisions, width, label='Precision', color='#2b5c8f')
+    plt.bar(x, recalls, width, label='Recall', color='#469b88')
+    plt.bar(x + width, f1_scores, width, label='F1-Score', color='#d95f02')
+
+    plt.xlabel('Tipe Entitas NER', fontweight='bold')
+    plt.ylabel('Skor', fontweight='bold')
+    plt.title('Evaluasi Performa Per-Entitas Model NER (Legacy 583)', fontsize=13, fontweight='bold')
+    plt.xticks(x, entities, fontweight='bold')
+    plt.ylim(0, 1.1)
+    plt.legend(loc='lower right')
+    plt.grid(axis='y', linestyle='--', alpha=0.5)
+
+    for i in range(len(entities)):
+        plt.text(x[i] - width, precisions[i] + 0.02, f"{precisions[i]:.2f}", ha='center', fontsize=8)
+        plt.text(x[i], recalls[i] + 0.02, f"{recalls[i]:.2f}", ha='center', fontsize=8)
+        plt.text(x[i] + width, f1_scores[i] + 0.02, f"{f1_scores[i]:.2f}", ha='center', fontsize=8)
+
+    plt.tight_layout()
+    plot_path_bar = os.path.join(REPORTS_DIR, 'ner_entity_performance.png')
+    plt.savefig(plot_path_bar, dpi=300)
+    plt.close()
+    print(f"📊 Grafik Per-Entitas Bar Chart disimpan: {plot_path_bar}")
 
 if __name__ == "__main__":
     train_ner()
