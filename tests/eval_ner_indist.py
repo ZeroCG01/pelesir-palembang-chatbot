@@ -21,7 +21,7 @@ for lp in LOCAL_PATHS:
         MODEL_SOURCE = lp
         break
 
-TEST_PATH = "ml/data/processed/test_ner_v2.json"
+TEST_PATH = "ml/data/processed/test_ner_legacy_583.json"
 SEEN_PATH = "ml/data/processed/test_ner_seen.json"
 HOLDOUT_PATH = "ml/data/processed/test_ner_holdout.json"
 OUTPUT_REPORT_PATH = "output/reports/ner_indist_metrics.txt"
