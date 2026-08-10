@@ -1,0 +1,29 @@
+{
+    "stage": "Stage 1 - Targeted Data Augmentation (Train Only)",
+    "train_original_sentences": 2914,
+    "train_augmented_sentences": 4214,
+    "sentences_added": 1300,
+    "entities_before": {
+        "DESTINATION": 2211,
+        "PRICE": 1429,
+        "TIME": 711,
+        "CATEGORY": 692,
+        "LOCATION": 80
+    },
+    "entities_after": {
+        "PRICE": 2129,
+        "DESTINATION": 2211,
+        "LOCATION": 780,
+        "TIME": 711,
+        "CATEGORY": 692
+    },
+    "augmentation_multipliers": {
+        "DESTINATION": 1.0,
+        "PRICE": 1.49,
+        "TIME": 1.0,
+        "CATEGORY": 1.0,
+        "LOCATION": 9.75
+    },
+    "anti_leakage_status": "PASS (0 leaks, Val & Test unmodified)",
+    "bio_integrity_status": "PASS (100% valid BIO tags)"
+}
