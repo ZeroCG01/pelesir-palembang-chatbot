@@ -1,0 +1,67 @@
+{
+    "gate_status": "PASS",
+    "corpus_stats": {
+        "train_aug": {
+            "sentences": 4214,
+            "tokens": 28728,
+            "entities": {
+                "DESTINATION": 2211,
+                "PRICE": 2129,
+                "LOCATION": 780,
+                "TIME": 711,
+                "CATEGORY": 692
+            },
+            "total_entities": 6523
+        },
+        "val": {
+            "sentences": 392,
+            "tokens": 2321,
+            "entities": {
+                "DESTINATION": 286,
+                "TIME": 151,
+                "CATEGORY": 103,
+                "PRICE": 136,
+                "LOCATION": 11
+            },
+            "total_entities": 687
+        },
+        "test": {
+            "sentences": 331,
+            "tokens": 1905,
+            "entities": {
+                "DESTINATION": 229,
+                "TIME": 187,
+                "CATEGORY": 107,
+                "PRICE": 44,
+                "LOCATION": 16
+            },
+            "total_entities": 583
+        }
+    },
+    "bio_integrity": {
+        "errors": 0,
+        "len_mismatches": 0
+    },
+    "leakage": {
+        "exact_train_test": 0,
+        "exact_train_val": 0,
+        "near_duplicates": 0,
+        "template_leakage_test_count": 299
+    },
+    "template_diversity_location": {
+        "total_location_sentences": 779,
+        "unique_templates": 129,
+        "patterns": {
+            "preposisi_di": 305,
+            "arah_ke_menuju": 127,
+            "subjek_depan": 77,
+            "relatif_dekat_sekitar": 179,
+            "infrastruktur_transit": 44
+        }
+    },
+    "price_boundary_alignment": {
+        "test_price_spans_count": 14,
+        "train_price_spans_count": 106,
+        "overextended_violations": 0
+    }
+}
