@@ -1,0 +1,117 @@
+{
+    "gate_status": "PASS",
+    "counts": {
+        "train": {
+            "sentences": 2914,
+            "tokens": 17961,
+            "entities": {
+                "DESTINATION": 2211,
+                "PRICE": 1429,
+                "TIME": 711,
+                "CATEGORY": 692,
+                "LOCATION": 80
+            },
+            "total_entities": 5123
+        },
+        "val": {
+            "sentences": 392,
+            "tokens": 2321,
+            "entities": {
+                "DESTINATION": 286,
+                "TIME": 151,
+                "CATEGORY": 103,
+                "PRICE": 136,
+                "LOCATION": 11
+            },
+            "total_entities": 687
+        },
+        "test": {
+            "sentences": 331,
+            "tokens": 1905,
+            "entities": {
+                "DESTINATION": 229,
+                "TIME": 187,
+                "CATEGORY": 107,
+                "PRICE": 44,
+                "LOCATION": 16
+            },
+            "total_entities": 583
+        }
+    },
+    "bio_integrity": {
+        "total_bio_errors": 0,
+        "total_len_mismatches": 0,
+        "is_valid": true
+    },
+    "leakage": {
+        "exact_train_val": 0,
+        "exact_train_test": 0,
+        "exact_val_test": 0,
+        "near_duplicates_count": 0,
+        "template_leakage_count": 299,
+        "span_overlap": {
+            "PRICE": {
+                "total_test": 44,
+                "seen_in_train": 33,
+                "unseen_in_train": 11,
+                "overlap_ratio_pct": 75.0
+            },
+            "LOCATION": {
+                "total_test": 16,
+                "seen_in_train": 9,
+                "unseen_in_train": 7,
+                "overlap_ratio_pct": 56.25
+            },
+            "TIME": {
+                "total_test": 187,
+                "seen_in_train": 183,
+                "unseen_in_train": 4,
+                "overlap_ratio_pct": 97.86096256684492
+            },
+            "CATEGORY": {
+                "total_test": 107,
+                "seen_in_train": 96,
+                "unseen_in_train": 11,
+                "overlap_ratio_pct": 89.7196261682243
+            },
+            "DESTINATION": {
+                "total_test": 229,
+                "seen_in_train": 225,
+                "unseen_in_train": 4,
+                "overlap_ratio_pct": 98.2532751091703
+            }
+        }
+    },
+    "overfitting_risks": {
+        "CATEGORY": {
+            "total_occurrences": 692,
+            "unique_values": 61,
+            "vocabulary_richness_ratio": 0.08815028901734104,
+            "avg_span_length_tokens": 1.7615606936416186
+        },
+        "DESTINATION": {
+            "total_occurrences": 2211,
+            "unique_values": 46,
+            "vocabulary_richness_ratio": 0.020805065581184983,
+            "avg_span_length_tokens": 1.9434644957033016
+        },
+        "LOCATION": {
+            "total_occurrences": 80,
+            "unique_values": 37,
+            "vocabulary_richness_ratio": 0.4625,
+            "avg_span_length_tokens": 1.925
+        },
+        "PRICE": {
+            "total_occurrences": 1429,
+            "unique_values": 47,
+            "vocabulary_richness_ratio": 0.032890132960111965,
+            "avg_span_length_tokens": 1.9860041987403778
+        },
+        "TIME": {
+            "total_occurrences": 711,
+            "unique_values": 45,
+            "vocabulary_richness_ratio": 0.06329113924050633,
+            "avg_span_length_tokens": 1.7243319268635724
+        }
+    }
+}
