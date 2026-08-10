@@ -233,8 +233,8 @@ Evaluasi Anda:"""
                     return short_name
             return None
 
-        # Konstanta Threshold untuk Fuzzy Match
-        FUZZY_MATCH_THRESHOLD = 0.55  # Pertahankan 0.55 agar kasus seperti Punti Kayu tetap lolos
+        # Konstanta Threshold untuk Fuzzy Match (Nilai baku difflib 0.60)
+        FUZZY_MATCH_THRESHOLD = 0.60
 
         # Helper function untuk fuzzy matching ke database Supabase
         def find_destination_fuzzy(text: str, threshold: float = FUZZY_MATCH_THRESHOLD):
