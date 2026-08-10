@@ -1,0 +1,39 @@
+no,category,query,perilaku_diharapkan,output_a,a_benar,intervensi_substantif,revisi_teknis,output_b,b_benar
+1,Normal,berapa harga tiket masuk benteng kuto besak?,Menjawab informasi harga tiket BKB (Gratis).,Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.,True,False,False,Harga tiket masuk untuk Kawasan Benteng Kuto Besak (BKB) adalah: Rp 0 - Rp 5.000.,True
+2,Normal,jam buka museum balaputradewa?,Menjawab jam buka museum Balaputra Dewa (Selasa-Minggu 08:00 - 15:30).,Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.,True,False,True,"Museum Balaputra Dewa buka Selasa – Minggu, 08.00 – 15.30.",True
+3,Normal,fasilitas apa saja yang ada di punti kayu?,Menyebutkan fasilitas Hutan Wisata Punti Kayu.,Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.,True,False,True,"Fasilitas di Hutan Wisata Punti Kayu ada wahana permainan, kebun binatang mini, spot foto, gazebo, dan area parkir.",True
+4,Normal,apakah museum smb ii dekat lrt?,Menjawab aksesibilitas LRT untuk Museum SMB II (Stasiun Ampera).,"Transportasi LRT sangat efisien lho di Palembang! Sebutkan tempat wisatanya, nanti saya bantu carikan stasiun LRT terdekatnya.",True,False,True,"Ya, Museum Sultan Mahmud Badaruddin II dekat dengan LRT.",True
+5,Normal,rekomendasi wisata sejarah di palembang dong,"Memberikan daftar rekomendasi destinasi wisata sejarah konkret (BKB, Museum SMB II, Monpera, TPKS).","Wah, Anda tertarik dengan wisata sejarah ya? Pilihan yang bagus! Beberapa tempat populer adalah Museum Sultan Mahmud Badaruddin II, Museum Balaputra Dewa, Monumen Perjuangan Rakyat (Monpera). Anda bisa melihat lebih banyak di menu 'Rekomendasi'.",False,True,True,"Tentu, ini beberapa rekomendasi wisata sejarah di Palembang:
+* Museum Sultan Mahmud Badaruddin II
+* Museum Balaputra Dewa
+* Monumen Perjuangan Rakyat (Monpera)
+* Makam Ki Gede Ing Suro
+* Museum AK. Gani
+* Bayt Al-Quran Al-Akbar
+* Pulau Kemaro
+* Masjid Agung
+* Masjid Cheng Ho
+* Masjid Ki Marogan
+* Bukit Siguntang
+* Kawasan Benteng Kuto Besak (BKB)
+* Jembatan Ampera
+* Kampung Kapitan
+* Taman Purbakala Kerajaan Sriwijaya",True
+6,Normal,kasih tau wisata kuliner dong,"Memberikan daftar destinasi wisata kuliner konkret (Pempek Candy, Pempek Lala, Lorong Basah, RM Sri Melayu).","Wah, Anda tertarik dengan wisata kuliner ya? Pilihan yang bagus! Beberapa tempat populer adalah Kawasan Pasar 16 Ilir, Pempek Candy, Toko Kopi Har. Anda bisa melihat lebih banyak di menu 'Rekomendasi'.",False,True,True,"Tentu, ini beberapa rekomendasi wisata kuliner di Palembang:
+- Lorong Basah Night Culinary Market
+- Pempek Candy
+- Kawasan Pasar 16 Ilir
+- Pempek Lala 26 Ilir
+- Restoran River Side
+- RM Sri Melayu
+- Martabak HAR
+- Toko Kopi Har",True
+7,Trap,buka 24 jam,Menolak menjawab jam buka tanpa entitas tempat & meminta klarifikasi nama destinasi.,Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi jam bukanya.,True,False,True,Boleh beri tahu saya nama tempat wisatanya? Saya akan bantu carikan informasi jam bukanya.,True
+8,Trap,rekomendasi wisata pantai alami,Mengoreksi premis palsu bahwa Palembang tidak memiliki pantai laut alami & mengarahkan ke wisata air (Sungai Musi / Pulau Kemaro).,"Aplikasi Pelesir Palembang memiliki beberapa kategori wisata: Sejarah, Budaya, Kuliner, Religi, dan Taman/Alam. Anda sedang tertarik ke kategori yang mana?",False,True,True,"Palembang tidak memiliki pantai laut alami. Namun, kamu bisa menikmati suasana air di Sungai Musi atau mengunjungi Pulau Kemaro yang punya pemandangan unik.",True
+9,Trap,harganya brapa?,Meminta klarifikasi nama tempat wisata sebelum memberikan info tiket.,Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi harga tiketnya.,True,False,True,"Maaf, saya tidak tahu harga tiket yang Anda maksud. Apakah Anda bisa menyebutkan nama tempat wisatanya?",True
+10,Trap,ada fasilitas kolam renang ga disana?,Meminta klarifikasi nama tempat wisata sebelum memberikan info fasilitas.,Boleh beri tahu saya nama tempat wisatanya? Nanti saya carikan informasi fasilitasnya.,True,False,True,"Fasilitas kolam renang ada di Hotel Novotel Palembang, The Zuri Palembang, Hotel Aston Palembang, Hotel Santika Radial Palembang, Hotel Harper Palembang, Hotel Batiqa Palembang, Hotel ibis Palembang Sanggar, favehotel Palembang, Hotel Swarna Dwipa Palembang, Hotel Aryaduta Palembang, Hotel Excelton Palembang, dan Hotel Grand Inna Daira Palembang.",True
+11,Trap,aku mau tidur di smb,Mengoreksi kesalahpahaman entitas bahwa SMB II adalah Museum (bukan hotel) & menyarankan opsi hotel terdekat.,"Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!",False,True,True,"Maaf, SMB itu Museum Sultan Mahmud Badaruddin II. Kalau mau menginap, saya bisa bantu rekomendasikan hotel di dekat sana.",True
+12,OOD,tolong beritahu saya resep membuat pempek,Menolak secara sopan karena resep masakan di luar ruang lingkup (OOD) pariwisata.,"Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!",True,False,True,"Maaf, ini adalah aplikasi pariwisata Palembang. Saya kurang mengerti maksud Anda. Ada yang bisa saya bantu seputar wisata Palembang?",True
+13,OOD,siapa presiden prancis saat ini?,Menolak secara sopan pertanyaan politik luar negeri (OOD).,"Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!",True,False,True,"Maaf, ini adalah aplikasi pariwisata Palembang. Saya kurang mengerti maksud Anda. Ada yang bisa saya bantu seputar wisata Palembang?",True
+14,OOD,bagaimana cuaca di palembang hari ini?,Menolak pertanyaan cuaca real-time (di luar kemampuan database statis) & mengarahkan kembali ke wisata.,"Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!",False,True,False,"Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!",True
+15,OOD,buatkan saya kode python,Menolak secara sopan permintaan pemrograman (OOD).,"Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!",True,False,False,"Maaf, saya kurang paham maksud Anda. Saya adalah asisten wisata Palembang, Anda bisa bertanya seputar rekomendasi tempat, harga tiket, atau penginapan!",True
