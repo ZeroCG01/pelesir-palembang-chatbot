@@ -8,12 +8,14 @@ Fitur & Jaminan Kualitas:
 3. Anti-Overfitting: Early stopping (patience=3), weight decay (0.01), dropout (0.25), warmup (0.10).
 4. Loss Weighting Seimbang: CrossEntropyLoss terbobot moderat pada token LOCATION & PRICE.
 5. Model Terbaik: Menyimpan checkpoint model dengan Macro F1 Validasi tertinggi.
+6. Hugging Face Hub Ready: Mendukung upload otomatis ke repo Hugging Face via HF_TOKEN / --push_to_hub.
 """
 
 import os
 import sys
 import json
 import random
+import argparse
 import numpy as np
 import torch
 import torch.nn as nn
@@ -47,6 +49,7 @@ WEIGHT_DECAY = 0.01
 WARMUP_RATIO = 0.10
 GRADIENT_CLIP = 1.0
 
+DEFAULT_HF_REPO_ID = "ZeroCG/pelesir-ner"
 DATA_DIR = "ml/data/processed"
 TRAIN_FILE = os.path.join(DATA_DIR, "train_ner_aug.json")
 VAL_FILE   = os.path.join(DATA_DIR, "val_ner_legacy.json")
@@ -119,7 +122,7 @@ class NERDataset(Dataset):
                 tag_str = tags[word_idx]
                 labels.append(self.tag2id.get(tag_str, self.tag2id["O"]))
             else:
-                # Sub-token berikutnya diabaikan dari perhitungan loss (-100)
+                # Sub-token lanjutan diabaikan dari loss (-100)
                 labels.append(-100)
             previous_word_idx = word_idx
 
@@ -134,12 +137,6 @@ class NERDataset(Dataset):
 # 3. PERHITUNGAN CLASS WEIGHT LOSS (MODERAT)
 # ============================================================
 def calculate_class_weights():
-    """
-    Bobot moderat untuk menyeimbangkan penalti klasifikasi tanpa menyebabkan over-prediction:
-    - LOCATION: 1.30 (memberi perhatian ekstra pada batas wilayah)
-    - PRICE: 1.15 (memberi perhatian ekstra pada multi-token nominal)
-    - Lainnya: 1.00
-    """
     weights = torch.ones(len(NER_TAGS), dtype=torch.float)
     weights[NER_TAG2ID["B-LOCATION"]] = 1.30
     weights[NER_TAG2ID["I-LOCATION"]] = 1.30
@@ -151,7 +148,7 @@ def calculate_class_weights():
 # ============================================================
 # 4. LOOP TRAINING UTAMA
 # ============================================================
-def train():
+def train(hf_repo_id=None, push_to_hub=False, hf_token=None):
     print("=" * 80)
     print("🚀 PELESIR PALEMBANG — TRAINING MODEL NER XLM-RoBERTa (STAGE 3)")
     print(f"Device    : {DEVICE} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
@@ -159,7 +156,6 @@ def train():
     print(f"Dataset   : Train Aug ({TRAIN_FILE}) | Val ({VAL_FILE}) | Test ({TEST_FILE})")
     print("=" * 80)
 
-    # Validasi keberadaan file
     for p in [TRAIN_FILE, VAL_FILE, TEST_FILE]:
         if not os.path.exists(p):
             print(f"❌ File tidak ditemukan: {p}")
@@ -184,7 +180,6 @@ def train():
 
     print(f"📦 Total Data: {len(train_ds)} Train | {len(val_ds)} Val | {len(test_ds)} Test")
 
-    # Optimizer Grouped Parameters
     no_decay = ["bias", "LayerNorm.weight"]
     optimizer_grouped_parameters = [
         {
@@ -287,7 +282,6 @@ def train():
         val_prec = seq_prec(val_true, val_pred)
         val_rec  = seq_rec(val_true, val_pred)
 
-        # Hitung F1 per label pada val
         from seqeval.metrics import classification_report as seq_report_dict
         val_report = seq_report_dict(val_true, val_pred, output_dict=True)
         val_loc_f1 = val_report.get("LOCATION", {}).get("f1-score", 0.0)
@@ -304,7 +298,6 @@ def train():
 
         print(f"Epoch {epoch:02d}/{MAX_EPOCHS:02d} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f} | Val Macro F1: {val_macro_f1*100:6.2f}% | LOC F1: {val_loc_f1*100:5.1f}% | PRC F1: {val_prc_f1*100:5.1f}%")
 
-        # Cek Checkpoint Model Terbaik (Berdasarkan Val Macro F1)
         if val_macro_f1 > best_val_macro_f1:
             best_val_macro_f1 = val_macro_f1
             best_epoch = epoch
@@ -322,9 +315,7 @@ def train():
     print(f"🏆 TRAINING SELESAI | Model Terbaik dari Epoch {best_epoch} (Val Macro F1: {best_val_macro_f1*100:.2f}%)")
     print("=" * 80)
 
-    # ============================================================
-    # 5. EVALUASI FINAL PADA TEST SET (TEST_NER_LEGACY_583.JSON)
-    # ============================================================
+    # Evaluasi Final Test Set
     print("\n📊 MEMUAT CHECKPOINT TERBAIK & MENGEVALUASI DATA UJI (583 Entitas)...")
     best_model = AutoModelForTokenClassification.from_pretrained(OUTPUT_DIR).to(DEVICE)
     best_model.eval()
@@ -352,19 +343,14 @@ def train():
     report_str = seq_report(test_true, test_pred, digits=4)
     print("\n" + report_str)
 
-    # Simpan hasil teks laporan
     report_file = os.path.join(REPORTS_DIR, "ner_test_report.txt")
     with open(report_file, "w", encoding="utf-8") as f:
         f.write(f"NER EVALUATION REPORT (Stage 3 Trained Model)\n")
         f.write(f"Best Epoch: {best_epoch} | Best Val Macro F1: {best_val_macro_f1:.4f}\n\n")
         f.write(report_str)
 
-    # ============================================================
-    # 6. PLOTTING GRAFIK & LEARNING CURVE
-    # ============================================================
     save_training_plots(history, test_true, test_pred)
 
-    # Simpan metrics JSON
     metrics_json_path = os.path.join(REPORTS_DIR, "ner_metrics.json")
     with open(metrics_json_path, "w", encoding="utf-8") as f:
         json.dump({
@@ -375,11 +361,22 @@ def train():
 
     print(f"\n💾 Model & Laporan Evaluasi Tersimpan di: {OUTPUT_DIR} dan {REPORTS_DIR}")
 
+    # Push to Hugging Face Hub (Opsional)
+    if push_to_hub:
+        repo_id = hf_repo_id or os.environ.get("HF_REPO_ID", DEFAULT_HF_REPO_ID)
+        token = hf_token or os.environ.get("HF_TOKEN", None)
+        print(f"\n🌐 Mengunggah Model NER ke Hugging Face Hub: {repo_id} ...")
+        try:
+            best_model.push_to_hub(repo_id, token=token)
+            tokenizer.push_to_hub(repo_id, token=token)
+            print(f"✅ Model NER berhasil diunggah ke Hugging Face: https://huggingface.co/{repo_id}")
+        except Exception as e:
+            print(f"⚠️ Gagal push ke Hugging Face Hub: {e}")
+
 
 def save_training_plots(history, test_true, test_pred):
     epochs_range = history["epoch"]
 
-    # 1. Loss & F1 Learning Curve
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
 
     ax1.plot(epochs_range, history['train_loss'], 'b-o', label='Train Loss', linewidth=2)
@@ -406,7 +403,6 @@ def save_training_plots(history, test_true, test_pred):
     plt.close()
     print(f"📈 Grafik Learning Curve tersimpan: {curve_path}")
 
-    # 2. Per-Entity Bar Chart (Precision, Recall, F1)
     from seqeval.metrics import classification_report as seq_report_dict
     report_dict = seq_report_dict(test_true, test_pred, output_dict=True)
 
@@ -444,4 +440,14 @@ def save_training_plots(history, test_true, test_pred):
 
 
 if __name__ == "__main__":
-    train()
+    parser = argparse.ArgumentParser(description="Fine-tune NER XLM-RoBERTa")
+    parser.add_argument("--push_to_hub", action="store_true", help="Push model and tokenizer to Hugging Face Hub")
+    parser.add_argument("--hf_repo_id", type=str, default=DEFAULT_HF_REPO_ID, help="Hugging Face repo ID (e.g. ZeroCG/pelesir-ner)")
+    parser.add_argument("--hf_token", type=str, default=None, help="Hugging Face Write Token")
+    args = parser.parse_args()
+
+    train(
+        hf_repo_id=args.hf_repo_id,
+        push_to_hub=args.push_to_hub,
+        hf_token=args.hf_token
+    )

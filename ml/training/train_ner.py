@@ -8,12 +8,14 @@ Fitur & Jaminan Kualitas:
 3. Anti-Overfitting: Early stopping (patience=3), weight decay (0.01), dropout (0.25), warmup (0.10).
 4. Loss Weighting Seimbang: CrossEntropyLoss terbobot moderat pada token LOCATION & PRICE.
 5. Model Terbaik: Menyimpan checkpoint model dengan Macro F1 Validasi tertinggi.
+6. Hugging Face Hub Ready: Mendukung upload otomatis ke repo Hugging Face via HF_TOKEN / --push_to_hub.
 """
 
 import os
 import sys
 import json
 import random
+import argparse
 import numpy as np
 import torch
 import torch.nn as nn
@@ -47,6 +49,7 @@ WEIGHT_DECAY = 0.01
 WARMUP_RATIO = 0.10
 GRADIENT_CLIP = 1.0
 
+DEFAULT_HF_REPO_ID = "ZeroCG/pelesir-ner"
 DATA_DIR = "ml/data/processed"
 TRAIN_FILE = os.path.join(DATA_DIR, "train_ner_aug.json")
 VAL_FILE   = os.path.join(DATA_DIR, "val_ner_legacy.json")
@@ -119,7 +122,7 @@ class NERDataset(Dataset):
                 tag_str = tags[word_idx]
                 labels.append(self.tag2id.get(tag_str, self.tag2id["O"]))
             else:
-                # Sub-token berikutnya diabaikan dari perhitungan loss (-100)
+                # Sub-token lanjutan diabaikan dari loss (-100)
                 labels.append(-100)
             previous_word_idx = word_idx
 
@@ -134,12 +137,6 @@ class NERDataset(Dataset):
 # 3. PERHITUNGAN CLASS WEIGHT LOSS (MODERAT)
 # ============================================================
 def calculate_class_weights():
-    """
-    Bobot moderat untuk menyeimbangkan penalti klasifikasi tanpa menyebabkan over-prediction:
-    - LOCATION: 1.30 (memberi perhatian ekstra pada batas wilayah)
-    - PRICE: 1.15 (memberi perhatian ekstra pada multi-token nominal)
-    - Lainnya: 1.00
-    """
     weights = torch.ones(len(NER_TAGS), dtype=torch.float)
     weights[NER_TAG2ID["B-LOCATION"]] = 1.30
     weights[NER_TAG2ID["I-LOCATION"]] = 1.30
@@ -151,7 +148,7 @@ def calculate_class_weights():
 # ============================================================
 # 4. LOOP TRAINING UTAMA
 # ============================================================
-def train():
+def train(hf_repo_id=None, push_to_hub=False, hf_token=None):
     print("=" * 80)
     print("🚀 PELESIR PALEMBANG — TRAINING MODEL NER XLM-RoBERTa (STAGE 3)")
     print(f"Device    : {DEVICE} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
@@ -159,7 +156,6 @@ def train():
     print(f"Dataset   : Train Aug ({TRAIN_FILE}) | Val ({VAL_FILE}) | Test ({TEST_FILE})")
     print("=" * 80)
 
-    # Validasi keberadaan file
     for p in [TRAIN_FILE, VAL_FILE, TEST_FILE]:
         if not os.path.exists(p):
             print(f"❌ File tidak ditemukan: {p}")
@@ -184,7 +180,6 @@ def train():
 
     print(f"📦 Total Data: {len(train_ds)} Train | {len(val_ds)} Val | {len(test_ds)} Test")
 
-    # Optimizer Grouped Parameters
     no_decay = ["bias", "LayerNorm.weight"]
     optimizer_grouped_parameters = [
         {
@@ -366,6 +361,18 @@ def train():
 
     print(f"\n💾 Model & Laporan Evaluasi Tersimpan di: {OUTPUT_DIR} dan {REPORTS_DIR}")
 
+    # Push to Hugging Face Hub (Opsional)
+    if push_to_hub:
+        repo_id = hf_repo_id or os.environ.get("HF_REPO_ID", DEFAULT_HF_REPO_ID)
+        token = hf_token or os.environ.get("HF_TOKEN", None)
+        print(f"\n🌐 Mengunggah Model NER ke Hugging Face Hub: {repo_id} ...")
+        try:
+            best_model.push_to_hub(repo_id, token=token)
+            tokenizer.push_to_hub(repo_id, token=token)
+            print(f"✅ Model NER berhasil diunggah ke Hugging Face: https://huggingface.co/{repo_id}")
+        except Exception as e:
+            print(f"⚠️ Gagal push ke Hugging Face Hub: {e}")
+
 
 def save_training_plots(history, test_true, test_pred):
     epochs_range = history["epoch"]
@@ -433,4 +440,14 @@ def save_training_plots(history, test_true, test_pred):
 
 
 if __name__ == "__main__":
-    train()
+    parser = argparse.ArgumentParser(description="Fine-tune NER XLM-RoBERTa")
+    parser.add_argument("--push_to_hub", action="store_true", help="Push model and tokenizer to Hugging Face Hub")
+    parser.add_argument("--hf_repo_id", type=str, default=DEFAULT_HF_REPO_ID, help="Hugging Face repo ID (e.g. ZeroCG/pelesir-ner)")
+    parser.add_argument("--hf_token", type=str, default=None, help="Hugging Face Write Token")
+    args = parser.parse_args()
+
+    train(
+        hf_repo_id=args.hf_repo_id,
+        push_to_hub=args.push_to_hub,
+        hf_token=args.hf_token
+    )
