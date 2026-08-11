@@ -1,5 +1,5 @@
 """
-plot_ner_distribution.py — Script visualisasi distribusi entitas dataset NER (Legacy/V2)
+plot_ner_distribution.py — Script visualisasi distribusi entitas dataset NER (Stage 1 / Augmentasi Terbaru)
 Menghasilkan dua grafik profesional berstandar skripsi:
 1. gambar_ner_total.png   : Bar chart horizontal total entitas per label (terurut dari terbesar)
 2. gambar_ner_stacked.png : Stacked horizontal bar chart (Train / Val / Test)
@@ -16,7 +16,7 @@ from collections import Counter
 # ============================================================
 # 1. KONFIGURASI PATH & TARGET ENTITAS
 # ============================================================
-TRAIN_PATH = "ml/data/processed/train_ner_legacy.json"
+TRAIN_PATH = "ml/data/processed/train_ner_aug.json"
 VAL_PATH   = "ml/data/processed/val_ner_legacy.json"
 TEST_PATH  = "ml/data/processed/test_ner_legacy_583.json"
 
@@ -25,15 +25,15 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 TARGET_ENTITIES = ["DESTINATION", "PRICE", "TIME", "CATEGORY", "LOCATION"]
 
-# Benchmark Acuan Resmi Skripsi (Train / Val / Test / Total)
+# Benchmark Acuan Dataset NER Terbaru (Train Aug / Val / Test / Total)
 BENCHMARK = {
     "DESTINATION": (2211, 286, 229, 2726),
+    "PRICE":       (2129, 136, 44,  2309),
     "TIME":        (711,  151, 187, 1049),
     "CATEGORY":    (692,  103, 107, 902),
-    "PRICE":       (1429, 136, 44,  1609),
-    "LOCATION":    (80,   11,  16,  107),
+    "LOCATION":    (780,  11,  16,  807),
 }
-BENCHMARK_TOTAL = (5123, 687, 583, 6393)
+BENCHMARK_TOTAL = (6523, 687, 583, 7793)
 
 
 # ============================================================
@@ -51,7 +51,6 @@ def extract_entity_counts(file_path):
     total_tokens = 0
 
     for item in data:
-        # Deteksi field tags secara otomatis
         tags = None
         for key in ["tags", "ner_tags", "labels"]:
             if key in item:
@@ -61,7 +60,6 @@ def extract_entity_counts(file_path):
         if tags is None:
             continue
 
-        # Deteksi field tokens
         tokens = None
         for key in ["tokens", "words", "text"]:
             if key in item:
@@ -70,7 +68,6 @@ def extract_entity_counts(file_path):
         if tokens:
             total_tokens += len(tokens)
 
-        # Hitung entitas berdasarkan tag B-
         for tag in tags:
             tag_str = str(tag)
             if tag_str.startswith("B-"):
@@ -88,7 +85,7 @@ val_counts, val_sents, val_tokens       = extract_entity_counts(VAL_PATH)
 test_counts, test_sents, test_tokens    = extract_entity_counts(TEST_PATH)
 
 print("=" * 70)
-print("🔍 TABEL VERIFIKASI DISTRIBUSI ENTITAS DATASET NER (LEGACY/V2)")
+print("🔍 TABEL VERIFIKASI DISTRIBUSI ENTITAS DATASET NER (TERBARU / AUG)")
 print("=" * 70)
 print(f"{'Label Entitas':<15} | {'Train':<7} | {'Val':<7} | {'Test':<7} | {'Total':<7} | {'Status':<10}")
 print("-" * 70)
@@ -102,7 +99,6 @@ for ent in ["DESTINATION", "PRICE", "TIME", "CATEGORY", "LOCATION"]:
     te = test_counts.get(ent, 0)
     tot = tr + va + te
 
-    # Cek terhadap benchmark
     b_tr, b_va, b_te, b_tot = BENCHMARK[ent]
     is_match = (tr == b_tr and va == b_va and te == b_te and tot == b_tot)
     if not is_match:
@@ -152,7 +148,7 @@ plt.rcParams['axes.linewidth'] = 0.8
 
 df = pd.DataFrame(summary_data)
 # Urutkan dari terbesar ke terkecil untuk Total
-df_sorted = df.sort_values(by="Total", ascending=True)  # ascending=True agar di barh nilai terbesar ada di atas
+df_sorted = df.sort_values(by="Total", ascending=True)
 
 
 # ============================================================
@@ -160,7 +156,6 @@ df_sorted = df.sort_values(by="Total", ascending=True)  # ascending=True agar di
 # ============================================================
 fig1, ax1 = plt.subplots(figsize=(8, 5), dpi=300)
 
-# Warna elegan biru netral
 bar_color = "#2b5c8f"
 edge_color = "#1d3e60"
 
@@ -173,11 +168,9 @@ bars1 = ax1.barh(
     linewidth=0.8
 )
 
-# Format grid tipis sumbu-x
 ax1.grid(axis="x", linestyle="--", alpha=0.5, color="#cccccc")
 ax1.set_axisbelow(True)
 
-# Label angka di ujung batang dengan pemisah ribuan titik (contoh: 2.726)
 for bar in bars1:
     width = bar.get_width()
     formatted_num = f"{int(width):,}".replace(",", ".")
@@ -192,12 +185,11 @@ for bar in bars1:
         color="#222222"
     )
 
-ax1.set_title("Distribusi Jumlah Entitas per Label NER", fontsize=13, fontweight="bold", pad=16, color="#111111")
+ax1.set_title("Distribusi Jumlah Entitas per Label NER (Dataset Final)", fontsize=13, fontweight="bold", pad=16, color="#111111")
 ax1.set_xlabel("Jumlah Entitas", fontsize=10.5, fontweight="bold", labelpad=8, color="#222222")
 ax1.set_ylabel("Label Entitas NER", fontsize=10.5, fontweight="bold", labelpad=8, color="#222222")
 ax1.set_xlim(0, 3150)
 
-# Format ticks ribuan pada sumbu x
 ax1.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f"{int(x):,}".replace(",", ".")))
 plt.tight_layout()
 
@@ -215,23 +207,19 @@ fig2, ax2 = plt.subplots(figsize=(8, 5), dpi=300)
 y_pos = np.arange(len(df_sorted))
 height = 0.58
 
-# Palet warna profesional: Train (Steel Blue), Val (Amber/Orange), Test (Sea Green)
 color_train = "#2b5c8f"
 color_val   = "#e08214"
 color_test  = "#31a354"
 
-# Plot segmen bertumpuk
 b_train = ax2.barh(y_pos, df_sorted["Train"], height=height, label="Data Latih (Train)", color=color_train, edgecolor="#ffffff", linewidth=0.5)
 b_val   = ax2.barh(y_pos, df_sorted["Val"], left=df_sorted["Train"], height=height, label="Data Validasi (Val)", color=color_val, edgecolor="#ffffff", linewidth=0.5)
 b_test  = ax2.barh(y_pos, df_sorted["Test"], left=df_sorted["Train"] + df_sorted["Val"], height=height, label="Data Uji (Test)", color=color_test, edgecolor="#ffffff", linewidth=0.5)
 
-# Grid & Spacing
 ax2.grid(axis="x", linestyle="--", alpha=0.5, color="#cccccc")
 ax2.set_axisbelow(True)
 ax2.set_yticks(y_pos)
 ax2.set_yticklabels(df_sorted["Label"], fontsize=10, fontweight="bold")
 
-# Label total angka di ujung bar
 for i, total_val in enumerate(df_sorted["Total"]):
     formatted_num = f"{int(total_val):,}".replace(",", ".")
     ax2.text(
@@ -251,7 +239,6 @@ ax2.set_ylabel("Label Entitas NER", fontsize=10.5, fontweight="bold", labelpad=8
 ax2.set_xlim(0, 3150)
 ax2.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f"{int(x):,}".replace(",", ".")))
 
-# Legenda di posisi optimal
 ax2.legend(loc="lower right", frameon=True, facecolor="#ffffff", edgecolor="#dddddd", fontsize=9.5)
 plt.tight_layout()
 
